@@ -1,96 +1,85 @@
-/* ====== بيانات المشتركين (مثال داخل الـ JS كـ array) ====== */
-    const members = [
-      {id:101, name:'عمر أحمد', age:9, level:1, days:['الاثنين','الخميس'], times:['16:00-17:00'], end:'2025-12-31'},
-      {id:102, name:'سارة محمد', age:12, level:2, days:['السبت','الاحد'], times:['10:00-11:00'], end:'2026-01-10'},
-      {id:103, name:'محمود علي', age:28, level:5, days:['الثلاثاء','الجمعة'], times:['19:00-20:00'], end:'2025-09-30'},
-      {id:104, name:'هالة سمير', age:6, level:0, days:['الاربعاء'], times:['09:00-09:45'], end:'2025-11-15'},
-      {id:105, name:' مالك محمد احمد', age:5, level:4, days:['الاحد والخميس'], times:['06:00-06:55'], end:'2025/11/27	الخميس'},
-      {id:106, name:' اسر محمد عيد', age:7, level:4, days:['الاحد والخميس'], times:['05:00-05:55'], end:'2025/11/27	الخميس'},
-      {id:107, name:' يحي محمد سعيد', age:6, level:4, days:['الاحد والخميس'], times:['04:00-04:55'], end:'2025/11/27	الخميس'},
-      {id:108, name:' زين خالد ابراهيم', age:5, level:3, days:['الاحد والخميس'], times:['04:00-04:55'], end:'2025/11/27	الخميس'}
-    ];
-
-    /* ====== مستويات مفصّلة (7 مستويات) ====== */
- const levels = [
-  {id:1, title: 'جديد', desc:'الطفو على الفرونت والباك بمساعدة، مع إخراج الزفير من الأنف داخل الماء.'},
-  {id:2, title: 'مبتدئ', desc:'أداء استارت الفرونت والباك دون أي مساعدة.'},
-  {id:3, title:'متوسط',  desc:'بدء ضربات  الرجلين الفرونت والباك .'},
-  {id:4,  title:'متقدم', desc:'تعلّم الكاتشات للفرونت والباك مع بداية تمارين العجلة داخل الماء.'},
-  {id:5, title:'رياضي',  desc:'السباحة بالكاتشات (فرونت & باك) لمسافة 25 متر — جاهز لاختبار Star 1.'},
-  {id:6, title:'محترف', desc:'السباحة حرة وباك لمسافة 50 متر مع التيرن، مع بداية تعليم رجلين البريست.'}
+ // بيانات المشتركين
+     const members = [
+    { id: 101, name: 'عمر أحمد', age: 9, level: 1, times: ['16:00-17:00'], days: ['الخميس 11/7/2025', 'الأحد 14/7/2025', 'الثلاثاء 16/7/2025', 'الخميس 18/7/2025', 'السبت 20/7/2025', 'الإثنين 22/7/2025', 'الأربعاء 24/7/2025', 'الجمعة *26/7/2025'], end: '2025-12-31' },
+    { id: 102, name: 'سارة محمد', age: 12, level: 2, times: ['10:00-11:00'], days: ['السبت 12/7/2025', 'الأحد 13/7/2025', 'الثلاثاء 15/7/2025', 'الخميس 17/7/2025', 'السبت 19/7/2025', 'الإثنين 21/7/2025', 'الأربعاء 23/7/2025', 'الجمعة 25/7/2025'], end: '2026-01-10' },
+    { id: 103, name: 'محمود علي', age: 28, level: 5, times: ['19:00-20:00'], days: ['الأحد 13/7/2025', 'الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025'], end: '2025-09-30' },
+    { id: 104, name: 'هالة سمير', age: 6, level: 0, times: ['09:00-09:45'], days: ['الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025', 'الإثنين 21/7/2025'], end: '2025-11-15' }
 ];
 
-    // Render levels
-    const levelsGrid = document.getElementById('levelsGrid');
-    levels.forEach(l=>{
-      const card = document.createElement('div');
-      card.className = 'level-card';
-      card.innerHTML = `<h3>Level ${l.id} - ${l.title}</h3><p>${l.desc}</p>`;
-      levelsGrid.appendChild(card);
-    });
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const memberPanel = document.getElementById('memberPanel');
 
-    // Search logic
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const memberPanel = document.getElementById('memberPanel');
-    const memberBox = document.getElementById('memberBox');
-    const memberNotFound = document.getElementById('memberNotFound');
+    function renderMemberTable(m) {
+    const daysHTML = m.days.map(d => {
+        if (d.includes('*')) { // أي يوم فيه علامة * يتحول للون الأحمر
+            return `<li style="color:red;font-weight:600;">${d.replace('*','')}</li>`; // نشيل العلامة عند العرض
+        } else {
+            return `<li>${d}</li>`;
+        }
+    }).join('');
 
-    function showMember(m){
-      document.getElementById('m-name').textContent = m.name;
-      document.getElementById('m-age').textContent = m.age + ' سنة';
-      document.getElementById('m-level').textContent = 'Level ' + m.level;
-      document.getElementById('m-days').textContent = m.days.join('، ');
-      document.getElementById('m-times').textContent = m.times.join('، ');
-      document.getElementById('m-end').textContent = m.end;
-      memberNotFound.style.display = 'none';
-      memberBox.style.display = 'block';
-      memberPanel.style.display = 'block';
+    memberPanel.innerHTML = `
+        <h3>بيانات المشترك</h3>
+        <table>
+          <tr>
+            <th>الرقم</th><th>الاسم</th><th>العمر</th><th>المستوى</th><th>عدد الحصص</th><th>مواعيد التدريب</th>
+          </tr>
+          <tr>
+            <td>${m.id}</td>
+            <td>${m.name}</td>
+            <td>${m.age}</td>
+            <td>${m.level}</td>
+            <td>${m.days.length}</td>
+            <td>${m.times.join('، ')}</td>
+          </tr>
+        </table>
+        <h4>أيام التدريب</h4>
+        <ul>${daysHTML}</ul>
+    `;
+    memberPanel.style.display = 'block';
+}
+
+function searchMember() {
+    const q = searchInput.value.trim();
+
+    // التحقق من أن الإدخال رقم
+    if (!q || isNaN(q)) {
+        memberPanel.innerHTML = '<p style="color:red;font-weight:600;">الرجاء إدخال رقم!</p>';
+        memberPanel.style.display = 'block';
+        searchInput.focus();
+        return;
     }
 
-    function showNotFound(){
-      memberBox.style.display = 'none';
-      memberNotFound.style.display = 'block';
-      memberPanel.style.display = 'block';
+    // البحث برقم المشترك فقط
+    const found = members.find(m => String(m.id) === q);
+
+    if (found) {
+        renderMemberTable(found);
+    } else {
+        memberPanel.innerHTML = '<p style="color:red;font-weight:600;">لا يوجد مشترك مطابق.</p>';
+        memberPanel.style.display = 'block';
     }
+}
 
-    function searchMember(){
-      const q = searchInput.value.trim().toLowerCase();
-      if(!q){ memberPanel.style.display='none'; return; }
-      // search by name or id
-      const found = members.find(m=> m.name.toLowerCase().includes(q) || String(m.id) === q);
-      if(found) showMember(found); else showNotFound();
-    }
+        searchBtn.addEventListener('click', searchMember);
+        searchInput.addEventListener('keyup', e => { if (e.key === 'Enter') searchMember(); });
 
-    searchBtn.addEventListener('click', searchMember);
-    searchInput.addEventListener('keyup', function(e){ if(e.key === 'Enter') searchMember(); });
+        // المستويات
+        const levels = [
+            { id: 1, title: 'جديد', desc: 'الطفو على الفرونت والباك بمساعدة، مع إخراج الزفير من الأنف داخل الماء.' },
+            { id: 2, title: 'مبتدئ', desc: 'أداء استارت الفرونت والباك دون أي مساعدة.' },
+            { id: 3, title: 'متوسط', desc: 'بدء ضربات الرجلين الفرونت والباك من الاستارت بدون مساعده' },
+            { id: 4, title: 'متقدم', desc: 'تعلّم الكاتشات للفرونت والباك مع بداية تمارين العجلة داخل الماء.' },
+            { id: 5, title: 'رياضي', desc: 'السباحة بالكاتشات (فرونت & باك) لمسافة 25 متر — جاهز لاختبار Star 1.' },
+            { id: 6, title: 'محترف', desc: 'السباحة حرة وباك لمسافة 50 متر مع التيرن، مع بداية تعليم رجلين البريست و الدولفين.' },
+            { id: 7, title: 'خبير', desc: ' تعليم سباحه الدولفين و الدريلات الخاصه بها و ايضا  البريست و الدريلات الخاصه بها ' }
+        ];
 
-    // Complaint form handling (confidential)
-    const complaintForm = document.getElementById('complaintForm');
-    const sendComplaint = document.getElementById('sendComplaint');
-    const complaintMsg = document.getElementById('complaintMsg');
-
-    sendComplaint.addEventListener('click', ()=>{
-      const name = document.getElementById('complaintName').value.trim();
-      const id = document.getElementById('complaintId').value.trim();
-      const text = document.getElementById('complaintText').value.trim();
-      if(!text){ alert('يرجى كتابة نص الشكوى.'); return; }
-
-      // ==== IMPORTANT: This is a front-end demo. =====
-      // في تطبيق حقيقي: تأكد من إرسال الشكوى عبر اتصال آمن (HTTPS) إلى السيرفر وتخزينها بشكل مشفر.
-      // هنا سنحاكي السرية بطباعة مُشفّر (hash بسيط) في الكونسول مع عدم عرض النص.
-
-      const pseudoHash = btoa(Date.now() + '|' + (id||'') + '|' + (name||''));
-      console.log('CONFIDENTIAL_COMPLAINT_RECEIVED {hash:', pseudoHash, '}');
-
-      // feedback to user (do not reveal the complaint content)
-      complaintMsg.style.display = 'block';
-      setTimeout(()=>{ complaintMsg.style.display='none'; }, 5000);
-
-      // clear sensitive fields
-      document.getElementById('complaintText').value = '';
-      document.getElementById('complaintId').value = '';
-      document.getElementById('complaintName').value = '';
-    });
-
-    // small enhancement: allow clicking a name from a (future) list - not displayed here
+        const levelsGrid = document.getElementById('levelsGrid');
+        levels.forEach(l => {
+            const card = document.createElement('div');
+            card.className = 'level-card';
+            card.innerHTML = `<h3>Level ${l.id} - ${l.title}</h3><p>${l.desc}</p>`;
+            levelsGrid.appendChild(card);
+        });
