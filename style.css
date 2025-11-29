@@ -7,7 +7,7 @@
   --fw-16-semibold: 600;
 
   --fs-24: clamp(16px, 1vw + 1rem, 24px);
-  --fs-16: clamp(14px, 0.5vw + 0.8rem, 16px);
+--fs-16: clamp(18px, 1vw + 0.8rem, 18px);
   --fs-32: clamp(24px, 1vw + 1rem, 32px);
 
 
@@ -987,4 +987,5 @@ img {
 
 
 }
+
 
