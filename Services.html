@@ -51,56 +51,120 @@
             text-decoration: none;
         }
 
-        /* Navbar */
+       /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row-reverse;
+      height: 75px;
+      background: #fff;
+      font-family: var(--font-primary);
+      position: relative;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-primary);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 1rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+    }
+
+    /* Active Mobile Menu */
+    .navbar-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      background: #fff;
+      width: 70%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+
+/* Responsive */ @media (max-width: 768px) {
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 20px;
-            background: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
+    position: fixed;
+    width: 100%;
+  }
 
-        .container {
-            max-width: var(--maxw);
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
 
-        .logo {
-            font-weight: 700;
-            color: var(--accent);
-        }
+  .navbar-links.active {
+    display: flex;
+  }
 
-        .nav-links {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-        }
+  .navbar-toggle {
+    display: block;
+  }
 
-        .nav-links a {
-            padding: 8px 10px;
-            border-radius: 8px;
-        }
+  .links {
+    padding: 15px;
+    flex-direction: column;
+    background: #fff;
+      width: 85%;
+    padding: 15px;
+  }
 
-        .nav-links a:hover {
-            background: #f2f7ff;
-        }
+  .links a {
+    padding: 15px;
+  }
+    }
 
-        .nav-toggle {
-            display: none;
-        }
-
+    @media (max-width: 480px) {
+      .navbar-logo { font-size: 16px; }
+    }
         /* ======= Hero ======= */
         .hero {
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15)),
-                url('./img-header.webp') center/cover no-repeat;
+                url('https://mohsenacademy.com/img-header.webp') center/cover no-repeat;
             padding: 80px 20px;
             color: #fff;
         }
@@ -193,7 +257,7 @@
         }
 
         th {
-            background-color: var(--accent);
+            background-color: var(--accent-2);
             color: #fff;
         }
 
@@ -363,13 +427,6 @@
         }
 
         @media(max-width:420px) {
-            .nav-links {
-                display: none
-            }
-
-            .nav-toggle {
-                display: block
-            }
 
             .levels-grid {
                 grid-template-columns: 1fr
@@ -381,25 +438,30 @@
 
 <body>
     <!-- Navbar -->
-    <header class="navbar">
-        <div class="container">
-            <div class="logo"> <a href="https://mohsenacademy.com/">MOHSEN ACADEMY</a></div>
-            <nav class="nav-links">
-                <a href="https://mohsenacademy.com/">الرئيسية</a>
-                <a href="#levels">المستويات</a>
-                <a href="#search">بحث عن مشترك</a>
-                <a href="#complaint">شكوى سرية</a>
-            </nav>
-            <div class="nav-toggle">☰</div>
-        </div>
-    </header>
+  <!--  Navbar Start -->
+  <nav class="navbar container content">
+    <div class="navbar-logo">
+      MOHSEN ACADEMY</div>
+
+    <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
+    <div class="navbar-links" id="navbarLinks">
+      <div class="links">
+        <a href="https://mohsenacademy.com">Home</a>
+        <a href="https://mohsenacademy.com/Services.html">Services</a>
+        <a href="https://mohsenacademy.com/Register.html">Register</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <!--  Navbar End -->
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div>
                 <h1>الخدمات - أكاديمية محسن</h1>
-                <p>.ابحث عن مشترك لعرض بياناته </p>
+                <p>ابحث عن مشترك لعرض بياناته</p>
             </div>
         </div>
     </section>
@@ -454,7 +516,8 @@
         <div class="container footer-grid">
             <div class="footer-about">
                 <h3>MOHSEN ACADEMY</h3>
-                <p>كل الحقوق محفوظة © 2025</p>
+<p><a href="https://mohsenacademy.com/privacy.html">سياسة الخصوصية</a></p>
+                
             </div>
             <div>
                 <h4>روابط سريعة</h4>
@@ -479,9 +542,7 @@
         </div>
     </footer>
 
-    <script src="Services.js"></script>
+    <script src="Service.js"></script>
 </body>
 
 </html>
-
-
