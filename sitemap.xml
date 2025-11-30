@@ -5,11 +5,15 @@
       <priority>1.0</priority>
    </url>
    <url>
-      <loc>https://mohsenacademy.com/about.html</loc>
+      <loc>https://mohsenacademy.com/Register.html</loc>
       <priority>0.8</priority>
    </url>
    <url>
-      <loc>https://mohsenacademy.com/contact.html</loc>
+      <loc>https://mohsenacademy.com/Services.html</loc>
+      <priority>0.8</priority>
+   </url>
+    <url>
+      <loc>https://mohsenacademy.com/privacy.html</loc>
       <priority>0.8</priority>
    </url>
 </urlset>
