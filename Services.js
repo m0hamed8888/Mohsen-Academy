@@ -1,9 +1,80 @@
  // بيانات المشتركين
      const members = [
-    { id: 101, name: 'عمر أحمد', age: 9, level: 1, times: ['16:00-17:00'], days: ['الخميس 11/7/2025', 'الأحد 14/7/2025', 'الثلاثاء 16/7/2025', 'الخميس 18/7/2025', 'السبت 20/7/2025', 'الإثنين 22/7/2025', 'الأربعاء 24/7/2025', 'الجمعة *26/7/2025'], end: '2025-12-31' },
-    { id: 102, name: 'سارة محمد', age: 12, level: 2, times: ['10:00-11:00'], days: ['السبت 12/7/2025', 'الأحد 13/7/2025', 'الثلاثاء 15/7/2025', 'الخميس 17/7/2025', 'السبت 19/7/2025', 'الإثنين 21/7/2025', 'الأربعاء 23/7/2025', 'الجمعة 25/7/2025'], end: '2026-01-10' },
-    { id: 103, name: 'محمود علي', age: 28, level: 5, times: ['19:00-20:00'], days: ['الأحد 13/7/2025', 'الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025'], end: '2025-09-30' },
-    { id: 104, name: 'هالة سمير', age: 6, level: 0, times: ['09:00-09:45'], days: ['الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025', 'الإثنين 21/7/2025'], end: '2025-11-15' }
+   {
+  id: 1010,
+  name: 'أسر محمد عيد',
+  age: 7,
+  level: 4,
+  times: ['5:00-5:55'],
+  days: [
+    'الثلاثاء 02/12/2025',
+    'الأحد 07/12/2025',
+    'الثلاثاء 09/12/2025',
+    'الأحد 14/12/2025',
+    'الثلاثاء 16/12/2025',
+    'الأحد 21/12/2025',
+    'الثلاثاء 23/12/2025',
+    'الأحد 28/12/2025'
+  ],
+  end: '2025/12/28	 الأحد' 
+},
+ {
+  id: 1020,
+  name: ' يحيي محمد سعيد',
+  age: 6,
+  level: 4,
+  times: ['4:00-4:55'],
+  days: [
+    'الثلاثاء 02/12/2025',
+    'الأحد 07/12/2025',
+    'الثلاثاء 09/12/2025',
+    'الأحد 14/12/2025',
+    'الثلاثاء 16/12/2025',
+    'الأحد 21/12/2025',
+    'الثلاثاء 23/12/2025',
+    'الأحد 28/12/2025'
+  ],
+  end: '2025/12/28	 الأحد' 
+},
+{
+  id: 1030,
+name:' زين خالد ابراهيم',
+  age: 6,
+  level: 4,
+  times: ['4:00-4:55'],
+  days: [
+    'الثلاثاء 02/12/2025',
+    'الأحد 07/12/2025',
+    'الثلاثاء 09/12/2025',
+    'الأحد 14/12/2025',
+    'الثلاثاء 16/12/2025',
+    'الأحد 21/12/2025',
+    'الثلاثاء 23/12/2025',
+    'الأحد 28/12/2025'
+  ],
+  end: '2025/12/28	 الأحد' 
+},
+{
+  id: 1040,
+name:' مالك محمد احمد',
+  age: 6,
+  level: 4,
+  times: ['6:00-6:55'],
+  days: [
+    'الثلاثاء 02/12/2025',
+    'الأحد 07/12/2025',
+    'الثلاثاء 09/12/2025',
+    'الأحد 14/12/2025',
+    'الثلاثاء 16/12/2025',
+    'الأحد 21/12/2025',
+    'الثلاثاء 23/12/2025',
+    'الأحد 28/12/2025'
+  ],
+  end: '2025/12/28	 الأحد' 
+},
+    { id: 102, name: 'سارة محمد', age: 12, level: 2, times: ['10:00-11:00'], days: ['السبت* 12/7/2025', 'الأحد 13/7/2025', 'الثلاثاء 15/7/2025', 'الخميس 17/7/2025', 'السبت 19/7/2025', 'الإثنين 21/7/2025', 'الأربعاء 23/7/2025', 'الجمعة 25/7/2025'], end: '2026-01-10' },
+    { id: 103, name: 'محمود علي', age: 28, level: 5, times: ['19:00-20:00'], days: ['الأحد* 13/7/2025', 'الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025'], end: '2025-09-30' },
+    { id: 104, name: 'هالة سمير', age: 6, level: 0, times: ['09:00-09:45'], days: ['الإثنين* 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025', 'الإثنين 21/7/2025'], end: '2025-11-15' }
 ];
 
         const searchInput = document.getElementById('searchInput');
@@ -23,7 +94,13 @@
         <h3>بيانات المشترك</h3>
         <table>
           <tr>
-            <th>الرقم</th><th>الاسم</th><th>العمر</th><th>المستوى</th><th>عدد الحصص</th><th>مواعيد التدريب</th>
+            <th>الرقم</th>
+            <th>الاسم</th>
+            <th>العمر</th>
+            <th>المستوى</th>
+            <th>عدد الحصص</th>
+            <th>ساعه التدريب</th>
+            <th>نهايه الاشتراك</th>
           </tr>
           <tr>
             <td>${m.id}</td>
@@ -32,6 +109,7 @@
             <td>${m.level}</td>
             <td>${m.days.length}</td>
             <td>${m.times.join('، ')}</td>
+            <td>${m.end}</td>
           </tr>
         </table>
         <h4>أيام التدريب</h4>
@@ -83,3 +161,44 @@ function searchMember() {
             card.innerHTML = `<h3>Level ${l.id} - ${l.title}</h3><p>${l.desc}</p>`;
             levelsGrid.appendChild(card);
         });
+
+                 function toggleNavbar() {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    navbarLinks.classList.toggle("active");
+
+    if (navbarLinks.classList.contains("active")) {
+      toggleIcon.textContent = "✖";
+    } else {
+      toggleIcon.textContent = "☰";
+    }
+  }
+  document.addEventListener("click", function (e) {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    if (
+      navbarLinks.classList.contains("active") &&
+      !navbarLinks.contains(e.target) &&
+      !toggleIcon.contains(e.target)
+    ) {
+      navbarLinks.classList.remove("active");
+      toggleIcon.textContent = "☰";
+    }
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyBG = document.querySelectorAll("[data-bg]");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.backgroundImage = `url('${el.dataset.bg}')`;
+          observer.unobserve(el);
+        }
+      });
+    });
+
+    lazyBG.forEach(el => observer.observe(el));
+  });
