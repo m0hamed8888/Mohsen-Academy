@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كابتن محسن | تسجيل مستخدم جديد | Mohsen Swimming Academy</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="./css-f-family.css" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
+   <link rel="icon" type="image/png" href="https://mohsenacademy.com/favicon.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta name="description"
+    content="تدريب سباحة في الشروق مع Mohsen Academy داخل نادي جرين هيلز مع كابتن محسن. أكاديمية سباحة في الشروق تقدم تدريبًا احترافيًا للأطفال والكبار بمستوى متميز.">
+  <meta name="keywords"
+    content="Mohsen Academy, captain mohsen, كابتن محسن, محسن, اكاديمية سباحة, اكاديمية سباحة في الشروق, تدريب سباحة في الشروق, اكاديمية سباحة في القاهرة, تعليم السباحة في الشروق, تدريب السباحة, اماكن تدريب سباحه في الشروق, نادي جرين هيلز في مدينة الشروق">
+  <meta name="author" content="Mohsen">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Mohsen Academy" />
+  <meta property="og:url" content="https://mohsenacademy.com/" />
+  <meta property="og:image" content="https://mohsenacademy.com/icon.png" />
+  <link rel="canonical" href="https://mohsenacademy.com/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://mohsenacademy.com/icon.png",
+    "url": "https://mohsenacademy.com/",
+    "name": "Mohsen Academy Logo",
+    "description": "اللوجو الرسمي لأكاديمية محسن لتدريب السباحة للصغار والكبار في مدينة الشروق.",
+    "width": 300,
+    "height": 300
+  }
+  </script>
+
+  <style>
+    :root {
+      --font-primary: "DM Sans", sans-serif;
+      --fw-24-semibold: 600;
+      --fw-16-medium: 500;
+      --fw-16-semibold: 600;
+      --fs-24: clamp(16px, 1vw + 1rem, 24px);
+      --fs-16: clamp(18px, 1vw + 0.8rem, 18px);
+      --fs-32: clamp(24px, 1vw + 1rem, 32px);
+      --fw-32: 700; 
+      --color-h1: #FFFFFF;
+      --color-h2: #0066CC;
+      --color-p: #333333;
+      --color-icon: #E6A200;
+      --bg-content: #f6f7f8; 
+      --bg-card: #ffffff;  
+      --bg-navbar: rgba(255,255,255,0.95);
+      --bg-footer: #003366; /* لون الفوتر الجديد */
+      --color-footer-text: #fff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-primary); background: var(--bg-content); color: var(--color-p); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+  /* Navbar */
+  /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      background: #fff;
+      font-family: var(--font-primary);
+      position: relative;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-primary);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    /* Active Mobile Menu */
+    .navbar-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      background: #fff;
+      width: 70%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+
+/* Responsive */ @media (max-width: 768px) {
+        .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .links {
+    padding: 15px;
+    flex-direction: column;
+    background: #fff;
+      width: 85%;
+    padding: 15px;
+  }
+
+  .links a {
+    padding: 15px;
+  }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-logo { font-size: 16px; }
+    }
+    /* Section */
+    .register-section {
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('./img-header.webp');
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+    }
+
+    .register-card {
+      background: var(--bg-card);
+      padding: 50px 40px;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      max-width: 600px;
+      width: 100%;
+
+      margin-top: 5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .register-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+
+    .register-card h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: var(--fw-32);
+      color: var(--color-h2);
+      margin-bottom: 30px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .register-card label { font-size: var(--fs-16); font-weight: var(--fw-16-semibold); color: var(--color-p); display: block; margin-bottom: 8px; }
+
+    .register-card input, .register-card select, .register-card textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: var(--fs-16);
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.95);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .register-card input:focus, .register-card select:focus, .register-card textarea:focus {
+      outline: none;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* select حديث وفخم */
+    .register-card select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%230066CC' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 12px 12px;
+      cursor: pointer;
+    }
+
+    .register-card textarea { resize: vertical; }
+
+    .register-card button {
+      width: 100%;
+      padding: 14px;
+      font-size: var(--fs-16);
+      font-weight: var(--fw-16-semibold);
+      color: #fff;
+      background: linear-gradient(90deg, #0066CC, #004C99);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .register-card button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+    /* Footer */
+    footer {
+      background: #f9f9fb;
+      color: black;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: var(--fs-16);
+    }
+    footer a { color: var(--color-h2); font-weight: var(--fw-16-semibold); }
+    .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+    @media (max-width: 768px) { nav ul { gap: 16px; } .register-card { padding: 30px 20px; } }
+    @media (max-width: 480px) { nav { flex-direction: column; gap: 12px; } }
+
+  </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float">
+  <img loading="lazy" src="./whatsapp.webp" alt="WhatsApp" />
+</a>
+
+   <!--  Navbar Start -->
+  <nav class="navbar container content">
+    <div class="navbar-logo">
+      MOHSEN ACADEMY</div>
+
+    <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
+    <div class="navbar-links" id="navbarLinks">
+      <div class="links">
+        <a href="https://mohsenacademy.com">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="https://mohsenacademy.com">About</a>
+        <a href="https://mohsenacademy.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <!--  Navbar End -->
+
+  <!-- Register Form Section -->
+  <section class="register-section">
+    <div class="register-card">
+      <h2>تسجيل مستخدم جديد</h2>
+      <form action="https://getform.io/f/bmdynmya" method="POST">
+        <!-- hidden input -->
+        <input type="hidden" name="page" value="register">
+
+        <!-- الاسم -->
+        <label>الاسم الكامل</label>
+        <input type="text" name="full_name" required placeholder="ادخل اسمك الكامل">
+
+        <!-- تاريخ الميلاد -->
+        <label>تاريخ الميلاد</label>
+        <input type="date" name="birth_date" required>
+
+        <!-- رقم التواصل -->
+        <label>رقم التواصل</label>
+        <input type="tel" name="contact_number" required placeholder="010XXXXXXXX">
+
+        <!-- هل مارست السباحة من قبل -->
+        <label>هل مارست السباحة من قبل؟</label>
+        <select name="swimming_experience" required>
+          <option value="">اختر الإجابة</option>
+          <option value="yes">نعم</option>
+          <option value="no">لا</option>
+        </select>
+
+        <!-- هل حصلت على نجوم من الاتحاد المصري للسباحة -->
+        <label>هل حصلت على أي نجوم تابعة للاتحاد المصري للسباحة؟</label>
+        <select name="egyptian_federation_stars" required>
+          <option value="">اختر الإجابة</option>
+          <option value="yes">نعم</option>
+          <option value="no">لا</option>
+        </select>
+
+        <!-- هل لديك خوف من المياه -->
+        <label>هل لديك خوف من المياه؟</label>
+        <select name="water_fear" required>
+          <option value="">اختر الإجابة</option>
+          <option value="yes">نعم</option>
+          <option value="no">لا</option>
+        </select>
+
+        <!-- هدف السباحة -->
+        <label>حدد هدفك من تعلم السباحة</label>
+        <textarea name="swimming_goal" required rows="4" placeholder="مثال: تحسين اللياقة، تعلم الأساسيات، المنافسة في البطولات..."></textarea>
+
+        <button type="submit">تسجيل</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. | <a href="privacy.html">سياسة الخصوصية</a>
+  </footer>
+   <script>
+         function toggleNavbar() {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    navbarLinks.classList.toggle("active");
+
+    if (navbarLinks.classList.contains("active")) {
+      toggleIcon.textContent = "✖";
+    } else {
+      toggleIcon.textContent = "☰";
+    }
+  }
+  document.addEventListener("click", function (e) {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    if (
+      navbarLinks.classList.contains("active") &&
+      !navbarLinks.contains(e.target) &&
+      !toggleIcon.contains(e.target)
+    ) {
+      navbarLinks.classList.remove("active");
+      toggleIcon.textContent = "☰";
+    }
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyBG = document.querySelectorAll("[data-bg]");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.backgroundImage = `url('${el.dataset.bg}')`;
+          observer.unobserve(el);
+        }
+      });
+    });
+
+    lazyBG.forEach(el => observer.observe(el));
+  });
+    </script>
+</body>
+</html>

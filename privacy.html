@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية - Mohsen Academy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- SEO Meta -->
+  <meta name="description" content="تعرف على سياسة الخصوصية في Mohsen Academy لحماية بياناتك الشخصية وكيفية استخدامها.">
+  <meta name="keywords" content="Mohsen Academy, سياسة الخصوصية, حماية البيانات, السباحة, أكاديمية سباحة">
+  <meta name="author" content="Mohsen">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="سياسة الخصوصية - Mohsen Academy" />
+  <meta property="og:description" content="تعرف على سياسة الخصوصية في Mohsen Academy لحماية بياناتك الشخصية وكيفية استخدامها." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mohsenacademy.com/privacy.html" />
+  <meta property="og:image" content="https://mohsenacademy.com/icon.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://mohsenacademy.com/privacy.html">
+
+  <style>
+    :root {
+      --font-primary: "DM Sans", sans-serif;
+      --color-primary: #E6A200;
+      --color-secondary: #b38f00;
+      --color-text: #333333;
+      --bg-body: #f6f7f8;
+      --bg-card: #ffffff;
+      --bg-footer: #E6A200;
+      --color-footer-text: #fff;
+      --radius: 20px;
+      --shadow: 0 16px 40px rgba(0,0,0,0.25);
+      --fw-16-medium: 500;
+      --fs-16: 16px;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-body);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      background: #fff;
+      font-family: var(--font-primary);
+      position: relative;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-primary);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    /* Active Mobile Menu */
+    .navbar-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      background: #fff;
+      width: 70%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Card Style */
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      max-width: 900px;
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+    }
+
+    h1 {
+      color: var(--color-primary);
+      font-size: clamp(28px, 3vw, 36px);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    h2 {
+      color: var(--color-secondary);
+      font-size: clamp(20px, 2vw, 26px);
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    footer {
+      background: var(--bg-footer);
+      color: var(--color-footer-text);
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 16px;
+    }
+
+    footer a {
+      color: var(--color-footer-text);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .links {
+    padding: 15px;
+    flex-direction: column;
+    background: #fff;
+      width: 85%;
+    padding: 15px;
+  }
+
+  .links a {
+    padding: 15px;
+  }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-logo { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+ <!--  Navbar Start -->
+  <nav class="navbar container content">
+    <div class="navbar-logo">
+      MOHSEN ACADEMY</div>
+
+    <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
+    <div class="navbar-links" id="navbarLinks">
+      <div class="links">
+        <a href="https://mohsenacademy.com">Home</a>
+        <a href="https://mohsenacademy.com/Services.html">Services</a>
+        <a href="https://mohsenacademy.com/Register.html">Register</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <!--  Navbar End -->
+    
+  <main>
+    <div class="card">
+      <h1>سياسة الخصوصية</h1>
+      <p>نحن في Mohsen Academy نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p>
+
+      <h2>1. البيانات التي نجمعها</h2>
+      <p>نقوم بجمع معلوماتك مثل الاسم، البريد الإلكتروني، رقم الهاتف عند التسجيل في موقعنا أو عند التواصل معنا.</p>
+
+      <h2>2. استخدام البيانات</h2>
+      <p>يتم استخدام البيانات للتواصل معك، إرسال تحديثات، تنظيم التدريبات، وتحسين خدماتنا.</p>
+
+      <h2>3. حماية البيانات</h2>
+      <p>نحتفظ ببياناتك بأمان ونستخدم أساليب حماية حديثة لمنع الوصول غير المصرح به.</p>
+
+      <h2>4. مشاركة البيانات</h2>
+      <p>لن نقوم ببيع أو مشاركة بياناتك مع أي طرف ثالث بدون موافقتك، إلا إذا طلب القانون ذلك.</p>
+
+      <h2>5. حقوقك</h2>
+      <p>يمكنك طلب تعديل أو حذف بياناتك الشخصية عن طريق التواصل معنا عبر <a href="https://wa.me/message/X76VY37AZW2NK1">الواتساب</a>.</p>
+
+      <h2>6. التغييرات على سياسة الخصوصية</h2>
+      <p>قد نقوم بتحديث هذه السياسة من وقت لآخر، وسيتم نشر النسخة الجديدة على هذا الرابط.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. | <a href="https://mohsenacademy.com/Register.html">سياسة الخصوصية</a>
+  </footer>
+
+  <script>
+    function toggleNavbar() {
+      const navbarLinks = document.getElementById("navbarLinks");
+      const toggleIcon = document.getElementById("navbarToggle");
+      navbarLinks.classList.toggle("active");
+      if (navbarLinks.classList.contains("active")) {
+        toggleIcon.textContent = "✖";
+      } else {
+        toggleIcon.textContent = "☰";
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      const navbarLinks = document.getElementById("navbarLinks");
+      const toggleIcon = document.getElementById("navbarToggle");
+
+      if (
+        navbarLinks.classList.contains("active") &&
+        !navbarLinks.contains(e.target) &&
+        !toggleIcon.contains(e.target)
+      ) {
+        navbarLinks.classList.remove("active");
+        toggleIcon.textContent = "☰";
+      }
+    });
+  </script>
+
+</body>
+</html>
