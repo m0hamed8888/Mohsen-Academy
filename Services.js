@@ -113,7 +113,7 @@ name:' مالك محمد احمد',
           </tr>
         </table>
         <h4>أيام التدريب</h4>
-        <ul>${daysHTML}</ul>
+        <ol>${daysHTML}</ol>
     `;
     memberPanel.style.display = 'block';
 }
@@ -202,3 +202,4 @@ function searchMember() {
 
     lazyBG.forEach(el => observer.observe(el));
   });
+
