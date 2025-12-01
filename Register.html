@@ -180,6 +180,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://mohsenacademy.com/img-header.webp');
       background-size: cover;
       background-position: center;
@@ -248,7 +249,7 @@
       font-size: var(--fs-16);
       font-weight: var(--fw-16-semibold);
       color: #fff;
-      background: linear-gradient(90deg, #0066CC, #004C99);
+      background: linear-gradient(90deg, #f5b400, #004C99);
       border: none;
       border-radius: 12px;
       cursor: pointer;
@@ -291,6 +292,76 @@
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
+/* SEO Content Box */
+.register-seo-box {
+  background: #f7f9fc;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 30px;
+  line-height: 1.8;
+  font-family: inherit;
+  direction: rtl;
+  text-align: right;
+}
+
+.register-seo-box h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--color-h2);
+}
+
+.register-seo-box p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.register-seo-features h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--color-h2);
+}
+
+.register-seo-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.register-seo-features ul li {
+  padding: 6px 0;
+  position: relative;
+  padding-right: 22px;
+  font-size: 1rem;
+}
+
+.register-seo-features ul li::before {
+  content: "✔";
+  position: absolute;
+  right: 0;
+  top: 3px;
+  color: var(--color-icon);
+  font-weight: bold;
+}
+
+.register-seo-cta {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #0a3d62;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .register-seo-box h1 {
+    font-size: 1.4rem;
+  }
+  .register-seo-box p, 
+  .register-seo-features ul li {
+    font-size: 0.95rem;
+  }
+}
+
+
     @media (max-width: 768px) { nav ul { gap: 16px; } .register-card { padding: 30px 20px; } }
     @media (max-width: 480px) { nav {  gap: 12px; } }
 
@@ -320,8 +391,10 @@
   </nav>
   <!--  Navbar End -->
 
+
   <!-- Register Form Section -->
   <section class="register-section">
+  
     <div class="register-card">
       <h2>تسجيل مستخدم جديد</h2>
       <form action="https://getform.io/f/bmdynmya" method="POST">
@@ -371,6 +444,37 @@
         <button type="submit">تسجيل</button>
       </form>
     </div>
+      <div class="register-seo-box">
+    <h1>سجّل الآن في Mohsen Academy –  أكاديمية سباحة في الشروق</h1>
+
+    <p>
+        انضم الآن إلى <strong>أكاديمية محسن</strong> داخل نادي جرين هيلز بمدينة الشروق، 
+        واستمتع بتجربة تدريب سباحة احترافية بقيادة 
+        <strong>مدربين سباحة في الشروق</strong> بخبرة كبيرة في تعليم السباحة من الصفر وحتى الاحتراف.
+    </p>
+
+    <p>
+        من خلال استمارة التسجيل نقدر نحدد مستواك، أهدافك، وأفضل برنامج مناسب ليك.  
+        سواء كنت تبحث عن <strong>تمرين سباحة</strong> للمبتدئين أو برنامج متقدم داخل 
+        <strong>أكاديمية السباحة</strong>، فريقنا جاهز لدعمك خطوة بخطوة.
+    </p>
+
+    <div class="register-seo-features">
+        <h2>مميزات التسجيل:</h2>
+        <ul>
+            <li>تدريب سباحة للأطفال والكبار</li>
+            <li>مدربين سباحة محترفين في الشروق</li>
+            <li>برامج تأهيل للمنافسات</li>
+            <li>متابعة مستمرة وتطوير المستوى</li>
+            <li>Mمواعيد متنوعة تناسب الجميع</li>
+<li>وجهتك الأفضل لتعلم السباحة باحتراف داخل مدينة الشروق</li>
+        </ul>
+    </div>
+
+    <p class="register-seo-cta">
+        املأ بياناتك الآن وسيتم التواصل معك لاختيار البرنامج الأنسب لك في <strong>أكاديمية محسن</strong>.
+    </p>
+</div>
   </section>
 
   <!-- Footer -->
