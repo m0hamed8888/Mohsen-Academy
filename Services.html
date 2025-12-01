@@ -216,8 +216,8 @@
         }
 
         .search-row button {
-            background: var(--accent);
-            color: #fff;
+            background: var(--accent-2);
+            color: var(--text);
             border: none;
             padding: 11px 16px;
             border-radius: 10px;
@@ -414,6 +414,187 @@
             color: var(--accent-2);
             transform: translateX(4px);
         }
+        /* End Footer  */
+       /* Mohsen Academy — Services block (adapted to your design system) */
+.ma-services {
+  direction: rtl;
+  font-family: inherit;
+  margin: var(--gap) 0;
+  padding: 0 16px;
+  background: var(--bg);
+}
+
+.ma-services__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* Header */
+.ma-services__title {
+  font-size: 1.6rem;
+  margin: 0 0 10px 0;
+  color: var(--accent);
+  font-weight: var(--fw-600);
+}
+
+.ma-services__intro {
+  margin: 0 0 18px 0;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Grid */
+.ma-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+  margin-bottom: 20px;
+}
+
+/* Card */
+.ma-services__card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  min-height: 180px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ma-services__card-title {
+  font-size: 1.05rem;
+  margin: 0 0 8px 0;
+  color: var(--accent);
+  font-weight: var(--fw-600);
+}
+
+.ma-services__card-desc {
+  margin: 0 0 12px 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.ma-services__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ma-services__list li {
+  position: relative;
+  padding-right: 26px;
+  margin: 6px 0;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.ma-services__list li::before {
+  content: "✔";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+}
+
+/* Footer / CTA */
+.ma-services__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 16px;
+}
+
+.ma-services__cta-text {
+  margin: 0;
+  color: var(--accent);
+  font-weight: var(--fw-600);
+}
+
+/* Buttons */
+.ma-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: var(--fw-600);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: 0.25s ease;
+}
+
+.ma-btn--primary {
+  background: var(--accent-2);
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.ma-btn--primary:hover {
+  opacity: 0.85;
+}
+
+.ma-btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--text);
+}
+
+.ma-btn--ghost:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ma-services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ma-services__inner {
+    padding: 22px;
+  }
+
+  .ma-services__title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ma-services__inner {
+    padding: 16px;
+  }
+
+  .ma-services__title {
+    font-size: 1.2rem;
+  }
+
+  .ma-services__card {
+    padding: 14px;
+  }
+
+  .ma-btn {
+    padding: 9px 14px;
+    font-size: 0.9rem;
+  }
+
+  .ma-services__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+}
+
 
         @media(max-width:1000px) {
             .levels-grid {
@@ -484,6 +665,89 @@
             <h2>مستويات السباحة</h2>
             <div class="levels-grid" id="levelsGrid"></div>
         </section>
+<!-- START: Mohsen Academy Services (place this where you want in the page) -->
+<section class="ma-services" aria-labelledby="ma-services-title">
+  <div class="ma-services__inner">
+    <header class="ma-services__header">
+      <h2 id="ma-services-title" class="ma-services__title">
+        خدمات Mohsen Academy — تدريب سباحة احترافي في الشروق
+      </h2>
+      <p class="ma-services__intro">
+        نقدم مجموعة متكاملة من خدمات تعليم وتدريب السباحة داخل نادي جرين هيلز بمدينة الشروق،
+        مع برامج للأطفال والكبار، ومدربين سباحة محترفين، ونظام متابعة يساعد كل متدرب
+        يطوّر مستواه بثقة وأمان.
+      </p>
+    </header>
+
+    <div class="ma-services__grid">
+      <!-- Card 1 -->
+      <article class="ma-services__card" aria-labelledby="ma-serv-1">
+        <h2 id="ma-serv-1" class="ma-services__card-title">خدمات للأطفال</h2>
+        <p class="ma-services__card-desc">
+          برامج تعليم سباحة للأطفال (من 4 سنوات) في بيئة آمنة وممتعة. دروس ممتعة،
+          وتنمية الثقة في الماء، وتقسيم مستويات مناسب للأطفال حديثي التعلم والمتقدمين.
+        </p>
+        <ul class="ma-services__list">
+          <li>دورات مخصصة للعمر والمستوى</li>
+          <li>مدربين متخصصين في تعليم الأطفال</li>
+          <li>متابعة تطور شهرية</li>
+        </ul>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="ma-services__card" aria-labelledby="ma-serv-2">
+        <h2 id="ma-serv-2" class="ma-services__card-title">خدمات للكبار</h2>
+        <p class="ma-services__card-desc">
+          برامج للكبار من مستوى المبتدئ حتى المتقدم: تعلم الأساسيات، تحسين التقنية،
+          وزيادة اللياقة مع جدول مرن يتناسب مع جدول حياتك.
+        </p>
+        <ul class="ma-services__list">
+          <li>دروس فردية وجماعية</li>
+          <li>تحسين الأداء والتنفس</li>
+          <li>جدولة مرنة</li>
+        </ul>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="ma-services__card" aria-labelledby="ma-serv-3">
+        <h2 id="ma-serv-3" class="ma-services__card-title">برامج التأهيل للمنافسات</h2>
+        <p class="ma-services__card-desc">
+          برامج متقدمة للسباحين الراغبين في دخول البطولات: تحسين السرعات،
+          تقنيات الانطلاق والتحول، وبرامج لياقة مخصصة.
+        </p>
+        <ul class="ma-services__list">
+          <li>تدريب تقني ومخططات أداء</li>
+          <li>قياسات زمنية دورية</li>
+          <li>تدريبات على التكتيك والتسارع</li>
+        </ul>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="ma-services__card" aria-labelledby="ma-serv-4">
+        <h2 id="ma-serv-4" class="ma-services__card-title">مزايا عامة</h2>
+        <p class="ma-services__card-desc">
+          لماذا تختار Mohsen Academy؟ لأننا نركز على جودة التدريب والأمان والتتبع المستمر لتقدمك.
+        </p>
+        <ul class="ma-services__list">
+          <li>مدربين سباحة محترفين في الشروق</li>
+          <li>مواعيد مرنة ومتنوعة</li>
+          <li>بيئة تدريب مجهزة وآمنة</li>
+        </ul>
+      </article>
+    </div>
+
+    <footer class="ma-services__footer">
+      <p class="ma-services__cta-text">
+        مهتم بأي خدمة؟ املأ نموذج التسجيل أو اتصل بنا وسنرشّح لك البرنامج الأنسب.
+      </p>
+      <div class="ma-services__actions">
+        <a href="https://mohsenacademy.com/Register.html" class="ma-btn ma-btn--primary">سجّل الآن</a>
+        <a href="https://wa.me/message/X76VY37AZW2NK1" class="ma-btn ma-btn--ghost" aria-label="اتصل بنا"> تواصل معنا</a>
+      </div>
+    </footer>
+  </div>
+</section>
+<!-- END: Mohsen Academy Services -->
 
         <!-- Complaint form -->
         <section id="complaint" class="complaint">
@@ -546,4 +810,3 @@
 </body>
 
 </html>
-
