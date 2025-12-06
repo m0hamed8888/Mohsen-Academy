@@ -11,9 +11,16 @@
     <link rel="icon" type="image/png" href="https://mohsenacademy.com/favicon.png">
     <link rel="apple-touch-icon" href="https://mohsenacademy.com/favicon.png">
     <link rel="shortcut icon" href="https://mohsenacademy.com/favicon.png">
-    <meta property="og:title" content="Mohsen Academy" />
-    <meta property="og:url" content="https://mohsenacademy.com/Services.html" />
-    <meta property="og:image" content="https://mohsenacademy.com/favicon.png" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
+    <meta property="og:description"
+        content="تعلم السباحة بأفضل الطرق الآمنة والممتعة في الشروق والقاهرة. انضم الآن لجلساتنا الجماعية أو الخاصة.">
+    <meta property="og:image" content="https://mohsenacademy.com/icon.png">
+    <meta property="og:url" content="https://mohsenacademy.com/Services">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mohsen Academy">
+    <meta property="og:locale" content="ar_EG">
     <meta name="description"
         content="تدريب سباحة في الشروق مع Mohsen Academy داخل نادي جرين هيلز مع كابتن محسن. أكاديمية سباحة في الشروق تقدم تدريبًا احترافيًا للأطفال والكبار بمستوى متميز.">
 
@@ -23,14 +30,23 @@
     <style>
         :root {
             --bg: #f6f7f8;
-            --accent: #0077ff;
-            --accent-2: #f5b400;
+            --color-title: #0077ff;
+            --color-brand: #f5b400;
             --card: #ffffff;
             --text: #333;
             --maxw: 1200px;
             --radius: 14px;
             --gap: 20px;
             --fw-600: 600;
+
+            --fs-24: clamp(16px, 1vw + 1rem, 24px);
+            --fs-16: clamp(18px, 1vw + 0.8rem, 18px);
+            --fs-32: clamp(32px, 1vw + 1rem, 64px);
+
+
+            --fw-32: 32px;
+            --fs-1: 1rem;
+
         }
 
         @font-face {
@@ -77,6 +93,7 @@
             align-items: center;
             font-weight: bold;
             font-size: 18px;
+            color: var(--color-title);
         }
 
         .navbar-links {
@@ -199,13 +216,15 @@
         }
 
         .hero h1 {
-            font-size: 40px;
+            font-size: var(--fs-32);
             margin: 0 0 10px;
+            color: var(--color-title);
         }
 
         .hero p {
             max-width: 760px;
             margin: 0 0 16px;
+            font-size: var(--fs-16);
         }
 
         .hero .btn {
@@ -241,7 +260,7 @@
         }
 
         .search-row button {
-            background: var(--accent-2);
+            background: var(--color-brand);
             color: var(--text);
             border: none;
             padding: 11px 16px;
@@ -282,7 +301,7 @@
         }
 
         th {
-            background-color: var(--accent-2);
+            background-color: var(--color-brand);
             color: #fff;
         }
 
@@ -309,7 +328,7 @@
         }
 
         .levels h2 {
-            color: var(--accent);
+            color: var(--color-title);
             margin-bottom: 16px;
         }
 
@@ -329,7 +348,7 @@
 
         .level-card h3 {
             margin: 0 0 6px;
-            color: var(--accent)
+            color: var(--color-brand)
         }
 
         .level-card p {
@@ -372,7 +391,7 @@
         }
 
         .complaint button {
-            background: var(--accent-2);
+            background: var(--color-brand);
             border: none;
             padding: 10px 14px;
             border-radius: 8px;
@@ -410,7 +429,7 @@
         footer h3,
         footer h4 {
             margin: 0 0 12px;
-            color: var(--accent);
+            color: var(--color-title);
         }
 
         footer p {
@@ -436,7 +455,7 @@
         }
 
         footer a:hover {
-            color: var(--accent-2);
+            color: var(--color-brand);
             transform: translateX(4px);
         }
 
@@ -464,7 +483,7 @@
         .ma-services__title {
             font-size: 1.6rem;
             margin: 0 0 10px 0;
-            color: var(--accent);
+            color: var(--color-title);
             font-weight: var(--fw-600);
         }
 
@@ -496,7 +515,7 @@
         .ma-services__card-title {
             font-size: 1.05rem;
             margin: 0 0 8px 0;
-            color: var(--accent);
+            color: var(--color-brand);
             font-weight: var(--fw-600);
         }
 
@@ -527,7 +546,7 @@
             right: 0;
             top: 0;
             font-weight: 700;
-            color: var(--accent-2);
+            color: var(--color-brand);
             font-size: 0.9rem;
         }
 
@@ -544,7 +563,7 @@
 
         .ma-services__cta-text {
             margin: 0;
-            color: var(--accent);
+            color: var(--color-title);
             font-weight: var(--fw-600);
         }
 
@@ -561,7 +580,7 @@
         }
 
         .ma-btn--primary {
-            background: var(--accent-2);
+            background: var(--color-brand);
             color: var(--text);
             border: 1px solid var(--text);
         }
@@ -572,12 +591,12 @@
 
         .ma-btn--ghost {
             background: transparent;
-            color: var(--accent);
+            color: var(--color-title);
             border: 1px solid var(--text);
         }
 
         .ma-btn--ghost:hover {
-            background: var(--accent);
+            background: var(--color-title);
             color: #fff;
         }
 
@@ -655,9 +674,10 @@
         <div class="navbar-links" id="navbarLinks">
             <div class="links">
                 <a href="https://mohsenacademy.com">Home</a>
-                <a href="https://mohsenacademy.com/Services.html">Services</a>
-                <a href="https://mohsenacademy.com/Register.html">Register</a>
-                <a href="#contact">Contact</a>
+                <a href="https://mohsenacademy.com/Register">Register</a>
+                <a href="https://mohsenacademy.com/Services">Services</a>
+                <a href="https://mohsenacademy.com/About">About</a>
+                <a href="https://mohsenacademy.com/Contact Us">Contact</a>
             </div>
         </div>
     </nav>
@@ -706,7 +726,7 @@
             <div class="ma-services__inner">
                 <header class="ma-services__header">
                     <h2 id="ma-services-title" class="ma-services__title">
-                        خدمات Mohsen Academy — تدريب سباحة احترافي في الشروق
+                        خدمات Mohsen Academy — تدريب سباحة في الشروق
                     </h2>
                     <p class="ma-services__intro">
                         نقدم مجموعة متكاملة من خدمات تعليم وتدريب السباحة داخل نادي جرين هيلز بمدينة الشروق،
