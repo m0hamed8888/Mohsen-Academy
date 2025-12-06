@@ -21,10 +21,14 @@
     content="Mohsen Academy, captain mohsen, كابتن محسن, محسن, اكاديمية سباحة, اكاديمية سباحة في الشروق, تدريب سباحة في الشروق, اكاديمية سباحة في القاهرة, تعليم السباحة في الشروق, تدريب السباحة, اماكن تدريب سباحه في الشروق, نادي جرين هيلز في مدينة الشروق">
   <meta name="author" content="Mohsen">
   <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Mohsen Academy" />
-  <meta property="og:url" content="https://mohsenacademy.com/" />
-  <meta property="og:image" content="https://mohsenacademy.com/icon.png" />
+ <!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
+<meta property="og:description" content="تعلم السباحة بأفضل الطرق الآمنة والممتعة في الشروق والقاهرة. انضم الآن لجلساتنا الجماعية أو الخاصة.">
+<meta property="og:image" content="https://mohsenacademy.com/icon.png">
+<meta property="og:url" content="https://mohsenacademy.com/Register">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mohsen Academy">
+<meta property="og:locale" content="ar_EG">
 
   <script type="application/ld+json">
   {
@@ -50,9 +54,9 @@
       --fs-32: clamp(24px, 1vw + 1rem, 32px);
       --fw-32: 700; 
       --color-h1: #FFFFFF;
-      --color-h2: #0066CC;
+      --color-title: #0066CC;
       --color-p: #333333;
-      --color-icon: #E6A200;
+      --color-brand: #E6A200;
       --bg-content: #f6f7f8; 
       --bg-card: #ffffff;  
       --bg-navbar: rgba(255,255,255,0.95);
@@ -83,8 +87,8 @@
       display: flex;
       align-items: center;
       font-weight: bold;
-      color: var(--color-h2);
       font-size: 18px;
+      color: var(--color-title);
     }
 
     .navbar-links {
@@ -204,13 +208,13 @@
     .register-card h2 {
       font-size: clamp(28px, 3vw, 40px);
       font-weight: var(--fw-32);
-      color: var(--color-h2);
+      color: var(--color-title);
       margin-bottom: 30px;
       text-align: center;
       letter-spacing: 1px;
     }
 
-    .register-card label { font-size: var(--fs-16); font-weight: var(--fw-16-semibold); color: var(--color-p); display: block; margin-bottom: 8px; }
+    .register-card label { font-size: var(--fs-16); font-weight: var(--fw-16-semibold); color: var(--color-brand); display: block; margin-bottom: 8px; }
 
     .register-card input, .register-card select, .register-card textarea {
       width: 100%;
@@ -267,7 +271,7 @@
       padding: 30px 20px;
       font-size: var(--fs-16);
     }
-    footer a { color: var(--color-h2); font-weight: var(--fw-16-semibold); }
+    footer a { color: var(--color-title); font-weight: var(--fw-16-semibold); }
     .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -308,7 +312,7 @@
 .register-seo-box h1 {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  color: var(--color-h2);
+  color: var(--color-title);
 }
 
 .register-seo-box p {
@@ -320,7 +324,7 @@
 .register-seo-features h2 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: var(--color-h2);
+  color: var(--color-title);
 }
 
 .register-seo-features ul {
@@ -340,7 +344,7 @@
   position: absolute;
   right: 0;
   top: 3px;
-  color: var(--color-icon);
+  color: var(--color-brand);
   font-weight: bold;
 }
 
@@ -382,11 +386,12 @@
     <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
 
     <div class="navbar-links" id="navbarLinks">
-      <div class="links">
+     <div class="links">
         <a href="https://mohsenacademy.com">Home</a>
-        <a href="https://mohsenacademy.com/Services.html">Services</a>
+        <a href="https://mohsenacademy.com/Register">Register</a>
+        <a href="https://mohsenacademy.com/Services">Services</a>
         <a href="https://mohsenacademy.com/About">About</a>
-        <a href="https://mohsenacademy.com">Contact</a>
+        <a href="https://mohsenacademy.com/Contact Us">Contact</a>
       </div>
     </div>
   </nav>
@@ -526,4 +531,3 @@
     </script>
 </body>
 </html>
-
