@@ -26,20 +26,19 @@
   <meta property="og:title" content="سياسة الخصوصية - Mohsen Academy" />
   <meta property="og:description" content="تعرف على سياسة الخصوصية في Mohsen Academy لحماية بياناتك الشخصية وكيفية استخدامها." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mohsenacademy.com/privacy.html" />
+  <meta property="og:url" content="https://mohsenacademy.com/privacy" />
   <meta property="og:image" content="https://mohsenacademy.com/icon.png" />
-
 
 
   <style>
     :root {
       --font-primary: "DM Sans", sans-serif;
-      --color-primary: #E6A200;
-      --color-secondary: #b38f00;
+      ----color-title: #0066CC;
+     --color-brand: #E6A200;
       --color-text: #333333;
       --bg-body: #f6f7f8;
       --bg-card: #ffffff;
-      --bg-footer: #E6A200;
+      --color-brand: #E6A200;
       --color-footer-text: #fff;
       --radius: 20px;
       --shadow: 0 16px 40px rgba(0,0,0,0.25);
@@ -56,7 +55,7 @@
     }
 
     a {
-      color: var(--color-primary);
+      color: var(----color-title);
       text-decoration: underline;
     }
 
@@ -79,6 +78,7 @@
       align-items: center;
       font-weight: bold;
       font-size: 18px;
+      color: var(----color-title);
     }
 
     .navbar-links {
@@ -97,7 +97,7 @@
     }
 
     .navbar-links a:hover {
-      border-bottom: 3px solid var(--color-primary);
+      border-bottom: 3px solid var(----color-title);
     }
 
     .navbar-toggle {
@@ -143,14 +143,14 @@
     }
 
     h1 {
-      color: var(--color-primary);
+      color: var(----color-title);
       font-size: clamp(28px, 3vw, 36px);
       margin-bottom: 30px;
       text-align: center;
     }
 
     h2 {
-      color: var(--color-secondary);
+      color: var(--color-brand);
       font-size: clamp(20px, 2vw, 26px);
       margin-top: 25px;
       margin-bottom: 10px;
@@ -162,7 +162,7 @@
     }
 
     footer {
-      background: var(--bg-footer);
+      background: var(--color-brand);
       color: var(--color-footer-text);
       text-align: center;
       padding: 25px 15px;
@@ -228,11 +228,12 @@
     <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
 
     <div class="navbar-links" id="navbarLinks">
-      <div class="links">
+    <div class="links">
         <a href="https://mohsenacademy.com">Home</a>
-        <a href="https://mohsenacademy.com/Services.html">Services</a>
-        <a href="https://mohsenacademy.com/Register.html">Register</a>
-        <a href="#contact">Contact</a>
+        <a href="https://mohsenacademy.com/Register">Register</a>
+        <a href="https://mohsenacademy.com/Services">Services</a>
+        <a href="https://mohsenacademy.com/About">About</a>
+        <a href="https://mohsenacademy.com/Contact Us">Contact</a>
       </div>
     </div>
   </nav>
@@ -296,5 +297,3 @@
 
 </body>
 </html>
-
-
