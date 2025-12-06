@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact us page for inquiries, support, or collaboration. Connect with us via phone, email, or social media platforms like Facebook, Instagram, Twitter, and LinkedIn.">
+  <title>Contact Us Page | Mohsen  Academy </title>
+  <link href="./css-f-family.css" rel="stylesheet">
+  
+  
+  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  
+   
+   <meta name="keywords"
+    content="Mohsen Academy, captain mohsen, كابتن محسن, محسن, اكاديمية سباحة, اكاديمية سباحة في الشروق, تدريب سباحة في الشروق, اكاديمية سباحة في القاهرة, تعليم السباحة في الشروق, تدريب السباحة, اماكن تدريب سباحه في الشروق, نادي جرين هيلز في مدينة الشروق">
+
+<meta name="author" content="Mohsen">
+  <meta name="robots" content="index, follow">
+
+ <!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
+<meta property="og:description" content="تعلم السباحة بأفضل الطرق الآمنة والممتعة في الشروق والقاهرة. انضم الآن لجلساتنا الجماعية أو الخاصة.">
+<meta property="og:image" content="https://mohsenacademy.com/icon.png">
+<meta property="og:url" content="https://mohsenacademy.com/contact">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mohsen Academy">
+<meta property="og:locale" content="ar_EG">
+
+  <style>
+    :root {
+      --font-primary: "DM Sans", sans-serif;
+      --color-bg: #f8f8fa;
+      --color-card: #fff;
+      --color-brand: #f5b400;
+      --color-brand-hover: #e2a800;
+      --color-text: #333;
+      --color-title: #0066CC;
+     
+  --fs-24: clamp(16px, 1vw + 1rem, 24px);
+--fs-16: clamp(18px, 1vw + 0.8rem, 18px);
+  --fs-32: clamp(32px, 1vw + 1rem, 64px);
+
+
+  --fw-32: 32px; 
+   --fs-1: 1rem;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    footer {
+  background-color: #f8f8fa;
+  color: #333;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.95rem;
+  width: 100%;
+  z-index: 99;
+  position: absolute;
+  bottom: 0;
+}
+
+footer a {
+  color: #0066CC;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+    .contact-form-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 15px;
+      overflow: hidden;
+    }
+
+    .contact-bg-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://mohsenacademy.com/img-header.webp');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      filter: brightness(0.7);
+    }
+
+    /* H1 SEO */
+    .contact-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .contact-header h1 {
+        color: var(--color-title);
+      font-size: 54px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .contact-header p {
+      font-size: var(--fs-24);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      background: var(--color-card);
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 830px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 3rem;
+    }
+
+    .contact-form .form-group { margin-bottom: 20px; }
+
+    .contact-form label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 2px rgba(245,180,0,0.2);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--color-brand);
+      color: #000;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover { background-color: var(--color-brand-hover); }
+
+    .social-links {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background-color: rgb(250, 245, 245);
+      color: #000;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: var(--color-brand-hover);
+      transform: scale(1.2);
+    }
+
+    /* Section for social media details */
+    .social-details {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 50px auto 0 auto;
+      background: var(--color-card);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .social-details h2 {
+      font-size: 1.8rem;
+      color: var(--color-text);
+      margin-bottom: 20px;
+    }
+
+    .social-details p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .social-details a {
+      color: var(--color-title);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .social-details a:hover {
+      text-decoration: underline;
+    }
+    
+ .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.contact-whatsapp {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.contact-whatsapp a {
+  color: #25D366; /* لون WhatsApp أخضر */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-whatsapp a:hover {
+  text-decoration: underline;
+}
+/* Navbar Style */
+
+
+  /* Navbar */
+  /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      background: #fff;
+      font-family: var(--font-primary);
+      position: relative;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: var(--color-title);
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-brand);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    /* Active Mobile Menu */
+    .navbar-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      background: #fff;
+      width: 70%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+
+/* Responsive */ @media (max-width: 768px) {
+        .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .links {
+    padding: 15px;
+    flex-direction: column;
+    background: #fff;
+      width: 85%;
+    padding: 15px;
+  }
+
+  .links a {
+    padding: 15px;
+  }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-logo { font-size: 16px; }
+    }
+
+
+
+    @media (max-width: 768px) {
+      .contact-header h1 { font-size: 2rem; }
+      .contact-header p { font-size: var(--fs-16); }
+      .contact-container { padding: 30px; }
+      .contact-form input, .contact-form textarea { padding: 12px; }
+      .submit-btn { padding: 12px; font-size: 15px; }
+      .social-links a { width: 45px; height: 45px; font-size: 1.3rem; }
+      .social-details { padding: 20px; margin: 30px 15px 0 15px; }
+    }
+  </style>
+</head>
+<body>
+
+
+     <!--  Navbar Start -->
+  <nav class="navbar container content">
+    <div class="navbar-logo">
+      MOHSEN ACADEMY</div>
+
+    <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
+    <div class="navbar-links" id="navbarLinks">
+      <div class="links">
+        <a href="https://mohsenacademy.com">Home</a>
+        <a href="https://mohsenacademy.com/Register">Register</a>
+        <a href="https://mohsenacademy.com/Services">Services</a>
+        <a href="https://mohsenacademy.com/About">About</a>
+        <a href="https://mohsenacademy.com/Contact Us">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <!--  Navbar End -->
+  <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float">
+  <img loading="lazy" src="./whatsapp.webp" alt="WhatsApp" />
+</a>
+<section class="contact-form-section" id="contact">
+  <div class="contact-bg-image" role="img" aria-label="Office technology background image"></div>
+
+  <!-- H1 & SEO text -->
+  <div class="contact-header">
+    <h1>Contact Page Mohsen Academy</h1>
+<p>للتواصل معنا لأي استفسارات، دعم، أو فرص تعاون، يمكنك مراسلتنا مباشرة من خلال نموذج الاتصال على موقعنا، أو عبر الهاتف، البريد الإلكتروني، ووسائل التواصل الاجتماعي. تابعنا لتصلك أحدث الأخبار، العروض، والتحديثات الخاصة بمؤسستنا.</p>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="contact-container">
+  <!-- WhatsApp Title -->
+  <div class="contact-whatsapp">
+    <p>تواصل معنا على WhatsApp مباشرة من هنا: 
+      <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" rel="noopener noreferrer">
+        اضغط لفتح المحادثة
+      </a>
+    </p>
+  </div>
+
+  <!-- Contact Form -->
+  <form class="contact-form" action="https://getform.io/f/bmdynmya" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Your Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" id="phone" placeholder="Your Phone" required />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+    </div>
+
+    <input type="hidden" name="source" value="MOHSEN ACADEMY - Home Page">
+    <button type="submit" class="submit-btn">Submit</button>
+
+    <!-- Social Media Icons -->
+    <div class="social-links">
+      <a href="https://www.facebook.com/MohsenAcademyPage" aria-label="Facebook"><img loading="lazy" src="./facebook.webp" alt="اكادميه سباحه "></a>
+      <a href="https://www.instagram.com/mohsen_academy_/" aria-label="Instagram"><img loading="lazy" src="./insta.webp" alt="اكادميه سباحه "></a>
+      <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A" aria-label="LinkedIn"><img loading="lazy" src="./icon-tiktok.webp" alt="اكادميه سباحه "></i></a>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <p>&copy; 2025 Mohsen Academy. جميع الحقوق محفوظة.</p>
+  <p>
+    <a href="https://mohsenacademy.com/privacy.html">سياسة الخصوصية</a> |
+    <a href="https://mohsenacademy.com/terms.html">الشروط والأحكام</a>
+  </p>
+</footer>
+<!--  Navbar End -->
+    <script>
+         function toggleNavbar() {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    navbarLinks.classList.toggle("active");
+
+    if (navbarLinks.classList.contains("active")) {
+      toggleIcon.textContent = "✖";
+    } else {
+      toggleIcon.textContent = "☰";
+    }
+  }
+  document.addEventListener("click", function (e) {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    if (
+      navbarLinks.classList.contains("active") &&
+      !navbarLinks.contains(e.target) &&
+      !toggleIcon.contains(e.target)
+    ) {
+      navbarLinks.classList.remove("active");
+      toggleIcon.textContent = "☰";
+    }
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyBG = document.querySelectorAll("[data-bg]");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.backgroundImage = `url('${el.dataset.bg}')`;
+          observer.unobserve(el);
+        }
+      });
+    });
+
+    lazyBG.forEach(el => observer.observe(el));
+  });
+    </script>
+</body>
+</html>
