@@ -1,0 +1,8 @@
+RewriteEngine On
+
+Redirect 301 /Services.html /Services
+Redirect 301 /Register.html /Register
+Redirect 301 /About.html /About
+Redirect 301 /privacy.html /privacy
+Redirect 301 /contact-us.html /contact-us
+Redirect 301 /policies-rules.html /policies-rules
