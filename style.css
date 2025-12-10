@@ -187,6 +187,10 @@ img {
   align-items: center;
   overflow: hidden;
 }
+.hero-section a {
+  text-decoration: none;
+  color: var(--color-title);
+}
 
 .hero-section .hero-overlay {
   position: absolute;
@@ -317,6 +321,10 @@ img {
   gap: 12px;
   padding: 0 190px;
 
+}
+.class-cards a {
+  text-decoration: none;
+  color: var(--color-title);
 }
 
 .class-card {
