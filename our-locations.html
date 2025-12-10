@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اماكن السباحة | Mohsen Academy</title>
+
+<meta name="description" content="استعرض جميع أماكن السباحة التابعة لأكاديمية محسن في الشروق، العاشر من رمضان، مدينة بدر، القاهرة والقاهرة الجديدة مع مواعيد التواصل والمواقع.">
+<meta name="keywords" content="Mohsen Academy, اكاديمية سباحة, اماكن سباحة, تعليم السباحة في الشروق, تعليم السباحة في العاشر من رمضان, تعليم السباحة في بدر, تعليم السباحة في القاهرة, تعليم السباحة في القاهرة الجديدة, نوادي سباحة, تعليم السباحة">
+<meta name="author" content="Mohsen">
+<meta name="robots" content="index, follow">
+
+<!-- Favicon & Icons -->
+<link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
+<link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
+<link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="اماكن السباحة | Mohsen Academy">
+<meta property="og:description" content="استعرض جميع أماكن السباحة التابعة لأكاديمية محسن في الشروق، العاشر من رمضان، مدينة بدر، القاهرة والقاهرة الجديدة مع مواعيد التواصل والمواقع.">
+<meta property="og:image" content="https://mohsenacademy.com/icon.png">
+<meta property="og:url" content="https://mohsenacademy.com/our-locations.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mohsen Academy">
+<meta property="og:locale" content="ar_EG">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="اماكن السباحة | Mohsen Academy">
+<meta name="twitter:description" content="استعرض جميع أماكن السباحة التابعة لأكاديمية محسن في الشروق، العاشر من رمضان، مدينة بدر، القاهرة والقاهرة الجديدة مع مواعيد التواصل والمواقع.">
+<meta name="twitter:image" content="https://mohsenacademy.com/icon.png">
+
+  <style>
+    :root {
+      --font-primary: "DM Sans", sans-serif;
+      --fw-24-semibold: 600;
+      --fw-16-medium: 500;
+      --fw-16-semibold: 600;
+      --fs-24: clamp(16px, 1vw + 1rem, 24px);
+      --fs-16: clamp(18px, 1vw + 0.8rem, 18px);
+      --fs-32: clamp(24px, 1vw + 1rem, 32px);
+      --fw-32: 32px;
+      --fs-1: 1rem;
+      --color-h1: #FFFFFF;
+      --color-title: #0066CC;
+      --color-p: #333333;
+      --color-brand: #E6A200;
+      --bg-content: #f6f7f8;
+      --bg-card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: var(--font-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
+      color: var(--color-p);
+      background-image: url('https://mohsenacademy.com/img-header.webp');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      text-decoration: none;
+      color: var(--color-title);
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.45);
+      min-height: 100%;
+      padding: 48px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: transparent;
+      color: var(--color-h1);
+      padding: 28px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      display: grid;
+      gap: 12px;
+      align-items: start;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.05;
+      color: var(--color-h1);
+    }
+
+    .location-line {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 600;
+      color: var(--color-h1);
+      opacity: 0.95;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+
+    .hero p {
+      color: var(--color-h1);
+      opacity: 0.95;
+      max-width: 780px
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      background: var(--color-brand);
+      color: black;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 6px 20px rgba(5, 10, 20, 0.2);
+      color: var(--color-p);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      object-fit: cover !important;  
+       object-position: center;
+      object-fit: cover;
+      height: 150px;
+    }
+
+    .card h4 {
+      margin: 0 0 6px 0;
+      color: var(--color-title);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card h3 {
+      color: var(--color-title);
+      margin-bottom: 8px
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      font-size: 14px;
+      color: #444
+    }
+
+    .meta .row {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .pin {
+      background: var(--color-brand);
+      color: #fff;
+      border-radius: 999px;
+      padding: 6px 8px;
+      font-weight: 700
+    }
+
+    .search-wrap {
+      margin: 12px 0 6px
+    }
+
+    .search {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.08)
+    }
+
+    footer {
+      margin-top: 28px;
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 14px;
+      text-align: center
+    }
+      /* Navbar */
+  /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+          flex-direction: row-reverse;
+      height: 75px;
+      background: #fff;
+      font-family: var(--font-primary);
+      position: relative;
+      z-index: 1000;
+      padding: 0 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+   
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-primary);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 2rem;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+       flex-direction: row-reverse;
+    }
+
+    /* Active Mobile Menu */
+    .navbar-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      background: #fff;
+      width: 70%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+
+/* Responsive */ @media (max-width: 768px) {
+        .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 70%;
+    height: 100vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .links {
+    padding: 15px;
+    flex-direction: column;
+    background: #fff;
+      width: 85%;
+    padding: 15px;
+  }
+  
+
+  .links a {
+    padding: 15px;
+  }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-logo { font-size: 16px; }
+    }
+
+    @media (min-width:900px) {
+      h1 {
+        font-size: 36px
+      }
+
+      .hero {
+        padding: 36px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!--  Navbar Start -->
+  <nav class="navbar ">
+    <div class="navbar-logo">
+      MOHSEN ACADEMY</div>
+
+    <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
+    <div class="navbar-links" id="navbarLinks">
+      <div class="links">
+        <a href="https://mohsenacademy.com">Home</a>
+        <a href="https://mohsenacademy.com/Register">Register</a>
+        <a href="https://mohsenacademy.com/Services">Services</a>
+        <a href="https://mohsenacademy.com/About">About</a>
+        <a href="https://mohsenacademy.com/contact-us">Contact</a>
+      </div>
+    </div>
+  </nav>
+    <!--  Navbar End -->
+
+  <div class="overlay">
+    <div class="container" role="main">
+      <header class="hero" aria-labelledby="site-title">
+        <h1 id="site-title">Mohsen Academy<br><span style="font-weight:600;">اماكن السباحة</span></h1>
+        <div class="location-line" aria-hidden="false">مقرنا الرئيسي في قلب الشروق – نادي جرين هيلز</div>
+        <p>بنقدّم <strong>تعليم السباحة </strong> بطريقة مختلفة عن أي مكان تاني. هدفنا مش بس نوصل لأكبر عدد من
+          المتدرّبين، لكن كمان نضمن إن كل متدرّب يتعلّم صح ويستفيد من خدمة تدريب بمستوى عالي.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://mohsenacademy.com/Register">احجز تدريب</a>
+        </div>
+      </header>
+      <section aria-labelledby="locations-title">
+        <div class="search-wrap">
+          <input id="search" class="search" placeholder="ابحث عن موقع أو نادي — مثال: جرين هيلز" />
+        </div>
+        <h2 id="locations-title" style="color:var(--color-title);margin-bottom:10px">اماكن السباحة</h2>
+        <div class="cards" id="cards">
+
+          <article class="card" data-name="نادي جرين هيلز">
+            <h4>اماكن سباحة في الشروق</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="نادي جرين هيلز">
+            <h3><a href="https://maps.app.goo.gl/x8kbgDQ2xasjgERS6"> نادى جرين هيلز </a></h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span>في قلب الشروق بجوار دار مصر</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="نادي الصفوه">
+            <h4>اماكن سباحة في العاشر من رمضان</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="نادي الصفوه">
+            <h3>نادي الصفوه</h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> العاشر من رمضان</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="نادي الرواد">
+            <h4>اماكن سباحة في العاشر من رمضان</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="نادي الرواد">
+            <h3><a href="https://maps.app.goo.gl/C4E7zD675apiiK5g7"> نادى الرواد</a></h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> العاشر من رمضان</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="مركز شباب المجاوره العاشره">
+            <h4>اماكن سباحة في العاشر من رمضان</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="مركز شباب المجاوره العاشره">
+            <h3><a href="https://maps.app.goo.gl/bpmgQ66A6dPb6yYo9">مركز شباب المجاوره العاشره</a></h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> العاشر من رمضان</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="نادي بالميرا">
+            <h4>اماكن سباحة في العاشر من رمضان</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="نادي بالميرا">
+            <h3>نادي بالميرا</h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> العاشر من رمضان</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="مدينة بدر">
+            <h4>اماكن سباحة في مدينة بدر</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="مدينة بدر">
+            <h3>مدينة بدر</h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> مدينة بدر</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="مدينة القاهرة">
+            <h4>اماكن سباحة في القاهرة</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="مدينة القاهرة">
+            <h3>مدينة القاهرة</h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> القاهرة</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-name="القاهرة الجديدة">
+            <h4>اماكن سباحة في القاهرة الجديدة</h4>
+            <img src="https://mohsenacademy.com/icon.webp" alt="القاهرة الجديدة">
+            <h3>القاهرة الجديدة</h3>
+            <div class="meta">
+              <div class="row"><span class="pin">📍</span> القاهرة الجديدة</div>
+              <div class="row">مواعيد:12 صباحًا — 9 مساءً</div>
+              <div class="row">
+                تواصل: <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank">01035700879</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+      <footer>© <strong>Mohsen Academy</strong> — اكاديمية سباحة في الشروق</footer>
+    </div>
+  </div>
+
+ <script>
+         function toggleNavbar() {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    navbarLinks.classList.toggle("active");
+
+    if (navbarLinks.classList.contains("active")) {
+      toggleIcon.textContent = "✖";
+    } else {
+      toggleIcon.textContent = "☰";
+    }
+  }
+  document.addEventListener("click", function (e) {
+    const navbarLinks = document.getElementById("navbarLinks");
+    const toggleIcon = document.getElementById("navbarToggle");
+
+    if (
+      navbarLinks.classList.contains("active") &&
+      !navbarLinks.contains(e.target) &&
+      !toggleIcon.contains(e.target)
+    ) {
+      navbarLinks.classList.remove("active");
+      toggleIcon.textContent = "☰";
+    }
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyBG = document.querySelectorAll("[data-bg]");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.backgroundImage = `url('${el.dataset.bg}')`;
+          observer.unobserve(el);
+        }
+      });
+    });
+
+    lazyBG.forEach(el => observer.observe(el));
+  });
+   const input = document.getElementById('search');
+    const cards = Array.from(document.querySelectorAll('#cards .card'));
+    input.addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      cards.forEach(c=>{
+        const name = c.dataset.name || '';
+        const text = (c.innerText || '') + ' ' + name;
+        c.style.display = text.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+    </script>
+</body>
+
+</html>
