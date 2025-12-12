@@ -33,6 +33,7 @@
   <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
   <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
   <link rel="manifest" href="site.webmanifest">
+  
   <!-- SEO -->
   <meta name="description"
     content="تدريب سباحة في الشروق مع Mohsen Academy داخل نادي جرين هيلز مع كابتن محسن. أكاديمية سباحة في الشروق تقدم تدريب سباحه في الشروق للأطفال والكبار بمستوى متميز.">
@@ -509,7 +510,10 @@
 
 
 
-
+ if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker registered'));
+  }
 
 </script>
 <script async type="application/ld+json">
