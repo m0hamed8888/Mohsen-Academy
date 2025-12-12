@@ -133,7 +133,57 @@
       background: var(--color-brand);
       color: white;
     }
+/* سكشن السوشيال ميديا */
+#social-media {
+  background: var(--bg-content); 
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  margin: 40px auto;
+  max-width: 1000px;
+  font-family: 'Arial', sans-serif;
+}
 
+#social-media h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#social-media p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+#social-media .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+#social-media .social-links a {
+  display: inline-block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#social-media .social-links a img {
+  width: 60px;
+  height: 60px;
+  object-fit: scale-down;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#social-media .social-links a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
 
     /* Navbar */
     /* Navbar */
@@ -204,6 +254,7 @@
       width: 70%;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
+    
 
 
     /* Responsive */
@@ -402,7 +453,18 @@
     </div>
 
   </div>
-  <!--  Navbar End -->
+  <section id="social-media">
+  <h2>تابعنا على السوشيال ميديا</h2>
+  <p>
+    تابع أحدث أخبار أكاديمية Mohsen لتعليم السباحة في الشروق، وشوف فيديوهات التمارين، نصائح السباحة، وتجارب الأطفال والكبار على صفحتنا على فيسبوك وإنستجرام. 
+    كمان هتقدر تعرف كل التحديثات الخاصة بالمواعيد والمواقع الجديدة.
+  </p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/MohsenAcademyPage" aria-label="Facebook"><img loading="lazy" src="../facebook.webp" alt="اكادميه سباحه "></a>
+      <a href="https://www.instagram.com/mohsen_academy_/" aria-label="Instagram"><img loading="lazy" src="../insta.webp" alt="اكادميه سباحه "></a>
+      <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A" aria-label="LinkedIn"><img loading="lazy" src="../vector.webp" alt="اكادميه سباحه "></i></a>
+    </div> 
+</section>
   <script>
     function toggleNavbar() {
       const navbarLinks = document.getElementById("navbarLinks");
