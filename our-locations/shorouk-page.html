@@ -185,6 +185,143 @@
   filter: brightness(1.2);
 }
 
+/* Start Kids Section */
+/* ===============================
+   Program Section (Reusable)
+================================ */
+
+.program-section {
+  width: 94%;
+  margin: 1rem auto;
+  padding: 60px 20px;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+}
+
+.program-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.program-section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #0066cc;
+}
+
+.program-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Image */
+.program-image {
+  flex: 1 1 300px;
+}
+
+.program-image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Text */
+.program-text {
+  flex: 2 1 500px;
+}
+
+.program-intro {
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* List */
+.program-list {
+  padding-left: 18px;
+  margin-bottom: 25px;
+}
+
+.program-list li {
+  margin-bottom: 10px;
+}
+
+/* Accordion */
+.program-accordion details {
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+}
+
+.program-accordion summary {
+  position: relative;
+  padding-right: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #004a99;
+  list-style: none;
+}
+
+.program-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.program-accordion summary::after {
+  content: "❯";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #0066cc;
+  transition: transform 0.3s ease;
+}
+
+.program-accordion details[open] summary::after {
+  transform: translateY(-50%) rotate(90deg);
+  color: #004a99;
+}
+
+.program-accordion details[open] summary {
+  margin-bottom: 10px;
+}
+
+.program-accordion ul {
+  padding-left: 18px;
+}
+
+.program-accordion li {
+  margin-bottom: 8px;
+}
+
+/* Button */
+.program-btn {
+  display: inline-block;
+  background-color: #0066cc;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.program-btn:hover {
+  background-color: #004a99;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .program-content {
+    flex-direction: column;
+  }
+}
+
+
+/* End Kids Section */
+
+
     /* Navbar */
     /* Navbar */
     .navbar {
@@ -319,7 +456,7 @@
         <a href="https://mohsenacademy.com">Home</a>
         <a href="https://mohsenacademy.com/Register">Register</a>
         <a href="https://mohsenacademy.com/Services">Services</a>
-        <a href="https://mohsenacademy.com/About">About</a>
+        <a href="https://mohsenacademy.com/our-locations/shorouk-page">ِOur Locations</a>
         <a href="https://mohsenacademy.com/contact-us">Contact</a>
       </div>
     </div>
@@ -350,6 +487,411 @@
       </ul>
     </div>
 
+
+
+
+
+<!-- Start Kids Program Section -->
+<section class="program-section program--kids">
+  <div class="program-container">
+
+    <h2>برنامج تدريب السباحة للأطفال في الشروق</h2>
+
+    <div class="program-content">
+
+      <!-- Image -->
+      <div class="program-image">
+        <img src="../تدريبالسباحةللأطفالفيالشروق.webp" lang="lazy" alt="تعليم سباحة للأطفال في الشروق">
+      </div>
+
+      <!-- Text -->
+      <div class="program-text">
+
+<p class="program-intro">
+  تدريب الأطفال عندنا بيبدأ من سن 4 سنين،  
+  <strong>تدريب سباحة للأطفال في الشروق</strong> بيكون مختلف عندنا.  
+  أساليبنا هي التعامل بإيجابية وتحفيز الطفل عشان يطلع أحسن ما عنده بحب وأمان.  
+  يمكن لولي الأمر متابعة كل تفاصيل طفله في السباحة من خلال  
+  <a href="https://mohsenacademy.com/Services" title="صفحة خدمات أكاديمية محسن">صفحة الخدمات</a>، بما في ذلك جدول الحضور والغياب وكل معلومات التدريب.
+</p>
+        <ul class="program-list">
+          <li>
+            <strong>برنامج مجموعات صغيرة جدًا:</strong>
+            حتى 3 أطفال فقط لكل مدرب، متابعة فردية كاملة وضمان تعلم كل حركة بإتقان.
+          </li>
+          <li>
+            <strong>برنامج المجموعة المتوسطة:</strong>
+            5 أطفال لكل مدرب، تدريب ممتع وسعر مناسب، مثالي للأطفال اللي بيحبوا اللعب الجماعي.
+          </li>
+          <li>
+            <strong>برنامج فردي 1:1:</strong>
+            تدريب شخصي كامل بتركيز 100% على الطفل، أسرع نتيجة وتجربة VIP.
+          </li>
+        </ul>
+
+        <!-- Accordion -->
+        <div class="program-accordion">
+
+          <details>
+            <summary>تفاصيل تدريب السباحة للأطفال في الشروق</summary>
+            <ul>
+              <li>تقييم مستوى الطفل قبل بدء التدريب</li>
+              <li>تحديد المجموعة المناسبة بعد التقييم</li>
+              <li>
+                الأدوات المطلوبة:
+                <ul>
+                  <li>نظارة سباحة</li>
+                  <li>زي سباحة</li>
+                  <li>بورد سباحة (مهم جدًا)</li>
+                </ul>
+              </li>
+              <li>
+                يبدأ الطفل بتعلّم:
+                <ul>
+                  <li>الزفير داخل الماء</li>
+                  <li>الطفو على الظهر</li>
+                  <li>الطفو على البطن</li>
+                </ul>
+              </li>
+              <li>
+                ده أول ليفيل في الأكاديمية —
+                <a href="https://mohsenacademy.com/Services">
+                  اقرأ أكثر عن مستويات التدريب من هنا
+                </a>
+              </li>
+            </ul>
+          </details>
+   <details>
+            <summary>أسعار تدريب السباحة للأطفال في الشروق </summary>
+            <h4>بتبدأ الاسعار تدريب السباحة للأطفال في الشروق </h4>
+            <ul>
+              <li>برنامج مجموعات صغيرة جدًا: 1250 لعدد 8 حصص</li>
+              <li>برنامج المجموعة المتوسطة: 950 لعدد 8حصص</li>
+              <li>برنامج فردي 1:1: 2000 جنية لعدد 8حصص</li>
+            </ul>
+          </details>
+          <details>
+            <summary>تجربتنا في تدريب الأطفال على السباحة</summary>
+            <ul>
+              <li>خبرة أكثر من 6 سنوات في تعليم السباحة للأطفال</li>
+              <li>مساعدة الأطفال الخائفين من الماء وتحويل الخوف إلى حب</li>
+              <li>تدريب الأطفال الحساسين اجتماعيًا على الاندماج بثقة</li>
+              <li>تفريغ طاقة الأطفال ذوي النشاط الزائد بطريقة آمنة وممتعة</li>
+              <li>ثقة كاملة ونتائج واضحة من أولياء الأمور</li>
+              <li>الأمان أولًا قبل السرعة في التعلم</li>
+            </ul>
+          </details>
+
+        </div>
+
+        <a href="https://mohsenacademy.com/Register" class="program-btn">
+          سجّل طفلك الآن في برنامج تعليم السباحة بالشروق
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Kids Program Section -->
+
+<!-- Start Prep Program Section -->
+<section class="program-section program--prep">
+  <div class="program-container">
+
+    <h2>برنامج تدريب السباحه للتجهيزي في الشروق</h2>
+
+    <div class="program-content">
+
+      <!-- Image -->
+      <div class="program-image">
+        <img src="../تدريبالسباحةالتجهيزيفيالشروق.webp" lang="lazy" alt="تدريب التجهيزي">
+      </div>
+
+      <!-- Text -->
+      <div class="program-text">
+
+     <p class="program-intro">
+  عندنا في <strong>أكاديمية محسن</strong> بنوفر كابتن متخصص لتعليم أساسيات السباحة بشكل صحيح،  
+  <strong>عشان السباح يتأسس صح</strong> ويكتسب مهارات سليمة من البداية.  
+  كمان الكابتن بيكون مع السباح في الميه لضمان <strong>أقصى استفادة للسباح</strong>.  
+  نقدم برامج مختلفة <strong>لتدريب التجهيزي</strong> لتناسب جميع الأعمار والمستويات.  
+  يمكن للسباح أو ولي الأمر متابعة كل تفاصيل التدريب من خلال  
+  <a href="https://mohsenacademy.com/Services" title="صفحة خدمات أكاديمية محسن">صفحة الخدمات</a>، بما في ذلك جدول الحضور والغياب وكل معلومات التدريب.
+</p>
+
+
+        <ul class="program-list">
+          <li>
+            <strong>برنامج التجهيزي الفردي:</strong>
+            تدريب شخصي لتركيز أفضل على مهارات كل لاعب.
+          </li>
+          <li>
+            <strong>برنامج التجهيزي الجماعي:</strong>
+            تجهيز المجموعات للمنافسات وتحسين التنسيق بين اللاعبين.
+          </li>
+        </ul>
+
+        <!-- Accordion -->
+        <div class="program-accordion">
+
+          <details>
+            <summary>تفاصيل برنامج التجهيزي</summary>
+            <ul>
+              <li>تقييم مستوى كل لاعب قبل بدء البرنامج</li>
+              <li>تحديد البرنامج المناسب حسب الهدف والمستوى</li>
+              <li>
+                الأدوات المطلوبة:
+                <ul>
+                  <li>نظارة سباحة</li>
+                  <li>زي سباحة مناسب لكل لاعب</li>
+                  <li>بورد سباحة </li>
+                  <li>زعانف للسباحه (زعانف بطه)</li>
+                </ul>
+              </li>
+              <li>
+                بعد تقييم مستوي الاعب 
+                <ul>
+                  <li>السباح بينتقل ألي مجموعة تناسب مستواة</li>
+                  <li>السباح بيبدأ التدريب علي لياقتة البدنيه</li>
+                  <li>السباح بيبدأ التدريب علي ال عومات الجديدة</li>
+                  <li>عشان في النهايه يتأهل يدخل فريق المنافسات</li>
+                </ul>
+              </li>
+              <li>
+                متابعة دقيقة لضمان تطور كل لاعب —
+                <a href="https://mohsenacademy.com/Services">
+                  اقرأ المزيد عن مستويات التدريب
+                </a>
+              </li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>خبرتنا في برنامج التجهيزي</summary>
+            <ul>
+              <li>الكابتن صاحب الاكاديميه سباح و ايضا كابتن بيوفر افضل بيئه للسباح</li>
+              <li>خبرات لا تقل عن 6 سنوات في السباحة</li>
+              <li>ميزه تأهيل السباحين ألي الحصول علي نجوم الاتحاد المصري للسباحه</li>
+              <li> وايضا التسجيل في الاتحاد المصري للسباحه بأنه سباح معتمد</li>
+              <li>والاتحاد المصري للغوص ولانقاذ </li>
+              <li>والتأهيل للمنافسه في البطولات</li>
+            </ul>
+          </details>
+
+        </div>
+
+        <a href="https://mohsenacademy.com/Register" class="program-btn">
+          سجّل الآن في برنامج التجهيزي
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Prep Program Section -->
+
+
+<!-- Start Teams Program Section -->
+<section class="program-section program--teams">
+  <div class="program-container">
+
+    <h2>برنامج تدريب السباحه للفرق في الشروق</h2>
+
+    <div class="program-content">
+
+      <!-- Image -->
+      <div class="program-image">
+        <img src="../تدريب السباحة الفرق في الشروق.webp" lang="lazy" alt="تدريب الفرق">
+      </div>
+
+      <!-- Text -->
+      <div class="program-text">
+
+  <p class="program-intro">
+  إحنا في <strong>أكاديمية محسن</strong> متميزين في <strong>تدريب الفرق</strong>.  
+  بنوفر كابتن متخصص للفرق، يقدم لجميع الأعمار الخطة المناسبة للتدريب.  
+  المدربين عندنا متخصصين في متابعة الأخطاء في العوم (<strong>أسلوب السباحة الصحيح</strong>) لتفادي أي إصابة.  
+  كما نقوم بإجراء اختبارات شهرية لقياس مستوى التقدم وتحسين الأداء الجماعي،  
+  مع تأهيل اللاعبين للمشاركة في البطولات والمسابقات الرسمية.  
+  يمكن للفرق أو أولياء الأمور متابعة كل التفاصيل من خلال  
+  <a href="https://mohsenacademy.com/Services" title="صفحة خدمات أكاديمية محسن">صفحة الخدمات</a>، بما في ذلك جدول الحضور والغياب وكل معلومات التدريب.
+</p>
+
+       <ul class="program-list">
+  <li>
+    <strong>برنامج الفرق فردي:</strong>
+    تدريب شخصي لكل لاعب لضمان متابعة دقيقة وتصحيح الأخطاء في الأسلوب.
+  </li>
+<li>
+  <strong>برنامج الفرق:</strong>
+  تدريب الفرق  بحيث تكون المجموعة متقاربة في العمر والمستوى،  
+  لتحسين التعاون وبناء خطة تدريب جماعية متكاملة، ولضمان وجود منافسة صحية بين السباحين.
+</li>
+
+</ul>
+
+        <!-- Accordion -->
+        <div class="program-accordion">
+
+          <details>
+            <summary>تفاصيل تدريب الفرق</summary>
+            <ul>
+              <li>تقييم مستوى كل لاعب قبل بدء البرنامج والتأكد من استيل السباح </li>
+              <li>تحديد البرنامج المناسب حسب ومستوى السباح و عمره</li>
+              <li>
+                الأدوات المطلوبة:
+                <ul>
+                  <li>نظارة سباحة</li>
+                  <li>زي سباحة موحد للفريق</li>
+                  <li>بونيه سباحه</li>
+                  <li>بورد سباحة</li>
+                  <li>باديلز </li>
+                  <li>زعانف</li>
+                  <li>بول بوي</li>
+                  <li>شورت تحميل </li>
+                </ul>
+              </li>
+              <li>
+               مميزات التدريب
+                <ul>
+                  <li>متابعة دقيقة ل استايل السباحه</li>
+                  <li>متابعه اللياقه البدنيه لكل سباح</li>
+                  <li>تطوير التكتيك والتحركات داخل الماء</li>
+                  <li><strong>كشف مفصل شهري ل السباح</strong></li>
+                  <li>لمتابعه ارقامه في كل عومة لمراقبه تقدمة</li>
+                </ul>
+              </li>
+              <li>
+                متابعة دقيقة لضمان تطور الفريق —
+                <a href="https://mohsenacademy.com/Services">
+                  صفحه الخدمات 
+                </a>
+              </li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>خبرتنا في تدريب الفرق</summary>
+            <ul>
+              <li>خبرة سنوات طويلة في تدريب الفرق</li>
+              <li>رفع اللياقة والسرعة لكل عضو في الفريق</li>
+              <li>إعداد الفرق للمسابقات الرسمية والمنافسات</li>
+              <li>نتائج ملموسة من خلال متابعة شهرية</li>
+            </ul>
+          </details>
+
+        </div>
+
+        <a href="https://mohsenacademy.com/Register" class="program-btn">
+          سجّل الآن في برنامج الفرق
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Teams Program Section -->
+
+    <!-- Start Adults Program Section -->
+<section class="program-section program--adults">
+  <div class="program-container">
+
+    <h2>برنامج تعليم السباحة للكبار في الشروق</h2>
+
+    <div class="program-content">
+
+      <!-- Image -->
+      <div class="program-image">
+        <img src="../تدريبالسباحةللكبارفيالشروق.webp" lang="lazy" alt="تعليم سباحة للكبار في الشروق">
+      </div>
+
+      <!-- Text -->
+      <div class="program-text">
+
+        <p class="program-intro">
+  نقدم برامج <strong>تعليم سباحة للكبار في الشروق</strong> مصممة لجميع المستويات، سواء للمبتدئين أو من يريد تحسين مهاراته في الماء، مع متابعة دقيقة لضمان التطور والأمان.  
+  سواء كنت جاي للتدريب للسباحة العلاجية، أو لتقوية جسمك ضد الأمراض، أو حتى للمشاركة في المنافسات،  
+  عندنا بنوفر كل دا بمواعيد مرنة ومناسبة للجميع.  
+  يمكن للمتدرب  متابعة كل تفاصيل التدريب، بما في ذلك جدول الحضور والغياب، من خلال  
+  <a href="https://mohsenacademy.com/Services" title="صفحة خدمات أكاديمية محسن">صفحة الخدمات</a>.
+</p>
+
+
+        <ul class="program-list">
+          <li>
+            <strong>برنامج المبتدئين:</strong>
+            تعلم أساسيات السباحة والثقة في الماء خطوة بخطوة.
+          </li>
+          <li>
+            <strong>برنامج المتوسطين:</strong>
+            تحسين تقنيات السباحة وبناء القدرة على السباحة لمسافات أطول.
+          </li>
+          <li>
+            <strong>برنامج المتقدمين:</strong>
+            تدريب مكثف لتطوير السرعة واللياقة والتحضير للمسابقات.
+          </li>
+        </ul>
+
+        <!-- Accordion -->
+        <div class="program-accordion">
+
+          <details>
+            <summary>تفاصيل تدريب السباحة للكبار في الشروق</summary>
+            <ul>
+              <li>تقييم مستوى السباح قبل بدء التدريب</li>
+              <li>تحديد البرنامج المناسب بناءً على التقييم</li>
+              <li>
+                الأدوات المطلوبة:
+                <ul>
+                  <li>نظارة سباحة</li>
+                  <li>زي سباحة مناسب</li>
+                  <li>بورد سباحة</li>
+                </ul>
+              </li>
+              <li>
+                التدريب يشمل:
+                <ul>
+                  <li>تقنيات التنفس والزفير داخل الماء</li>
+                  <li>تقنيات السباحة المختلفة (صدر، ظهر، فراشة)</li>
+                  <li>تمارين القوة والتحمل في الماء</li>
+                </ul>
+              </li>
+              <li>
+                نتائج واضحة وسريعة لجميع المستويات —
+                <a href="https://mohsenacademy.com/Services">
+                  اقرأ أكثر عن مستويات التدريب من هنا
+                </a>
+              </li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>خبرتنا في تدريب الكبار</summary>
+            <ul>
+              <li>خبرة طويلة في تدريب جميع المستويات للكبار</li>
+              <li>تحسين الثقة والراحة في الماء</li>
+              <li>متابعة فردية لكل متدرب لضمان التطور السريع</li>
+              <li>تمارين آمنة وفعّالة لتحسين اللياقة والقوة</li>
+              <li>نتائج ملموسة من أول أسبوعين</li>
+              <li>الأمان أولًا قبل أي سرعة أو تحدي</li>
+            </ul>
+          </details>
+
+        </div>
+
+        <a href="https://mohsenacademy.com/Register" class="program-btn">
+          سجّل الآن في برنامج تعليم السباحة للكبار
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Adults Program Section -->
+
+
+
+
     <!-- جدول الأسعار -->
     <div class="section">
       <h2>أسعار تدريب السباحة في الشروق</h2>
@@ -367,12 +909,12 @@
         <tr>
           <td>تدريب كبار – تحسين الأداء</td>
           <td>8 حصص</td>
-          <td>1250 جنيه</td>
+          <td>2000 جنيه</td>
         </tr>
         <tr>
           <td>تدريب خاص (Private)</td>
           <td>الحصة</td>
-          <td>200 جنيه</td>
+          <td>250 جنيه</td>
         </tr>
       </table>
       <a class="cta" href="https://mohsenacademy.com/Register">احجز مكانك الآن</a>
