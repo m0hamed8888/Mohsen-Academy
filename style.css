@@ -9,6 +9,7 @@
   --fs-24: clamp(16px, 1vw + 1rem, 24px);
 --fs-16: clamp(18px, 1vw + 0.8rem, 18px);
   --fs-32: clamp(24px, 1vw + 1rem, 32px);
+  --fs-72: clamp(64px, 1vw + 1rem, 72px);
 
 
   --fw-32: 32px; 
@@ -210,14 +211,14 @@ img {
 .hero-section .hero-content h1 {
   font-size: 64px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-h1);
   line-height: 1.1;
   margin-bottom: 20px;
 }
 
 .hero-section .hero-content p {
-  font-size: 24px;
-  color: #e5e5e5;
+  font-size: var(--fs-32);
+  color: var(--color-h1);
   margin-bottom: 30px;
   line-height: 1.5;
 }
