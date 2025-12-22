@@ -503,9 +503,11 @@ img {
 
 /* Start swim classes  */
 
-.swim-classes-section {
-  padding: 180px 0;
+
+#swim-classes-section {
+ margin: 150px 0 100px 0;
 }
+
 
 .swim-classes-container {
   max-width: 1200px;
