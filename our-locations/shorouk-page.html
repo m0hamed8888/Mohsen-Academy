@@ -310,6 +310,49 @@
 .program-btn:hover {
   background-color: #004a99;
 }
+ /* Whats App */
+    
+ .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.contact-whatsapp {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.contact-whatsapp a {
+  color: #25D366; /* لون WhatsApp أخضر */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-whatsapp a:hover {
+  text-decoration: underline;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -391,6 +434,7 @@
       width: 70%;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
+
     
 
 
@@ -461,6 +505,13 @@
       </div>
     </div>
   </nav>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float">
+  <img loading="lazy" src="../whatsapp.webp" alt="WhatsApp" />
+</a>
+<section class="contact-form-section" id="contact">
+  <div class="contact-bg-image" role="img" aria-label="Office technology background image"></div>
+
   <div class="container">
 
     <!-- عنوان الصفحة -->
@@ -495,7 +546,7 @@
 <section class="program-section program--kids">
   <div class="program-container">
 
-    <h2>برنامج تدريب السباحة للأطفال في الشروق</h2>
+    <h2> تدريب السباحة للأطفال في الشروق</h2>
 
     <div class="program-content">
 
@@ -695,7 +746,7 @@
 <section class="program-section program--teams">
   <div class="program-container">
 
-    <h2>برنامج تدريب السباحه للفرق في الشروق</h2>
+    <h2> تدريب السباحه للفرق في الشروق</h2>
 
     <div class="program-content">
 
@@ -796,7 +847,7 @@
 <section class="program-section program--adults">
   <div class="program-container">
 
-    <h2>برنامج تعليم السباحة للكبار في الشروق</h2>
+    <h2> تعليم السباحة للكبار في الشروق</h2>
 
     <div class="program-content">
 
