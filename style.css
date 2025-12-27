@@ -22,6 +22,7 @@
   
 --bg-content:  #f6f7f8; 
 --bg-card: #ffffff;       
+--bg-footer: #f9f9fb;
 }
 html {
   scroll-behavior: smooth;
@@ -383,7 +384,7 @@ img {
 
 
 .ui-footer {
-  background-color: #f9f9fb;
+  background-color: var(--bg-footer);
   padding: 60px 20px 20px;
   font-family: 'DM Sans', sans-serif;
 }
@@ -607,6 +608,7 @@ img {
 /* Start  */
 
 .swp-section {
+  margin-top: 3rem;
   width: 100%;
   padding: 60px 0;
   display: flex;
@@ -808,11 +810,15 @@ img {
 /* Start accordion */
 
 .accordion-section {
-  max-width: 900px;
-  margin: 50px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 3rem !important;
   font-family: var(--font-primary);
   padding: 0 15px;
-  background: var(--bg-content);
+  background: var(--bg-footer);
 }
 
 .accordion-section h3 {
@@ -824,6 +830,7 @@ img {
 }
 
 details {
+  width: 100%;
   background: var(--bg-card);
   border-radius: 12px;
   margin-bottom: 12px;
@@ -841,8 +848,10 @@ summary {
   font-size: var(--fs-24);
   font-weight: var(--fw-16-semibold);
   color: var(--color-brand);
+  padding: 1rem;
   outline: none;
   list-style: none;
+  text-align: center;
 }
 
 summary::-webkit-details-marker {
