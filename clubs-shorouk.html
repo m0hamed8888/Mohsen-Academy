@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="ar">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>نوادي الشروق — Mohsen Academy</title>
+  <title> أماكن السباح في الشروق — Mohsen Academy</title>
 
   <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
   <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
   <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
   <link rel="manifest" href="./site.webmanifest">
 
-<meta name="keywords"
-content="نوادي سباحة الشروق, أماكن سباحة في الشروق, تدريب سباحة للأطفال والكبار, تعليم السباحة في الشروق, أكاديمية محسن للسباحة, تمرين سباحة للكبار, تمرين سباحة للأطفال">
+  <meta name="keywords"
+    content="نوادي سباحة الشروق, أماكن سباحة في الشروق, تدريب سباحة للأطفال والكبار, تعليم السباحة في الشروق, أكاديمية محسن للسباحة, تمرين سباحة للكبار, تمرين سباحة للأطفال">
 
   <meta name="author" content="Mohsen">
   <meta name="robots" content="index, follow">
@@ -29,27 +30,38 @@ content="نوادي سباحة الشروق, أماكن سباحة في الشر
   <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
 
   <!-- SEO Meta -->
-<meta name="description"
-content="أكاديمية محسن للسباحة تقدم تدريب سباحة وتعليم للأطفال والكبار في نوادي الشروق. حمامات سباحة مجهزة ومدربين محترفين وبرامج تناسب جميع المستويات.">
-  <meta name="keywords" content="أماكن سباحة, نوادي سباحة, Mohsen Academy, تدريب سباحة, تعليم سباحة, تمرين سباحة للكبار, تمرين سباحة للأطفال">
+  <meta name="description"
+    content="أكاديمية محسن للسباحة تقدم تدريب سباحة وتعليم للأطفال والكبار في نوادي الشروق. حمامات سباحة مجهزة ومدربين محترفين وبرامج تناسب جميع المستويات.">
+  <meta name="keywords"
+    content="أماكن سباحة, نوادي سباحة, Mohsen Academy, تدريب سباحة, تعليم سباحة, تمرين سباحة للكبار, تمرين سباحة للأطفال">
 
   <style>
     :root {
       --max-width: 1100px;
       --color-brand: #f5b400;
-     --color-title: #0077ff;
+      --color-title: #0077ff;
       --text: #f3f6f9;
       --card-bg: rgba(0, 0, 0, 0.45);
       --radius: 16px;
       --ff-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       --transition: 0.3s;
-      --bg-content:  #f6f7f8; 
---bg-card: #ffffff;       
---bg-footer: #f9f9fb;
+      --bg-content: #f6f7f8;
+      --bg-card: #ffffff;
+      --bg-footer: #f9f9fb;
     }
 
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: var(--ff-sans); color: var(--text); background: #031926; line-height: 1.6; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      color: var(--text);
+      background: #031926;
+      line-height: 1.6;
+    }
 
     /* Navbar */
     .navbar {
@@ -63,22 +75,72 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
       top: 0;
       z-index: 1000;
       padding: 0 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .navbar-logo { font-weight: bold; font-size: 18px; color: var(--color-title); }
-    .navbar-links { display:flex; align-items:center; }
-    .navbar-links a { text-decoration:none; color:#000; padding:1rem; transition: all var(--transition); }
-    .navbar-links a:hover { border-bottom:3px solid var(--color-brand); }
-    .navbar-toggle { display:none; font-size:22px; cursor:pointer;  color: black;}
-    .links { display:flex; gap:15px; }
+    .navbar-logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: var(--color-title);
+    }
 
-    @media(max-width:768px){
-      .navbar-links{ display:none; flex-direction:column; background:#fff; position:absolute; top:75px; right:0; width:70%; height:100vh; box-shadow:0 5px 10px rgba(0,0,0,0.1);}
-      .navbar-links.active{ display:flex; }
-      .navbar-toggle{ display:block; }
-      .links{ flex-direction:column; width:100%; }
-      .links a{ padding:15px; }
+    .navbar-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: #000;
+      padding: 1rem;
+      transition: all var(--transition);
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid var(--color-brand);
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: black;
+    }
+
+    .links {
+      display: flex;
+      gap: 15px;
+    }
+
+    @media(max-width:768px) {
+      .navbar-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-links.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+      }
+
+      .links {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .links a {
+        padding: 15px;
+      }
     }
 
     /* Hero Fullscreen */
@@ -99,14 +161,14 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0, 0, 0, 0.55);
       z-index: 0;
     }
 
     .hero h1 {
       position: relative;
       z-index: 2;
-      padding:2rem;
+      padding: 2rem;
       color: #fff;
       font-size: 48px;
       text-align: center;
@@ -116,7 +178,7 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
     /* Cards Grid inside Hero */
     .hero-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       width: 100%;
       max-width: var(--max-width);
@@ -133,42 +195,65 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
       overflow: hidden;
       border-radius: var(--radius);
       background: var(--card-bg);
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       transition: all var(--transition);
     }
+
     .location-card img {
-      width:100%;
-      height:180px;
-      object-fit:cover;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
       transition: all var(--transition);
     }
+
     .location-card-content {
-      padding:15px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .location-card h3 { font-size:20px; color:#fff; }
-    .location-card p { font-size:14px; color:rgba(255,255,255,0.9); }
-    .location-card a {
-      text-decoration:none;
-      color:#012226;
-      font-weight:700;
+
+    .location-card h3 {
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .location-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .location-card .location-btn {
+      text-decoration: none;
+      color: #012226;
+      font-weight: 700;
       background: var(--color-brand);
-      padding:8px 12px;
-      border-radius:12px;
-      text-align:center;
+      padding: 8px 12px;
+      border-radius: 12px;
+      text-align: center;
       transition: all var(--transition);
-      margin-top: auto;
+      margin-top: 1rem;
     }
-    .location-card a:hover { background:#a57f1894; }
+
+    .location-card a:hover {
+      background: #a57f1894;
+    }
+
+    .location-card .location-link {
+      text-decoration: none;
+      color: var(--color-title);
+      font-size: 1.2rem;
+    }
 
     .location-card:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(8px) saturate(120%);
     }
-    .location-card:hover img { transform: scale(1.05); }
+
+    .location-card:hover img {
+      transform: scale(1.05);
+    }
 
     /* Accordion inside Hero */
     .accordion {
@@ -176,147 +261,154 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
       max-width: var(--max-width);
       position: relative;
       z-index: 2;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: var(--radius);
       overflow: hidden;
     }
+
     .accordion-item {
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
+
     .accordion-header {
       padding: 15px 20px;
       cursor: pointer;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       font-weight: bold;
     }
-    .accordion-header:hover { background: rgba(255,255,255,0.2); }
+
+    .accordion-header:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
     .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
       padding: 0 20px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
     }
+
     .accordion-content p {
       padding: 15px 0;
-      color:#f3f6f9;
+      color: #f3f6f9;
     }
-    
-
-/* Start */
 
 
-.ui-footer {
-  background-color: var(--bg-footer);
-  padding: 60px 20px 20px;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 40px;
-}
-
-.footer-about {
-  flex: 1 1 250px;
-  min-width: 230px;
-}
-
-.footer-logo {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--color-title);
-}
-
-.footer-desc {
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.footer-socials {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-top: 30px;
-}
-
-.footer-socials .img-social {
-  color: var(--color-brand);
-  height: 24px;
-  width: 24px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 40px;
-  flex: 3;
-  min-width: 250px;
-}
-
-.footer-links h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.footer-links a {
-  display: block;
-  color: #444;
-  text-decoration: none;
-  margin-bottom: 8px;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #0088ff;
-}
-
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid #ddd;
-  margin-top: 50px;
-  padding-top: 15px;
-  color: #666;
-  font-size: 14px;
-}
-
-.portfolio {
-  text-decoration: underline;
-  color: var(--color-title);
-}
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-links div {
-    margin-bottom: 20px;
-  }
-}
+    /* Start */
 
 
+    .ui-footer {
+      background-color: var(--bg-footer);
+      padding: 60px 20px 20px;
+      font-family: 'DM Sans', sans-serif;
+    }
 
-/* End */
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+    }
 
+    .footer-about {
+      flex: 1 1 250px;
+      min-width: 230px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--color-title);
+    }
+
+    .footer-desc {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 30px;
+    }
+
+    .footer-socials .img-social {
+      color: var(--color-brand);
+      height: 24px;
+      width: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 40px;
+      flex: 3;
+      min-width: 250px;
+    }
+
+    .footer-links h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: #444;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #0088ff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #ddd;
+      margin-top: 50px;
+      padding-top: 15px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .portfolio {
+      text-decoration: underline;
+      color: var(--color-title);
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links div {
+        margin-bottom: 20px;
+      }
+    }
+
+
+
+    /* End */
   </style>
 </head>
+
 <body>
   <!-- Navbar -->
   <nav class="navbar">
@@ -327,7 +419,7 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
         <a href="https://mohsenacademy.com">Home</a>
         <a href="https://mohsenacademy.com/Register">Register</a>
         <a href="https://mohsenacademy.com/Services">Services</a>
-        <a href="https://mohsenacademy.com/our-locations/shorouk-page">ِOur Locations</a>
+        <a href="https://mohsenacademy.com/our-locations">ِOur Locations</a>
         <a href="https://mohsenacademy.com/contact-us">Contact</a>
       </div>
     </div>
@@ -335,15 +427,17 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
 
   <!-- Hero -->
   <section class="hero">
-    <h1>أماكن  السباحة في الشروق | اكادمية محسن للسباحة</h1>
+    <h1>أماكن السباحة في الشروق | أكاديمية سباحة في الشروق</h1>
 
     <div class="hero-cards">
       <div class="location-card">
         <img src="https://mohsenacademy.com/icon.png" alt="نادي جرين هيلز">
         <div class="location-card-content">
           <h3>نادي جرين هيلز - الشروق</h3>
-          <p>المقر الرئيسي بجوار دار مصر. تعليم سباحة للأطفال والكبار. مسابح حديثة وآمنة، مع برامج تدريبية من الصفر وحتى المستوى المتقدم.</p>
-          <a href="https://mohsenacademy.com/our-locations/green-hills-shorouk" target="_blank">صفحه جرين هيلز</a>
+          <p><a class="location-link" href="https://maps.app.goo.gl/WFtwXYUeU5wA4Px76">الموقع</a> : طريق الشباب , مدينه
+            الشروق , بجانب دار مصر و مول تاون سنتر </p>
+          <a class="location-btn" href="https://mohsenacademy.com/our-locations/green-hills-shorouk"
+            target="_blank">صفحه جرين هيلز</a>
         </div>
       </div>
 
@@ -374,65 +468,65 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
 
   </section>
 
-    <footer class="ui-footer">
-      <div class="footer-container">
-        <div class="footer-about">
-          <h3 class="footer-logo">MOHSEN ACADEMY</h3>
-          <p class="footer-desc">
-            Professional swimming academy for all ages — kids, adults, and athletes.
-            Based in El Shorouk City with sessions in Badr and 10th of Ramadan.
-            Certified coaches from the Egyptian Federation for Diving & Lifesaving.
-          </p>
-          <div class="footer-socials">
-            <a class="link-soical" href="https://www.facebook.com/MohsenAcademyPage"> <img class="img-social"
-                loading="lazy" src="../facebook.webp" alt="MOHSEN ACADEMY - Home Page">
-            </a>
-            <a class="link-soical" href="https://www.instagram.com/mohsen_academy_/"> <img class="img-social"
-                loading="lazy" src="../insta.webp" alt="MOHSEN ACADEMY - Home Page">
-            </a>
-            <a class="link-soical" href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A"><img
-                loading="lazy" class="img-social" src="../vector.webp" alt="MOHSEN ACADEMY - Home Page">
-            </a>
-            <a class="link-soical" href="https://wa.me/message/X76VY37AZW2NK1"> <img class="img-social" loading="lazy"
-                src="../whatsapp.webp" alt="MOHSEN ACADEMY - Home Page">
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <div>
-            <h3>Quick Links</h3>
-            <a href="https://mohsenacademy.com/About">About Us</a>
-            <a href="#swim-classes">Our Programs</a>
-            <a href="https://mohsenacademy.com/Services">Schedule / Training Times</a>
-            <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
-            <a href="#https://wa.me/message/X76VY37AZW2NK1">Join Now / Register </a>
-          </div>
-
-          <div>
-            <h3>Follow Us</h3>
-            <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
-            <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
-            <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A">TikTok</a>
-            <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
-          </div>
-
-          <div>
-            <h3>Contact Info</h3>
-            <a href="#">📍 Locations: 10th of Ramadan, El Shorouk, Badr</a>
-            <a href="https://wa.me/message/X76VY37AZW2NK1">📞 Phone / WhatsApp: +20 01035700789</a>
-            <a href="#">Email: mohsenswimmingacdemy@gmail.com </a>
-            <a href="#">⏰ Working Hours: Sun-Thu | 12:00 AM – 9:00 PM </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. |
-          <a class="portfolio" href="https://mohsenacademy.com/policies-rules"> الشروط والأحكام</a>
+  <footer class="ui-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3 class="footer-logo">MOHSEN ACADEMY</h3>
+        <p class="footer-desc">
+          Professional swimming academy for all ages — kids, adults, and athletes.
+          Based in El Shorouk City with sessions in Badr and 10th of Ramadan.
+          Certified coaches from the Egyptian Federation for Diving & Lifesaving.
         </p>
+        <div class="footer-socials">
+          <a class="link-soical" href="https://www.facebook.com/MohsenAcademyPage"> <img class="img-social"
+              loading="lazy" src="../facebook.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://www.instagram.com/mohsen_academy_/"> <img class="img-social"
+              loading="lazy" src="../insta.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A"><img
+              loading="lazy" class="img-social" src="../vector.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://wa.me/message/X76VY37AZW2NK1"> <img class="img-social" loading="lazy"
+              src="../whatsapp.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+        </div>
       </div>
-    </footer>
+
+      <div class="footer-links">
+        <div>
+          <h3>Quick Links</h3>
+          <a href="https://mohsenacademy.com/About">About Us</a>
+          <a href="#swim-classes">Our Programs</a>
+          <a href="https://mohsenacademy.com/Services">Schedule / Training Times</a>
+          <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
+          <a href="#https://wa.me/message/X76VY37AZW2NK1">Join Now / Register </a>
+        </div>
+
+        <div>
+          <h3>Follow Us</h3>
+          <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
+          <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
+          <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A">TikTok</a>
+          <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
+        </div>
+
+        <div>
+          <h3>Contact Info</h3>
+          <a href="#">📍 Locations: 10th of Ramadan, El Shorouk, Badr</a>
+          <a href="https://wa.me/message/X76VY37AZW2NK1">📞 Phone / WhatsApp: +20 01035700789</a>
+          <a href="#">Email: mohsenswimmingacdemy@gmail.com </a>
+          <a href="#">⏰ Working Hours: Sun-Thu | 12:00 AM – 9:00 PM </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. |
+        <a class="portfolio" href="https://mohsenacademy.com/policies-rules"> الشروط والأحكام</a>
+      </p>
+    </div>
+  </footer>
   <script>
     function toggleNavbar() {
       const navbarLinks = document.getElementById("navbarLinks");
@@ -440,14 +534,14 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
       navbarLinks.classList.toggle("active");
       toggleIcon.textContent = navbarLinks.classList.contains("active") ? "✖" : "☰";
     }
-    document.addEventListener("click", function(e){
+    document.addEventListener("click", function (e) {
       const navbarLinks = document.getElementById("navbarLinks");
       const toggleIcon = document.getElementById("navbarToggle");
-      if(navbarLinks.classList.contains("active") &&
+      if (navbarLinks.classList.contains("active") &&
         !navbarLinks.contains(e.target) &&
-        !toggleIcon.contains(e.target)){
+        !toggleIcon.contains(e.target)) {
         navbarLinks.classList.remove("active");
-        toggleIcon.textContent="☰";
+        toggleIcon.textContent = "☰";
       }
     });
 
@@ -463,4 +557,5 @@ content="أكاديمية محسن للسباحة تقدم تدريب سباحة
     });
   </script>
 </body>
+
 </html>
