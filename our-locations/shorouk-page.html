@@ -336,6 +336,112 @@
       background-color: #004a99;
     }
 
+    /* Start table */
+    .pricing-table {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+      font-family: "Cairo", sans-serif;
+    }
+
+    .pricing-table h2 {
+      font-size: clamp(40px, 1.2vw + 1rem, 62px);
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding: 1rem;
+    }
+
+    .pricing-table .subtitle {
+      color: #666;
+      margin-bottom: 40px;
+      font-size: var(--fs-24);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: linear-gradient(135deg, #0a5ad8, #1e90ff);
+    }
+
+    thead th {
+      padding: 18px;
+      color: #fff;
+      font-size: var(--fs-24);
+      font-weight: 600;
+    }
+
+    tbody td {
+      padding: 18px;
+      font-size: var(--fs-16);
+      color: #333;
+    }
+
+    tbody tr {
+      transition: all 0.3s ease;
+    }
+
+    tbody tr:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:hover {
+      background-color: #f5f9ff;
+      transform: scale(1.01);
+    }
+
+    tbody td:last-child {
+      font-weight: 700;
+      color: var(--color-title);
+    }
+
+    tbody td:nth-child(3) {
+      font-weight: 600;
+      color: var(--color-p);
+    }
+
+    tbody td:nth-child(3)::before {
+      content: "👥 ";
+    }
+
+    tbody td:nth-child(3) {
+      font-weight: 600;
+    }
+
+    tbody td:nth-child(3) span {
+      background: #eef4ff;
+      color: #0a5ad8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    /* موبايل */
+    @media (max-width: 600px) {
+      .pricing-table h2 {
+        font-size: 26px;
+      }
+
+      thead th,
+      tbody td {
+        padding: 14px;
+        font-size: 14px;
+      }
+    }
+
+    /* End table */
     /* Whats App */
 
     .whatsapp-float {
@@ -1092,11 +1198,62 @@
         </div>
       </section>
       <!-- End Adults Program Section -->
+      <!-- Start tablr -->
+
+      <section class="pricing-table">
+        <h2>
+          أسعار تدريب السباحة في الشروق </h2>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>الفئة</th>
+                <th>عدد الحصص</th>
+                <th>عدد الأفراد بالكلاس</th>
+                <th>سعر التدريب</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>تدريب السباحه للأطفال</td>
+                <td>8 حصص شهريًا</td>
+                <td>3 أفراد</td>
+                <td>1250 جنيه</td>
+              </tr>
+              <tr>
+                <td>تدريب السباحه للأطفال</td>
+                <td>8 حصة شهريًا</td>
+                <td>5 أفراد</td>
+                <td>950 جنيه</td>
+              </tr>
+              <tr>
+                <td>تدريب السباحه للكبار</td>
+                <td>8 حصص شهريًا</td>
+                <td>5 أفراد</td>
+                <td>1250 جنيه</td>
+              </tr>
+              <tr>
+                <td>تدريب السباحه للكبار</td>
+                <td>8 حصة شهريًا</td>
+                <td>1 أفراد</td>
+                <td>2000 جنيه</td>
+              </tr>
+              <tr>
+                <td>تدريب خاص private</td>
+                <td>1 حصة شهريًا</td>
+                <td>1 أفراد</td>
+                <td>250 جنيه</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
 
 
+      <!-- End tablr -->
 
-      <!-- جدول الأسعار -->
 
 
       <!-- الأسئلة الشائعة -->
