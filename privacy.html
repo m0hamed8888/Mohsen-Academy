@@ -11,9 +11,11 @@
   <link href="./css-f-family.css" rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
-  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
-  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+ <link rel="icon" type="image/png" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="32x32"href="https://mohsenacademy.com/favicon-32x32.png">
+
   <link rel="manifest" href="site.webmanifest">
 
   <!-- SEO Meta -->
@@ -27,9 +29,11 @@
   <meta property="og:description" content="تعرف على سياسة الخصوصية في Mohsen Academy لحماية بياناتك الشخصية وكيفية استخدامها." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mohsenacademy.com/privacy" />
-  <meta property="og:image" content="https://mohsenacademy.com/icon.png" />
+  <meta property="og:image" content="https://mohsenacademy.com/favicon-32x32.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mohsen Academy">
+<meta property="og:locale" content="ar_EG">
 <link rel="canonical" href="https://mohsenacademy.com/privacy">
-
 
   <style>
     :root {
@@ -54,78 +58,23 @@
       padding: 0;
       line-height: 1.7;
     }
+    html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
 
     a {
       color: var(----color-title);
       text-decoration: underline;
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 75px;
-      background: #fff;
-      font-family: var(--font-primary);
-      position: relative;
-      z-index: 1000;
-      padding: 0 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: var(----color-title);
-    }
-
-    .navbar-links {
-      display: flex;
-      justify-content: right;
-      align-items: center;
-    }
-
-    .navbar-links a {
-      text-decoration: none;
-      color: #000;
-      font-weight: var(--fw-16-medium);
-      font-size: var(--fs-16);
-      padding: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .navbar-links a:hover {
-      border-bottom: 3px solid var(----color-title);
-    }
-
-    .navbar-toggle {
-      display: none;
-      font-size: 22px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      padding: 2rem;
-    }
-
-    .links {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-    }
-
-    /* Active Mobile Menu */
-    .navbar-links.active {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 75px;
-      right: 0;
-      background: #fff;
-      width: 70%;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
 
     /* Card Style */
     main {
@@ -141,6 +90,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 40px;
+      margin-top: 5rem;
     }
 
     h1 {
@@ -162,21 +112,91 @@
       font-size: 16px;
     }
 
-    footer {
-      background: var(--color-brand);
-      color: var(--color-footer-text);
-      text-align: center;
-      padding: 25px 15px;
-      font-size: 16px;
-    }
+   
+/* Navbar Start */
 
-    footer a {
-      color: var(--color-footer-text);
-      font-weight: 500;
-    }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed !important;
+  width: 100%;
+  padding: 10px 20px;        
+  height: 75px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+       top: 0;
+    border-bottom: 1px solid #ddd;
+}
 
-    @media (max-width: 768px) {
-        .navbar {
+
+.navbar-logo-header {
+  width: 250px;
+  height: 75px;
+  margin: 1rem 3rem 1rem 5rem;
+  padding: 1rem;
+}
+
+
+.navbar-links {
+  display: flex;
+  justify-content: right;
+  width: 58%;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: var(--fw-16-medium);
+  font-size: var(--fs-16);
+  padding: 1rem;
+
+}
+.links :first-child{
+    border-bottom: 3px solid #E6A200;
+
+}
+
+.navbar-links a:hover {
+  border-bottom: 3px solid #E6A200;
+  transition: border-bottom 0.3s ease;
+
+}
+
+.navbar-btn {
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar-btn:hover {
+  background: #333;
+}
+
+.navbar-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.links {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+}
+/* Navbar End */
+
+
+/* Responsive  Navbar Start*/
+@media (max-width: 768px) {
+  .navbar {
     position: fixed;
     width: 100%;
   }
@@ -199,37 +219,162 @@
 
   .navbar-toggle {
     display: block;
+    padding: 1rem;
   }
 
   .links {
     padding: 15px;
     flex-direction: column;
     background: #fff;
-      width: 85%;
+    width: 200px;
     padding: 15px;
   }
 
   .links a {
     padding: 15px;
   }
-    }
 
-    @media (max-width: 480px) {
-      .navbar-logo { font-size: 16px; }
-    }
+ 
+    .navbar-logo-header {
+    width: 200px;
+    padding: 1rem;
+    margin: 0.5rem ;
+  }
+
+
+}
+/* Responsive  Navbar End*/
+
+/* Start Footer*/
+
+
+.ui-footer {
+  background-color: var(--bg-footer);
+  padding: 60px 20px 20px;
+    border-top: 1px solid #ddd;
+      font-family: 'DM Sans', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-about {
+  flex: 1 1 250px;
+  min-width: 230px;
+}
+
+
+.footer-desc {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.footer-socials .img-social {
+  color: var(--color-brand);
+  height: 24px;
+  width: 24px;
+}
+
+
+.portfolio {
+    text-decoration: underline;
+    color: var(--color-title);
+}
+
+
+
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 40px;
+  flex: 3;
+  min-width: 250px;
+}
+
+.footer-links h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  display: block;
+  color: #444;
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #0088ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: 50px;
+  padding-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+.footer-bottom p {
+  padding: 0.1rem;
+}
+
+.portfolio {
+  text-decoration: underline;
+  color: var(--color-title);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links div {
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/* End  Footer*/
   </style>
 </head>
 <body>
-
- <!--  Navbar Start -->
-  <nav class="navbar container content">
-    <div class="navbar-logo">
-      MOHSEN ACADEMY</div>
+  <!--  Navbar Start -->
+  <nav class="navbar  content">
+    <a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="navbar-logo-header" src="./Logo-Header.webp" loading="lazy" alt="Logo Header"></a>
 
     <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
 
     <div class="navbar-links" id="navbarLinks">
-    <div class="links">
+      <div class="links">
         <a href="https://mohsenacademy.com">Home</a>
         <a href="https://mohsenacademy.com/Register">Register</a>
         <a href="https://mohsenacademy.com/Services">Services</a>
@@ -264,11 +409,70 @@
       <p>قد نقوم بتحديث هذه السياسة من وقت لآخر، وسيتم نشر النسخة الجديدة على هذا الرابط.</p>
     </div>
   </main>
+  <!-- Start Footer -->
+    <footer class="ui-footer">
+      <div class="footer-container">
+        <div class="footer-about">
+<a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="navbar-logo-header" src="./Logo-Header.webp" loading="lazy" alt="Logo Header"></a>          <p class="footer-desc">
+            Professional swimming academy for all ages — kids, adults, and athletes.
+            Based in El Shorouk City with sessions in Badr and 10th of Ramadan.
+            Certified coaches from the Egyptian Federation for Diving & Lifesaving.
+          </p>
+          <div class="footer-socials">
+            <a class="link-soical" href="https://www.facebook.com/MohsenAcademyPage"> <img class="img-social"
+                loading="lazy" src="./facebook.webp" alt="MOHSEN ACADEMY - Home Page">
+            </a>
+            <a class="link-soical" href="https://www.instagram.com/mohsen_academy_/"> <img class="img-social"
+                loading="lazy" src="./insta.webp" alt="MOHSEN ACADEMY - Home Page">
+            </a>
+            <a class="link-soical" href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A"><img
+                loading="lazy" class="img-social" src="./vector.webp" alt="MOHSEN ACADEMY - Home Page">
+            </a>
+           <a class="link-soical" href="https://wa.me/message/X76VY37AZW2NK1"> <img class="img-social" loading="lazy"
+                src="./whatsapp.webp" alt="MOHSEN ACADEMY - Home Page">
+            </a>
 
-  <footer>
-    &copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. | <a href="https://mohsenacademy.com/privacy">سياسة الخصوصية</a>
-  </footer>
+          </div>
+        </div>
 
+        <div class="footer-links">
+          <div>
+            <h3>Quick Links</h3>
+            <a href="https://mohsenacademy.com/About">About Us</a>
+            <a href="#swim-classes">Our Programs</a>
+            <a href="https://mohsenacademy.com/Services">Schedule / Training Times</a>
+            <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
+            <a href="#https://wa.me/message/X76VY37AZW2NK1">Join Now / Register </a>
+          </div>
+
+          <div>
+            <h3>Follow Us</h3>
+            <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
+            <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
+            <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A">TikTok</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
+          </div>
+
+          <div>
+            <h3>Contact Info</h3>
+            <a href="#">📍 Locations: 10th of Ramadan, El Shorouk, Badr</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">📞 Phone / WhatsApp: +20 01035700789</a>
+            <a href="#">Email: mohsenswimmingacdemy@gmail.com </a>
+            <a href="#">⏰ Working Hours: Sun-Thu | 12:00 AM – 9:00 PM </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <br>
+        <p>&copy; 2026 Mohsen Academy. جميع الحقوق محفوظة. |
+          <a class="portfolio" href="https://mohsenacademy.com/policies-rules"> الشروط والأحكام</a>
+        </p>
+        <br>
+      </div>
+    </footer>
+    <!-- End Footer -->
   <script>
     function toggleNavbar() {
       const navbarLinks = document.getElementById("navbarLinks");
@@ -298,5 +502,3 @@
 
 </body>
 </html>
-
-
