@@ -9,9 +9,11 @@
   <meta name="description"
     content="أكاديمية سباحة في الشروق داخل نادي جرين هيلز الشروق تقدم تدريب سباحة وتعليم السباحة للأطفال والكبار. حمامات سباحة مجهزة ومدربين محترفين، مع برامج تدريب سباحة في الشروق تناسب كل المستويات.">
 
-  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
-  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
-  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="icon" type="image/png" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://mohsenacademy.com/favicon-32x32.png">
+
   <link rel="manifest" href="../site.webmanifest">
 
 
@@ -25,7 +27,7 @@
   <meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
   <meta property="og:description"
     content="أكاديمية سباحة في الشروق داخل نادي جرين هيلز الشروق تقدم تدريب سباحة وتعليم السباحة للأطفال والكبار في حمامات سباحة مجهزة. انضم الآن لجلسات احترافية تناسب كل المستويات.">
-  <meta property="og:image" content="https://mohsenacademy.com/icon.png">
+  <meta property="og:image" content="https://mohsenacademy.com/favicon-32x32.png">
   <meta property="og:url" content="https://mohsenacademy.com/our-locations/shorouk-page">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mohsen Academy">
@@ -72,6 +74,24 @@
       padding: 30px 0;
     }
 
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-primary);
+    }
+
+
     h1,
     h2,
     h3 {
@@ -87,7 +107,7 @@
     .section {
       background: white;
       padding: 25px;
-      margin-bottom: 25px;
+      margin: 70px 0px;
       border-radius: 12px;
     }
 
@@ -496,20 +516,23 @@
     }
 
 
-    /* Start */
+
+    /* Start Footer*/
 
 
     .ui-footer {
       background-color: var(--bg-footer);
       padding: 60px 20px 20px;
+      border-top: 1px solid #ddd;
       font-family: 'DM Sans', sans-serif;
-      text-align: center;
     }
 
     .footer-container {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: row-reverse;
       justify-content: space-between;
+      text-align: center;
       max-width: 1200px;
       margin: 0 auto;
       gap: 40px;
@@ -520,12 +543,6 @@
       min-width: 230px;
     }
 
-    .footer-logo {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: var(--color-title);
-    }
 
     .footer-desc {
       color: #555;
@@ -547,7 +564,10 @@
     }
 
 
-
+    .portfolio {
+      text-decoration: underline;
+      color: var(--color-title);
+    }
 
 
 
@@ -555,7 +575,6 @@
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      flex-direction: row-reverse;
       justify-content: space-evenly;
       gap: 40px;
       flex: 3;
@@ -590,6 +609,10 @@
       font-size: 14px;
     }
 
+    .footer-bottom p {
+      padding: 0.1rem;
+    }
+
     .portfolio {
       text-decoration: underline;
       color: var(--color-title);
@@ -618,31 +641,33 @@
     /* End Kids Section */
 
 
+    /* End */
     /* Navbar */
     /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       flex-direction: row-reverse;
+      align-items: center;
+      position: fixed !important;
+      width: 100%;
+      padding: 10px 20px;
       height: 75px;
       background: #fff;
-      font-family: var(--font-primary);
+      font-family: Arial, sans-serif;
       position: relative;
       z-index: 1000;
-      padding: 0 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 18px;
-      margin-left: 3rem;
+    .navbar-logo-header {
+      width: 250px;
+      height: 75px;
+      margin: 1rem 3rem 1rem 5rem;
+      padding: 1rem;
     }
 
     .navbar-links {
+      width: 58%;
       display: flex;
       justify-content: right;
       align-items: center;
@@ -666,10 +691,11 @@
       font-size: 22px;
       cursor: pointer;
       transition: transform 0.3s ease;
-      padding: 2rem;
+      padding: 1rem;
     }
 
     .links {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       flex-direction: row-reverse;
@@ -687,6 +713,12 @@
       width: 70%;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
+
+    .links #page {
+      border-bottom: 3px solid #E6A200;
+
+    }
+
 
 
 
@@ -730,6 +762,12 @@
       .links a {
         padding: 15px;
       }
+
+      .navbar-logo-header {
+        max-width: 200px;
+        padding: 1rem;
+        margin: 0.5rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -737,14 +775,21 @@
         font-size: 16px;
       }
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .program-content {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!--  Navbar Start -->
-  <nav class="navbar">
-    <div class="navbar-logo">
-      MOHSEN ACADEMY</div>
+  <nav class="navbar  content">
+    <a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="navbar-logo-header" src="../Logo-Header.webp" loading="lazy" alt="Logo Header"></a>
 
     <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
 
@@ -753,11 +798,12 @@
         <a href="https://mohsenacademy.com">Home</a>
         <a href="https://mohsenacademy.com/Register">Register</a>
         <a href="https://mohsenacademy.com/Services">Services</a>
-        <a href="https://mohsenacademy.com/our-locations">ِOur Locations</a>
-        <a href="https://mohsenacademy.com/contact-us">Contact</a>
+        <a href="https://mohsenacademy.com/About">About</a>
+        <a id="page" href="https://mohsenacademy.com/our-locations">Our-location</a>
       </div>
     </div>
   </nav>
+  <!--  Navbar End -->
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float">
     <img loading="lazy" src="../whatsapp.webp" alt="WhatsApp" />
@@ -1364,10 +1410,12 @@
       </div>
     </section>
 
+    <!-- Start Footer -->
     <footer class="ui-footer">
       <div class="footer-container">
         <div class="footer-about">
-          <h3 class="footer-logo">MOHSEN ACADEMY</h3>
+          <a href="https://mohsenacademy.com" class="navbar-logo">
+            <img class="navbar-logo-header" src="../Logo-Header.webp" loading="lazy" alt="Logo Header"></a>
           <p class="footer-desc">
             Professional swimming academy for all ages — kids, adults, and athletes.
             Based in El Shorouk City with sessions in Badr and 10th of Ramadan.
@@ -1386,6 +1434,7 @@
             <a class="link-soical" href="https://wa.me/message/X76VY37AZW2NK1"> <img class="img-social" loading="lazy"
                 src="../whatsapp.webp" alt="MOHSEN ACADEMY - Home Page">
             </a>
+
           </div>
         </div>
 
@@ -1418,11 +1467,15 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 Mohsen Academy. جميع الحقوق محفوظة. |
+        <br>
+        <p>&copy; 2026 Mohsen Academy. جميع الحقوق محفوظة. |
           <a class="portfolio" href="https://mohsenacademy.com/policies-rules"> الشروط والأحكام</a>
         </p>
+        <br>
       </div>
+
     </footer>
+    <!-- End Footer -->
     <script>
       function toggleNavbar() {
         const navbarLinks = document.getElementById("navbarLinks");
