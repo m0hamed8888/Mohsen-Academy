@@ -7,9 +7,12 @@
   <title>من نحن — Mohsen Academy</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://mohsenacademy.com/icon.png">
-  <link rel="apple-touch-icon" href="https://mohsenacademy.com/icon.png">
-  <link rel="shortcut icon" href="https://mohsenacademy.com/icon.png">
+  <link rel="icon" type="image/png" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="shortcut icon" href="https://mohsenacademy.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://mohsenacademy.com/favicon-32x32.png">
+
+
   <link rel="manifest" href="site.webmanifest">
 
   <!-- SEO Meta -->
@@ -19,26 +22,45 @@
     content="تعليم سباحه, تدريب سباحه, تمرين سباحه, اكاديميه سباحه, تمرين سباحه للكبار, تمرين سباحه للاطفال, اماكن سباحه, تمرين فرق, تمرين تجهزي">
   <meta name="author" content="Mohsen">
   <meta name="robots" content="index, follow">
- <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
-<meta property="og:description" content="تعلم السباحة بأفضل الطرق الآمنة والممتعة في الشروق والقاهرة. انضم الآن لجلساتنا الجماعية أو الخاصة.">
-<meta property="og:image" content="https://mohsenacademy.com/icon.png">
-<meta property="og:url" content="https://mohsenacademy.com/About">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Mohsen Academy">
-<meta property="og:locale" content="ar_EG">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Mohsen Academy - أكاديمية محسن للسباحة">
+  <meta property="og:description"
+    content="تعلم السباحة بأفضل الطرق الآمنة والممتعة في الشروق والقاهرة. انضم الآن لجلساتنا الجماعية أو الخاصة.">
+  <meta property="og:image" content="https://mohsenacademy.com/favicon-32x32.png">
+  <meta property="og:url" content="https://mohsenacademy.com/About">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mohsen Academy">
+  <meta property="og:locale" content="ar_EG">
   <link rel="canonical" href="https://mohsenacademy.com/About">
 
   <style>
     /* ---------- Root & Reset ---------- */
+
     :root {
-      --max-width: 1100px;
-      --color-brand: #f5b400;
-      --color-title: #0077ff;
-      --text: #f3f6f9;
-      --card-bg: rgba(0, 0, 0, 0.45);
-      --radius: 14px;
-      --ff-sans: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      --font-primary: "DM Sans", sans-serif;
+
+      --fw-24-semibold: 600;
+
+      --fw-16-medium: 500;
+      --fw-16-semibold: 600;
+
+      --fs-24: clamp(16px, 1vw + 1rem, 24px);
+      --fs-16: clamp(18px, 1vw + 0.8rem, 18px);
+      --fs-32: clamp(24px, 1vw + 1rem, 32px);
+      --fs-72: clamp(64px, 1vw + 1rem, 72px);
+
+
+      --fw-32: 32px;
+      --fs-1: 1rem;
+
+      --color-h1: #FFFFFF;
+      --color-title: #0066CC;
+      --color-p: #333333;
+      --color-brand: #E6A200;
+
+      --bg-content: #f6f7f8;
+      --bg-card: #ffffff;
+      --bg-footer: #f9f9fb;
     }
 
     * {
@@ -47,6 +69,16 @@
       padding: 0
     }
 
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+    }
+
+
     html,
     body {
       height: 100%
@@ -54,7 +86,8 @@
 
     body {
       font-family: var(--ff-sans);
-      color: var(--text);
+      color: white;
+      margin: 0;
       line-height: 1.6;
       background: #031926;
     }
@@ -64,121 +97,6 @@
       outline-offset: 3px
     }
 
-    /* ---------- Navbar ---------- */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 75px;
-      background: #fff;
-      font-family: var(--ff-sans);
-      position: relative;
-      z-index: 1000;
-      padding: 0 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-logo {
-        color: var(--color-title);
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .navbar-links {
-        width: 50%;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-
-    .navbar-links a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .navbar-links a:hover {
-      border-bottom: 3px solid var(--color-brand);
-    }
-
-    .navbar-toggle {
-      display: none;
-      font-size: 22px;
-      cursor: pointer;
-      padding: 1rem;
-      color: #000;
-    }
-
-    .links {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-    }
-
-    .navbar-links.active {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 75px;
-      right: 0;
-      background: #fff;
-      width: 70%;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 768px) {
-      .navbar {
-        position: fixed;
-        width: 100%;
-      }
-
-      .navbar-links {
-        display: none;
-        flex-direction: column;
-        justify-content: start;
-        background: #fff;
-        position: absolute;
-        top: 75px;
-        right: 0;
-        width: 70%;
-        height: 100vh;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .navbar-links.active {
-        display: flex;
-      }
-
-      .navbar-toggle {
-        display: block;
-      }
-
-      .links {
-        flex-direction: column;
-        width: 85%;
-        padding: 15px;
-        background: #fff;
-      }
-
-      .links a {
-        padding: 15px;
-      }
-    }
-    
-    h1{
-      color: var(--color-title);
-    }
-
-    @media (max-width: 480px) {
-      .navbar-logo {
-        font-size: 16px;
-      }
-    }
 
     /* ---------- Hero ---------- */
     .hero {
@@ -204,56 +122,59 @@
 
     .container {
       width: 100%;
-      max-width: var(--max-width);
+      max-width: 1100px;
       position: relative;
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr 420px;
       gap: 40px;
       align-items: start;
+      margin-top: 4rem;
     }
 
     /* ---------- Card ---------- */
     .card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
-      border-radius: var(--radius);
+      border-radius: 14px;
       padding: 34px;
       backdrop-filter: blur(6px) saturate(110%);
       box-shadow: 0 8px 30px rgba(2, 10, 20, 0.6);
     }
 
     .eyebrow {
-      font-size: 13px;
+      font-size: var(--fs-16);
       opacity: 0.9;
       margin-bottom: 8px;
       color: var(--color-brand);
     }
 
     h1 {
-      font-size: 28px;
+      font-size: var(--fs-72);
       margin-bottom: 10px
     }
 
     .lead {
       color: rgba(255, 255, 255, 0.95);
       font-weight: 600;
-      margin-bottom: 14px
+      margin-bottom: 14px;
+      font-size: var(--fs-24);
     }
 
     .section p {
-      margin-bottom: 14px
+      margin-bottom: var(--fs-16)
     }
 
     /* ---------- Aside ---------- */
     .aside {
-      background: var(--card-bg);
+      background: rgba(0, 0, 0, 0.45);
       padding: 22px;
       border-radius: 12px;
       min-height: 220px;
     }
 
     .aside h3 {
-      margin-bottom: 12px
+      margin-bottom: 12px;
+      font-size: var(--fs-32);
     }
 
     .fact {
@@ -275,7 +196,7 @@
     }
 
     .fact p {
-      font-size: 14px;
+      font-size: var(--fs-16);
       color: var(--text);
     }
 
@@ -287,7 +208,7 @@
     }
 
     .loc {
-      font-size: 14px;
+      font-size: var(--fs-16);
       opacity: 0.95
     }
 
@@ -341,57 +262,283 @@
       }
     }
 
-    /* Clubs Section */
-    .clubs {
-      max-width: var(--max-width);
-      margin: 50px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
+    /* Navbar Start */
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed !important;
+      width: 100%;
+      padding: 10px 20px;
+      height: 75px;
+      background: rgba(0, 0, 0, 0.45);
+      font-family: Arial, sans-serif;
+      position: relative;
+      z-index: 1000;
     }
 
-    .club-card {
-      background: var(--card-bg);
-      padding: 22px;
-      border-radius: 14px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+
+    .navbar-logo-header {
+      width: 250px;
+      height: 75px;
+      margin: 1rem 3rem 1rem 5rem;
+      padding: 1rem;
     }
 
-    .club-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 163, 217, 0.45);
+
+    .navbar-links {
+      display: flex;
+      justify-content: right;
+      width: 58%;
     }
 
-    .club-card a {
-      color: var(--text);
+    .navbar-links a {
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      margin-top: 12px;
-      display: block;
+      color: white;
+      font-weight: var(--fw-16-medium);
+      font-size: var(--fs-16);
+      padding: 1rem;
+
     }
+
+    .links #page {
+      border-bottom: 3px solid #E6A200;
+
+    }
+
+    .navbar-links a:hover {
+      border-bottom: 3px solid #E6A200;
+      transition: border-bottom 0.3s ease;
+
+    }
+
+    .navbar-btn {
+      background: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .navbar-btn:hover {
+      background: #333;
+    }
+
+    .navbar-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .links {
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+      padding: 1rem;
+    }
+
+    /* Navbar End */
+
+
+    /* Responsive  Navbar Start*/
+    @media (max-width: 768px) {
+      .navbar {
+        position: fixed;
+        width: 100%;
+      }
+
+      .navbar-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        width: 70%;
+        height: 100vh;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-links.active {
+        display: flex;
+      }
+
+      .navbar-toggle {
+        display: block;
+        padding: 1rem;
+      }
+
+      .links {
+        padding: 15px;
+        flex-direction: column;
+        background: #fff;
+        width: 200px;
+        padding: 15px;
+      }
+
+      .links a {
+        padding: 15px;
+        color: black;
+      }
+
+
+      .navbar-logo-header {
+        width: 200px;
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+
+
+    }
+
+    /* Responsive  Navbar End*/
+
+    /* Start Footer*/
+
+
+    .ui-footer {
+      background-color: rgba(0, 0, 0, 0.45);
+      padding: 60px 20px 20px;
+      border-top: 1px solid #ddd;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+    }
+
+    .footer-about {
+      flex: 1 1 250px;
+      min-width: 230px;
+    }
+
+
+    .footer-desc {
+      color: white;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 30px;
+    }
+
+    .footer-socials .img-social {
+      color: var(--color-brand);
+      height: 24px;
+      width: 24px;
+    }
+
+
+    .portfolio {
+      text-decoration: underline;
+      color: var(--color-title);
+    }
+
+
+
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 40px;
+      flex: 3;
+      min-width: 250px;
+    }
+
+    .footer-links h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--color-brand);
+    }
+
+    .footer-links a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #0088ff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #ddd;
+      margin-top: 50px;
+      padding-top: 15px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .footer-bottom p {
+      padding: 0.1rem;
+    }
+
+    .portfolio {
+      text-decoration: underline;
+      color: var(--color-title);
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-links div {
+        margin-bottom: 20px;
+      }
+    }
+
+
+
+    /* End  Footer*/
   </style>
 </head>
 
 <body>
-  <!-- Navbar Start -->
-  <nav class="navbar">
-    <div class="navbar-logo">MOHSEN ACADEMY</div>
+  <!--  Navbar Start -->
+  <nav class="navbar  content">
+    <a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="navbar-logo-header" src="./Logo-Header.webp" loading="lazy" alt="Logo Header"></a>
+
     <div class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()">☰</div>
+
     <div class="navbar-links" id="navbarLinks">
       <div class="links">
         <a href="https://mohsenacademy.com">Home</a>
         <a href="https://mohsenacademy.com/Register">Register</a>
         <a href="https://mohsenacademy.com/Services">Services</a>
-        <a href="https://mohsenacademy.com/About">About</a>
+        <a id="page" href="https://mohsenacademy.com/About">About</a>
         <a href="https://mohsenacademy.com/contact-us">Contact</a>
       </div>
     </div>
   </nav>
-  <!-- Navbar End -->
-
+  <!--  Navbar End -->
   <!-- Main Content Start -->
   <main class="hero" role="main" aria-labelledby="about-title">
     <div class="container">
@@ -421,7 +568,8 @@
             وثقة من خلال تدريب سوابق عملي، آمن، ومسلي.</p>
         </section>
 
-        <div style="margin-top:18px;color:rgba(255,255,255,0.9);font-size:14px">لكل استفسار أو تجربة مجانية تواصل معنا عبر صفحة
+        <div style="margin-top:18px;color:rgba(255,255,255,0.9);font-size:15px">لكل استفسار أو تجربة مجانية تواصل معنا
+          عبر صفحة
           الاتصال. تدريب يبدأ من مستوى المبتدئ حتى التأهيل للمنافسات.</div>
       </article>
 
@@ -463,25 +611,71 @@
     </div>
   </main>
 
-  <!-- Clubs Section -->
-  <section class="clubs">
-    <div class="club-card">
-      <div>🏊 نادي جرين هيلز</div>
-      <a href="https://maps.app.goo.gl/bjWkJvUXgLheSvjs5" target="_blank">فتح على Google Maps</a>
+  <!-- Start Footer -->
+  <footer class="ui-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <a href="https://mohsenacademy.com" class="navbar-logo">
+          <img class="navbar-logo-header" src="./Logo-Header.webp" loading="lazy" alt="Logo Header"></a>
+        <p class="footer-desc">
+          Professional swimming academy for all ages — kids, adults, and athletes.
+          Based in El Shorouk City with sessions in Badr and 10th of Ramadan.
+          Certified coaches from the Egyptian Federation for Diving & Lifesaving.
+        </p>
+        <div class="footer-socials">
+          <a class="link-soical" href="https://www.facebook.com/MohsenAcademyPage"> <img class="img-social"
+              loading="lazy" src="./facebook.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://www.instagram.com/mohsen_academy_/"> <img class="img-social"
+              loading="lazy" src="./insta.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A"><img
+              loading="lazy" class="img-social" src="./vector.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+          <a class="link-soical" href="https://wa.me/message/X76VY37AZW2NK1"> <img class="img-social" loading="lazy"
+              src="./whatsapp.webp" alt="MOHSEN ACADEMY - Home Page">
+          </a>
+
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Quick Links</h3>
+          <a href="https://mohsenacademy.com/About">About Us</a>
+          <a href="#swim-classes">Our Programs</a>
+          <a href="https://mohsenacademy.com/Services">Schedule / Training Times</a>
+          <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
+          <a href="#https://wa.me/message/X76VY37AZW2NK1">Join Now / Register </a>
+        </div>
+
+        <div>
+          <h3>Follow Us</h3>
+          <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
+          <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
+          <a href="https://www.tiktok.com/@mohsen_academy_?_r=1&_t=ZS-91hcwkLvU1A">TikTok</a>
+          <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
+        </div>
+
+        <div>
+          <h3>Contact Info</h3>
+          <a href="#">📍 Locations: 10th of Ramadan, El Shorouk, Badr</a>
+          <a href="https://wa.me/message/X76VY37AZW2NK1">📞 Phone / WhatsApp: +20 01035700789</a>
+          <a href="#">Email: mohsenswimmingacdemy@gmail.com </a>
+          <a href="#">⏰ Working Hours: Sun-Thu | 12:00 AM – 9:00 PM </a>
+        </div>
+      </div>
     </div>
-    <div class="club-card">
-      <div>🏊 نادي الصفوة</div>
-      <a href="https://maps.app.goo.gl/NXXZ4WY5xR9c1cR58" target="_blank">فتح على Google Maps</a>
+
+    <div class="footer-bottom">
+      <br>
+      <p>&copy; 2026 Mohsen Academy. جميع الحقوق محفوظة. |
+        <a class="portfolio" href="https://mohsenacademy.com/policies-rules"> الشروط والأحكام</a>
+      </p>
+      <br>
     </div>
-    <div class="club-card">
-      <div>🏊 نادي العشره</div>
-      <a href="https://maps.app.goo.gl/EAUvBs3pizxmxkfJ6" target="_blank">فتح على Google Maps</a>
-    </div>
-    <div class="club-card">
-      <div>🏊 اكادميه بالميرا</div>
-      <a href="https://maps.app.goo.gl/gPUrpdyDTswMrnhx7" target="_blank">فتح على Google Maps</a>
-    </div>
-  </section>
+  </footer>
+  <!-- End Footer -->
 
   <script>
     // Navbar toggle
@@ -531,5 +725,5 @@
   </script>
 
 </body>
-</html>
 
+</html>
