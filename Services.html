@@ -180,14 +180,13 @@
                 margin: 3px;
             }
         }
-
-        /* Search */
+            /* Search */
         .search-row {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
             align-items: center;
-            margin-bottom: 18px;
+            margin-bottom: 5rem;
         }
 
         .search-row input {
@@ -203,7 +202,8 @@
             background: var(--color-brand);
             color: var(--text);
             border: none;
-            padding: 11px 16px;
+            padding: 15px 25px;
+            margin-left: 15px;
             border-radius: 10px;
             cursor: pointer;
         }
@@ -213,54 +213,122 @@
             color: #666;
         }
 
-        /* Member table */
-        #memberPanel {
-            display: none;
-            margin-top: 20px;
-            background: var(--card);
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-            scroll-behavior: smooth;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-        }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            margin-bottom: 12px;
-        }
+ /* ======= Modern Luxury Modal Styles ======= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    backdrop-filter: blur(10px) brightness(0.8);
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 20px;
+}
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            font-size: 14px;
-        }
+.modal-content {
+    background: linear-gradient(145deg, #ffffff, #e0f0ff);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 850px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 2px solid #0077ff;
+    animation: modalFadeIn 0.4s ease;
+    font-family: 'DM Sans', sans-serif;
+}
 
-        th {
-            background-color: var(--color-brand);
-            color: #fff;
-        }
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity:1; transform: scale(1);}
+}
 
-        td ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-        }
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: #f5b400;
+    color: #fff;
+    border: none;
+    font-size: 28px;
+    border-radius: 50%;
+    width: 42px; height: 42px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.modal-close:hover { background: #5f4601; transform: scale(1.1); }
 
-        td ul li {
-            background: #f0f0f0;
-            padding: 4px 6px;
-            border-radius: 6px;
-            min-width: 70px;
-        }
+/* Modal content */
+.modal-content h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #0077ff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.modal-content table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content th, .modal-content td {
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.modal-content th {
+    background: #f5b400;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.modal-content td {
+    background: #f0f8ff;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Days list */
+.modal-content ol {
+    /* list-style: none; */
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 33px;
+    justify-content: center;
+}
+
+.modal-content ol li {
+    background: linear-gradient(135deg, #f5b400, #d1a100);
+    color: var(--text) ;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+.modal-content ol li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+@media(max-width: 600px){
+    .modal-content { padding: 20px; }
+    .modal-content table th, .modal-content table td { font-size: 14px; padding: 8px; }
+    .modal-content h3 { font-size: 1.5rem; }
+}
 
         .hero-btn {
             display: inline-block;
@@ -286,12 +354,14 @@
         .levels h2 {
             color: var(--color-title);
             margin-bottom: 16px;
+            padding: 2rem 0 ;
         }
 
         .levels-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
+            margin-bottom: 10rem;
         }
 
         .level-card {
@@ -315,8 +385,8 @@
 
         /* Complaint form */
         .complaint {
-            margin: 40px auto;
-            background: linear-gradient(180deg, #fff, #fbfbff);
+            margin: 5rem auto;
+            background: var(--card);
             padding: 18px;
             max-width: var(--maxw);
             border-radius: 12px;
@@ -380,6 +450,7 @@
             padding: 28px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             box-sizing: border-box;
+            margin-bottom: 10rem;
         }
 
         /* Header */
@@ -388,6 +459,7 @@
             margin: 0 0 10px 0;
             color: var(--color-title);
             font-weight: var(--fw-600);
+            padding: 1rem;
         }
 
         .ma-services__intro {
@@ -865,16 +937,23 @@
 
     <main>
         <!-- Search -->
-        <section id="search">
-            <div class="search-row">
-                <input id="searchInput" type="search" placeholder="ادخل رقم المشترك ثم اضغط بحث">
-                <button id="searchBtn">بحث</button>
-                <div class="info">البحث يكون برقم المشترك فقط.</div>
-            </div>
+      <!-- HTML Body Part: search panel + modal -->
+<section id="search">
+    <div class="search-row">
+        <input id="searchInput" type="search" placeholder="ادخل رقم المشترك ثم اضغط بحث">
+        <button id="searchBtn">بحث</button>
+        <div class="info">البحث يكون برقم المشترك فقط.</div>
+    </div>
+</section>
 
-            <!-- Member Panel -->
-            <div id="memberPanel"></div>
-        </section>
+<!-- Modal Overlay -->
+<div id="memberModal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
 
         <!-- Levels -->
         <section id="levels" class="levels">
