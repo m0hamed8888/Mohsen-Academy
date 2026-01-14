@@ -1,96 +1,65 @@
-     const members = [
-   {
-  id: 1010,
-  name: '  ',
-  age: 7,
-  level: 4,
-  times: ['5:00-5:55'],
-  days: [
-    'الأحد 2026/01/04',
-    'الثلاثاء 2026/01/06',
-    'الأحد 2026/01/11',
-    'الثلاثاء 2026/01/13',
-    'الأحد 2026/01/18',
-    'الثلاثاء 2026/01/20',
-    'الأحد 2026/01/25',
-    'الثلاثاء 2026/01/27'
-  ],
-  end:  'الثلاثاء 2026/01/27'
-},
- {
-  id: 1020,
-  name: ' يحيي محمد سعيد',
-  age: 6,
-  level: 4,
-  times: ['4:00-4:55'],
-  days: [
-    'الأحد 2026/01/04*',
-    '*الثلاثاء 2026/01/06',
-    'الأحد 2026/01/11',
-    '*الثلاثاء 2026/01/13',
-    'الأحد 2026/01/18',
-    'الثلاثاء 2026/01/20',
-    'الأحد 2026/01/25',
-    'الثلاثاء 2026/01/27',
-    'الخميس 2026/01/29 اليوم التعويضي*'
-  ],
-  end:  'الثلاثاء 2026/01/27'
-},
-{
-  id: 1030,
-name:' زين خالد ابراهيم',
-  age: 6,
-  level: '3+',
-  times: ['4:00-4:55'],
-  days: [
-    'الأحد 2026/01/04',
-    'الثلاثاء 2026/01/06',
-    'الأحد 2026/01/11',
-    'الثلاثاء 2026/01/13*',
-    'الأحد 2026/01/18',
-    'الثلاثاء 2026/01/20',
-    'الأحد 2026/01/25',
-    'الثلاثاء 2026/01/27'
-  ],
-  end:  'الثلاثاء 2026/01/27'
-},
-{
-  id: 1040,
-name:' مالك محمد احمد',
-  age: 6,
-  level: '+4',
-  times: ['6:00-6:55'],
-  days: [
-    'الأحد 2026/01/04*',
-    'الثلاثاء 2026/01/06',
-    'الأحد 2026/01/11',
-    '*الثلاثاء 2026/01/13',
-    'الأحد 2026/01/18',
-    'الثلاثاء 2026/01/20',
-    'الأحد 2026/01/25',
-    'الثلاثاء 2026/01/27'
-  ],
-  end:  'الثلاثاء 2026/01/27'
-},
-    { id: 102, name: 'سارة محمد', age: 12, level: 2, times: ['10:00-11:00'], days: ['السبت* 12/7/2025', 'الأحد 13/7/2025', 'الثلاثاء 15/7/2025', 'الخميس 17/7/2025', 'السبت 19/7/2025', 'الإثنين 21/7/2025', 'الأربعاء 23/7/2025', 'الجمعة 25/7/2025'], end: '2026-01-10' },
-    { id: 103, name: 'محمود علي', age: 28, level: 5, times: ['19:00-20:00'], days: ['الأحد* 13/7/2025', 'الإثنين 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025'], end: '2025-09-30' },
-    { id: 104, name: 'هالة سمير', age: 6, level: 0, times: ['09:00-09:45'], days: ['الإثنين* 14/7/2025', 'الثلاثاء 15/7/2025', 'الأربعاء 16/7/2025', 'الخميس 17/7/2025', 'الجمعة 18/7/2025', 'السبت 19/7/2025', 'الأحد 20/7/2025', 'الإثنين 21/7/2025'], end: '2025-11-15' }
+const members = [
+  { id: 1010, name: '  ', age: 7, level: 4, times: ['5:00-5:55'], end: 'الثلاثاء 2026/01/27' },
+  { id: 1020, name: ' يحيي محمد سعيد', age: 6, level: 4, times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
+  { id: 1030, name: ' زين خالد ابراهيم', age: 6, level: '3+', times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
+  { id: 1040, name: ' مالك محمد احمد', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' },
+  { id: 2040, name: ' مالك محمد احمد', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' }
 ];
 
-        const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const memberPanel = document.getElementById('memberPanel');
+// دالة لتوليد الأيام حسب أيام محددة وعدد أسابيع
+function generateMonthDays(startDate, daysOfWeek, weeksCount = 4) {
+  const dayNames = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+  const result = [];
+  const start = new Date(startDate);
 
-    function renderMemberTable(m) {
-    const daysHTML = m.days.map(d => {
-        if (d.includes('*')) { // أي يوم فيه علامة * يتحول للون الأحمر
-            return `<li style="color:red;font-weight:600;">${d.replace('*','')}</li>`; // نشيل العلامة عند العرض
-        } else {
-            return `<li>${d}</li>`;
-        }
+  for (let week = 0; week < weeksCount; week++) {
+    for (let d of daysOfWeek) {
+      const dayIndex = dayNames.indexOf(d);
+      if(dayIndex === -1) continue;
+
+      const date = new Date(start);
+      const currentDay = date.getDay(); // 0=الأحد ... 6=السبت
+      let diff = dayIndex - currentDay;
+      if(diff < 0) diff += 7;
+      date.setDate(date.getDate() + diff + week * 7);
+
+      const dayStr = `${d} ${date.getFullYear()}/${(date.getMonth()+1).toString().padStart(2,'0')}/${date.getDate().toString().padStart(2,'0')}`;
+      result.push(dayStr);
+    }
+  }
+  return result;
+}
+
+// توليد الأيام لكل عضو حسب أول رقمين من الـ id
+members.forEach(m => {
+  const idStart = String(m.id).substring(0,2);
+  let daysOfWeek = [];
+
+  if (idStart === "10") {
+    daysOfWeek = ["الأحد", "الثلاثاء",];
+  } else if (idStart === "20") {
+    daysOfWeek = ["الإثنين", "الأربعاء"];
+  } else {
+    daysOfWeek = ["الأحد", "الثلاثاء"]; // افتراضي
+  }
+
+  m.days = generateMonthDays("2026-01-01", daysOfWeek, 4).map(d => ({ date: d, isAbsent: false }));
+});
+// OLDServices.js -> updated JS
+
+// ======= Modern Modal JS =======
+const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
+const memberModal = document.getElementById('memberModal');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+function renderMemberModal(m) {
+    const daysHTML = m.days.map(d=>{
+        return `<li style="color:${d.isAbsent?'red':'#333'}">${d.date}</li>`;
     }).join('');
 
-    memberPanel.innerHTML = `
+    modalBody.innerHTML = `
         <h3>بيانات المشترك</h3>
         <table>
           <tr>
@@ -112,36 +81,104 @@ name:' مالك محمد احمد',
             <td>${m.end}</td>
           </tr>
         </table>
-        <h4>أيام التدريب</h4>
+        <h4 style="text-align:center; margin-bottom:10px;">أيام التدريب</h4>
         <ol>${daysHTML}</ol>
     `;
-    memberPanel.style.display = 'block';
+    memberModal.style.display = 'flex';
 }
 
+// اغلاق المودال
+modalClose.addEventListener('click', ()=>memberModal.style.display='none');
+memberModal.addEventListener('click', e=>{ if(e.target===memberModal) memberModal.style.display='none'; });
+
+// البحث
 function searchMember() {
     const q = searchInput.value.trim();
-
-    // التحقق من أن الإدخال رقم
-    if (!q || isNaN(q)) {
-        memberPanel.innerHTML = '<p style="color:red;font-weight:600;">الرجاء إدخال رقم!</p>';
-        memberPanel.style.display = 'block';
+    if(!q || isNaN(q)){
+        modalBody.innerHTML = '<p style="color:red; text-align:center; font-weight:700;">الرجاء إدخال رقم!</p>';
+        memberModal.style.display='flex';
         searchInput.focus();
         return;
     }
-
-    // البحث برقم المشترك فقط
-    const found = members.find(m => String(m.id) === q);
-
-    if (found) {
-        renderMemberTable(found);
-    } else {
-        memberPanel.innerHTML = '<p style="color:red;font-weight:600;">لا يوجد مشترك مطابق.</p>';
-        memberPanel.style.display = 'block';
+    const found = members.find(m=>String(m.id)===q);
+    if(found) renderMemberModal(found);
+    else {
+        modalBody.innerHTML = '<p style="color:red; text-align:center; font-weight:700;">لا يوجد مشترك مطابق.</p>';
+        memberModal.style.display='flex';
     }
 }
 
-        searchBtn.addEventListener('click', searchMember);
-        searchInput.addEventListener('keyup', e => { if (e.key === 'Enter') searchMember(); });
+searchBtn.addEventListener('click', searchMember);
+searchInput.addEventListener('keyup', e=>{ if(e.key==='Enter') searchMember(); });
+// مثال لتعديل الغياب:
+// العضو 1010 غائب يوم "الأحد 2026/01/03"
+const member = members.find(m => m.id === 1010);
+const day = member.days.find(d => d.date === "الأحد 2026/01/03");
+if(day) day.isAbsent = true;
+
+// 1️⃣ تعديل حالة الغياب
+function setAbsent(memberId, dateStr, absent = true) {
+  const member = members.find(m => m.id === memberId);
+  if(!member) return false;
+
+  const day = member.days.find(d => d.date === dateStr);
+  if(!day) return false;
+
+  day.isAbsent = absent; // true → غائب، false → حاضر
+  return true;
+}
+
+//      تسجيل الغياب **********************************************************************************
+// setAbsent(1080, "الثلاثاء 2026/01/06", true);
+setAbsent(1010, "الأحد 2026/01/04", true);
+
+setAbsent(1010, "الأحد 2026/01/25", true);
+
+
+setAbsent(1020, "الأحد2026/01/04", true);
+setAbsent(1020, "الثلاثاء 2026/01/06", true);
+setAbsent(1020, "الثلاثاء 2026/01/13", true);
+
+setAbsent(1030, "الثلاثاء 2026/01/13", true);
+
+setAbsent(1040, "الثلاثاء 2026/01/13", true);
+setAbsent(1040, "الأحد 2026/01/04", true);
+
+// إضافة يوم جديد مع الحفاظ على الترتيب الزمني
+function addDaySorted(memberId, dayName, dateStr, absent = false) {
+  const member = members.find(m => m.id === memberId);
+  if (!member) return false;
+
+  // نحول التاريخ لصيغة JS Date للمقارنة
+  const newDate = new Date(dateStr);
+
+  // نضيف اليوم الجديد
+  member.days.push({
+    date: `${dayName} ${dateStr}`,
+    isAbsent: absent
+  });
+
+  // نرتب المصفوفة حسب التاريخ
+  member.days.sort((a, b) => {
+    const aDate = new Date(a.date.split(' ')[1]); // ناخد التاريخ فقط
+    const bDate = new Date(b.date.split(' ')[1]);
+    return aDate - bDate;
+  });
+
+  return true;
+}
+
+// إضافة يوم   ******************************************************************************** 
+// addDaySorted(2040, "الجمعة", "2026/01/01", false);
+
+addDaySorted(1020, "الخميس", "2026/01/15", false);
+addDaySorted(1020, "الخميس", "2026/01/29", false);
+
+addDaySorted(1030, "الخميس", "2026/01/15", false);
+
+addDaySorted(1040, "الخميس", "2026/01/15", false);
+addDaySorted(1040, "الخميس", "2026/01/29", false);
+
 
         // المستويات
         const levels = [
@@ -162,7 +199,7 @@ function searchMember() {
             levelsGrid.appendChild(card);
         });
 
-                 function toggleNavbar() {
+            function toggleNavbar() {
     const navbarLinks = document.getElementById("navbarLinks");
     const toggleIcon = document.getElementById("navbarToggle");
 
@@ -202,4 +239,3 @@ function searchMember() {
 
     lazyBG.forEach(el => observer.observe(el));
   });
-
