@@ -135,7 +135,7 @@ setAbsent(1010, "الأحد 2026/01/04", true);
 setAbsent(1010, "الأحد 2026/01/25", true);
 
 
-setAbsent(1020, "الأحد2026/01/04", true);
+setAbsent(1020, "الأحد 2026/01/04", true);
 setAbsent(1020, "الثلاثاء 2026/01/06", true);
 setAbsent(1020, "الثلاثاء 2026/01/13", true);
 
@@ -239,3 +239,4 @@ addDaySorted(1040, "الخميس", "2026/01/29", false);
 
     lazyBG.forEach(el => observer.observe(el));
   });
+
