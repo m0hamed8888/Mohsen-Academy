@@ -163,7 +163,7 @@
 
         @media(max-width:400px) {
             .hero .container {
-                top: 0%;
+                top: 5%;
             }
 
             .hero h1 {
@@ -180,7 +180,8 @@
                 margin: 3px;
             }
         }
-            /* Search */
+
+        /* Search */
         .search-row {
             display: flex;
             gap: 12px;
@@ -214,121 +215,147 @@
         }
 
 
- /* ======= Modern Luxury Modal Styles ======= */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    backdrop-filter: blur(10px) brightness(0.8);
-    background: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
-    padding: 20px;
-}
+        /* ======= Modern Luxury Modal Styles ======= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px) brightness(0.8);
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 20px;
+        }
 
-.modal-content {
-    background: linear-gradient(145deg, #ffffff, #e0f0ff);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 850px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    border: 2px solid #0077ff;
-    animation: modalFadeIn 0.4s ease;
-    font-family: 'DM Sans', sans-serif;
-}
+        .modal-content {
+            background: linear-gradient(145deg, #ffffff, #e0f0ff);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid #0077ff;
+            animation: modalFadeIn 0.4s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
 
-@keyframes modalFadeIn {
-    from {opacity: 0; transform: scale(0.9);}
-    to {opacity:1; transform: scale(1);}
-}
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
 
-.modal-close {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: #f5b400;
-    color: #fff;
-    border: none;
-    font-size: 28px;
-    border-radius: 50%;
-    width: 42px; height: 42px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.modal-close:hover { background: #5f4601; transform: scale(1.1); }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
-/* Modal content */
-.modal-content h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: #0077ff;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: #f5b400;
+            color: #fff;
+            border: none;
+            font-size: 28px;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-.modal-content table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 10px 10px;
-    margin-bottom: 20px;
-}
+        .modal-close:hover {
+            background: #5f4601;
+            transform: scale(1.1);
+        }
 
-.modal-content th, .modal-content td {
-    text-align: center;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 12px;
-}
+        /* Modal content */
+        .modal-content h3 {
+            text-align: center;
+            font-size: 2rem;
+            color: #0077ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
 
-.modal-content th {
-    background: #f5b400;
-    color: var(--text);
-    font-weight: 700;
-}
+        .modal-content table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px 10px;
+            margin-bottom: 20px;
+        }
 
-.modal-content td {
-    background: #f0f8ff;
-    color: #333;
-    font-weight: 500;
-}
+        .modal-content th,
+        .modal-content td {
+            text-align: center;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+        }
 
-/* Days list */
-.modal-content ol {
-    /* list-style: none; */
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 33px;
-    justify-content: center;
-}
+        .modal-content th {
+            background: #f5b400;
+            color: var(--text);
+            font-weight: 700;
+        }
 
-.modal-content ol li {
-    background: linear-gradient(135deg, #f5b400, #d1a100);
-    color: var(--text) ;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    transition: 0.3s;
-}
-.modal-content ol li:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
+        .modal-content td {
+            background: #f0f8ff;
+            color: #333;
+            font-weight: 500;
+        }
 
-/* Responsive */
-@media(max-width: 600px){
-    .modal-content { padding: 20px; }
-    .modal-content table th, .modal-content table td { font-size: 14px; padding: 8px; }
-    .modal-content h3 { font-size: 1.5rem; }
-}
+        /* Days list */
+        .modal-content ol {
+            /* list-style: none; */
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 33px;
+            justify-content: center;
+        }
+
+        .modal-content ol li {
+            background: linear-gradient(135deg, #f5b400, #d1a100);
+            color: var(--text);
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        .modal-content ol li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+            .modal-content {
+                padding: 20px;
+            }
+
+            .modal-content table th,
+            .modal-content table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .modal-content h3 {
+                font-size: 1.5rem;
+            }
+        }
 
         .hero-btn {
             display: inline-block;
@@ -354,7 +381,7 @@
         .levels h2 {
             color: var(--color-title);
             margin-bottom: 16px;
-            padding: 2rem 0 ;
+            padding: 2rem 0;
         }
 
         .levels-grid {
@@ -937,22 +964,22 @@
 
     <main>
         <!-- Search -->
-      <!-- HTML Body Part: search panel + modal -->
-<section id="search">
-    <div class="search-row">
-        <input id="searchInput" type="search" placeholder="ادخل رقم المشترك ثم اضغط بحث">
-        <button id="searchBtn">بحث</button>
-        <div class="info">البحث يكون برقم المشترك فقط.</div>
-    </div>
-</section>
+        <!-- HTML Body Part: search panel + modal -->
+        <section id="search">
+            <div class="search-row">
+                <input id="searchInput" type="search" placeholder="ادخل رقم المشترك ثم اضغط بحث">
+                <button id="searchBtn">بحث</button>
+                <div class="info">البحث يكون برقم المشترك فقط.</div>
+            </div>
+        </section>
 
-<!-- Modal Overlay -->
-<div id="memberModal" class="modal-overlay">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose">&times;</button>
-    <div id="modalBody"></div>
-  </div>
-</div>
+        <!-- Modal Overlay -->
+        <div id="memberModal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div id="modalBody"></div>
+            </div>
+        </div>
 
 
         <!-- Levels -->
