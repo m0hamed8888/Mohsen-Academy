@@ -1,12 +1,13 @@
 const members = [
-  { id: 1010, name: '  ', age: 7, level: 4, times: ['5:00-5:55'], end: 'الثلاثاء 2026/01/27' },
+  { id: 1010, name: '  محمد ابراهيم ', age: 7, level: 4, times: ['5:00-5:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1020, name: ' يحيي محمد سعيد', age: 6, level: 4, times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1030, name: ' زين خالد ابراهيم', age: 6, level: '3+', times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1040, name: ' مالك محمد احمد', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' },
-  { id: 2040, name: ' مالك محمد احمد', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' }
+  { id: 2040, name: ' زين محمد ابراهيم', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' }
 ];
 
 // دالة لتوليد الأيام حسب أيام محددة وعدد أسابيع
+
 function generateMonthDays(startDate, daysOfWeek, weeksCount = 4) {
   const dayNames = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
   const result = [];
@@ -38,7 +39,7 @@ members.forEach(m => {
   if (idStart === "10") {
     daysOfWeek = ["الأحد", "الثلاثاء",];
   } else if (idStart === "20") {
-    daysOfWeek = ["الإثنين", "الأربعاء"];
+    daysOfWeek = ["السبت"];
   } else {
     daysOfWeek = ["الأحد", "الثلاثاء"]; // افتراضي
   }
@@ -128,21 +129,6 @@ function setAbsent(memberId, dateStr, absent = true) {
   return true;
 }
 
-//      تسجيل الغياب **********************************************************************************
-// setAbsent(1080, "الثلاثاء 2026/01/06", true);
-setAbsent(1010, "الأحد 2026/01/04", true);
-
-setAbsent(1010, "الأحد 2026/01/25", true);
-
-
-setAbsent(1020, "الأحد 2026/01/04", true);
-setAbsent(1020, "الثلاثاء 2026/01/06", true);
-setAbsent(1020, "الثلاثاء 2026/01/13", true);
-
-setAbsent(1030, "الثلاثاء 2026/01/13", true);
-
-setAbsent(1040, "الثلاثاء 2026/01/13", true);
-setAbsent(1040, "الأحد 2026/01/04", true);
 
 // إضافة يوم جديد مع الحفاظ على الترتيب الزمني
 function addDaySorted(memberId, dayName, dateStr, absent = false) {
@@ -178,6 +164,26 @@ addDaySorted(1030, "الخميس", "2026/01/15", false);
 
 addDaySorted(1040, "الخميس", "2026/01/15", false);
 addDaySorted(1040, "الخميس", "2026/01/29", false);
+
+//      تسجيل الغياب **********************************************************************************
+// setAbsent(1080, "الثلاثاء 2026/01/06", true);
+
+setAbsent(1010, "الأحد 2026/01/04", true);
+
+setAbsent(1010, "الأحد 2026/01/25", true);
+
+
+setAbsent(1020, "الأحد 2026/01/04", true);
+setAbsent(1020, "الثلاثاء 2026/01/06", true);
+setAbsent(1020, "الثلاثاء 2026/01/13", true);
+
+setAbsent(1030, "الثلاثاء 2026/01/13", true);
+setAbsent(1030, "الخميس 2026/01/15", true);
+
+setAbsent(1040, "الثلاثاء 2026/01/13", true);
+setAbsent(1040, "الأحد 2026/01/04", true);
+setAbsent(1040, "الخميس 2026/01/15", true);
+
 
 
         // المستويات
@@ -239,4 +245,3 @@ addDaySorted(1040, "الخميس", "2026/01/29", false);
 
     lazyBG.forEach(el => observer.observe(el));
   });
-
