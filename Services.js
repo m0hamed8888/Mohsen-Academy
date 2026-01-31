@@ -1,51 +1,87 @@
 const members = [
-  { id: 1010, name: '  محمد ابراهيم ', age: 7, level: 4, times: ['5:00-5:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1020, name: ' يحيي محمد سعيد', age: 6, level: 4, times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1030, name: ' زين خالد ابراهيم', age: 6, level: '3+', times: ['4:00-4:55'], end: 'الثلاثاء 2026/01/27' },
   { id: 1040, name: ' مالك محمد احمد', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' },
-  { id: 2040, name: ' زين محمد ابراهيم', age: 6, level: '+4', times: ['6:00-6:55'], end: 'الثلاثاء 2026/01/27' }
+  { id: 2040, name: 'عبد الرحمن محمود فؤاد', age: 11, level: '+4', times: ['9:30-11:30'], end: 'الثلاثاء 2026/01/27' },
+  { id: 20401, name: 'يوسف محمود فؤاد', age: 7, level: '+4', times: ['9:30-11:30'], end: 'الثلاثاء 2026/01/27' },
+  { id: 20402, name: 'منصور محمود منصور',age: 8, level: '4', times: ['9:30-11:30'], end: 'الثلاثاء 2026/01/27' },
+  { id: 20403, name: 'محمد محمود منصور', age: 5, level: '4', times: ['9:30-11:30'], end: 'الثلاثاء 2026/01/27' }
+
+
 ];
+function getTotalSessionsById(id) {
+  const idStart = String(id).substring(0, 2);
+
+  if (idStart === "10") return 8;
+  if (idStart === "20") return 1;
+
+  return 8; // افتراضي
+}
 
 // دالة لتوليد الأيام حسب أيام محددة وعدد أسابيع
-
-function generateMonthDays(startDate, daysOfWeek, weeksCount = 4) {
+function generateMonthDays(startDate, daysOfWeek, totalSessions = 8) {
   const dayNames = ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
   const result = [];
   const start = new Date(startDate);
 
-  for (let week = 0; week < weeksCount; week++) {
+  let week = 0;
+
+  while (result.length < totalSessions) {
     for (let d of daysOfWeek) {
+      if (result.length >= totalSessions) break;
+
       const dayIndex = dayNames.indexOf(d);
-      if(dayIndex === -1) continue;
+      if (dayIndex === -1) continue;
 
       const date = new Date(start);
-      const currentDay = date.getDay(); // 0=الأحد ... 6=السبت
+      const currentDay = date.getDay();
       let diff = dayIndex - currentDay;
-      if(diff < 0) diff += 7;
+      if (diff < 0) diff += 7;
+
       date.setDate(date.getDate() + diff + week * 7);
 
-      const dayStr = `${d} ${date.getFullYear()}/${(date.getMonth()+1).toString().padStart(2,'0')}/${date.getDate().toString().padStart(2,'0')}`;
+      const dayStr = `${d} ${date.getFullYear()}/${(date.getMonth()+1)
+        .toString().padStart(2,'0')}/${date.getDate().toString().padStart(2,'0')}`;
+
       result.push(dayStr);
     }
+    week++;
   }
+
   return result;
 }
 
-// توليد الأيام لكل عضو حسب أول رقمين من الـ id
+
 members.forEach(m => {
   const idStart = String(m.id).substring(0,2);
   let daysOfWeek = [];
 
   if (idStart === "10") {
-    daysOfWeek = ["الأحد", "الثلاثاء",];
+    daysOfWeek = ["الأحد", "الثلاثاء", "الخميس"];
   } else if (idStart === "20") {
     daysOfWeek = ["السبت"];
   } else {
-    daysOfWeek = ["الأحد", "الثلاثاء"]; // افتراضي
+    daysOfWeek = ["الأحد", "الثلاثاء"];
   }
 
-  m.days = generateMonthDays("2026-01-01", daysOfWeek, 4).map(d => ({ date: d, isAbsent: false }));
+  const totalSessions = getTotalSessionsById(m.id);
+
+  m.days = generateMonthDays("2026-02-01", daysOfWeek, totalSessions)
+    .map(d => ({ date: d, isAbsent: false }));
+
+  // ⭐ نهاية الاشتراك أوتوماتيك
+  m.end = getEndDateFromDays(m.days);
 });
+
+
+
+function getEndDateFromDays(days) {
+  if (!days || days.length === 0) return '';
+
+  const lastDay = days[days.length - 1]; // آخر عنصر
+  return lastDay.date; // "الثلاثاء 2026/02/24"
+}
+
 // OLDServices.js -> updated JS
 
 // ======= Modern Modal JS =======
@@ -157,33 +193,33 @@ function addDaySorted(memberId, dayName, dateStr, absent = false) {
 // إضافة يوم   ******************************************************************************** 
 // addDaySorted(2040, "الجمعة", "2026/01/01", false);
 
-addDaySorted(1020, "الخميس", "2026/01/15", false);
-addDaySorted(1020, "الخميس", "2026/01/29", false);
+// addDaySorted(1020, "الخميس", "2026/01/15", false);
+// addDaySorted(1020, "الخميس", "2026/01/29", false);
 
-addDaySorted(1030, "الخميس", "2026/01/15", false);
+// addDaySorted(1030, "الخميس", "2026/01/15", false);
 
-addDaySorted(1040, "الخميس", "2026/01/15", false);
-addDaySorted(1040, "الخميس", "2026/01/29", false);
+// addDaySorted(1040, "الخميس", "2026/01/15", false);
+// addDaySorted(1040, "الخميس", "2026/01/29", false);
 
 //      تسجيل الغياب **********************************************************************************
 // setAbsent(1080, "الثلاثاء 2026/01/06", true);
 
-setAbsent(1010, "الأحد 2026/01/04", true);
+// setAbsent(1010, "الأحد 2026/01/04", true);
 
-setAbsent(1010, "الأحد 2026/01/25", true);
+// setAbsent(1010, "الأحد 2026/01/25", true);
 
 
-setAbsent(1020, "الأحد 2026/01/04", true);
-setAbsent(1020, "الثلاثاء 2026/01/06", true);
-setAbsent(1020, "الثلاثاء 2026/01/13", true);
+// setAbsent(1020, "الأحد 2026/01/04", true);
+// setAbsent(1020, "الثلاثاء 2026/01/06", true);
+// setAbsent(1020, "الثلاثاء 2026/01/13", true);
 
-setAbsent(1030, "الثلاثاء 2026/01/13", true);
-setAbsent(1030, "الخميس 2026/01/15", true);
+// setAbsent(1030, "الثلاثاء 2026/01/13", true);
+// setAbsent(1030, "الخميس 2026/01/15", true);
 
-setAbsent(1040, "الثلاثاء 2026/01/13", true);
-setAbsent(1040, "الأحد 2026/01/04", true);
-setAbsent(1040, "الخميس 2026/01/15", true);
-setAbsent(1040, "الثلاثاء 2026/01/27", true);
+// setAbsent(1040, "الثلاثاء 2026/01/13", true);
+// setAbsent(1040, "الأحد 2026/01/04", true);
+// setAbsent(1040, "الخميس 2026/01/15", true);
+// setAbsent(1040, "الثلاثاء 2026/01/27", true);
 
 
 
