@@ -1,39 +1,39 @@
 {
+
   "name": "Mohsen Academy",
-  "short_name": "Mohsen",
-  "description": "The best platform for swimming training and academy management.",
-  "start_url": "/app/home",
+
+  "short_name": "Swimmig",
+
+  "start_url": "https://mohsenacademy.com/app/home",
+
   "display": "standalone",
+
   "background_color": "#ffffff",
+
   "theme_color": "#00b4d8",
-  "orientation": "portrait-primary",
-  "categories": ["education", "sports"],
+
   "icons": [
+
     {
-      "src": "https://mohsenacademy.com/icon-192.png",
+
+      "src": "https://mohsenacademy.com/icon.png",
+
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+
+      "type": "image/png"
+
     },
+
     {
-      "src": "https://mohsenacademy.com/icon-512.png",
+
+      "src": "https://mohsenacademy.com/icon.png",
+
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "https://mohsenacademy.com/maskable-icon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+
+      "type": "image/png"
+
     }
-  ],
-  "screenshots": [
-    {
-      "src": "https://mohsenacademy.com/screenshot1.png",
-      "type": "image/png",
-      "sizes": "1080x1920",
-      "form_factor": "narrow"
-    }
+
   ]
+
 }
