@@ -138,7 +138,7 @@ a    { text-decoration: none; color: inherit; }
   transform: translateY(28px);
   transition: opacity .6s ease calc(var(--d, 0s)), transform .6s ease calc(var(--d, 0s));
 }
-.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal.in-view { opacity: 1; transform: translateY(0);  margin: 5rem 0;}
 .logo-wrap img{
     width: 250px;
     object-fit: contain;
@@ -173,7 +173,7 @@ a    { text-decoration: none; color: inherit; }
   gap: 24px;
 }
 
-.navbar-logo img { width: 200px; height: 60px; object-fit: contain; display: block; }
+.img-logo  { width: 200px; height: 60px; object-fit: contain; display: block; }
 
 .navbar-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
 
