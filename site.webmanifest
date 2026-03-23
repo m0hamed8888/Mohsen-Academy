@@ -1,39 +1,20 @@
 {
-
   "name": "Mohsen Academy",
-
   "short_name": "Swimmig",
-
   "start_url": "https://mohsenacademy.com/app/home",
-
   "display": "standalone",
-
   "background_color": "#ffffff",
-
   "theme_color": "#00b4d8",
-
   "icons": [
-
     {
-
       "src": "https://mohsenacademy.com/icon.png",
-
       "sizes": "192x192",
-
       "type": "image/png"
-
     },
-
     {
-
       "src": "https://mohsenacademy.com/icon.png",
-
       "sizes": "512x512",
-
       "type": "image/png"
-
     }
-
   ]
-
 }
