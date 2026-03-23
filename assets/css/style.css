@@ -31,8 +31,8 @@
    RESET
 ═══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font); color: var(--text); background: var(--bg); padding-top: var(--nav-h); }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); padding-top: var(--nav-h); overflow-x: hidden; }
 img  { display: block; max-width: 100%; }
 a    { text-decoration: none; color: inherit; }
 
@@ -996,6 +996,18 @@ a    { text-decoration: none; color: inherit; }
 @keyframes pulse-ring {
   0%   { border-color: rgba(230,162,0,.5); transform: scale(1); opacity: 1; }
   100% { border-color: rgba(230,162,0,.0); transform: scale(1.04); opacity: 0; }
+}
+/* في الـ Responsive section اللي عندك، غيّر الـ breakpoint من 768px */
+@media (max-width: 1100px) {
+  .hero-ring-1,
+  .hero-ring-2 { display: none; }
+}
+.cities-slider-wrap {
+  display: none;
+  overflow: hidden;  /* ← أضف السطر ده */
+}
+@media (max-width: 900px) {
+  .about-images { overflow: hidden; }
 }
 
 /* Shimmer sweep on hover */
