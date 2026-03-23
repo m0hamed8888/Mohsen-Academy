@@ -28,7 +28,212 @@
   <link rel="stylesheet" href="/assets/fonts/css-f-family.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsClub","name":"Mohsen Academy","alternateName":"أكاديمية محسن للسباحة","url":"https://mohsenacademy.com/","telephone":"+20-1035700789","sport":"Swimming","priceRange":"950 EGP+","address":{"@type":"PostalAddress","addressLocality":"الشروق","addressCountry":"EG"},"sameAs":["https://www.facebook.com/MohsenAcademyPage","https://www.instagram.com/mohsen_academy_/"]}</script>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="+2XVBv1gvf52KcOuRpwUlg" async defer></script>
-<base target="_blank">
+
+  <style>
+  /* ════════════════════════════════════════
+     SECTION 1 — CITIES: mobile slider
+  ════════════════════════════════════════ */
+
+  /* Mobile slider wrapper — hidden on desktop */
+  .cities-slider-wrap { display: none; }
+
+  .cities-slider {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 24px 20px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .cities-slider::-webkit-scrollbar { display: none; }
+
+  .cities-slider .city-card {
+    width: 74vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  /* Flatten featured card height inside slider */
+  .cities-slider .city-card--featured .city-img-wrap { height: 220px; }
+
+  /* Dots */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 4px;
+  }
+  .slider-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #e8ecf1;
+    border: none; padding: 0;
+    cursor: pointer;
+    transition: background .28s, width .28s, border-radius .28s;
+  }
+  .slider-dot.active {
+    background: #E6A200;
+    width: 22px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    /* Hide grid, show slider */
+    .cities-grid         { display: none !important; }
+    .cities-slider-wrap  { display: block; }
+  }
+
+  /* ════════════════════════════════════════
+     SECTION 2 — CLUBS: mobile 2-col
+  ════════════════════════════════════════ */
+  @media (max-width: 640px) {
+    .clubs-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px;
+    }
+    .club-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px !important;
+      border-radius: 16px;
+    }
+    .club-logo-wrap { width: 48px !important; height: 48px !important; border-radius: 12px; }
+    .club-info h4   { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    /* Arrow hidden in stacked layout */
+    .club-arrow { display: none; }
+    /* Accent bar flips to top */
+    .club-card::before {
+      bottom: auto; right: 0; left: 0; top: 0;
+      width: auto !important; height: 3px !important;
+      background: linear-gradient(90deg, #E6A200, #0066CC);
+      transform: scaleX(0); transform-origin: left;
+      border-radius: 0 0 2px 0;
+    }
+    .club-card:hover { transform: translateY(-3px) translateX(0) !important; }
+    .club-card:hover::before { transform: scaleX(1) !important; }
+  }
+
+  /* ════════════════════════════════════════
+     SECTION 3 — APP: A2HS button
+  ════════════════════════════════════════ */
+
+  /* Replace the old download button with A2HS button */
+  .a2hs-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: #0d1b2a;
+    color: #fff;
+    padding: 14px 28px 14px 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(230,162,0,.30);
+    box-shadow: 0 8px 32px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.07);
+    overflow: hidden;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform .28s cubic-bezier(.4,0,.2,1),
+                box-shadow .28s cubic-bezier(.4,0,.2,1),
+                border-color .28s cubic-bezier(.4,0,.2,1);
+  }
+  .a2hs-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0,0,0,.30), 0 0 0 1px #E6A200;
+    border-color: #E6A200;
+  }
+  .a2hs-btn-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, #E6A200, #ffaa00);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(230,162,0,.40);
+    transition: transform .28s;
+  }
+  .a2hs-btn:hover .a2hs-btn-icon { transform: scale(1.08) rotate(-4deg); }
+  .a2hs-btn-icon svg { width: 22px; height: 22px; }
+
+  .a2hs-btn-text { display: flex; flex-direction: column; gap: 1px; }
+  .a2hs-btn-sub  { font-size: 11px; font-weight: 500; color: rgba(255,255,255,.55); letter-spacing: .05em; text-transform: uppercase; }
+  .a2hs-btn-main { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -.01em; }
+
+  /* shimmer sweep */
+  .a2hs-btn::after {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.07) 50%, transparent 100%);
+    transition: left .5s ease;
+  }
+  .a2hs-btn:hover::after { left: 140%; }
+
+  .a2hs-btn[data-state="unavailable"] { opacity: .55; cursor: not-allowed; }
+  .a2hs-btn[data-state="unavailable"]:hover { transform: none; box-shadow: 0 8px 32px rgba(0,0,0,.25); border-color: rgba(230,162,0,.30); }
+
+  /* ── iOS instruction overlay ── */
+  .a2hs-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(6px);
+    z-index: 99999;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 16px 16px;
+  }
+  .a2hs-overlay.open { display: flex; }
+
+  .a2hs-panel {
+    background: #fff;
+    border-radius: 32px;
+    padding: 28px 24px;
+    max-width: 400px; width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    animation: a2hs-slide-up .35s cubic-bezier(.4,0,.2,1);
+  }
+  @keyframes a2hs-slide-up { from{transform:translateY(40px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  .a2hs-panel h3 { font-size: 18px; font-weight: 800; color: #0d1b2a; margin-bottom: 6px; }
+  .a2hs-panel p  { font-size: 14px; color: #6b7c93; line-height: 1.65; margin-bottom: 20px; }
+
+  .a2hs-steps { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+  .a2hs-step  { display: flex; align-items: center; gap: 14px; }
+  .a2hs-step-num {
+    width: 32px; height: 32px;
+    background: #E6A200; color: #1a1a1a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800; flex-shrink: 0;
+  }
+  .a2hs-step-text { font-size: 14px; color: #2c3e50; font-weight: 500; line-height: 1.4; }
+  .a2hs-step-text strong { color: #0d1b2a; }
+
+  .a2hs-panel-close {
+    width: 100%; padding: 14px;
+    background: #f5f7fa; border: 1px solid #e8ecf1; border-radius: 16px;
+    font-size: 15px; font-weight: 700; color: #2c3e50;
+    cursor: pointer; transition: background .28s; font-family: inherit;
+  }
+  .a2hs-panel-close:hover { background: #e8ecf1; }
+
+  /* ── Toast ── */
+  .a2hs-toast {
+    position: fixed;
+    bottom: 90px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #0d1b2a; color: #fff;
+    padding: 14px 22px; border-radius: 16px;
+    font-size: 14px; font-weight: 600;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    border: 1px solid rgba(230,162,0,.3);
+    z-index: 9999; max-width: 90vw; text-align: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s, transform .3s;
+  }
+  .a2hs-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
 </head>
 <body>
 
@@ -189,7 +394,7 @@
             <div class="about-badge-float"><span class="about-badge-num">8+</span><span class="about-badge-label">سنوات خبرة</span></div>
           </div>
         </div>
-        <div class="about-text reveal">
+        <div class="about-text reveal" id="about-text">
           <span class="section-label">ABOUT US</span>
           <h2 class="section-title">من نحن</h2>
           <p class="section-desc">فريق <strong>Mohsen Academy</strong> يقدم تعليم سباحة في الشروق مع مدربين موثّقين وسباحين منافسات، اجتمعنا بشغف واحد: حب السباحة. هدفنا تقديم قيمة حقيقية لكل سباح، سواء مبتدئ أو محترف، من خلال تدريب ممتع، آمن وفعال.</p>
@@ -206,9 +411,8 @@
     </div>
   </section>
 
-
   <!-- ══════════════════════════════
-       CITIES / LOCATIONS
+       CITIES / LOCATIONS  ★ UPDATED
   ══════════════════════════════ -->
   <section class="cities-section" id="our-locations">
     <div class="container-main">
@@ -217,8 +421,9 @@
         <h2 class="section-title">فروعنا في مدنكم</h2>
         <p class="section-sub">أكاديمية محسن للسباحة موجودة في 4 مدن — هتلاقينا قريبين منك دايمًا.</p>
       </div>
-      <div class="cities-grid">
 
+      <!-- Desktop grid (unchanged) -->
+      <div class="cities-grid">
         <div class="city-card reveal">
           <div class="city-img-wrap">
             <img src="/assets/images/city-shorouk.webp" loading="lazy" alt="الشروق" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a2547 0%,#0066CC 100%)'">
@@ -228,13 +433,9 @@
           <div class="city-body">
             <h3>مدينة الشروق</h3>
             <p>مقرّنا الرئيسي — نادي جرين هيلز، الشروق.</p>
-            <a href="https://mohsenacademy.com/our-locations/shorouk-page" class="city-link">
-              عرض الفرع
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="https://mohsenacademy.com/our-locations/shorouk-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-
         <div class="city-card city-card--featured reveal" style="--d:.1s">
           <div class="city-img-wrap">
             <img src="/assets/images/city-10th.webp" loading="lazy" alt="العاشر من رمضان" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a2e44 0%,#E6A200 100%)'">
@@ -244,13 +445,9 @@
           <div class="city-body">
             <h3>العاشر من رمضان</h3>
             <p>فرع نشيط بجداول مرنة تناسب جميع المستويات.</p>
-            <a href="https://mohsenacademy.com/our-locations/10th-of-ramadan-page" class="city-link">
-              عرض الفرع
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="https://mohsenacademy.com/our-locations/10th-of-ramadan-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-
         <div class="city-card reveal" style="--d:.2s">
           <div class="city-img-wrap">
             <img src="/assets/images/city-badr.webp" loading="lazy" alt="مدينة بدر" onerror="this.parentElement.style.background='linear-gradient(135deg,#0d2137 0%,#004fa3 100%)'">
@@ -260,13 +457,9 @@
           <div class="city-body">
             <h3>مدينة بدر</h3>
             <p>تدريب احترافي في قلب مدينة بدر لكل الفئات.</p>
-            <a href="https://mohsenacademy.com/our-locations/badr-page" class="city-link">
-              عرض الفرع
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="https://mohsenacademy.com/our-locations/badr-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-
         <div class="city-card reveal" style="--d:.3s">
           <div class="city-img-wrap">
             <img src="/assets/images/city-mostakbal.webp" loading="lazy" alt="مدينة المستقبل" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1628 0%,#1a6b3a 100%)'">
@@ -276,19 +469,56 @@
           <div class="city-body">
             <h3>مدينة المستقبل</h3>
             <p>أحدث فروعنا في مدينة المستقبل — انضم إلى الفريق.</p>
-            <a href="https://mohsenacademy.com/our-locations/almostakbal-page" class="city-link">
-              عرض الفرع
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="https://mohsenacademy.com/our-locations/almostakbal-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-
       </div>
+
+      <!-- ★ Mobile slider (new) -->
+      <div class="cities-slider-wrap">
+        <div class="cities-slider" id="citiesSlider">
+          <div class="city-card">
+            <div class="city-img-wrap">
+              <img src="/assets/images/city-shorouk.webp" loading="lazy" alt="الشروق" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a2547,#0066CC)'">
+              <div class="city-overlay"></div><div class="city-badge"><span>&#128205;</span> الشروق</div>
+            </div>
+            <div class="city-body"><h3>مدينة الشروق</h3><p>مقرّنا الرئيسي — نادي جرين هيلز، الشروق.</p><a href="https://mohsenacademy.com/our-locations/shorouk-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          </div>
+          <div class="city-card city-card--featured">
+            <div class="city-img-wrap">
+              <img src="/assets/images/city-10th.webp" loading="lazy" alt="العاشر من رمضان" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a2e44,#E6A200)'">
+              <div class="city-overlay"></div><div class="city-badge"><span>&#128205;</span> العاشر من رمضان</div>
+            </div>
+            <div class="city-body"><h3>العاشر من رمضان</h3><p>فرع نشيط بجداول مرنة تناسب جميع المستويات.</p><a href="https://mohsenacademy.com/our-locations/10th-of-ramadan-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          </div>
+          <div class="city-card">
+            <div class="city-img-wrap">
+              <img src="/assets/images/city-badr.webp" loading="lazy" alt="مدينة بدر" onerror="this.parentElement.style.background='linear-gradient(135deg,#0d2137,#004fa3)'">
+              <div class="city-overlay"></div><div class="city-badge"><span>&#128205;</span> مدينة بدر</div>
+            </div>
+            <div class="city-body"><h3>مدينة بدر</h3><p>تدريب احترافي في قلب مدينة بدر لكل الفئات.</p><a href="https://mohsenacademy.com/our-locations/badr-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          </div>
+          <div class="city-card">
+            <div class="city-img-wrap">
+              <img src="/assets/images/city-mostakbal.webp" loading="lazy" alt="مدينة المستقبل" onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1628,#1a6b3a)'">
+              <div class="city-overlay"></div><div class="city-badge new-badge"><span>&#10024;</span> جديد</div>
+            </div>
+            <div class="city-body"><h3>مدينة المستقبل</h3><p>أحدث فروعنا في مدينة المستقبل — انضم إلى الفريق.</p><a href="https://mohsenacademy.com/our-locations/almostakbal-page" class="city-link">عرض الفرع <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+          </div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+          <button class="slider-dot active" data-index="0"></button>
+          <button class="slider-dot" data-index="1"></button>
+          <button class="slider-dot" data-index="2"></button>
+          <button class="slider-dot" data-index="3"></button>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ══════════════════════════════
-       CLUBS
+       CLUBS  ★ UPDATED mobile
   ══════════════════════════════ -->
   <section class="clubs-section">
     <div class="container-main">
@@ -298,169 +528,86 @@
         <p class="section-sub">بنقدّم تدريبنا في أرقى النوادي الرياضية — بيئة مثالية وحمامات سباحة احترافية.</p>
       </div>
       <div class="clubs-grid">
-
         <div class="club-card reveal">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-safwa.webp" loading="lazy" alt="نادي الصفوة" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي الصفوة</h4>
-            <span class="club-city">القاهرة الجديدة</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي الصفوة" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي الصفوة</h4><span class="club-city">القاهرة الجديدة</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
         <div class="club-card reveal" style="--d:.07s">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-rowad.webp" loading="lazy" alt="نادي الرواد" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي الرواد</h4>
-            <span class="club-city">القاهرة الجديدة</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي الرواد" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي الرواد</h4><span class="club-city">القاهرة الجديدة</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
         <div class="club-card reveal" style="--d:.14s">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-greenhills.webp" loading="lazy" alt="نادي جرين هيلز" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي جرين هيلز</h4>
-            <span class="club-city">الشروق</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي جرين هيلز" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي جرين هيلز</h4><span class="club-city">الشروق</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
         <div class="club-card reveal" style="--d:.21s">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-engineers.webp" loading="lazy" alt="نادي المهندسين" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي المهندسين</h4>
-            <span class="club-city">القاهرة</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي المهندسين" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي المهندسين</h4><span class="club-city">القاهرة</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
         <div class="club-card reveal" style="--d:.28s">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-palmera.webp" loading="lazy" alt="نادي بالميرا" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي بالميرا</h4>
-            <span class="club-city">القاهرة الجديدة</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي بالميرا" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي بالميرا</h4><span class="club-city">القاهرة الجديدة</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
         <div class="club-card reveal" style="--d:.35s">
-          <div class="club-logo-wrap">
-            <img src="/assets/images/club-glory.webp" loading="lazy" alt="نادي جلوري" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="club-logo-fallback">&#127949;</div>
-          </div>
-          <div class="club-info">
-            <h4>نادي جلوري</h4>
-            <span class="club-city">القاهرة الجديدة</span>
-          </div>
+          <div class="club-logo-wrap"><img src="/assets/icons/club.png" loading="lazy" alt="نادي جلوري" width="64" height="64" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="club-logo-fallback">&#127949;</div></div>
+          <div class="club-info"><h4>نادي جلوري</h4><span class="club-city">القاهرة الجديدة</span></div>
           <div class="club-arrow">&#8594;</div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ══════════════════════════════
-       APP SHOWCASE - FIXED
+       APP SHOWCASE  ★ UPDATED A2HS
   ══════════════════════════════ -->
   <section class="app-section">
     <div class="container-main">
       <div class="app-layout">
-
-        <!-- Text side -->
         <div class="app-text reveal">
           <span class="section-label">Mobile App</span>
           <h2 class="section-title">تطبيقنا في إيدك</h2>
           <p class="section-desc">تابع تدريبك وتدريب أولادك من موبايلك في أي وقت. سجّل الدخول، شوف بروفايلك، وأضف سباحين جدد بكل سهولة من التطبيق.</p>
-
           <div class="app-features">
-            <div class="app-feat">
-              <div class="app-feat-icon">&#128100;</div>
-              <div>
-                <h4>بروفايل شخصي</h4>
-                <p>شوف كل بياناتك وتقدمك في مكان واحد.</p>
-              </div>
-            </div>
-            <div class="app-feat">
-              <div class="app-feat-icon">&#43;</div>
-              <div>
-                <h4>إضافة سباحين</h4>
-                <p>سجّل أفراد عيلتك وتابع تقدمهم معًا.</p>
-              </div>
-            </div>
-            <div class="app-feat">
-              <div class="app-feat-icon">&#128203;</div>
-              <div>
-                <h4>متابعة الجداول</h4>
-                <p>أيام التدريب، الغياب، ومستوى التقدم شهريًا.</p>
-              </div>
-            </div>
+            <div class="app-feat"><div class="app-feat-icon">&#128100;</div><div><h4>بروفايل شخصي</h4><p>شوف كل بياناتك وتقدمك في مكان واحد.</p></div></div>
+            <div class="app-feat"><div class="app-feat-icon">&#43;</div><div><h4>إضافة سباحين</h4><p>سجّل أفراد عيلتك وتابع تقدمهم معًا.</p></div></div>
+            <div class="app-feat"><div class="app-feat-icon">&#128203;</div><div><h4>متابعة الجداول</h4><p>أيام التدريب، الغياب، ومستوى التقدم شهريًا.</p></div></div>
           </div>
 
           <div class="app-download-wrap">
-            <!-- FIXED: Changed href to point to the actual app page instead of downloading manifest -->
-            <a href="https://mohsenacademy.com/app/home" class="app-download-btn" target="_blank" rel="noopener noreferrer">
-              <span class="app-download-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 2v10M10 12l-3.5-3.5M10 12l3.5-3.5M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- ★ A2HS Smart Button -->
+            <button class="a2hs-btn" id="a2hsBtn" onclick="handleA2HS()">
+              <span class="a2hs-btn-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1a1a1a">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                  <circle cx="19" cy="19" r="5" fill="#E6A200"/>
+                  <path d="M19 16v6M16 19h6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
                 </svg>
               </span>
-              <span class="app-download-text">
-                <span class="app-download-sub">حمّل تطبيقنا</span>
-                <span class="app-download-main">افتح التطبيق</span>
+              <span class="a2hs-btn-text">
+                <span class="a2hs-btn-sub" id="a2hsSub">أضف للشاشة الرئيسية</span>
+                <span class="a2hs-btn-main" id="a2hsMain">ثبّت التطبيق</span>
               </span>
-              <span class="app-download-pulse"></span>
-            </a>
-            <p class="app-download-note">&#128274; آمن ومجاني — متاح لجميع الأجهزة</p>
+            </button>
+            <p class="app-download-note">&#128274; مجاني — يعمل بدون إنترنت</p>
           </div>
         </div>
 
-        <!-- Phones side -->
         <div class="app-phones reveal" style="--d:.15s">
           <div class="phone-mockup phone-back">
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <img src="/assets/images/app-profile.webp" loading="lazy" alt="صفحة البروفايل" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'">
-                <div class="screen-placeholder-content">&#128100;<p>صفحة البروفايل</p></div>
-              </div>
-            </div>
+            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><img src="/assets/images/app-profile.webp" loading="lazy" alt="صفحة البروفايل" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"><div class="screen-placeholder-content">&#128100;<p>صفحة البروفايل</p></div></div></div>
           </div>
           <div class="phone-mockup phone-main">
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <img src="/assets/images/app-login.webp" loading="lazy" alt="تسجيل الدخول" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'">
-                <div class="screen-placeholder-content">&#128274;<p>تسجيل الدخول</p></div>
-              </div>
-            </div>
+            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><img src="/assets/images/app-login.webp" loading="lazy" alt="تسجيل الدخول" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"><div class="screen-placeholder-content">&#128274;<p>تسجيل الدخول</p></div></div></div>
           </div>
           <div class="phone-mockup phone-front">
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-screen">
-                <img src="/assets/images/app-add-swimmer.webp" loading="lazy" alt="إضافة سباح" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'">
-                <div class="screen-placeholder-content">&#43;<p>إضافة سباح</p></div>
-              </div>
-            </div>
+            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen"><img src="/assets/images/app-add-swimmer.webp" loading="lazy" alt="إضافة سباح" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"><div class="screen-placeholder-content">&#43;<p>إضافة سباح</p></div></div></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -518,8 +665,7 @@
       <div class="container-main">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="https://mohsenacademy.com">      <img class="img-logo" src="./assets/icons/Logo-Header.webp" alt="Logo-Header">
-</a>
+            <a href="https://mohsenacademy.com"><img class="img-logo" src="./assets/icons/Logo-Header.webp" alt="Logo-Header"></a>
             <p>Professional swimming academy for all ages — kids, adults, and athletes. Certified coaches from the Egyptian Federation for Diving &amp; Lifesaving.</p>
             <div class="footer-socials">
               <a href="https://www.facebook.com/MohsenAcademyPage" class="social-link"><img src="/assets/icons/facebook.webp" loading="lazy" alt="Facebook" width="20" height="20"></a>
@@ -561,12 +707,33 @@
     </div>
   </footer>
 
+  <!-- ★ iOS A2HS overlay -->
+  <div class="a2hs-overlay" id="a2hsOverlay" onclick="closeA2HSOverlay(event)">
+    <div class="a2hs-panel">
+      <h3>&#128247; ثبّت تطبيق محسن</h3>
+      <p>عشان تضيف التطبيق للشاشة الرئيسية على iPhone/iPad اتبع الخطوات دي:</p>
+      <div class="a2hs-steps">
+        <div class="a2hs-step"><div class="a2hs-step-num">1</div><div class="a2hs-step-text">اضغط على زرار <strong>المشاركة &#8593;</strong> في أسفل Safari</div></div>
+        <div class="a2hs-step"><div class="a2hs-step-num">2</div><div class="a2hs-step-text">اختار <strong>"إضافة إلى الشاشة الرئيسية"</strong> من القائمة</div></div>
+        <div class="a2hs-step"><div class="a2hs-step-num">3</div><div class="a2hs-step-text">اضغط <strong>إضافة</strong> وهيظهر أيقونة التطبيق على موبايلك</div></div>
+      </div>
+      <button class="a2hs-panel-close" onclick="closeA2HSOverlay()">فهمت، شكراً!</button>
+    </div>
+  </div>
+
+  <!-- ★ Toast -->
+  <div class="a2hs-toast" id="a2hsToast"></div>
+
 </body>
+
 <script>
+  /* ── Navbar ── */
   function toggleNavbar(){const d=document.getElementById("navbarDrawer"),t=document.getElementById("navbarToggle"),o=d.classList.toggle("open");t.classList.toggle("active",o);document.body.style.overflow=o?"hidden":"";}
   document.addEventListener("click",function(e){const d=document.getElementById("navbarDrawer"),t=document.getElementById("navbarToggle");if(d.classList.contains("open")&&!d.contains(e.target)&&!t.contains(e.target)){d.classList.remove("open");t.classList.remove("active");document.body.style.overflow="";}});
   const navbar=document.getElementById("mainNavbar");
   window.addEventListener("scroll",()=>{navbar.classList.toggle("scrolled",window.scrollY>20);});
+
+  /* ── Init ── */
   document.addEventListener("DOMContentLoaded",()=>{
     const lazyBG=document.querySelectorAll("[data-bg]");
     const bgObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;el.style.backgroundImage=`url('${el.dataset.bg}')`;bgObs.unobserve(el);}});});
@@ -575,7 +742,86 @@
     const reveals=document.querySelectorAll(".reveal");
     const revObs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in-view");revObs.unobserve(entry.target);}});},{threshold:0.1});
     reveals.forEach(el=>revObs.observe(el));
+
+    /* ── Cities slider dots ── */
+    const slider=document.getElementById('citiesSlider');
+    const dots=document.querySelectorAll('.slider-dot');
+    if(slider&&dots.length){
+      dots.forEach(dot=>{
+        dot.addEventListener('click',()=>{
+          const idx=+dot.dataset.index;
+          const cards=slider.querySelectorAll('.city-card');
+          if(cards[idx]) cards[idx].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+        });
+      });
+      let timer;
+      slider.addEventListener('scroll',()=>{
+        clearTimeout(timer);
+        timer=setTimeout(()=>{
+          const cards=slider.querySelectorAll('.city-card');
+          let closest=0,minDist=Infinity;
+          cards.forEach((card,i)=>{
+            const dist=Math.abs(card.getBoundingClientRect().left-slider.getBoundingClientRect().left-slider.offsetWidth/2+card.offsetWidth/2);
+            if(dist<minDist){minDist=dist;closest=i;}
+          });
+          dots.forEach((d,i)=>d.classList.toggle('active',i===closest));
+        },60);
+      });
+    }
   });
+
   if('serviceWorker'in navigator){navigator.serviceWorker.register('/assets/js/sw.js').then(()=>console.log('SW ok'));}
+
+  /* ══════════════════════════════
+     A2HS LOGIC
+  ══════════════════════════════ */
+  let deferredPrompt=null;
+  const a2hsBtn=document.getElementById('a2hsBtn');
+  const a2hsSub=document.getElementById('a2hsSub');
+  const a2hsMain=document.getElementById('a2hsMain');
+  const a2hsOverlay=document.getElementById('a2hsOverlay');
+  const a2hsToast=document.getElementById('a2hsToast');
+
+  window.addEventListener('beforeinstallprompt',e=>{
+    e.preventDefault();
+    deferredPrompt=e;
+  });
+
+  window.addEventListener('appinstalled',()=>{
+    deferredPrompt=null;
+    if(a2hsBtn) a2hsBtn.setAttribute('data-state','unavailable');
+    if(a2hsSub)  a2hsSub.textContent='تم التثبيت بالفعل ✓';
+    if(a2hsMain) a2hsMain.textContent='التطبيق مثبّت';
+  });
+
+  function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream; }
+  function isStandalone(){ return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true; }
+
+  async function handleA2HS(){
+    if(isStandalone()){ showToast('✅ التطبيق مثبّت بالفعل على شاشتك!'); return; }
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      const{outcome}=await deferredPrompt.userChoice;
+      deferredPrompt=null;
+      if(outcome==='accepted'){
+        if(a2hsSub)  a2hsSub.textContent='جاري التثبيت...';
+        if(a2hsMain) a2hsMain.textContent='شكراً! ✓';
+        if(a2hsBtn)  a2hsBtn.setAttribute('data-state','unavailable');
+      }
+      return;
+    }
+    if(isIOS()){ a2hsOverlay.classList.add('open'); return; }
+    showToast('💡 افتح الموقع من Chrome على موبايلك لتثبيت التطبيق!',4000);
+  }
+
+  function closeA2HSOverlay(e){
+    if(!e||e.target===a2hsOverlay) a2hsOverlay.classList.remove('open');
+  }
+
+  function showToast(msg,duration=3000){
+    a2hsToast.innerHTML=msg;
+    a2hsToast.classList.add('show');
+    setTimeout(()=>a2hsToast.classList.remove('show'),duration);
+  }
 </script>
 </html>
