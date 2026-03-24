@@ -139,9 +139,7 @@ a    { text-decoration: none; color: inherit; }
   transition: opacity .6s ease calc(var(--d, 0s)), transform .6s ease calc(var(--d, 0s));
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
-#about-text {
-   margin: 5rem 0;
-}
+
 .logo-wrap img{
     width: 250px;
     object-fit: contain;
@@ -898,6 +896,12 @@ a    { text-decoration: none; color: inherit; }
   .phone-frame { width: 180px; height: 380px; }
   .phone-back  { transform: translateX(-100px) translateY(20px) scale(.85) rotate(-5deg); }
   .phone-front { transform: translateX(95px) translateY(20px) scale(.85) rotate(5deg); }
+  #about-text {
+   margin: 5rem 0;
+}
+#story-text {
+   margin: 7rem 0;
+}
 }
 
 @media (max-width: 768px) {
@@ -1002,13 +1006,7 @@ a    { text-decoration: none; color: inherit; }
   .hero-ring-1,
   .hero-ring-2 { display: none; }
 }
-.cities-slider-wrap {
-  display: none;
-  overflow: hidden;  /* ← أضف السطر ده */
-}
-@media (max-width: 900px) {
-  .about-images { overflow: hidden; }
-}
+
 
 /* Shimmer sweep on hover */
 .app-download-btn::after {
