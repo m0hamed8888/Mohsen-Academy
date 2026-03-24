@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية | Mohsen Academy</title>
+  <meta name="description" content="تعرف على سياسة الخصوصية في Mohsen Academy لحماية بياناتك الشخصية وكيفية استخدامها.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mohsenacademy.com/privacy">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohsenacademy.com/privacy">
+  <meta property="og:title" content="سياسة الخصوصية | Mohsen Academy">
+  <meta property="og:image" content="https://mohsenacademy.com/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts/css-f-family.css">
+
+  <style>
+    /* ══════════════════════════════
+       TOKENS — identical to homepage
+    ══════════════════════════════ */
+    :root {
+      --font:       "DM Sans", sans-serif;
+      --gold:       #E6A200;
+      --gold-light: #ffc107;
+      --blue:       #0066CC;
+      --dark:       #0d1b2a;
+      --dark-2:     #1a2e44;
+      --text:       #2c3e50;
+      --text-muted: #6b7c93;
+      --bg:         #ffffff;
+      --bg-soft:    #f5f7fa;
+      --border:     #e8ecf1;
+      --radius-sm:  10px;
+      --radius-md:  16px;
+      --radius-lg:  24px;
+      --radius-xl:  32px;
+      --shadow-lg:  0 20px 60px rgba(0,0,0,.12);
+      --nav-h:      72px;
+      --max-w:      1200px;
+      --transition: .28s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); padding-top: var(--nav-h); overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+
+    .container-main { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease calc(var(--d,0s)), transform .6s ease calc(var(--d,0s)); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════
+       NAVBAR
+    ══════════════════════════════ */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-h); z-index: 1000;
+      background: rgba(255,255,255,.94); backdrop-filter: blur(18px);
+      box-shadow: 0 4px 32px rgba(0,0,0,.10);
+    }
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; gap: 24px;
+    }
+    .img-logo { width: 200px; height: 60px; object-fit: contain; display: block; }
+    .navbar-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-link {
+      position: relative; color: var(--dark); font-size: 15px; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px; transition: color var(--transition), background var(--transition); white-space: nowrap;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 4px; left: 50%;
+      transform: translateX(-50%) scaleX(0); width: calc(100% - 28px); height: 2px;
+      background: var(--gold); border-radius: 2px; transition: transform var(--transition);
+    }
+    .nav-link:hover::after { transform: translateX(-50%) scaleX(1); }
+    .nav-link:hover { color: var(--blue); background: rgba(0,102,204,.06); }
+    .navbar-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .navbar-cta {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--gold);
+      color: #1a1a1a; font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 50px;
+      box-shadow: 0 2px 12px rgba(230,162,0,.35); transition: background var(--transition), transform var(--transition);
+    }
+    .navbar-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .navbar-toggle {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 38px; height: 38px; background: rgba(0,0,0,.06); border: 1px solid rgba(0,0,0,.10);
+      border-radius: 10px; cursor: pointer; padding: 8px;
+    }
+    .navbar-toggle span { display: block; width: 100%; height: 2px; background: var(--dark); border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .navbar-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar-toggle.active span:nth-child(2) { opacity: 0; }
+    .navbar-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .navbar-drawer {
+      position: fixed; top: var(--nav-h); right: 0; width: 300px; height: calc(100vh - var(--nav-h));
+      background: rgba(255,255,255,.97); backdrop-filter: blur(24px); box-shadow: -8px 0 40px rgba(0,0,0,.12);
+      display: flex; flex-direction: column; padding: 28px 24px; gap: 4px;
+      transform: translateX(110%); transition: transform .35s cubic-bezier(.4,0,.2,1); z-index: 999;
+    }
+    .navbar-drawer.open { transform: translateX(0); }
+    .drawer-link { color: var(--dark); font-size: 16px; font-weight: 500; padding: 14px 16px; border-radius: 10px; transition: background var(--transition), color var(--transition); }
+    .drawer-link:hover { background: rgba(0,102,204,.07); color: var(--blue); }
+    .drawer-cta { display: block; background: var(--gold); color: #1a1a1a; font-size: 15px; font-weight: 700; text-align: center; padding: 14px; border-radius: 12px; margin-top: 16px; }
+    .drawer-cta:hover { background: var(--gold-light); }
+
+    /* ══════════════════════════════
+       PAGE HERO
+    ══════════════════════════════ */
+    .page-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, #0a2547 100%);
+      padding: 80px 24px 90px; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero-ring {
+      position: absolute; border-radius: 50%; border: 1px solid rgba(230,162,0,.12);
+      pointer-events: none; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+    .page-hero-ring-1 { width: 500px; height: 500px; }
+    .page-hero-ring-2 { width: 800px; height: 800px; border-color: rgba(0,102,204,.08); }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.20);
+      backdrop-filter: blur(8px); color: #fff; font-size: 13px; font-weight: 500;
+      padding: 7px 16px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .page-hero-badge-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+    .page-hero h1 { font-size: clamp(32px,4vw,52px); font-weight: 800; color: #fff; margin-bottom: 14px; letter-spacing: -.02em; }
+    .page-hero p  { font-size: 17px; color: rgba(255,255,255,.70); max-width: 520px; margin: 0 auto; line-height: 1.75; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
+    .breadcrumb a { font-size: 13px; color: rgba(255,255,255,.55); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { font-size: 13px; color: rgba(255,255,255,.30); }
+    .breadcrumb strong { font-size: 13px; color: rgba(255,255,255,.80); font-weight: 600; }
+
+    /* ══════════════════════════════
+       PRIVACY SECTION
+    ══════════════════════════════ */
+    .privacy-section { padding: 80px 0 100px; background: var(--bg-soft); }
+
+    .section-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-size: clamp(26px,3vw,38px); font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 10px; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-sub { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 580px; margin: 0 auto; }
+
+    /* Privacy cards grid */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto 56px;
+    }
+
+    .privacy-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .privacy-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--gold), var(--blue));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .privacy-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
+    .privacy-card:hover::before { opacity: 1; }
+
+    .privacy-card-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .icon-gold { background: rgba(230,162,0,.12); }
+    .icon-blue { background: rgba(0,102,204,.10); }
+
+    .privacy-card h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .privacy-card p  { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .privacy-card a  { color: var(--blue); font-weight: 600; transition: color var(--transition); }
+    .privacy-card a:hover { color: var(--gold); }
+
+    /* Last updated notice */
+    .privacy-notice {
+      max-width: 900px; margin: 0 auto 40px;
+      background: rgba(230,162,0,.08);
+      border: 1px solid rgba(230,162,0,.25);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .privacy-notice-icon { font-size: 22px; flex-shrink: 0; }
+    .privacy-notice p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
+    .privacy-notice strong { color: var(--dark); }
+
+    /* CTA strip */
+    .privacy-cta {
+      max-width: 900px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%);
+      border-radius: var(--radius-xl); padding: 56px 32px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .privacy-cta-ring {
+      position: absolute; border-radius: 50%; border: 1px solid rgba(230,162,0,.12); pointer-events: none;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+    .privacy-cta-ring-1 { width: 400px; height: 400px; }
+    .privacy-cta-ring-2 { width: 700px; height: 700px; border-color: rgba(0,102,204,.08); }
+    .privacy-cta-content { position: relative; z-index: 1; }
+    .privacy-cta h3 { font-size: clamp(22px,2.5vw,30px); font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .privacy-cta p  { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 28px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #1a1a1a;
+      font-size: 15px; font-weight: 700; padding: 14px 32px; border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(230,162,0,.35); transition: background var(--transition), transform var(--transition);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost-white {
+      display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.12);
+      color: #fff; font-size: 15px; font-weight: 600; padding: 13px 28px; border-radius: 50px;
+      border: 2px solid rgba(255,255,255,.35); transition: background var(--transition);
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.20); }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    .site-footer { background: var(--dark); }
+    .footer-top { padding: 72px 0 48px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 48px; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.75; margin: 20px 0 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-link {
+      width: 40px; height: 40px; background: rgba(255,255,255,.08); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .social-link:hover { background: var(--gold); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.4); letter-spacing: .10em; text-transform: uppercase; margin-bottom: 20px; }
+    .footer-col a  { display: block; font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 10px; transition: color var(--transition); }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 20px 0; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,.40); }
+    .footer-bottom a { color: rgba(255,255,255,.55); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px;
+      background: #fff; border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      display: flex; align-items: center; justify-content: center; z-index: 10000;
+      transition: transform var(--transition);
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 900px) {
+      .navbar-links, .navbar-cta { display: none; }
+      .navbar-toggle { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .privacy-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .navbar-inner { padding: 0 16px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 520px) {
+      .cta-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <img loading="lazy" src="/assets/icons/whatsapp.webp" alt="WhatsApp" width="35" height="35"/>
+  </a>
+
+  <!-- NAVBAR -->
+    <nav class="navbar" id="mainNavbar">
+    <div class="navbar-inner">
+      <a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="img-logo" src="./assets/icons/Logo-Header.webp" alt="Logo-Header">
+      </a>
+      <div class="navbar-links" id="navbarLinks">
+        <a href="https://mohsenacademy.com" class="nav-link active">Home</a>
+        <a href="https://mohsenacademy.com/our-locations" class="nav-link">Our Locations</a>
+        <a href="https://mohsenacademy.com/Services" class="nav-link">Services</a>
+        <a href="https://mohsenacademy.com/About" class="nav-link">About</a>
+        <a href="https://mohsenacademy.com/contact-us" class="nav-link">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="https://mohsenacademy.com/contact-us" class="navbar-cta">
+          <span>سجّل الآن</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="navbar-drawer" id="navbarDrawer">
+      <a href="https://mohsenacademy.com" class="drawer-link">Home</a>
+      <a href="https://mohsenacademy.com/our-locations" class="drawer-link">Our Locations</a>
+      <a href="https://mohsenacademy.com/Services" class="drawer-link">Services</a>
+      <a href="https://mohsenacademy.com/About" class="drawer-link">About</a>
+      <a href="https://mohsenacademy.com/contact-us" class="drawer-link">Contact</a>
+      <a href="https://wa.me/message/X76VY37AZW2NK1" class="drawer-cta">سجّل الآن &larr;</a>
+    </div>
+  </nav>
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero-ring page-hero-ring-1"></div>
+    <div class="page-hero-ring page-hero-ring-2"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="https://mohsenacademy.com">Home</a>
+        <span>/</span>
+        <strong>سياسة الخصوصية</strong>
+      </div>
+      <div class="page-hero-badge"><span class="page-hero-badge-dot"></span>Privacy Policy</div>
+      <h1>سياسة الخصوصية</h1>
+      <p>نحن في Mohsen Academy نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.</p>
+    </div>
+  </header>
+
+  <!-- PRIVACY SECTION -->
+  <section class="privacy-section">
+    <div class="container-main">
+      <div class="section-header reveal">
+        <span class="section-label">Privacy Policy</span>
+        <h2 class="section-title">كيف نحمي بياناتك</h2>
+        <p class="section-sub">شفافية كاملة في كيفية جمع بياناتك واستخدامها وحمايتها.</p>
+      </div>
+
+      <!-- Notice -->
+      <div class="privacy-notice reveal">
+        <span class="privacy-notice-icon">📋</span>
+        <p><strong>آخر تحديث:</strong> يناير 2026 — نحتفظ بحق تحديث هذه السياسة من وقت لآخر، وستُنشر أي تغييرات على هذه الصفحة.</p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="privacy-grid">
+
+        <div class="privacy-card reveal">
+          <div class="privacy-card-icon icon-gold">📝</div>
+          <h3>البيانات التي نجمعها</h3>
+          <p>نقوم بجمع معلوماتك مثل الاسم، البريد الإلكتروني، ورقم الهاتف عند التسجيل في موقعنا أو عند التواصل معنا مباشرةً عبر أي قناة من قنواتنا.</p>
+        </div>
+
+        <div class="privacy-card reveal" style="--d:.08s">
+          <div class="privacy-card-icon icon-blue">🎯</div>
+          <h3>استخدام البيانات</h3>
+          <p>يتم استخدام بياناتك للتواصل معك، إرسال التحديثات، تنظيم التدريبات، وتحسين خدماتنا باستمرار لضمان أفضل تجربة ممكنة لك.</p>
+        </div>
+
+        <div class="privacy-card reveal" style="--d:.16s">
+          <div class="privacy-card-icon icon-gold">🔒</div>
+          <h3>حماية البيانات</h3>
+          <p>نحتفظ ببياناتك بأمان كامل ونستخدم أساليب حماية حديثة لمنع أي وصول غير مصرح به أو تسريب لمعلوماتك الشخصية.</p>
+        </div>
+
+        <div class="privacy-card reveal" style="--d:.24s">
+          <div class="privacy-card-icon icon-blue">🤝</div>
+          <h3>مشاركة البيانات</h3>
+          <p>لن نقوم ببيع أو مشاركة بياناتك مع أي طرف ثالث بدون موافقتك المسبقة، إلا في الحالات التي يستوجبها القانون.</p>
+        </div>
+
+        <div class="privacy-card reveal" style="--d:.32s">
+          <div class="privacy-card-icon icon-gold">⚙️</div>
+          <h3>حقوقك</h3>
+          <p>يمكنك في أي وقت طلب تعديل أو حذف بياناتك الشخصية عن طريق التواصل معنا عبر <a href="https://wa.me/message/X76VY37AZW2NK1">واتساب</a> أو البريد الإلكتروني.</p>
+        </div>
+
+        <div class="privacy-card reveal" style="--d:.40s">
+          <div class="privacy-card-icon icon-blue">🔔</div>
+          <h3>تحديثات السياسة</h3>
+          <p>قد نقوم بتحديث هذه السياسة من وقت لآخر بما يتوافق مع التطورات القانونية أو التقنية. سيتم نشر النسخة المحدّثة على هذا الرابط فور إجراء أي تغيير.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="privacy-cta reveal">
+        <div class="privacy-cta-ring privacy-cta-ring-1"></div>
+        <div class="privacy-cta-ring privacy-cta-ring-2"></div>
+        <div class="privacy-cta-content">
+          <h3>عندك سؤال عن بياناتك؟</h3>
+          <p>فريقنا موجود دايمًا للرد على استفساراتك والمساعدة.</p>
+          <div class="cta-btns">
+            <a href="https://mohsenacademy.com/contact-us" class="btn-primary">سجّل الآن</a>
+            <a href="https://wa.me/201035700789" class="btn-ghost-white">
+              <img src="/assets/icons/whatsapp.webp" alt="" width="18" height="18"> تواصل معنا
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="https://mohsenacademy.com"><img class="img-logo" src="/assets/icons/Logo-Header.webp" alt="Mohsen Academy"></a>
+            <p>Professional swimming academy for all ages — kids, adults, and athletes. Certified coaches from the Egyptian Federation for Diving &amp; Lifesaving.</p>
+            <div class="footer-socials">
+              <a href="https://www.facebook.com/MohsenAcademyPage" class="social-link"><img src="/assets/icons/facebook.webp" loading="lazy" alt="Facebook" width="20" height="20"></a>
+              <a href="https://www.instagram.com/mohsen_academy_/" class="social-link"><img src="/assets/icons/insta.webp" loading="lazy" alt="Instagram" width="20" height="20"></a>
+              <a href="https://www.tiktok.com/@mohsen_academy_" class="social-link"><img src="/assets/icons/vector.webp" loading="lazy" alt="TikTok" width="20" height="20"></a>
+              <a href="https://wa.me/message/X76VY37AZW2NK1" class="social-link"><img src="/assets/icons/whatsapp.webp" loading="lazy" alt="WhatsApp" width="20" height="20"></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="https://mohsenacademy.com/About">About Us</a>
+            <a href="https://mohsenacademy.com/Services">Our Programs</a>
+            <a href="https://mohsenacademy.com/Services">Schedule</a>
+            <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">Register Now</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
+            <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
+            <a href="https://www.tiktok.com/@mohsen_academy_">TikTok</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact Info</h4>
+            <a href="https://mohsenacademy.com/our-locations">📍 الشروق، العاشر من رمضان، بدر</a>
+            <a href="https://wa.me/201035700789">📞 +20 01035700789</a>
+            <a href="mailto:mohsenswimmingacdemy@gmail.com">✉️ mohsenswimmingacdemy@gmail.com</a>
+            <a href="#">⏰ Sun–Thu | 12:00 AM – 9:00 PM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-main footer-bottom-inner">
+        <p>&copy; 2026 Mohsen Academy &mdash; جميع الحقوق محفوظة &nbsp;|&nbsp; <a href="https://mohsenacademy.com/privacy">سياسة الخصوصية</a> &nbsp;|&nbsp; <a href="https://mohsenacademy.com/policies-rules">الشروط والأحكام</a></p>
+        <p>UI / UX &amp; Frontend by <a href="#">MOHSEN</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNavbar(){
+      const d=document.getElementById("navbarDrawer"),t=document.getElementById("navbarToggle");
+      const o=d.classList.toggle("open");
+      t.classList.toggle("active",o);
+      document.body.style.overflow=o?"hidden":"";
+    }
+    document.addEventListener("click",function(e){
+      const d=document.getElementById("navbarDrawer"),t=document.getElementById("navbarToggle");
+      if(d.classList.contains("open")&&!d.contains(e.target)&&!t.contains(e.target)){
+        d.classList.remove("open");t.classList.remove("active");document.body.style.overflow="";
+      }
+    });
+    document.addEventListener("DOMContentLoaded",()=>{
+      const reveals=document.querySelectorAll(".reveal");
+      const obs=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in-view");obs.unobserve(e.target);}});
+      },{threshold:0.08});
+      reveals.forEach(el=>obs.observe(el));
+    });
+  </script>
+</body>
+</html>

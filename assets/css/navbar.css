@@ -1,0 +1,365 @@
+/* ══════════════════════════════════════════════════════
+   navbar.css  |  Mohsen Academy  v3.0
+   /assets/css/navbar.css
+   استدعيه في index.html بعد style.css مباشرةً
+   ══════════════════════════════════════════════════════ */
+
+/* ════════════════════════
+   TOKENS
+════════════════════════ */
+:root {
+  --nav-h:          76px;
+  --nav-font:       "Cairo", "DM Sans", sans-serif;
+  --nav-blue:       #0066CC;
+  --nav-brand:      #E6A200;
+  --nav-brand-lt:   #FFD166;
+  --nav-text:       #1a1a2e;
+  --nav-ease:       0.26s cubic-bezier(.4,0,.2,1);
+}
+
+/* ════════════════════════
+   BODY — compensate fixed bar
+════════════════════════ */
+body {
+  padding-top: var(--nav-h) !important;
+}
+
+/* ════════════════════════
+   NAVBAR SHELL
+   — يشيل كل استايل القديم ويحط الجديد
+════════════════════════ */
+nav.navbar {
+  /* Layout */
+  display:          flex         !important;
+  flex-direction:   row          !important;
+  align-items:      center       !important;
+  justify-content:  space-between!important;
+  flex-wrap:        nowrap       !important;
+  gap:              12px         !important;
+
+  /* Position */
+  position:         fixed        !important;
+  top:              0            !important;
+  left:             0            !important;
+  right:            0            !important;
+  width:            100%         !important;
+  height:           var(--nav-h) !important;
+  z-index:          1000         !important;
+
+  /* Padding — شيل القديم */
+  padding:          0 clamp(16px,4vw,48px) !important;
+  margin:           0            !important;
+
+  /* Glass look */
+  background:       rgba(255,255,255,.82) !important;
+  backdrop-filter:  blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  border-bottom:    1px solid rgba(255,255,255,.5) !important;
+  box-shadow:       0 4px 24px rgba(0,0,0,.07) !important;
+
+  /* Typography */
+  font-family:      var(--nav-font) !important;
+  font-size:        14px          !important;
+
+  /* Direction — LTR دايمًا: لوجو شمال، زر يمين */
+  direction:        ltr           !important;
+
+  /* Transitions */
+  transition:       background var(--nav-ease), box-shadow var(--nav-ease) !important;
+
+  /* شيل أي content مزيف */
+  content:          none         !important;
+}
+
+nav.navbar.scrolled {
+  background:   rgba(255,255,255,.97) !important;
+  box-shadow:   0 6px 28px rgba(0,0,0,.1) !important;
+}
+
+/* ════════════════════════
+   LOGO LINK
+════════════════════════ */
+nav.navbar .navbar__logo {
+  display:         flex         !important;
+  align-items:     center       !important;
+  gap:             8px          !important;
+  flex-shrink:     0            !important;
+  text-decoration: none         !important;
+  cursor:          pointer      !important;
+
+  /* reset أي قيم قديمة */
+  margin:          0            !important;
+  padding:         0            !important;
+  border:          none         !important;
+  background:      none         !important;
+  color:           inherit      !important;
+  width:           auto         !important;
+  height:          auto         !important;
+}
+
+nav.navbar .navbar__logo-img {
+  display:         block        !important;
+  height:          52px         !important;
+  width:           auto         !important;
+  max-width:       none         !important;
+  object-fit:      contain      !important;
+  margin:          0            !important;
+  padding:         0            !important;
+}
+
+/* نص جانب اللوجو — مخفي (الصورة كافية) */
+nav.navbar .navbar__logo-label {
+  display:         none         !important;
+}
+
+/* ════════════════════════
+   DESKTOP NAV LINKS
+════════════════════════ */
+nav.navbar .navbar__links {
+  display:         flex         !important;
+  flex-direction:  row          !important;
+  align-items:     center       !important;
+  gap:             4px          !important;
+  list-style:      none         !important;
+  margin:          0            !important;
+  padding:         0            !important;
+  width:           auto         !important;
+  height:          auto         !important;
+  background:      none         !important;
+  box-shadow:      none         !important;
+  border:          none         !important;
+  position:        static       !important;
+  flex-wrap:       nowrap        !important;
+}
+
+nav.navbar .navbar__links li {
+  list-style:      none         !important;
+  position:        relative     !important;
+  display:         list-item    !important;
+}
+
+nav.navbar .navbar__links a {
+  display:         inline-flex  !important;
+  align-items:     center       !important;
+  padding:         8px 13px     !important;
+  font-family:     var(--nav-font)!important;
+  font-size:       14px         !important;
+  font-weight:     600          !important;
+  color:           var(--nav-text)!important;
+  text-decoration: none         !important;
+  border:          none         !important;
+  border-bottom:   none         !important;
+  border-radius:   8px          !important;
+  background:      transparent  !important;
+  white-space:     nowrap       !important;
+  cursor:          pointer      !important;
+  transition:      color var(--nav-ease), background var(--nav-ease) !important;
+  margin:          0            !important;
+}
+
+nav.navbar .navbar__links a:hover,
+nav.navbar .navbar__links a:focus {
+  color:           var(--nav-blue)             !important;
+  background:      rgba(0,102,204,.07)         !important;
+  border-bottom:   none                        !important;
+}
+
+nav.navbar .navbar__links a.active {
+  color:           var(--nav-blue)             !important;
+}
+
+nav.navbar .navbar__links a.active::after {
+  content:         ''                          ;
+  position:        absolute                    ;
+  bottom:          -3px                        ;
+  left:            13px                        ;
+  right:           13px                        ;
+  height:          2px                         ;
+  background:      var(--nav-brand)            ;
+  border-radius:   2px                         ;
+}
+
+/* ════════════════════════
+   CTA "سجّل الآن"
+   — ضروري يبقى static جوّه الناف بار
+════════════════════════ */
+nav.navbar .navbar__cta {
+  /* ★ Force inside navbar */
+  display:         inline-flex  !important;
+  position:        static       !important;
+  top:             auto         !important;
+  left:            auto         !important;
+  right:           auto         !important;
+  bottom:          auto         !important;
+
+  align-items:     center       !important;
+  gap:             7px          !important;
+  padding:         9px 20px     !important;
+  background:      var(--nav-brand)    !important;
+  color:           #000         !important;
+  font-family:     var(--nav-font)     !important;
+  font-size:       14px         !important;
+  font-weight:     700          !important;
+  border-radius:   999px        !important;
+  text-decoration: none         !important;
+  border:          none         !important;
+  cursor:          pointer      !important;
+  flex-shrink:     0            !important;
+  white-space:     nowrap       !important;
+  width:           auto         !important;
+  height:          auto         !important;
+  margin:          0            !important;
+  box-shadow:      0 3px 10px rgba(230,162,0,.35) !important;
+  transition:      background var(--nav-ease),
+                   transform   var(--nav-ease),
+                   box-shadow  var(--nav-ease) !important;
+  z-index:         auto         !important;
+}
+
+nav.navbar .navbar__cta:hover {
+  background:      var(--nav-brand-lt) !important;
+  transform:       translateY(-1px)    !important;
+  box-shadow:      0 6px 20px rgba(230,162,0,.45) !important;
+  color:           #000               !important;
+}
+
+nav.navbar .navbar__cta:active {
+  transform:       translateY(0) !important;
+}
+
+/* ════════════════════════
+   HAMBURGER (mobile only)
+════════════════════════ */
+nav.navbar .navbar__burger {
+  display:         none            !important;
+  flex-direction:  column          !important;
+  justify-content: space-between   !important;
+  width:           28px            !important;
+  height:          20px            !important;
+  background:      none            !important;
+  border:          none            !important;
+  cursor:          pointer         !important;
+  padding:         2px 0           !important;
+  flex-shrink:     0               !important;
+  position:        static          !important;
+  z-index:         1100            !important;
+}
+
+nav.navbar .navbar__burger span {
+  display:         block           !important;
+  height:          2.5px           !important;
+  border-radius:   2px             !important;
+  background:      var(--nav-text) !important;
+  transition:      transform var(--nav-ease), opacity var(--nav-ease) !important;
+  transform-origin: center         !important;
+  width:           100%            !important;
+}
+
+nav.navbar .navbar__burger span:nth-child(2) {
+  width:           70%             !important;
+  margin-left:     auto            !important;
+}
+
+nav.navbar .navbar__burger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg) !important;
+}
+nav.navbar .navbar__burger.open span:nth-child(2) {
+  opacity:   0                 !important;
+  transform: scaleX(0)         !important;
+}
+nav.navbar .navbar__burger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg) !important;
+}
+
+/* ════════════════════════
+   MOBILE DRAWER
+════════════════════════ */
+.navbar__drawer {
+  display:         none            ;
+  position:        fixed           !important;
+  top:             var(--nav-h)    !important;
+  left:            0               !important;
+  right:           0               !important;
+  bottom:          0               !important;
+  background:      rgba(255,255,255,.98) !important;
+  backdrop-filter: blur(24px)      !important;
+  z-index:         999             !important;
+  flex-direction:  column          !important;
+  padding:         20px 16px 40px  !important;
+  gap:             4px             !important;
+  overflow-y:      auto            !important;
+  font-family:     var(--nav-font) !important;
+  direction:       rtl             !important;
+
+  opacity:         0               !important;
+  transform:       translateY(-8px)!important;
+  transition:      opacity var(--nav-ease), transform var(--nav-ease) !important;
+  pointer-events:  none            !important;
+}
+
+.navbar__drawer.open {
+  display:         flex            !important;
+  opacity:         1               !important;
+  transform:       translateY(0)   !important;
+  pointer-events:  all             !important;
+}
+
+.navbar__drawer a {
+  display:         flex            !important;
+  align-items:     center          !important;
+  gap:             10px            !important;
+  padding:         13px 16px       !important;
+  font-size:       16px            !important;
+  font-weight:     600             !important;
+  color:           var(--nav-text) !important;
+  border-radius:   12px            !important;
+  text-decoration: none            !important;
+  border:          none            !important;
+  transition:      background var(--nav-ease), color var(--nav-ease) !important;
+}
+
+.navbar__drawer a:hover {
+  background: rgba(0,102,204,.07) !important;
+  color:      var(--nav-blue)     !important;
+}
+
+.drawer__divider {
+  height:     1px                        !important;
+  background: rgba(0,0,0,.09)            !important;
+  margin:     10px 0                     !important;
+}
+
+.drawer__cta {
+  background:      var(--nav-brand)      !important;
+  color:           #000                  !important;
+  border-radius:   999px                 !important;
+  justify-content: center                !important;
+  font-weight:     700                   !important;
+  margin-top:      8px                   !important;
+  box-shadow:      0 4px 14px rgba(230,162,0,.35) !important;
+}
+
+.drawer__cta:hover {
+  background: var(--nav-brand-lt) !important;
+  color:      #000                !important;
+}
+
+/* ════════════════════════
+   RESPONSIVE
+════════════════════════ */
+@media (max-width: 900px) {
+  nav.navbar .navbar__links,
+  nav.navbar .navbar__cta {
+    display: none !important;
+  }
+
+  nav.navbar .navbar__burger {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  nav.navbar .navbar__logo-img {
+    height: 42px !important;
+  }
+}
