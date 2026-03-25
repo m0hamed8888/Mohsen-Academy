@@ -606,21 +606,204 @@
         </div>
 
         <div class="app-phones reveal" style="--d:.15s">
-          <div class="phone-mockup phone-back">
-            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen">
-              <!-- <img src="/assets/images/app-profile.webp" loading="lazy" alt="صفحة البروفايل" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"> -->
-              <div class="screen-placeholder-content">&#128100;<p>صفحة البروفايل</p></div></div></div>
-          </div>
-          <div class="phone-mockup phone-main">
-            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen">
-              <!-- <img src="/assets/images/app-login.webp" loading="lazy" alt="تسجيل الدخول" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"> -->
-              <div class="screen-placeholder-content">&#128274;<p>تسجيل الدخول</p></div></div></div>
-          </div>
-          <div class="phone-mockup phone-front">
-            <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen">
-              <!-- <img src="/assets/images/app-add-swimmer.webp" loading="lazy" alt="إضافة سباح" onerror="this.parentElement.classList.add('screen-placeholder');this.style.display='none'"> -->
-              <div class="screen-placeholder-content">&#43;<p>إضافة سباح</p></div></div></div>
-          </div>
+          <!-- phone-back → البروفايل -->
+<div class="phone-mockup phone-back">
+  <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen" style="overflow:hidden;background:#0a1628;">
+    <svg viewBox="0 0 188 370" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- Nav -->
+      <rect width="188" height="28" fill="#060f1e"/>
+      <text x="174" y="18" text-anchor="end" font-size="10" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">AquaFlow</text>
+      <circle cx="14" cy="14" r="9" fill="#1e3a5a"/>
+      <text x="14" y="18" text-anchor="middle" font-size="8" fill="#a0c4e8" font-family="Tahoma,sans-serif">س</text>
+
+      <!-- Profile header -->
+      <rect y="28" width="188" height="80" fill="#0a1628"/>
+      <circle cx="94" cy="60" r="22" fill="#1e3a5a" stroke="#f0a500" stroke-width="2"/>
+      <text x="94" y="66" text-anchor="middle" font-size="16" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">س</text>
+      <text x="94" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="Tahoma,sans-serif">سامي عبدالله</text>
+      <text x="94" y="107" text-anchor="middle" font-size="7" fill="#5a7a9a" font-family="Tahoma,sans-serif">حساب سباح · AquaFlow</text>
+
+      <!-- Stats row -->
+      <rect y="108" width="188" height="36" fill="#060f1e"/>
+      <line x1="62" y1="112" x2="62" y2="140" stroke="#1e3050" stroke-width="0.5"/>
+      <line x1="126" y1="112" x2="126" y2="140" stroke="#1e3050" stroke-width="0.5"/>
+      <text x="31" y="123" text-anchor="middle" font-size="13" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">3</text>
+      <text x="31" y="133" text-anchor="middle" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">سباحون</text>
+      <text x="94" y="123" text-anchor="middle" font-size="13" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">2</text>
+      <text x="94" y="133" text-anchor="middle" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">اشتراك نشط</text>
+      <text x="157" y="123" text-anchor="middle" font-size="13" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">45</text>
+      <text x="157" y="133" text-anchor="middle" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">يوم معنا</text>
+
+      <!-- Swimmers section -->
+      <rect y="144" width="188" height="14" fill="#0a1628"/>
+      <text x="178" y="154" text-anchor="end" font-size="8" font-weight="700" fill="#e8f0fb" font-family="Tahoma,sans-serif">السباحون على حسابك</text>
+      <text x="10" y="154" text-anchor="start" font-size="7" fill="#f0a500" font-family="Tahoma,sans-serif">+ إضافة</text>
+
+      <!-- Swimmer card 1 -->
+      <rect x="8" y="160" width="172" height="30" rx="7" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <circle cx="24" cy="175" r="10" fill="#0d2040"/>
+      <text x="24" y="179" text-anchor="middle" font-size="8" font-weight="700" fill="#7abadf" font-family="Tahoma,sans-serif">أ</text>
+      <text x="40" y="172" text-anchor="start" font-size="8" font-weight="600" fill="#e8f0fb" font-family="Tahoma,sans-serif">أحمد سامي</text>
+      <text x="40" y="183" text-anchor="start" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">12 حصة · أحد، ثلاثاء</text>
+      <rect x="148" y="168" width="24" height="14" rx="4" fill="#0d3020"/>
+      <text x="160" y="178" text-anchor="middle" font-size="6" fill="#3ac080" font-family="Tahoma,sans-serif">نشط</text>
+
+      <!-- Swimmer card 2 -->
+      <rect x="8" y="196" width="172" height="30" rx="7" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <circle cx="24" cy="211" r="10" fill="#0d2040"/>
+      <text x="24" y="215" text-anchor="middle" font-size="8" font-weight="700" fill="#7abadf" font-family="Tahoma,sans-serif">ن</text>
+      <text x="40" y="208" text-anchor="start" font-size="8" font-weight="600" fill="#e8f0fb" font-family="Tahoma,sans-serif">نورا سامي</text>
+      <text x="40" y="219" text-anchor="start" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">8 حصص · اثنين، خميس</text>
+      <rect x="148" y="204" width="24" height="14" rx="4" fill="#0d3020"/>
+      <text x="160" y="214" text-anchor="middle" font-size="6" fill="#3ac080" font-family="Tahoma,sans-serif">نشط</text>
+
+      <!-- Edit section -->
+      <rect y="232" width="188" height="10" fill="#0a1628"/>
+      <text x="178" y="240" text-anchor="end" font-size="7" font-weight="700" fill="#7a9ec4" font-family="Tahoma,sans-serif">تعديل بياناتي</text>
+
+      <rect y="242" width="188" height="1" fill="#1e3050"/>
+      <text x="178" y="254" text-anchor="end" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">الاسم الكامل</text>
+      <rect x="8" y="257" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="269" text-anchor="end" font-size="7" fill="#c0d8f0" font-family="Tahoma,sans-serif">سامي عبدالله محمد</text>
+
+      <text x="178" y="284" text-anchor="end" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">وقت التدريب</text>
+      <rect x="8" y="287" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="299" text-anchor="end" font-size="7" fill="#c0d8f0" font-family="Tahoma,sans-serif">07:00 ص</text>
+
+      <!-- Save button -->
+      <rect x="8" y="315" width="172" height="28" rx="8" fill="#f0a500"/>
+      <text x="94" y="333" text-anchor="middle" font-size="9" font-weight="700" fill="#0a1628" font-family="Tahoma,sans-serif">حفظ التعديلات</text>
+    </svg>
+  </div></div>
+</div>
+
+<!-- phone-main → الهوم -->
+<div class="phone-mockup phone-main">
+  <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen" style="overflow:hidden;background:#0a1628;">
+    <svg viewBox="0 0 188 370" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- Nav -->
+      <rect width="188" height="28" fill="#060f1e"/>
+      <text x="174" y="18" text-anchor="end" font-size="10" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">AquaFlow</text>
+      <circle cx="14" cy="14" r="9" fill="#1e3a5a"/>
+      <text x="14" y="18" text-anchor="middle" font-size="8" fill="#a0c4e8" font-family="Tahoma,sans-serif">س</text>
+
+      <!-- Hero -->
+      <rect y="28" width="188" height="110" fill="#0d2040"/>
+      <text x="10" y="46" font-size="7" fill="#f0a500" font-family="Tahoma,sans-serif" font-weight="700">أكاديمية السباحة</text>
+      <text x="178" y="62" text-anchor="end" font-size="13" font-weight="700" fill="#fff" font-family="Tahoma,sans-serif">احترف السباحة</text>
+      <text x="178" y="76" text-anchor="end" font-size="13" font-weight="700" fill="#fff" font-family="Tahoma,sans-serif">مع أمهر المدربين</text>
+      <text x="178" y="90" text-anchor="end" font-size="7" fill="#7a9ec4" font-family="Tahoma,sans-serif">برامج متكاملة لجميع المستويات</text>
+      <rect x="10" y="100" width="60" height="22" rx="11" fill="#f0a500"/>
+      <text x="40" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#0a1628" font-family="Tahoma,sans-serif">ابدأ رحلتك</text>
+
+      <!-- Features -->
+      <rect y="138" width="188" height="10" fill="#0a1628"/>
+      <text x="178" y="147" text-anchor="end" font-size="7" fill="#f0a500" font-weight="700" font-family="Tahoma,sans-serif">لماذا AquaFlow؟</text>
+
+      <!-- feat 1 -->
+      <rect x="8" y="152" width="172" height="34" rx="7" fill="#0d2040" stroke="#1e3050" stroke-width="0.5"/>
+      <rect x="150" y="158" width="22" height="22" rx="6" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="161" y="173" text-anchor="middle" font-size="11" font-family="Tahoma,sans-serif" fill="#f0a500">✓</text>
+      <text x="140" y="164" text-anchor="end" font-size="8" font-weight="600" fill="#e8f0fb" font-family="Tahoma,sans-serif">مدربون محترفون</text>
+      <text x="140" y="175" text-anchor="end" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">أبطال وطنيون معتمدون دولياً</text>
+
+      <!-- feat 2 -->
+      <rect x="8" y="192" width="172" height="34" rx="7" fill="#0d2040" stroke="#1e3050" stroke-width="0.5"/>
+      <rect x="150" y="198" width="22" height="22" rx="6" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="161" y="213" text-anchor="middle" font-size="11" font-family="Tahoma,sans-serif" fill="#f0a500">≡</text>
+      <text x="140" y="204" text-anchor="end" font-size="8" font-weight="600" fill="#e8f0fb" font-family="Tahoma,sans-serif">برامج متطورة</text>
+      <text x="140" y="215" text-anchor="end" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">خطط مخصصة لكل مستوى</text>
+
+      <!-- feat 3 -->
+      <rect x="8" y="232" width="172" height="34" rx="7" fill="#0d2040" stroke="#1e3050" stroke-width="0.5"/>
+      <rect x="150" y="238" width="22" height="22" rx="6" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="161" y="253" text-anchor="middle" font-size="11" font-family="Tahoma,sans-serif" fill="#f0a500">★</text>
+      <text x="140" y="244" text-anchor="end" font-size="8" font-weight="600" fill="#e8f0fb" font-family="Tahoma,sans-serif">بيئة آمنة 100%</text>
+      <text x="140" y="255" text-anchor="end" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">منقذون على مدار الساعة</text>
+
+      <!-- Install btn -->
+      <rect y="276" width="188" height="1" fill="#1e3050"/>
+      <rect x="8" y="282" width="172" height="40" rx="10" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <rect x="14" y="288" width="28" height="28" rx="7" fill="#f0a500"/>
+      <text x="28" y="306" text-anchor="middle" font-size="14" font-family="Tahoma,sans-serif" fill="#0a1628">⌂</text>
+      <text x="52" y="300" font-size="6" fill="#5a7a9a" font-family="Tahoma,sans-serif">أضف للشاشة الرئيسية</text>
+      <text x="52" y="313" font-size="9" font-weight="700" fill="#fff" font-family="Tahoma,sans-serif">ثبّت التطبيق</text>
+
+      <text x="94" y="338" text-anchor="middle" font-size="7" fill="#5a7a9a" font-family="Tahoma,sans-serif">🔒 مجاني — يعمل بدون إنترنت</text>
+    </svg>
+  </div></div>
+</div>
+
+<!-- phone-front → إضافة سباح -->
+<div class="phone-mockup phone-front">
+  <div class="phone-frame"><div class="phone-notch"></div><div class="phone-screen" style="overflow:hidden;background:#0a1628;">
+    <svg viewBox="0 0 188 370" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <!-- Nav -->
+      <rect width="188" height="28" fill="#060f1e"/>
+      <text x="174" y="18" text-anchor="end" font-size="10" font-weight="700" fill="#f0a500" font-family="Tahoma,sans-serif">AquaFlow</text>
+      <circle cx="14" cy="14" r="9" fill="#1e3a5a"/>
+      <text x="14" y="18" text-anchor="middle" font-size="8" fill="#a0c4e8" font-family="Tahoma,sans-serif">س</text>
+
+      <!-- Header -->
+      <rect y="28" width="188" height="38" fill="#0a1628" stroke-width="0"/>
+      <rect y="64" width="188" height="0.5" fill="#1e3050"/>
+      <text x="178" y="46" text-anchor="end" font-size="11" font-weight="700" fill="#fff" font-family="Tahoma,sans-serif">إضافة بيانات سباح</text>
+      <text x="178" y="59" text-anchor="end" font-size="7" fill="#5a7a9a" font-family="Tahoma,sans-serif">أضف بياناتك لتظهر في لوحة الكابتن</text>
+
+      <!-- Field: Captain -->
+      <text x="178" y="78" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">الكابتن المسؤول</text>
+      <rect x="8" y="81" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="93" text-anchor="end" font-size="7" fill="#3a5a7a" font-family="Tahoma,sans-serif">اختر الكابتن...</text>
+
+      <!-- Field: Name -->
+      <text x="178" y="108" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">الاسم بالكامل</text>
+      <rect x="8" y="111" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="123" text-anchor="end" font-size="7" fill="#c0d8f0" font-family="Tahoma,sans-serif">أحمد محمد السيد</text>
+
+      <!-- Stars -->
+      <text x="178" y="140" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">مستوى السباحة</text>
+      <text x="14" y="154" font-size="14" fill="#f0a500" font-family="Tahoma,sans-serif">★★★</text>
+      <text x="56" y="154" font-size="14" fill="#2a4060" font-family="Tahoma,sans-serif">★★</text>
+
+      <!-- Sessions -->
+      <text x="178" y="168" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">عدد الحصص</text>
+      <rect x="8" y="171" width="52" height="22" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="34" y="185" text-anchor="middle" font-size="7" fill="#5a7a9a" font-family="Tahoma,sans-serif">8 حصص</text>
+      <rect x="68" y="171" width="52" height="22" rx="5" fill="#1a3a5a" stroke="#f0a500" stroke-width="1"/>
+      <text x="94" y="185" text-anchor="middle" font-size="7" fill="#f0a500" font-weight="700" font-family="Tahoma,sans-serif">12 حصة</text>
+      <rect x="128" y="171" width="52" height="22" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="154" y="185" text-anchor="middle" font-size="7" fill="#5a7a9a" font-family="Tahoma,sans-serif">24 حصة</text>
+
+      <!-- Days -->
+      <text x="178" y="204" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">أيام التدريب</text>
+      <!-- day chips -->
+      <rect x="8" y="207" width="30" height="18" rx="9" fill="#f0a500"/>
+      <text x="23" y="219" text-anchor="middle" font-size="6.5" fill="#0a1628" font-weight="700" font-family="Tahoma,sans-serif">أحد</text>
+      <rect x="42" y="207" width="30" height="18" rx="9" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="57" y="219" text-anchor="middle" font-size="6.5" fill="#5a7a9a" font-family="Tahoma,sans-serif">اثنين</text>
+      <rect x="76" y="207" width="34" height="18" rx="9" fill="#f0a500"/>
+      <text x="93" y="219" text-anchor="middle" font-size="6.5" fill="#0a1628" font-weight="700" font-family="Tahoma,sans-serif">ثلاثاء</text>
+      <rect x="114" y="207" width="34" height="18" rx="9" fill="#f0a500"/>
+      <text x="131" y="219" text-anchor="middle" font-size="6.5" fill="#0a1628" font-weight="700" font-family="Tahoma,sans-serif">أربعاء</text>
+      <rect x="152" y="207" width="28" height="18" rx="9" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="166" y="219" text-anchor="middle" font-size="6.5" fill="#5a7a9a" font-family="Tahoma,sans-serif">خميس</text>
+
+      <!-- Goal -->
+      <text x="178" y="237" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">الهدف</text>
+      <rect x="8" y="240" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="252" text-anchor="end" font-size="7" fill="#c0d8f0" font-family="Tahoma,sans-serif">اللياقة البدنية</text>
+
+      <!-- Training time -->
+      <text x="178" y="268" text-anchor="end" font-size="6" fill="#7a9ec4" font-family="Tahoma,sans-serif">ساعة التدريب</text>
+      <rect x="8" y="271" width="172" height="18" rx="5" fill="#1a2e46" stroke="#2a4060" stroke-width="0.5"/>
+      <text x="174" y="283" text-anchor="end" font-size="7" fill="#c0d8f0" font-family="Tahoma,sans-serif">07:00 ص</text>
+
+      <!-- Save button -->
+      <rect x="8" y="302" width="172" height="30" rx="8" fill="#f0a500"/>
+      <text x="94" y="321" text-anchor="middle" font-size="10" font-weight="700" fill="#0a1628" font-family="Tahoma,sans-serif">حفظ البيانات</text>
+    </svg>
+  </div></div>
+</div>
         </div>
       </div>
     </div>
