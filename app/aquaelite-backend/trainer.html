@@ -551,7 +551,7 @@ select.fc option{background:#080e1c}
 
 /* ══ LOGIN ══ */
 #loginScreen{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
-.login-card{width:100%;max-width:380px;background:rgba(255,255,255,.032);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(0,180,200,.1);border-radius:var(--r-2xl);padding:36px 24px;position:relative;overflow:hidden}
+.login-card{width:100%;max-width:380px;background:rgba(255,255,255,.032);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(0,180,200,.1);border-radius:var(--r-2xl);padding:36px 24px;position:relative;overflow:hidden; margin: auto;}
 .login-card::before{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1)}
 .login-glow{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(0,180,200,.18),transparent 70%);pointer-events:none}
 .ll{text-align:center;margin-bottom:26px}
@@ -924,10 +924,10 @@ select.fc option{background:#080e1c}
     </div>
   </div>
 
-  <!-- ══ LEVELS ══ -->
+ <!-- ══ LEVELS ══ -->
   <div class="panel" id="panel-levels">
     <div class="gc">
-      <div class="gc-title"><i data-lucide="bar-chart-2"></i> Academy Levels</div>
+      <div class="gc-title"><i data-lucide="bar-chart-2"></i> مستويات الأكاديمية</div>
 
       <!-- Warning Banner -->
       <div class="lv-warn-banner">
@@ -936,17 +936,17 @@ select.fc option{background:#080e1c}
         </div>
         <div class="lv-warn-body">
           <div class="lv-warn-title">
-            Important Notice — Before Sharing Any Level With a Student
-            <span class="lv-warn-badge">INTERNAL ONLY</span>
+            تنبيه مهم — قبل ما تقول لأي طالب مستواه
+            <span class="lv-warn-badge">للداخل بس</span>
           </div>
           <div class="lv-warn-text">
-            This page is for internal reference only. The <strong>official Level</strong> for each swimmer is determined and issued by the <strong>Supervisor</strong> at the end of every month after a full review. Any information shared with a student or parent before the Supervisor's approval is <strong>unofficial and your full responsibility</strong>.
+            الصفحة دي للمراجعة الداخلية بس. <strong>المستوى الرسمي</strong> لكل سباح بيتحدده <strong>المشرف</strong> في آخر كل شهر بعد المراجعة الكاملة. أي معلومة بتتقالها للطالب أو وليّ أمره قبل موافقة المشرف تبقى <strong>غير رسمية وعلى مسؤوليتك إنت</strong>.
           </div>
           <div class="lv-penalty-box">
             <i data-lucide="info"></i>
             <div class="lv-penalty-text">
-              If you inform a student of their Level and the <strong>Supervisor finds a discrepancy</strong> at the end of the month —
-              <strong>a financial penalty will be applied to the responsible captain</strong> in accordance with academy regulations.
+              لو قلت لطالب مستواه وطلع المشرف في آخر الشهر في <strong>فرق في التقييم</strong> —
+              <strong>هيتحسم من مرتبك</strong> طبقاً للوائح الأكاديمية.
             </div>
           </div>
         </div>
@@ -955,10 +955,10 @@ select.fc option{background:#080e1c}
       <!-- Levels Header -->
       <div class="lv-section-hd">
         <div class="lv-section-title">
-          <i data-lucide="layers-3"></i> Level Descriptions
+          <i data-lucide="layers-3"></i> شرح المستويات
         </div>
         <div class="lv-confidential-tag">
-          <i data-lucide="lock"></i> CONFIDENTIAL
+          <i data-lucide="lock"></i> سري
         </div>
       </div>
 
@@ -967,65 +967,65 @@ select.fc option{background:#080e1c}
 
         <div class="lv-card lv-c1">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 1</span>
+            <span class="lv-num-badge">المستوى ١</span>
             <div class="lv-card-icon"><i data-lucide="droplets"></i></div>
           </div>
-          <div class="lv-card-name">Beginner</div>
-          <div class="lv-card-desc">Floating on front and back with assistance, plus exhaling through the nose underwater.</div>
+          <div class="lv-card-name">مبتدئ</div>
+          <div class="lv-card-desc">الطفو على الوش والضهر بمساعدة، مع إخراج الهوا من الأنف جوه الميه.</div>
         </div>
 
         <div class="lv-card lv-c2">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 2</span>
+            <span class="lv-num-badge">المستوى ٢</span>
             <div class="lv-card-icon"><i data-lucide="check-circle-2"></i></div>
           </div>
-          <div class="lv-card-name">Elementary</div>
-          <div class="lv-card-desc">Performing a front and back start independently with no assistance.</div>
+          <div class="lv-card-name">أساسي</div>
+          <div class="lv-card-desc">عمل انطلاقة من على الوش ومن على الضهر لوحده من غير مساعدة.</div>
         </div>
 
         <div class="lv-card lv-c3">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 3</span>
+            <span class="lv-num-badge">المستوى ٣</span>
             <div class="lv-card-icon"><i data-lucide="chevrons-right"></i></div>
           </div>
-          <div class="lv-card-name">Intermediate</div>
-          <div class="lv-card-desc">Performing front and back leg kicks from the start position without assistance.</div>
+          <div class="lv-card-name">متوسط</div>
+          <div class="lv-card-desc">عمل ركل بالرجلين من وضع الانطلاقة على الوش والضهر من غير مساعدة.</div>
         </div>
 
         <div class="lv-card lv-c4">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 4</span>
+            <span class="lv-num-badge">المستوى ٤</span>
             <div class="lv-card-icon"><i data-lucide="zap"></i></div>
           </div>
-          <div class="lv-card-name">Advanced</div>
-          <div class="lv-card-desc">Learning arm catches for front and back stroke, plus introductory underwater wheel drills.</div>
+          <div class="lv-card-name">متقدم</div>
+          <div class="lv-card-desc">تعلم حركة الإيدين في الكراول والباك ستروك، مع بداية تدريبات العجلة تحت الميه.</div>
         </div>
 
         <div class="lv-card lv-c5">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 5</span>
+            <span class="lv-num-badge">المستوى ٥</span>
             <div class="lv-card-icon"><i data-lucide="star"></i></div>
           </div>
-          <div class="lv-card-name">Athlete</div>
-          <div class="lv-card-desc">Swimming front &amp; back with full arm catches for 25 m — ready for the Star 1 assessment.</div>
+          <div class="lv-card-name">رياضي</div>
+          <div class="lv-card-desc">سباحة الكراول والباك ستروك كامل ٢٥ متر — جاهز لاختبار النجمة الأولى.</div>
         </div>
 
         <div class="lv-card lv-c6">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 6</span>
+            <span class="lv-num-badge">المستوى ٦</span>
             <div class="lv-card-icon"><i data-lucide="trophy"></i></div>
           </div>
-          <div class="lv-card-name">Professional</div>
-          <div class="lv-card-desc">Swimming freestyle and backstroke 50 m with turns, plus introductory breaststroke and dolphin kick drills.</div>
+          <div class="lv-card-name">محترف</div>
+          <div class="lv-card-desc">سباحة كراول وباك ستروك ٥٠ متر مع التحولات، وبداية تدريبات الضفدع وركلة الدولفين.</div>
         </div>
 
         <div class="lv-card lv-c7">
           <div class="lv-card-top">
-            <span class="lv-num-badge">LV 7</span>
+            <span class="lv-num-badge">المستوى ٧</span>
             <div class="lv-card-icon"><i data-lucide="award"></i></div>
           </div>
-          <div class="lv-card-name">Expert</div>
-          <div class="lv-card-desc">Full butterfly and dolphin kick drills, plus complete breaststroke and all associated technique drills.</div>
+          <div class="lv-card-name">خبير</div>
+          <div class="lv-card-desc">تدريبات الفراشة وركلة الدولفين كاملة، مع إتقان الضفدع وكل التمارين الفنية المرتبطة بيه.</div>
         </div>
 
       </div>
@@ -1034,7 +1034,7 @@ select.fc option{background:#080e1c}
       <div class="lv-private-note">
         <i data-lucide="users"></i>
         <div class="lv-private-note-text">
-          For internal reference only — do not share with swimmers or parents. Official Level assessments are issued by the Supervisor through the academy's official channels.
+          للمراجعة الداخلية بس — متشاركش مع السباحين أو أولياء الأمور. التقييم الرسمي للمستويات بيصدر من المشرف عن طريق القنوات الرسمية للأكاديمية.
         </div>
       </div>
 
