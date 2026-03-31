@@ -680,7 +680,6 @@ select.fc option{background:#080e1c}
 .lv-card-name{font-size:.88rem;font-weight:800;color:var(--tp);margin-bottom:5px}
 .lv-card-desc{font-size:.76rem;color:var(--ts);line-height:1.65}
 
-/* level color variants */
 .lv-c1,.lv-c2{
   --lv-accent:var(--ok);
   --lv-badge-bg:rgba(0,229,160,.08);--lv-badge-bd:rgba(0,229,160,.25);--lv-badge-tx:var(--ok);
@@ -836,8 +835,24 @@ select.fc option{background:#080e1c}
             <select class="fc" id="c_swam"><option value="">اختر</option><option value="yes">نعم</option><option value="no">لا</option></select></div>
           <div class="fld"><label><i data-lucide="target"></i> الهدف</label>
             <select class="fc" id="c_goal"><option value="">اختر الهدف</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
+
+          <!-- ══ NEW: تاريخ بداية الاشتراك ══ -->
+          <div class="fld"><label><i data-lucide="calendar-plus"></i> تاريخ بداية الاشتراك</label><input type="date" class="fc" id="c_startDate"/></div>
+
           <div class="fld"><label><i data-lucide="calendar-x-2"></i> نهاية الاشتراك</label><input type="date" class="fc" id="c_expiry"/></div>
           <div class="fld"><label><i data-lucide="user-check"></i> المدرب المسؤول</label><input type="text" class="fc" id="c_trainer" placeholder="اسم المدرب"/></div>
+
+          <!-- ══ NEW: المدينة ══ -->
+          <div class="fld"><label><i data-lucide="map-pin"></i> المدينة</label>
+            <select class="fc" id="c_city">
+              <option value="">اختر المدينة</option>
+              <option value="الشروق">الشروق</option>
+              <option value="العاشر من رمضان">العاشر من رمضان</option>
+              <option value="المستقبل">المستقبل</option>
+              <option value="بدر">بدر</option>
+            </select>
+          </div>
+
         </div>
         <div class="fld mt-16">
           <label><i data-lucide="layers-3"></i> عدد الحصص</label>
@@ -924,16 +939,13 @@ select.fc option{background:#080e1c}
     </div>
   </div>
 
- <!-- ══ LEVELS ══ -->
+  <!-- ══ LEVELS ══ -->
   <div class="panel" id="panel-levels">
     <div class="gc">
       <div class="gc-title"><i data-lucide="bar-chart-2"></i> مستويات الأكاديمية</div>
 
-      <!-- Warning Banner -->
       <div class="lv-warn-banner">
-        <div class="lv-warn-icon">
-          <i data-lucide="alert-triangle"></i>
-        </div>
+        <div class="lv-warn-icon"><i data-lucide="alert-triangle"></i></div>
         <div class="lv-warn-body">
           <div class="lv-warn-title">
             تنبيه مهم — قبل ما تقول لأي طالب مستواه
@@ -944,99 +956,63 @@ select.fc option{background:#080e1c}
           </div>
           <div class="lv-penalty-box">
             <i data-lucide="info"></i>
-           <div class="lv-penalty-text">
-  في حال إبلاغ أي طالب بمستواه قبل صدور التقييم الرسمي من المشرف،
-  وظهر <strong>أي تعارض في النتيجة النهائية</strong> — سيترتب على ذلك
-  <strong>خصم مالي من راتب الكابتن المسؤول</strong> وفقاً للوائح والقواعد المعمول بها في الأكاديمية.
-</div>
+            <div class="lv-penalty-text">
+              في حال إبلاغ أي طالب بمستواه قبل صدور التقييم الرسمي من المشرف،
+              وظهر <strong>أي تعارض في النتيجة النهائية</strong> — سيترتب على ذلك
+              <strong>خصم مالي من راتب الكابتن المسؤول</strong> وفقاً للوائح والقواعد المعمول بها في الأكاديمية.
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Levels Header -->
       <div class="lv-section-hd">
-        <div class="lv-section-title">
-          <i data-lucide="layers-3"></i> شرح المستويات
-        </div>
-
+        <div class="lv-section-title"><i data-lucide="layers-3"></i> شرح المستويات</div>
       </div>
 
-      <!-- Levels Grid -->
-<div class="lv-cards-grid">
+      <div class="lv-cards-grid">
+        <div class="lv-card lv-c1">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ١</span><div class="lv-card-icon"><i data-lucide="droplets"></i></div></div>
+          <div class="lv-card-name">جديد</div>
+          <div class="lv-card-desc">الطفو على الفرونت والباك بمساعدة، مع إخراج الزفير من الأنف داخل الماء.</div>
+        </div>
+        <div class="lv-card lv-c2">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٢</span><div class="lv-card-icon"><i data-lucide="check-circle-2"></i></div></div>
+          <div class="lv-card-name">مبتدئ</div>
+          <div class="lv-card-desc">أداء استارت الفرونت والباك دون أي مساعدة.</div>
+        </div>
+        <div class="lv-card lv-c3">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٣</span><div class="lv-card-icon"><i data-lucide="chevrons-right"></i></div></div>
+          <div class="lv-card-name">متوسط</div>
+          <div class="lv-card-desc">بدء ضربات الرجلين الفرونت والباك من الاستارت بدون مساعدة.</div>
+        </div>
+        <div class="lv-card lv-c4">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٤</span><div class="lv-card-icon"><i data-lucide="zap"></i></div></div>
+          <div class="lv-card-name">متقدم</div>
+          <div class="lv-card-desc">تعلّم الكاتشات للفرونت والباك مع بداية تمارين العجلة داخل الماء.</div>
+        </div>
+        <div class="lv-card lv-c5">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٥</span><div class="lv-card-icon"><i data-lucide="star"></i></div></div>
+          <div class="lv-card-name">رياضي</div>
+          <div class="lv-card-desc">السباحة بالكاتشات (فرونت & باك) لمسافة 25 متر — جاهز لاختبار Star 1.</div>
+        </div>
+        <div class="lv-card lv-c6">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٦</span><div class="lv-card-icon"><i data-lucide="trophy"></i></div></div>
+          <div class="lv-card-name">محترف</div>
+          <div class="lv-card-desc">السباحة حرة وباك لمسافة 50 متر مع التيرن، مع بداية تعليم رجلين البريست والدولفين.</div>
+        </div>
+        <div class="lv-card lv-c7">
+          <div class="lv-card-top"><span class="lv-num-badge">المستوى ٧</span><div class="lv-card-icon"><i data-lucide="award"></i></div></div>
+          <div class="lv-card-name">خبير</div>
+          <div class="lv-card-desc">تعليم سباحة الدولفين والدريلات الخاصة بها، وأيضاً البريست والدريلات الخاصة بها.</div>
+        </div>
+      </div>
 
-  <div class="lv-card lv-c1">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ١</span>
-      <div class="lv-card-icon"><i data-lucide="droplets"></i></div>
-    </div>
-    <div class="lv-card-name">جديد</div>
-    <div class="lv-card-desc">الطفو على الفرونت والباك بمساعدة، مع إخراج الزفير من الأنف داخل الماء.</div>
-  </div>
-
-  <div class="lv-card lv-c2">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٢</span>
-      <div class="lv-card-icon"><i data-lucide="check-circle-2"></i></div>
-    </div>
-    <div class="lv-card-name">مبتدئ</div>
-    <div class="lv-card-desc">أداء استارت الفرونت والباك دون أي مساعدة.</div>
-  </div>
-
-  <div class="lv-card lv-c3">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٣</span>
-      <div class="lv-card-icon"><i data-lucide="chevrons-right"></i></div>
-    </div>
-    <div class="lv-card-name">متوسط</div>
-    <div class="lv-card-desc">بدء ضربات الرجلين الفرونت والباك من الاستارت بدون مساعدة.</div>
-  </div>
-
-  <div class="lv-card lv-c4">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٤</span>
-      <div class="lv-card-icon"><i data-lucide="zap"></i></div>
-    </div>
-    <div class="lv-card-name">متقدم</div>
-    <div class="lv-card-desc">تعلّم الكاتشات للفرونت والباك مع بداية تمارين العجلة داخل الماء.</div>
-  </div>
-
-  <div class="lv-card lv-c5">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٥</span>
-      <div class="lv-card-icon"><i data-lucide="star"></i></div>
-    </div>
-    <div class="lv-card-name">رياضي</div>
-    <div class="lv-card-desc">السباحة بالكاتشات (فرونت & باك) لمسافة 25 متر — جاهز لاختبار Star 1.</div>
-  </div>
-
-  <div class="lv-card lv-c6">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٦</span>
-      <div class="lv-card-icon"><i data-lucide="trophy"></i></div>
-    </div>
-    <div class="lv-card-name">محترف</div>
-    <div class="lv-card-desc">السباحة حرة وباك لمسافة 50 متر مع التيرن، مع بداية تعليم رجلين البريست والدولفين.</div>
-  </div>
-
-  <div class="lv-card lv-c7">
-    <div class="lv-card-top">
-      <span class="lv-num-badge">المستوى ٧</span>
-      <div class="lv-card-icon"><i data-lucide="award"></i></div>
-    </div>
-    <div class="lv-card-name">خبير</div>
-    <div class="lv-card-desc">تعليم سباحة الدولفين والدريلات الخاصة بها، وأيضاً البريست والدريلات الخاصة بها.</div>
-  </div>
-
-</div>
-
-      <!-- Private note -->
       <div class="lv-private-note">
         <i data-lucide="users"></i>
         <div class="lv-private-note-text">
           للمراجعة الداخلية بس — متشاركش مع السباحين أو أولياء الأمور. التقييم الرسمي للمستويات بيصدر من المشرف عن طريق القنوات الرسمية للأكاديمية.
         </div>
       </div>
-
     </div>
   </div>
 
@@ -1273,24 +1249,59 @@ function onDaysChange(e){
   if(e.target.checked&&cnt>max){e.target.checked=false;return;}
   if(val&&max)updateDaysUI(val,document.querySelectorAll('input[name="c_days"]:checked').length);
 }
+
 async function doCreate(e){
   e.preventDefault();
-  const name=$('c_name').value.trim(),dob=$('c_dob').value,phone=$('c_phone').value.trim(),
-        time=$('c_time').value,swam=$('c_swam').value,goal=$('c_goal').value,
-        expiry=$('c_expiry').value,trainerV=$('c_trainer').value.trim(),
-        sessVal=document.querySelector('input[name="c_sess"]:checked')?.value,
-        restDay=$('c_restDay').value;
+  const name      = $('c_name').value.trim();
+  const dob       = $('c_dob').value;
+  const phone     = $('c_phone').value.trim();
+  const time      = $('c_time').value;
+  const swam      = $('c_swam').value;
+  const goal      = $('c_goal').value;
+  const startDate = $('c_startDate').value;   // ← جديد
+  const expiry    = $('c_expiry').value;
+  const trainerV  = $('c_trainer').value.trim();
+  const city      = $('c_city').value;        // ← جديد
+  const sessVal   = document.querySelector('input[name="c_sess"]:checked')?.value;
+  const restDay   = $('c_restDay').value;
+
   if(!name||!dob||!phone||!goal||!sessVal){toast('من فضلك اكمل الحقول المطلوبة','error');return;}
+
   let trainingDays=[];
-  if(sessVal==='24'){if(!restDay){toast('اختر يوم الراحة','error');return;}trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(restDay));}
-  else{const req=SESS_DAYS[sessVal]||0,chk=[...document.querySelectorAll('input[name="c_days"]:checked')].map(c=>Number(c.value));if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}trainingDays=chk;}
+  if(sessVal==='24'){
+    if(!restDay){toast('اختر يوم الراحة','error');return;}
+    trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(restDay));
+  }else{
+    const req=SESS_DAYS[sessVal]||0;
+    const chk=[...document.querySelectorAll('input[name="c_days"]:checked')].map(c=>Number(c.value));
+    if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}
+    trainingDays=chk;
+  }
+
   const btn=$('createBtn');btn.classList.add('loading');
   try{
-    const res=await api('/swimmers/register','POST',{fullName:name,dob,phone,swamBefore:swam||'no',goal,sessionsCount:Number(sessVal),trainingDays,trainingTime:time,trainerName:trainerV,subscriptionExpiry:expiry||null,restDay:sessVal==='24'?Number(restDay):null});
+    const res=await api('/swimmers/register','POST',{
+      fullName:        name,
+      dob,
+      phone,
+      swamBefore:      swam||'no',
+      goal,
+      sessionsCount:   Number(sessVal),
+      trainingDays,
+      trainingTime:    time,
+      trainerName:     trainerV,
+      subscriptionStart: startDate || null,   // ← جديد
+      subscriptionExpiry: expiry || null,
+      city:            city || null,          // ← جديد
+      restDay:         sessVal==='24' ? Number(restDay) : null
+    });
     toast(`✅ تم الحفظ — رقم الاشتراك: ${res.data.subscriptionId}`);
-    $('createForm').reset();$('c_daysWrap').style.display='none';$('c_restWrap').classList.remove('show');
+    $('createForm').reset();
+    $('c_daysWrap').style.display='none';
+    $('c_restWrap').classList.remove('show');
     document.querySelectorAll('input[name="c_days"]').forEach(c=>{c.checked=false;c.closest('.day-cb').classList.remove('locked');});
-    loadSwimmers();loadStats();setTimeout(()=>switchTab('swimmers'),1200);
+    loadSwimmers();loadStats();
+    setTimeout(()=>switchTab('swimmers'),1200);
   }catch(err){toast(err.message||'خطأ','error');}
   finally{btn.classList.remove('loading');}
 }
