@@ -133,19 +133,20 @@
         </div>
       </div>
 
-      <!-- ③ نجوم الخبرة (تظهر لو اختار نعم) -->
+      <!-- ③ نجوم الاتحاد (تظهر لو اختار نعم) -->
       <div class="swim-yes-wrap" id="swimYesWrap">
         <div style="font-size:.78rem;font-weight:700;color:var(--ts);margin-bottom:8px">
-          كم تقدّر مستواك في السباحة؟
+          هل حصلت على أي نجوم من الاتحاد من قبل؟
         </div>
         <div class="stars-wrap" id="starsWrap">
-          <input type="radio" name="stars" value="5" id="s5"/><label for="s5" title="ممتاز">★</label>
-          <input type="radio" name="stars" value="4" id="s4"/><label for="s4" title="جيد جداً">★</label>
-          <input type="radio" name="stars" value="3" id="s3"/><label for="s3" title="جيد">★</label>
-          <input type="radio" name="stars" value="2" id="s2"/><label for="s2" title="مبتدئ متوسط">★</label>
-          <input type="radio" name="stars" value="1" id="s1"/><label for="s1" title="مبتدئ">★</label>
+          <input type="radio" name="stars" value="6" id="s6"/><label for="s6" title="6 نجوم">★</label>
+          <input type="radio" name="stars" value="5" id="s5"/><label for="s5" title="5 نجوم">★</label>
+          <input type="radio" name="stars" value="4" id="s4"/><label for="s4" title="4 نجوم">★</label>
+          <input type="radio" name="stars" value="3" id="s3"/><label for="s3" title="3 نجوم">★</label>
+          <input type="radio" name="stars" value="2" id="s2"/><label for="s2" title="نجمتان">★</label>
+          <input type="radio" name="stars" value="1" id="s1"/><label for="s1" title="نجمة واحدة">★</label>
         </div>
-        <div class="stars-hint" id="starsHint">اختر من 1 (مبتدئ) إلى 5 (ممتاز)</div>
+        <div class="stars-hint" id="starsHint">اختر من 1 إلى 6 نجوم حسب ما حصلت عليه من الاتحاد</div>
       </div>
 
       <!-- ④ تفاصيل الاشتراك -->
@@ -160,12 +161,7 @@
             <option value="fun">الترفيه والمتعة</option>
           </select></div>
         <div class="field"><label>ساعة التدريب المفضلة</label>
-          <select class="fc" id="f_time">
-            <option value="">اختر</option>
-            <option>06:00 ص</option><option>07:00 ص</option><option>08:00 ص</option>
-            <option>09:00 ص</option><option>10:00 ص</option>
-            <option>04:00 م</option><option>05:00 م</option><option>06:00 م</option><option>07:00 م</option>
-          </select></div>
+          <input type="time" class="fc" id="f_time" placeholder="اختر الساعة"/></div>
       </div>
 
       <!-- ⑤ عدد الحصص -->
@@ -218,7 +214,7 @@
 const API = 'https://backend-mohsen-swimming-academy.vercel.app/api';
 const SESSMAX = {'8':2,'12':3};
 const RL={s:{},check(k,max,ms){const now=Date.now();if(!this.s[k]||now>this.s[k].r)this.s[k]={c:0,r:now+ms};this.s[k].c++;if(this.s[k].c>max)return{blocked:true,wait:Math.ceil((this.s[k].r-now)/1000)};return{blocked:false}}};
-const STAR_LABELS=['','مبتدئ','مبتدئ متوسط','جيد','جيد جداً','ممتاز'];
+const STAR_LABELS=['','نجمة واحدة','نجمتان','3 نجوم','4 نجوم','5 نجوم','6 نجوم'];
 
 let token=null, user=null;
 
@@ -300,7 +296,7 @@ async function doSubmit(e){
   const restDay=document.getElementById('f_rest').value;
   if(!trainerInput){toast('من فضلك اختر الكابتن المسؤول','er');return;}
   if(!name||!dob||!goal||!sessVal){toast('اكمل الحقول المطلوبة (*)','er');return;}
-  if(swam==='yes'&&!starsInput){toast('من فضلك حدد مستواك في السباحة (النجوم)','er');return;}
+  if(swam==='yes'&&!starsInput){toast('من فضلك حدد عدد النجوم التي حصلت عليها من الاتحاد','er');return;}
   let trainingDays=[];
   if(sessVal==='24'){
     if(!restDay){toast('اختر يوم الراحة','er');return;}
