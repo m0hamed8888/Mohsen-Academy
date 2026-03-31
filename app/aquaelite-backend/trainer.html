@@ -1325,8 +1325,8 @@ async function loadAttendSwimmer(){
     const d=await api('/swimmers/'+subId);swimmer=d.data;
     $('chipAv').textContent=(swimmer.fullName||'?').charAt(0);
     $('chipName').textContent=swimmer.fullName||'—';
-    $('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${swimmer.trainingTime?' — '+swimmer.trainingTime:''}`;
-    $('ccTot').textContent=swimmer.sessionsCount;
+const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
+$('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;    $('ccTot').textContent=swimmer.sessionsCount;
     $('ccAtt').textContent=swimmer.sessionsAttended||0;
     $('swimmerChip').classList.add('show');
     viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;
