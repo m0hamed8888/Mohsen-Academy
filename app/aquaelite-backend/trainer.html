@@ -284,6 +284,15 @@ a{text-decoration:none;}
 .fc::placeholder{color:var(--tm)}
 select.fc{cursor:pointer}
 select.fc option{background:#080e1c}
+/* ══ Time input styling ══ */
+input[type="time"].fc{
+  color-scheme:dark;
+  cursor:text;
+}
+input[type="time"].fc::-webkit-calendar-picker-indicator{
+  filter:invert(1) opacity(.4);
+  cursor:pointer;
+}
 .fg{display:grid;grid-template-columns:1fr;gap:12px}
 .fg2{grid-template-columns:1fr}
 @media(min-width:420px){.fg2{grid-template-columns:1fr 1fr}}
@@ -836,13 +845,11 @@ select.fc option{background:#080e1c}
           <div class="fld"><label><i data-lucide="target"></i> الهدف</label>
             <select class="fc" id="c_goal"><option value="">اختر الهدف</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
 
-          <!-- ══ NEW: تاريخ بداية الاشتراك ══ -->
           <div class="fld"><label><i data-lucide="calendar-plus"></i> تاريخ بداية الاشتراك</label><input type="date" class="fc" id="c_startDate"/></div>
 
           <div class="fld"><label><i data-lucide="calendar-x-2"></i> نهاية الاشتراك</label><input type="date" class="fc" id="c_expiry"/></div>
           <div class="fld"><label><i data-lucide="user-check"></i> المدرب المسؤول</label><input type="text" class="fc" id="c_trainer" placeholder="اسم المدرب"/></div>
 
-          <!-- ══ NEW: المدينة ══ -->
           <div class="fld"><label><i data-lucide="map-pin"></i> المدينة</label>
             <select class="fc" id="c_city">
               <option value="">اختر المدينة</option>
@@ -1009,7 +1016,7 @@ select.fc option{background:#080e1c}
 
       <div class="lv-private-note">
         <i data-lucide="users"></i>
-        <div class="lv-private-note-text">
+        <div class="lv-private-note-note-text">
           للمراجعة الداخلية بس — متشاركش مع السباحين أو أولياء الأمور. التقييم الرسمي للمستويات بيصدر من المشرف عن طريق القنوات الرسمية للأكاديمية.
         </div>
       </div>
@@ -1029,8 +1036,12 @@ select.fc option{background:#080e1c}
     <div class="fg fg2" style="gap:12px">
       <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
       <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
+
+      <!-- ✅ تم التغيير: من select إلى input type="time" -->
       <div class="fld"><label>وقت التدريب</label>
-        <select class="fc" id="e_time"><option value="">بدون</option><option>06:00 ص</option><option>07:00 ص</option><option>08:00 ص</option><option>09:00 ص</option><option>10:00 ص</option><option>04:00 م</option><option>05:00 م</option><option>06:00 م</option><option>07:00 م</option></select></div>
+        <input type="time" class="fc" id="e_time"/>
+      </div>
+
       <div class="fld"><label>الهدف</label>
         <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
       <div class="fld"><label>الحالة</label><select class="fc" id="e_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
@@ -1258,10 +1269,10 @@ async function doCreate(e){
   const time      = $('c_time').value;
   const swam      = $('c_swam').value;
   const goal      = $('c_goal').value;
-  const startDate = $('c_startDate').value;   // ← جديد
+  const startDate = $('c_startDate').value;
   const expiry    = $('c_expiry').value;
   const trainerV  = $('c_trainer').value.trim();
-  const city      = $('c_city').value;        // ← جديد
+  const city      = $('c_city').value;
   const sessVal   = document.querySelector('input[name="c_sess"]:checked')?.value;
   const restDay   = $('c_restDay').value;
 
@@ -1290,9 +1301,9 @@ async function doCreate(e){
       trainingDays,
       trainingTime:    time,
       trainerName:     trainerV,
-      subscriptionStart: startDate || null,   // ← جديد
+      subscriptionStart: startDate || null,
       subscriptionExpiry: expiry || null,
-      city:            city || null,          // ← جديد
+      city:            city || null,
       restDay:         sessVal==='24' ? Number(restDay) : null
     });
     toast(`✅ تم الحفظ — رقم الاشتراك: ${res.data.subscriptionId}`);
@@ -1437,8 +1448,20 @@ function hideMakeup(){$('makeupRow').classList.remove('show');}
 async function openEdit(subId){
   try{
     const d=await api('/swimmers/'+subId);const s=d.data;editId=subId;editingLevel=s.level||null;
-    $('e_name').value=s.fullName||'';$('e_phone').value=s.phone||'';$('e_time').value=s.trainingTime||'';
-    $('e_goal').value=s.goal||'';$('e_active').value=s.isActive?'true':'false';
+    $('e_name').value=s.fullName||'';
+    $('e_phone').value=s.phone||'';
+
+    // ✅ تحويل وقت التدريب للـ input type="time"
+    // البيانات القديمة قد تكون نص عربي مثل "07:00 ص" أو HH:MM
+    const rawTime = s.trainingTime || '';
+    // إذا كان الوقت بصيغة HH:MM نأخذه مباشرة، وإلا نتركه فارغاً
+    const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
+    $('e_time').value = timeMatch
+      ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}`
+      : '';
+
+    $('e_goal').value=s.goal||'';
+    $('e_active').value=s.isActive?'true':'false';
     $('e_trainer').value=s.trainerName||'';
     $('e_expiry').value=s.subscriptionExpiry?new Date(s.subscriptionExpiry).toISOString().split('T')[0]:'';
     document.querySelectorAll('input[name="estar"]').forEach(r=>r.checked=false);
@@ -1451,7 +1474,16 @@ async function doSaveEdit(){
   if(!editId)return;
   const btn=$('saveEditBtn');btn.classList.add('loading');
   try{
-    await api('/swimmers/'+editId,'PUT',{fullName:$('e_name').value.trim(),phone:$('e_phone').value.trim(),trainingTime:$('e_time').value||'',goal:$('e_goal').value||'',isActive:$('e_active').value==='true',subscriptionExpiry:$('e_expiry').value||'',trainerName:$('e_trainer').value.trim()});
+    // ✅ إرسال قيمة الوقت من input type="time" مباشرة
+    await api('/swimmers/'+editId,'PUT',{
+      fullName:$('e_name').value.trim(),
+      phone:$('e_phone').value.trim(),
+      trainingTime:$('e_time').value||'',
+      goal:$('e_goal').value||'',
+      isActive:$('e_active').value==='true',
+      subscriptionExpiry:$('e_expiry').value||'',
+      trainerName:$('e_trainer').value.trim()
+    });
     closeModal('editModal');toast('✅ تم التحديث');loadSwimmers();loadStats();
   }catch(e){toast(e.message||'خطأ','error');}
   finally{btn.classList.remove('loading');}
