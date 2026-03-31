@@ -1451,14 +1451,11 @@ async function openEdit(subId){
     $('e_name').value=s.fullName||'';
     $('e_phone').value=s.phone||'';
 
-    // ✅ تحويل وقت التدريب للـ input type="time"
-    // البيانات القديمة قد تكون نص عربي مثل "07:00 ص" أو HH:MM
+    // ✅ تحويل الوقت لـ 12 ساعة لما نعرضه
     const rawTime = s.trainingTime || '';
-    // إذا كان الوقت بصيغة HH:MM نأخذه مباشرة، وإلا نتركه فارغاً
     const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
-    $('e_time').value = timeMatch
-      ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}`
-      : '';
+    const time24 = timeMatch ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}` : '';
+    $('e_time').value = to12Hour(time24); // ← هنا التحويل
 
     $('e_goal').value=s.goal||'';
     $('e_active').value=s.isActive?'true':'false';
@@ -1474,11 +1471,14 @@ async function doSaveEdit(){
   if(!editId)return;
   const btn=$('saveEditBtn');btn.classList.add('loading');
   try{
-    // ✅ إرسال قيمة الوقت من input type="time" مباشرة
+    // ✅ تحويل الوقت لـ 24 ساعة قبل الإرسال
+    const time12 = $('e_time').value;
+    const time24 = to24Hour(time12);
+
     await api('/swimmers/'+editId,'PUT',{
       fullName:$('e_name').value.trim(),
       phone:$('e_phone').value.trim(),
-      trainingTime:$('e_time').value||'',
+      trainingTime: time24, // ← هنا التحويل
       goal:$('e_goal').value||'',
       isActive:$('e_active').value==='true',
       subscriptionExpiry:$('e_expiry').value||'',
@@ -1526,6 +1526,29 @@ function closeModal(id){$(id).classList.remove('show');document.body.style.overf
 function esc(s){return String(s||'').replace(/'/g,"\\'")}
 let toastT;
 function toast(msg,type='success'){const el=$('toast');el.className=`toast ${type} show`;$('toastMsg').textContent=msg;clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3400);}
+// تحويل من 24 ساعة لـ 12 ساعة مع AM/PM
+function to12Hour(time24) {
+  if (!time24) return '';
+  const [hours, minutes] = time24.split(':');
+  const h = parseInt(hours, 10);
+  const ampm = h >= 12 ? 'م' : 'ص';
+  const h12 = h % 12 || 12;
+  return `${String(h12).padStart(2, '0')}:${minutes} ${ampm}`;
+}
+
+// تحويل من 12 ساعة لـ 24 ساعة
+function to24Hour(time12) {
+  if (!time12) return '';
+  const match = time12.match(/(\d{1,2}):(\d{2})\s*(ص|م)/);
+  if (!match) return time12; // لو مش بالفورمات المتوقع، رجعه زي ما هو
+  
+  let [, h, m, ampm] = match;
+  h = parseInt(h, 10);
+  if (ampm === 'م' && h !== 12) h += 12;
+  if (ampm === 'ص' && h === 12) h = 0;
+  
+  return `${String(h).padStart(2, '0')}:${m}`;
+}
 </script>
 </body>
 </html>
