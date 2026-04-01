@@ -34,24 +34,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'خطأ في تسجيل الدخول' });
   }
 });
-router.post('/setup-boss', async (req, res) => {
-  try {
-    const exists = await Trainer.findOne({ role: 'boss' });
-    if (exists)
-      return res.status(400).json({ message: 'Boss موجود بالفعل' });
 
-    const boss = await Trainer.create({
-      name: req.body.name,
-      username: req.body.username,
-      password: req.body.password,
-      role: 'boss'
-    });
-
-    res.status(201).json({ success: true, message: 'تم إنشاء حساب Boss', boss: { id: boss._id, username: boss.username } });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-});
 
 /* ────────────────────────────────────────────────────────────
    POST /api/auth/register-trainer  — Boss فقط
