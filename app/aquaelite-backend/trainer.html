@@ -67,6 +67,20 @@ body::after{
 }
 a{text-decoration:none;}
 
+
+  
+.att-bar{display:flex;flex-direction:column;gap:3px}
+.att-nums{display:flex;align-items:baseline;gap:3px}
+.att-big{font-size:1rem;font-weight:800;color:var(--ok)}
+.att-sep,.att-tot{font-size:.7rem;color:var(--tm)}
+.prog{height:3px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;width:54px}
+.prog-fill{height:100%;border-radius:99px;background:var(--ok);transition:width .4s}
+.name-cell{display:flex;flex-direction:column;gap:1px}
+.day-pip{font-size:.58rem;font-weight:700;padding:2px 5px;border-radius:4px;background:rgba(0,180,200,.1);border:1px solid rgba(0,180,200,.22);color:var(--teal)}
+.days-wrap{display:flex;flex-wrap:wrap;gap:3px}
+.time-cell{display:flex;align-items:center;gap:4px;font-size:.75rem;color:var(--ts)}
+.time-cell svg{width:11px;height:11px;opacity:.5;flex-shrink:0}
+.row-num{font-size:.72rem;color:var(--tm);font-weight:600}
 /* ══ NAVBAR ══ */
 .nav{
   position:fixed;top:0;inset-inline:0;z-index:100;
@@ -818,10 +832,17 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
       </div>
       <div class="tbl-wrap">
         <table class="tbl">
-          <thead><tr>
-            <th>رقم الاشتراك</th><th>الاسم</th><th>العمر</th>
-            <th>المدينة</th><th>Level</th><th>الحصص</th><th>الحالة</th><th></th>
-          </tr></thead>
+       <thead><tr>
+  <th style="width:36px">#</th>
+  <th style="width:80px">الحضور</th>
+  <th>الاسم</th>
+  <th style="width:50px">العمر</th>
+  <th style="width:140px">أيام التدريب</th>
+  <th style="width:88px">الساعة</th>
+  <th style="width:62px">Level</th>
+  <th style="width:72px">الحصص</th>
+  <th style="width:90px"></th>
+</tr></thead>
           <tbody id="swimmersBody"><tr><td colspan="8" class="no-data">جاري التحميل...</td></tr></tbody>
         </table>
       </div>
@@ -1207,30 +1228,59 @@ async function loadStats(){
 /* ══ SWIMMERS ══ */
 async function loadSwimmers(){
   const tbody=$('swimmersBody');
-  tbody.innerHTML=`<tr><td colspan="8" class="no-data">جاري التحميل...</td></tr>`;
+  tbody.innerHTML=`<tr><td colspan="9" class="no-data">جاري التحميل...</td></tr>`;
   try{
     const search=$('tableSearch').value, city=$('cityFilter').value;
     const qs=new URLSearchParams({search,page,limit:15});if(city)qs.set('city',city);
     const d=await api('/swimmers?'+qs);
-    if(!d.data?.length){tbody.innerHTML=`<tr><td colspan="8" class="no-data">لا توجد نتائج</td></tr>`;$('pagination').innerHTML='';return;}
-    tbody.innerHTML=d.data.map(s=>`<tr>
-      <td class="sub-id">${s.subscriptionId||'—'}</td>
-      <td class="nm">${s.fullName}</td>
-      <td style="color:var(--ts)">${s.age??'—'}</td>
-      <td>${s.city?`<span class="city-bdg">${s.city}</span>`:'—'}</td>
-      <td>${s.level?`<span class="lvl-bdg">LV ${s.level}</span>`:'—'}</td>
-      <td style="color:var(--ts)">${s.sessionsAttended??0}/${s.sessionsCount??'—'}</td>
-      <td><span class="bdg ${s.isActive?'bdg-on':'bdg-off'}">${s.isActive?'● نشط':'● منتهي'}</span></td>
-      <td><div class="act-btns">
-        <button class="act-btn ab-att" onclick="quickAttend('${s.subscriptionId}')"><i data-lucide="calendar-check"></i></button>
-        <button class="act-btn ab-edit" onclick="openEdit('${s.subscriptionId}')"><i data-lucide="pencil"></i></button>
-        <button class="act-btn ab-del" onclick="askDelete('${s.subscriptionId}','${esc(s.fullName)}')"><i data-lucide="trash-2"></i></button>
-      </div></td>
-    </tr>`).join('');
+    if(!d.data?.length){tbody.innerHTML=`<tr><td colspan="9" class="no-data">لا توجد نتائج</td></tr>`;$('pagination').innerHTML='';return;}
+    const DAYS_S=['أحد','اثن','ثلا','أربع','خميس','جمعة','سبت'];
+    const offset=(page-1)*15;
+    tbody.innerHTML=d.data.map((s,i)=>{
+      const att=s.sessionsAttended??0, tot=s.sessionsCount??0;
+      const pct=tot?Math.round(att/tot*100):0;
+      const daysHtml=(s.trainingDays||[]).map(d=>`<span class="day-pip">${DAYS_S[d]}</span>`).join('');
+      const sessClass=tot===8?'s8':tot===12?'s12':'s24';
+      const lvHtml=s.level?`<span class="lvl-bdg">LV ${s.level}</span>`:'<span style="color:var(--tm);font-size:.72rem">—</span>';
+      return `<tr>
+        <td class="row-num">${offset+i+1}</td>
+        <td>
+          <div class="att-bar">
+            <div class="att-nums">
+              <span class="att-big">${att}</span>
+              <span class="att-sep">/</span>
+              <span class="att-tot">${tot}</span>
+            </div>
+            <div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div>
+          </div>
+        </td>
+        <td>
+          <div class="name-cell">
+            <span class="nm"><span style="width:6px;height:6px;border-radius:50%;background:${s.isActive?'var(--ok)':'var(--err)'};display:inline-block;margin-left:5px;vertical-align:middle"></span>${s.fullName}</span>
+            <span class="sub-id" style="font-size:.68rem;color:var(--teal)">${s.subscriptionId||''}</span>
+          </div>
+        </td>
+        <td style="color:var(--ts)">${s.age??'—'}</td>
+        <td><div class="days-wrap">${daysHtml||'—'}</div></td>
+        <td>
+          <span class="time-cell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${s.trainingTime?to12Hour(s.trainingTime):'—'}
+          </span>
+        </td>
+        <td>${lvHtml}</td>
+        <td><span class="sess-bdg ${sessClass}">${tot} حصة</span></td>
+        <td><div class="act-btns">
+          <button class="act-btn ab-att" onclick="quickAttend('${s.subscriptionId}')" title="الحضور"><i data-lucide="calendar-check"></i></button>
+          <button class="act-btn ab-edit" onclick="openEdit('${s.subscriptionId}')" title="تعديل"><i data-lucide="pencil"></i></button>
+          <button class="act-btn ab-del" onclick="askDelete('${s.subscriptionId}','${esc(s.fullName)}')" title="حذف"><i data-lucide="trash-2"></i></button>
+        </div></td>
+      </tr>`;
+    }).join('');
     buildPag(d.pages);lucide.createIcons();
-  }catch(e){tbody.innerHTML=`<tr><td colspan="8" class="no-data">خطأ: ${e.message}</td></tr>`;}
-  $('refreshBtn').disabled = true;
-  setTimeout(() => $('refreshBtn').disabled = false, 3000);
+  }catch(e){tbody.innerHTML=`<tr><td colspan="9" class="no-data">خطأ: ${e.message}</td></tr>`;}
+  $('refreshBtn').disabled=true;
+  setTimeout(()=>$('refreshBtn').disabled=false,3000);
 }
 function buildPag(pages){
   const el=$('pagination');if(!pages||pages<=1){el.innerHTML='';return;}
