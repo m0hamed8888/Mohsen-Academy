@@ -1412,7 +1412,6 @@ function openEdit(subId) {
   editId = subId;
   g('e_name').value  = s.fullName || '';
   g('e_phone').value = s.phone || '';
-  g('e_time').value  = s.trainingTime || '';
   g('e_goal').value  = s.goal || '';
   openSheet('editModal');
   lucide.createIcons();
@@ -1423,10 +1422,9 @@ async function doSave() {
   const btn = g('saveBtn'); btn.classList.add('loading'); g('saveTxt').textContent = 'جاري الحفظ...';
   try {
     await api(`/swimmer-auth/my-swimmers/${editId}`, 'PUT', {
-      fullName:     g('e_name').value.trim(),
-      phone:        g('e_phone').value.trim(),
-      trainingTime: g('e_time').value || '',
-      goal:         g('e_goal').value || '',
+      fullName: g('e_name').value.trim(),
+      phone:    g('e_phone').value.trim(),
+      goal:     g('e_goal').value || '',
     });
     closeSheet('editModal');
     toast('تم تحديث بياناتك بنجاح ✓', 'ok');
