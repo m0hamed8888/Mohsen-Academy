@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن — Mohsen Academy | أكاديمية محسن للسباحة</title>
+  <meta name="description" content="تعرّف على أكاديمية محسن للسباحة — مدربون معتمدون، خبرة 8+ سنوات، وتدريب احترافي للأطفال والكبار في الشروق وبدر والعاشر من رمضان.">
+  <meta name="keywords" content="أكاديمية محسن، من نحن، تدريب سباحة، الشروق، بدر، العاشر من رمضان">
+  <meta name="author" content="Mohsen Academy">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohsenacademy.com/About">
+  <meta property="og:title" content="من نحن — Mohsen Academy">
+  <meta property="og:description" content="مدربون معتمدون، خبرة 8+ سنوات، وتدريب احترافي للأطفال والكبار.">
+  <meta property="og:image" content="https://mohsenacademy.com/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/assets/icons/favicon-96x96.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/fonts/css-f-family.css">
+
+  <style>
+  /* ══════════════════════════════
+     ABOUT PAGE — extra styles
+  ══════════════════════════════ */
+
+  /* ── Page Hero ── */
+  .page-hero {
+    position: relative;
+    min-height: 52vh;
+    background-color: #0a1628;
+    background-image: url('/assets/images/img-header.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(0,15,45,.80) 0%, rgba(0,25,65,.60) 45%, rgba(0,10,30,.50) 100%);
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,27,42,.95) 0%, transparent 55%);
+  }
+  .page-hero-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(230,162,0,.12);
+    pointer-events: none;
+    animation: ring-pulse 6s ease-in-out infinite;
+  }
+  .page-hero-ring-1 { width: 500px; height: 500px; right: -60px; top: -80px; }
+  .page-hero-ring-2 { width: 750px; height: 750px; right: -200px; top: -200px; animation-delay: 1.5s; border-color: rgba(0,102,204,.10); }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+  .page-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,.50);
+  }
+  .page-breadcrumb a { color: rgba(255,255,255,.50); transition: color var(--transition); }
+  .page-breadcrumb a:hover { color: var(--gold); }
+  .page-breadcrumb span { color: rgba(255,255,255,.30); }
+  .page-breadcrumb .current { color: rgba(255,255,255,.80); }
+
+  .page-hero-title {
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+  }
+  .page-hero-title span { color: var(--gold); }
+  .page-hero-sub {
+    font-size: clamp(15px,1.4vw,18px);
+    color: rgba(255,255,255,.75);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* ── Story Section ── */
+  .story-section { padding: 100px 0; background: var(--bg); }
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Visual side */
+  .story-visual { position: relative; min-height: 520px; }
+  .story-img-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 68%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .story-img-main img { width: 100%; height: 460px; object-fit: cover; display: block; }
+  .story-img-float {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 50%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .story-img-float img { width: 100%; height: 280px; object-fit: cover; display: block; }
+
+  /* Stat badge */
+  .story-stat-badge {
+    position: absolute;
+    top: 40px; right: -16px;
+    background: var(--gold);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 28px rgba(230,162,0,.45);
+    z-index: 2;
+  }
+  .story-stat-num   { font-size: 30px; font-weight: 900; color: #1a1a1a; line-height: 1; }
+  .story-stat-label { font-size: 11px; font-weight: 700; color: rgba(0,0,0,.65); letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+
+  /* Certified badge */
+  .story-cert-badge {
+    position: absolute;
+    bottom: 30px; left: -16px;
+    background: var(--dark);
+    border: 1px solid rgba(230,162,0,.30);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    box-shadow: 0 8px 30px rgba(0,0,0,.30);
+  }
+  .story-cert-icon {
+    width: 40px; height: 40px;
+    background: rgba(230,162,0,.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .story-cert-icon img { width: 22px; height: 22px; }
+  .story-cert-text strong { display: block; font-size: 13px; font-weight: 700; color: #fff; }
+  .story-cert-text span  { font-size: 11px; color: rgba(255,255,255,.55); }
+
+  /* Text side */
+  .story-text .about-checklist { margin: 28px 0 32px; }
+
+  /* ── Values Section ── */
+  .values-section { padding: 100px 0; background: var(--bg-soft); }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .value-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .value-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+  }
+  .value-card:hover { box-shadow: var(--shadow-md); transform: translateY(-5px); border-color: transparent; }
+  .value-card:hover::after { transform: scaleX(1); }
+  .value-icon {
+    width: 56px; height: 56px;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .value-icon img { width: 28px; height: 28px; }
+  .vi-gold { background: rgba(230,162,0,.12); }
+  .vi-blue { background: rgba(0,102,204,.10); }
+  .value-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); }
+  .value-card p  { font-size: 14px; color: var(--text-muted); line-height: 1.70; }
+
+  /* ── Timeline / Journey ── */
+  .journey-section { padding: 100px 0; background: var(--bg); }
+  .timeline {
+    max-width: 780px;
+    margin: 56px auto 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--blue), transparent);
+  }
+  .timeline-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+  }
+  .timeline-dot {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 6px rgba(230,162,0,.10);
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+  .timeline-body {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    flex: 1;
+    transition: box-shadow var(--transition);
+  }
+  .timeline-body:hover { box-shadow: var(--shadow-sm); }
+  .timeline-year { font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: .10em; text-transform: uppercase; margin-bottom: 4px; }
+  .timeline-body h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .timeline-body p  { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── Stats Strip ── */
+  .stats-strip {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, #0a2547 100%);
+    padding: 64px 0;
+    overflow: hidden;
+  }
+  .stats-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .strip-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    border-right: 1px solid rgba(255,255,255,.10);
+    text-align: center;
+  }
+  .strip-stat:last-child { border-right: none; }
+  .strip-stat-num   { font-size: clamp(36px,4vw,52px); font-weight: 900; color: var(--gold); line-height: 1; }
+  .strip-stat-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.60); margin-top: 6px; letter-spacing: .05em; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .story-layout { grid-template-columns: 1fr; gap: 40px; }
+    .story-visual  { min-height: 360px; margin-bottom: 20px; }
+    .story-img-main { width: 65%; }
+    .story-img-float { width: 52%; }
+    .story-stat-badge { right: 0; }
+    .story-cert-badge { left: 0; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .stats-strip-grid { grid-template-columns: 1fr 1fr; }
+    .strip-stat:nth-child(2) { border-right: none; }
+  }
+  @media (max-width: 640px) {
+    .page-hero-ring-1, .page-hero-ring-2 { display: none; }
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-strip-grid { grid-template-columns: 1fr 1fr; }
+    .story-visual { min-height: 300px; }
+    .timeline::before { left: 22px; }
+    .timeline-dot { width: 44px; height: 44px; font-size: 14px; }
+  }
+  </style>
+</head>
+<body  dir="ltr">
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <img loading="lazy" src="/assets/icons/whatsapp.webp" alt="WhatsApp" width="35" height="35"/>
+  </a>
+
+  <!-- ══ NAVBAR (identical to Home) ══ -->
+  <nav class="navbar" id="mainNavbar">
+    <div class="navbar-inner">
+      <a href="https://mohsenacademy.com" class="navbar-logo">
+      <img class="img-logo" src="./assets/icons/Logo-Header.webp" alt="Logo-Header">
+      </a>
+      <div class="navbar-links" id="navbarLinks">
+        <a href="https://mohsenacademy.com" class="nav-link active">Home</a>
+        <a href="https://mohsenacademy.com/our-locations" class="nav-link">Our Locations</a>
+        <a href="https://mohsenacademy.com/Services" class="nav-link">Services</a>
+        <a href="https://mohsenacademy.com/About" class="nav-link">About</a>
+        <a href="https://mohsenacademy.com/contact-us" class="nav-link">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="https://mohsenacademy.com/contact-us" class="navbar-cta">
+          <span>سجّل الآن</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button class="navbar-toggle" id="navbarToggle" onclick="toggleNavbar()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="navbar-drawer" id="navbarDrawer">
+      <a href="https://mohsenacademy.com" class="drawer-link">Home</a>
+      <a href="https://mohsenacademy.com/our-locations" class="drawer-link">Our Locations</a>
+      <a href="https://mohsenacademy.com/Services" class="drawer-link">Services</a>
+      <a href="https://mohsenacademy.com/About" class="drawer-link">About</a>
+      <a href="https://mohsenacademy.com/contact-us" class="drawer-link">Contact</a>
+      <a href="https://wa.me/message/X76VY37AZW2NK1" class="drawer-cta">سجّل الآن &larr;</a>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="page-hero-ring page-hero-ring-1"></div>
+    <div class="page-hero-ring page-hero-ring-2"></div>
+    <div class="page-hero-content">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="https://mohsenacademy.com">Home</a>
+        <span>›</span>
+        <span class="current">About Us</span>
+      </nav>
+      <h1 class="page-hero-title">
+        من نحن<br><span>Mohsen Academy</span>
+      </h1>
+      <p class="page-hero-sub">فريق متكامل بنيّه واضحة — نقدّم تدريب سباحة احترافي بقيمة حقيقية لكل سبّاح، من المبتدئ للمحترف.</p>
+    </div>
+  </section>
+
+  <!-- ══ STORY SECTION ══ -->
+  <section class="story-section">
+    <div class="container-main">
+      <div class="story-layout">
+
+        <!-- Visual -->
+        <div class="story-visual reveal">
+          <div class="story-img-main">
+            <img src="/assets/images/Rectangle 9.webp" loading="lazy" alt="أكاديمية محسن للسباحة">
+          </div>
+          <div class="story-img-float">
+            <img src="/assets/images/Rectangle 8.webp" loading="lazy" alt="تدريب سباحة">
+          </div>
+          <!-- Stat badge -->
+          <div class="story-stat-badge">
+            <span class="story-stat-num">8+</span>
+            <span class="story-stat-label">سنوات خبرة</span>
+          </div>
+          <!-- Certified badge -->
+          <div class="story-cert-badge">
+            <div class="story-cert-icon">
+              <img src="/assets/icons/icon-certificate.webp" loading="lazy" alt="معتمد">
+            </div>
+            <div class="story-cert-text">
+              <strong>معتمدون رسميًا</strong>
+              <span>الاتحاد المصري للغوص والإنقاذ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="story-text reveal" id="story-text" style="--d:.1s">
+          <span class="section-label">OUR STORY</span>
+          <h2 class="section-title">قصتنا</h2>
+          <p class="section-desc">
+            <strong>Mohsen Academy</strong> تأسست رسميًا كمنصة متكاملة في 2025، لكنها مبنية على أكثر من 8 سنوات من الخبرة الفعلية داخل حمام السباحة. المؤسس والمدرب الأساسي بدأ حياته سبّاحًا محترفًا وشارك في سباقات التتابع محققًا مراكز متقدمة — وحصل على شهادات تقدير من مدربين مرموقين.
+          </p>
+          <p class="section-desc" style="margin-top: 14px;">
+            هدفنا مش بس إننا نوصل لأكبر عدد من المتدرّبين، لكن كمان نضمن إن كل متدرّب يتعلّم صح ويستفيد من خدمة تدريب بمستوى عالي — بأسعار مميزة وجداول مرنة.
+          </p>
+
+          <div class="about-checklist" style="margin-top:28px">
+            <div class="about-check">
+              <span class="check-icon">&#10003;</span>
+              <span>مدربون معتمدون من الاتحاد المصري للغوص والإنقاذ</span>
+            </div>
+            <div class="about-check">
+              <span class="check-icon">&#10003;</span>
+              <span>اختبارات شهرية لقياس مستوى كل متدرّب ومتابعة تقدّمه</span>
+            </div>
+            <div class="about-check">
+              <span class="check-icon">&#10003;</span>
+              <span>إمكانية التسجيل في الاتحاد المصري للسباحة والمنافسات</span>
+            </div>
+            <div class="about-check">
+              <span class="check-icon">&#10003;</span>
+              <span>4 فروع في القاهرة الجديدة والمناطق المجاورة</span>
+            </div>
+            <div class="about-check">
+              <span class="check-icon">&#10003;</span>
+              <span>مجموعات صغيرة لضمان تركيز فردي وسرعة تطور</span>
+            </div>
+          </div>
+
+          <a href="https://wa.me/message/X76VY37AZW2NK1" class="btn-primary">سجّل الآن</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STATS STRIP ══ -->
+  <div class="stats-strip">
+    <div class="container-main">
+      <div class="stats-strip-grid">
+        <div class="strip-stat reveal">
+          <span class="strip-stat-num">8+</span>
+          <span class="strip-stat-label">سنوات خبرة</span>
+        </div>
+        <div class="strip-stat reveal" style="--d:.1s">
+          <span class="strip-stat-num">4+</span>
+          <span class="strip-stat-label">فروع نشطة</span>
+        </div>
+        <div class="strip-stat reveal" style="--d:.2s">
+          <span class="strip-stat-num">950+</span>
+          <span class="strip-stat-label">جنيه فقط</span>
+        </div>
+        <div class="strip-stat reveal" style="--d:.3s">
+          <span class="strip-stat-num">100%</span>
+          <span class="strip-stat-label">مدربون معتمدون</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ VALUES ══ -->
+  <section class="values-section">
+    <div class="container-main">
+      <div class="section-header reveal">
+        <span class="section-label">OUR VALUES</span>
+        <h2 class="section-title">قيمنا ومبادئنا</h2>
+        <p class="section-sub">اللي بيميّزنا مش بس التدريب — هو الطريقة اللي بنتعامل بيها مع كل متدرّب.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-icon vi-gold">
+            <img src="/assets/icons/star-mohsen-academy.webp" loading="lazy" alt="الاحترافية">
+          </div>
+          <h3>الاحترافية</h3>
+          <p>كل شيء بنقدّمه مبني على أسس علمية وعملية حقيقية — مش كلام في الهواء. مدربينا سبحوا وتدرّبوا على أعلى مستوى.</p>
+        </div>
+        <div class="value-card reveal" style="--d:.1s">
+          <div class="value-icon vi-blue">
+            <img src="/assets/icons/task-mohsen-academy.webp" loading="lazy" alt="الشفافية">
+          </div>
+          <h3>الشفافية</h3>
+          <p>أهل كل طفل يعرفوا كل حاجة: أيام الحضور، مستوى التقدم، والغياب — كل ده متاح بسهولة من خلال الموقع.</p>
+        </div>
+        <div class="value-card reveal" style="--d:.2s">
+          <div class="value-icon vi-gold">
+            <img src="/assets/icons/money-mohsen-academy.webp" loading="lazy" alt="القيمة">
+          </div>
+          <h3>القيمة الحقيقية</h3>
+          <p>هدفنا مش الربح الصرف — هدفنا إن كل متدرّب يحس إنه استفاد فعلًا. تسعيرنا عادل ومميزاتنا أكبر من المنافسين.</p>
+        </div>
+        <div class="value-card reveal" style="--d:.3s">
+          <div class="value-icon vi-blue">
+            <img src="/assets/icons/timer-mohsen-academy.webp" loading="lazy" alt="المتابعة">
+          </div>
+          <h3>المتابعة المستمرة</h3>
+          <p>اختبارات شهرية، تقارير مستوى، ومتابعة دورية لكل سبّاح — عشان نضمن إن كل واحد بيتقدم فعلًا.</p>
+        </div>
+        <div class="value-card reveal" style="--d:.4s">
+          <div class="value-icon vi-gold">
+            <img src="/assets/icons/pool-1790 1.webp" loading="lazy" alt="الأمان">
+          </div>
+          <h3>الأمان أولًا</h3>
+          <p>بيئة آمنة وإشراف مستمر لكل الفئات — خصوصًا الأطفال. مبادئ السلامة راسخة في كل جلسة تدريبية.</p>
+        </div>
+        <div class="value-card reveal" style="--d:.5s">
+          <div class="value-icon vi-blue">
+            <img src="/assets/icons/swimmer.webp" loading="lazy" alt="المنافسات">
+          </div>
+          <h3>التطوير والمنافسة</h3>
+          <p>بنجهّز متدرّبينا للمشاركة في البطولات وتسجيل "الستار" من الاتحاد المصري للسباحة — كلاسيك أو زعانف.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ JOURNEY / TIMELINE ══ -->
+  <section class="journey-section">
+    <div class="container-main">
+      <div class="section-header reveal">
+        <span class="section-label">OUR JOURNEY</span>
+        <h2 class="section-title">مسيرتنا</h2>
+        <p class="section-sub">من سبّاح محترف إلى أكاديمية متكاملة — قصة بُنيت بشغف وخبرة حقيقية.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-body">
+            <div class="timeline-year">البداية</div>
+            <h4>سباحة ومنافسات</h4>
+            <p>بدأت الرحلة كسبّاح محترف مشارك في سباقات التتابع، محقّقًا مراكز متقدمة وحاصلًا على شهادات تقدير من مدربين مرموقين.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="--d:.1s">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-body">
+            <div class="timeline-year">التدريب</div>
+            <h4>أول خطوة في التدريب</h4>
+            <p>انتقال من المنافسة إلى التدريب — اكتشاف الشغف بتعليم الآخرين وتطوير منهج تدريبي فعّال مبني على التجربة الشخصية.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="--d:.2s">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-body">
+            <div class="timeline-year">الاعتماد</div>
+            <h4>شهادة الاتحاد المصري</h4>
+            <p>الحصول على الاعتماد الرسمي من الاتحاد المصري للغوص والإنقاذ — ضمان جودة التدريب ومصداقيته على أعلى مستوى.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="--d:.3s">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-body">
+            <div class="timeline-year">2025 — الإطلاق</div>
+            <h4>Mohsen Academy رسميًا</h4>
+            <p>تأسيس الأكاديمية كمنصة متكاملة — موقع، تطبيق، ومتابعة إلكترونية — مع فروع في الشروق وبدر والعاشر من رمضان ومدينة المستقبل.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BANNER ══ -->
+  <section class="cta-banner">
+    <div class="cta-inner reveal">
+      <div class="cta-ring cta-ring-1"></div>
+      <div class="cta-ring cta-ring-2"></div>
+      <span class="section-label" style="color:rgba(255,255,255,.65)">انضم لعيلتنا</span>
+      <h2>سباحة ممتعة وآمنة لكل المستويات</h2>
+      <p>سواء كنت مبتدئًا أو سبّاحًا محترفًا — عندنا البرنامج اللي يناسبك. سجّل دلوقتي أو تواصل معنا لمعرفة أي برنامج الأنسب ليك.</p>
+      <div class="cta-btns">
+        <a href="https://mohsenacademy.com/contact-us" class="btn-primary">سجّل الآن</a>
+        <a href="https://wa.me/201035700879" class="btn-ghost-white">
+          <img src="/assets/icons/whatsapp.webp" alt="" width="18" height="18"> تواصل معنا
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER (identical to Home) ══ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="https://mohsenacademy.com">
+              <img class="img-logo" src="/assets/icons/Logo-Header.webp" alt="Mohsen Academy Logo">
+            </a>
+            <p>Professional swimming academy for all ages — kids, adults, and athletes. Certified coaches from the Egyptian Federation for Diving &amp; Lifesaving.</p>
+            <div class="footer-socials">
+              <a href="https://www.facebook.com/MohsenAcademyPage" class="social-link">
+                <img src="/assets/icons/facebook.webp" loading="lazy" alt="Facebook" width="20" height="20">
+              </a>
+              <a href="https://www.instagram.com/mohsen_academy_/" class="social-link">
+                <img src="/assets/icons/insta.webp" loading="lazy" alt="Instagram" width="20" height="20">
+              </a>
+              <a href="https://www.tiktok.com/@mohsen_academy_" class="social-link">
+                <img src="/assets/icons/vector.webp" loading="lazy" alt="TikTok" width="20" height="20">
+              </a>
+              <a href="https://wa.me/message/X76VY37AZW2NK1" class="social-link">
+                <img src="/assets/icons/whatsapp.webp" loading="lazy" alt="WhatsApp" width="20" height="20">
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="https://mohsenacademy.com/About">About Us</a>
+            <a href="https://mohsenacademy.com/#swim-classes">Our Programs</a>
+            <a href="https://mohsenacademy.com/Services">Schedule</a>
+            <a href="https://mohsenacademy.com/contact-us">Contact Us</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">Register Now</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <a href="https://www.facebook.com/Mohsen.Academy/">Facebook</a>
+            <a href="https://www.instagram.com/mohsen_academy_/">Instagram</a>
+            <a href="https://www.tiktok.com/@mohsen_academy_">TikTok</a>
+            <a href="https://wa.me/message/X76VY37AZW2NK1">WhatsApp</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact Info</h4>
+            <a href="https://mohsenacademy.com/our-locations">&#128205; الشروق، العاشر من رمضان، بدر</a>
+            <a href="https://wa.me/201035700879">&#128222; +20 01035700879</a>
+            <a href="mailto:mohsenswimmingacdemy@gmail.com">&#9993; mohsenswimmingacdemy@gmail.com</a>
+            <a href="#">&#9200; Sun–Thu | 12:00 AM – 9:00 PM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-main footer-bottom-inner">
+        <p>&copy; 2026 Mohsen Academy &mdash; جميع الحقوق محفوظة &nbsp;|&nbsp;
+          <a href="https://mohsenacademy.com/privacy">سياسة الخصوصية</a> &nbsp;|&nbsp;
+          <a href="https://mohsenacademy.com/policies-rules">الشروط والأحكام</a>
+        </p>
+        <p>UI / UX &amp; Frontend by <a href="#">MOHSEN</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Navbar ── */
+    function toggleNavbar() {
+      const d = document.getElementById("navbarDrawer");
+      const t = document.getElementById("navbarToggle");
+      const o = d.classList.toggle("open");
+      t.classList.toggle("active", o);
+      document.body.style.overflow = o ? "hidden" : "";
+    }
+    document.addEventListener("click", function(e) {
+      const d = document.getElementById("navbarDrawer");
+      const t = document.getElementById("navbarToggle");
+      if (d.classList.contains("open") && !d.contains(e.target) && !t.contains(e.target)) {
+        d.classList.remove("open");
+        t.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    });
+
+    /* ── Navbar scroll ── */
+    const navbar = document.getElementById("mainNavbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
+    });
+
+    /* ── Scroll reveal ── */
+    document.addEventListener("DOMContentLoaded", () => {
+      const reveals = document.querySelectorAll(".reveal");
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.10 });
+      reveals.forEach(el => obs.observe(el));
+    });
+
+    /* ── Service Worker ── */
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/assets/js/sw.js');
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsClub",
+    "name": "Mohsen Academy",
+    "alternateName": "أكاديمية محسن للسباحة",
+    "url": "https://mohsenacademy.com/About",
+    "telephone": "+20-1035700789",
+    "sport": "Swimming",
+    "description": "أكاديمية محسن للسباحة — تدريب احترافي للأطفال والكبار والفرق في الشروق وبدر والعاشر من رمضان.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "الشروق",
+      "addressCountry": "EG"
+    }
+  }
+  </script>
+</body>
+</html>
