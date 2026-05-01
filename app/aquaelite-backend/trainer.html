@@ -528,6 +528,44 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
 .mo-close:hover{background:rgba(255,77,109,.14);color:var(--err)}
 .mo-close svg{width:14px;height:14px}
 
+/* ══ EDIT MODAL — SCHEDULE SECTION ══ */
+.edit-section{
+  margin-top:18px;
+  background:rgba(0,180,200,.04);
+  border:1px solid rgba(0,180,200,.16);
+  border-radius:var(--r-md);
+  padding:14px;
+}
+.edit-section-title{
+  font-size:.78rem;font-weight:800;color:var(--teal);
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.edit-section-title svg{width:13px;height:13px}
+.edit-section-hint{
+  font-size:.7rem;color:var(--tm);
+  margin-top:8px;line-height:1.6;
+  padding:7px 10px;border-radius:var(--r-sm);
+  background:rgba(255,255,255,.022);border:1px solid var(--bdr);
+}
+
+/* Compact sess pills inside edit modal */
+.edit-section .sess-pills{margin-bottom:12px}
+.edit-section .sess-pill{padding:9px 6px}
+.edit-section .sp-num{font-size:1.15rem}
+
+/* Read-only original info badge */
+.original-info{
+  font-size:.66rem;color:var(--tm);
+  background:rgba(255,255,255,.022);
+  border:1px dashed var(--bdr);
+  border-radius:var(--r-sm);
+  padding:4px 9px;
+  display:inline-flex;align-items:center;gap:5px;
+  margin-right:auto;
+}
+.original-info strong{color:var(--ts);font-weight:700}
+
 .conf-ov{
   position:fixed;inset:0;z-index:160;
   background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -843,7 +881,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
   <th style="width:72px">الحصص</th>
   <th style="width:90px"></th>
 </tr></thead>
-          <tbody id="swimmersBody"><tr><td colspan="8" class="no-data">جاري التحميل...</td></tr></tbody>
+          <tbody id="swimmersBody"><tr><td colspan="9" class="no-data">جاري التحميل...</td></tr></tbody>
         </table>
       </div>
       <div class="pag" id="pagination"></div>
@@ -1037,7 +1075,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
 
       <div class="lv-private-note">
         <i data-lucide="users"></i>
-        <div class="lv-private-note-note-text">
+        <div class="lv-private-note-text">
           للمراجعة الداخلية بس — متشاركش مع السباحين أو أولياء الأمور. التقييم الرسمي للمستويات بيصدر من المشرف عن طريق القنوات الرسمية للأكاديمية.
         </div>
       </div>
@@ -1046,7 +1084,9 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
 
 </main>
 
-<!-- EDIT MODAL -->
+<!-- ════════════════════════════════════════ -->
+<!-- ══   EDIT MODAL  (UPGRADED)         ══ -->
+<!-- ════════════════════════════════════════ -->
 <div class="mo" id="editModal">
   <div class="mo-card">
     <div class="mo-drag"></div>
@@ -1054,11 +1094,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
       <div class="mo-title"><i data-lucide="pencil"></i> تعديل بيانات السباح</div>
       <button class="mo-close" id="closeEdit"><i data-lucide="x"></i></button>
     </div>
+
+    <!-- Basic info -->
     <div class="fg fg2" style="gap:12px">
       <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
       <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
 
-      <!-- ✅ تم التغيير: من select إلى input type="time" -->
       <div class="fld"><label>وقت التدريب</label>
         <input type="time" class="fc" id="e_time"/>
       </div>
@@ -1070,6 +1111,60 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
       <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="e_trainer"/></div>
     </div>
 
+    <!-- ✨ NEW: SCHEDULE EDIT SECTION -->
+    <div class="edit-section">
+      <div class="edit-section-title">
+        <i data-lucide="calendar-cog"></i> عدد الحصص وأيام التدريب
+        <span class="original-info" id="origSchedInfo" style="display:none">
+          <i data-lucide="history" style="width:11px;height:11px"></i>
+          <span>الحالي: <strong id="origSchedTxt">—</strong></span>
+        </span>
+      </div>
+
+      <!-- Sessions count -->
+      <div class="sess-pills">
+        <label class="sess-pill"><input type="radio" name="e_sess" value="8"/><span class="sp-num">8</span><span class="sp-lbl">حصص</span></label>
+        <label class="sess-pill"><input type="radio" name="e_sess" value="12"/><span class="sp-num">12</span><span class="sp-lbl">حصة</span></label>
+        <label class="sess-pill"><input type="radio" name="e_sess" value="24"/><span class="sp-num">24</span><span class="sp-lbl">حصة</span></label>
+      </div>
+
+      <!-- Days picker (8/12) -->
+      <div id="e_daysWrap" class="fld" style="display:none">
+        <label style="display:flex;align-items:center;justify-content:space-between">
+          <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
+          <span class="days-ctr" id="e_daysCtr"></span>
+        </label>
+        <div class="days-grid">
+          <label class="day-cb"><input type="checkbox" name="e_days" value="0"/><span>أحد</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="1"/><span>اثنين</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="2"/><span>ثلاثاء</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="3"/><span>أربعاء</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="4"/><span>خميس</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="5"/><span>جمعة</span></label>
+          <label class="day-cb"><input type="checkbox" name="e_days" value="6"/><span>سبت</span></label>
+        </div>
+        <p class="days-hint" id="e_daysHint"></p>
+      </div>
+
+      <!-- Rest day (24) -->
+      <div class="fld rest-wrap" id="e_restWrap" style="margin-top:10px">
+        <label><i data-lucide="moon"></i> يوم الراحة الأسبوعي</label>
+        <select class="fc" id="e_restDay">
+          <option value="">اختر يوم الراحة</option>
+          <option value="0">الأحد</option><option value="1">الاثنين</option>
+          <option value="2">الثلاثاء</option><option value="3">الأربعاء</option>
+          <option value="4">الخميس</option><option value="5">الجمعة</option>
+          <option value="6">السبت</option>
+        </select>
+      </div>
+
+      <p class="edit-section-hint">
+        <i data-lucide="info" style="width:11px;height:11px;display:inline-block;vertical-align:middle"></i>
+        تغيير عدد الحصص أو الأيام بيأثر على جدول الحضور القادم. سجلات الحضور القديمة هتفضل زي ما هي.
+      </p>
+    </div>
+
+    <!-- Rating -->
     <div class="rating-sec">
       <div class="rating-title"><i data-lucide="star"></i> التقييم (1–5 نجوم)</div>
       <div class="star-picker">
@@ -1082,6 +1177,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
       <input type="text" class="rating-note" id="ratingNote" placeholder="ملاحظة التقييم (اختياري)"/>
       <br/><button class="btn-rate" id="saveRatingBtn"><i data-lucide="star"></i> حفظ التقييم</button>
     </div>
+
     <button class="btn-pri mt-16" id="saveEditBtn"><i data-lucide="save"></i><span>حفظ البيانات</span></button>
   </div>
 </div>
@@ -1115,6 +1211,9 @@ let monMap = {}, selDate = null;
 let editId = null, delId = null, delName = '';
 let editingLevel = null;
 
+/* ✨ NEW: stash the original swimmer so we can fall back on empty fields */
+let editOriginal = null;
+
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   token ? initApp() : showLogin();
@@ -1147,6 +1246,10 @@ function bindUI(){
   $('createForm').addEventListener('submit', doCreate);
   document.querySelectorAll('input[name="c_sess"]').forEach(r=>r.addEventListener('change', onSessChange));
   document.querySelectorAll('input[name="c_days"]').forEach(c=>c.addEventListener('change', onDaysChange));
+
+  /* ✨ NEW: edit modal sessions/days handlers */
+  document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.addEventListener('change', onEditSessChange));
+  document.querySelectorAll('input[name="e_days"]').forEach(c=>c.addEventListener('change', onEditDaysChange));
 
   $('attendSearchBtn').onclick = loadAttendSwimmer;
   $('attendSearch').addEventListener('keydown', e=>e.key==='Enter'&&loadAttendSwimmer());
@@ -1375,8 +1478,9 @@ async function loadAttendSwimmer(){
     const d=await api('/swimmers/'+subId);swimmer=d.data;
     $('chipAv').textContent=(swimmer.fullName||'?').charAt(0);
     $('chipName').textContent=swimmer.fullName||'—';
-const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
-$('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;    $('ccTot').textContent=swimmer.sessionsCount;
+    const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
+    $('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;
+    $('ccTot').textContent=swimmer.sessionsCount;
     $('ccAtt').textContent=swimmer.sessionsAttended||0;
     $('swimmerChip').classList.add('show');
     viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;
@@ -1494,56 +1598,280 @@ async function delMonRec(){
 function navMon(dir){viewMonth+=dir;if(viewMonth<1){viewMonth=12;viewYear--;}if(viewMonth>12){viewMonth=1;viewYear++;}loadMonthData();}
 function hideMakeup(){$('makeupRow').classList.remove('show');}
 
-/* ══ EDIT ══ */
+/* ════════════════════════════════════════ */
+/* ══   EDIT — UPGRADED                ══ */
+/* ════════════════════════════════════════ */
+
+/* Reset all schedule controls inside the edit modal to a clean state */
+function resetEditScheduleUI(){
+  document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.checked=false);
+  document.querySelectorAll('input[name="e_days"]').forEach(c=>{
+    c.checked=false;
+    c.closest('.day-cb').classList.remove('locked');
+  });
+  $('e_restDay').value='';
+  $('e_daysWrap').style.display='none';
+  $('e_restWrap').classList.remove('show');
+  $('e_daysCtr').textContent='';
+  $('e_daysCtr').className='days-ctr';
+  $('e_daysHint').textContent='';
+}
+
+/* Update the days counter UI inside the edit modal */
+function updateEditDaysUI(val,cnt){
+  const max=SESS_DAYS[val]||0,rem=max-cnt;
+  const ctr=$('e_daysCtr'),hint=$('e_daysHint');
+  if(cnt===0){
+    ctr.textContent = val==='8' ? 'اختر يومين' : 'اختر ٣ أيام';
+    ctr.className='days-ctr';
+    hint.textContent = val==='8' ? '٨ حصص = يومان في الأسبوع' : '١٢ حصة = ٣ أيام في الأسبوع';
+  }else if(cnt<max){
+    ctr.textContent=`متبقي ${rem}`;
+    ctr.className='days-ctr';
+    hint.textContent='';
+  }else{
+    ctr.textContent='✓ اكتملت';
+    ctr.className='days-ctr done';
+    hint.textContent='';
+  }
+  document.querySelectorAll('input[name="e_days"]').forEach(c=>
+    c.closest('.day-cb').classList.toggle('locked',!c.checked && cnt>=max)
+  );
+}
+
+/* When user changes session count in edit modal */
+function onEditSessChange(){
+  const val=document.querySelector('input[name="e_sess"]:checked')?.value;
+  /* Wipe days when sess changes */
+  document.querySelectorAll('input[name="e_days"]').forEach(c=>{
+    c.checked=false;
+    c.closest('.day-cb').classList.remove('locked');
+  });
+  if(val==='24'){
+    $('e_daysWrap').style.display='none';
+    $('e_restWrap').classList.add('show');
+  }else if(val){
+    $('e_daysWrap').style.display='block';
+    $('e_restWrap').classList.remove('show');
+    updateEditDaysUI(val,0);
+  }else{
+    $('e_daysWrap').style.display='none';
+    $('e_restWrap').classList.remove('show');
+  }
+}
+
+/* When user toggles a day checkbox in edit modal */
+function onEditDaysChange(e){
+  const val=document.querySelector('input[name="e_sess"]:checked')?.value;
+  const cnt=document.querySelectorAll('input[name="e_days"]:checked').length;
+  const max=SESS_DAYS[val]||0;
+  if(e.target.checked && cnt>max){
+    e.target.checked=false;
+    return;
+  }
+  if(val && max){
+    updateEditDaysUI(val, document.querySelectorAll('input[name="e_days"]:checked').length);
+  }
+}
+
+/* Open the edit modal — pre-fill EVERYTHING from the original swimmer */
 async function openEdit(subId){
   try{
-    const d=await api('/swimmers/'+subId);const s=d.data;editId=subId;editingLevel=s.level||null;
-    $('e_name').value=s.fullName||'';
-    $('e_phone').value=s.phone||'';
+    const d = await api('/swimmers/'+subId);
+    const s = d.data;
 
-    // ✅ تحويل الوقت لـ 12 ساعة لما نعرضه
+    /* ✨ Stash original so we can fall back later */
+    editOriginal = s;
+    editId = subId;
+    editingLevel = s.level || null;
+
+    /* Basic fields */
+    $('e_name').value    = s.fullName || '';
+    $('e_phone').value   = s.phone    || '';
+
+    /* Time — convert from 24h to 12h for display */
     const rawTime = s.trainingTime || '';
     const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
     const time24 = timeMatch ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}` : '';
-    $('e_time').value = to12Hour(time24); // ← هنا التحويل
+    $('e_time').value = to12Hour(time24);
 
-    $('e_goal').value=s.goal||'';
-    $('e_active').value=s.isActive?'true':'false';
-    $('e_trainer').value=s.trainerName||'';
-    $('e_expiry').value=s.subscriptionExpiry?new Date(s.subscriptionExpiry).toISOString().split('T')[0]:'';
+    $('e_goal').value    = s.goal || '';
+    $('e_active').value  = s.isActive ? 'true' : 'false';
+    $('e_trainer').value = s.trainerName || '';
+    $('e_expiry').value  = s.subscriptionExpiry
+      ? new Date(s.subscriptionExpiry).toISOString().split('T')[0]
+      : '';
+
+    /* ✨ NEW: Pre-fill schedule (sessions count + days OR rest day) */
+    resetEditScheduleUI();
+    const sessVal = String(s.sessionsCount || '');
+    const trainingDays = Array.isArray(s.trainingDays) ? s.trainingDays : [];
+
+    /* Original info badge — show what's currently saved */
+    const dayShortNames = ['أحد','اثن','ثلا','أربع','خم','جم','سب'];
+    if(sessVal){
+      let infoTxt = `${sessVal} حصة`;
+      if(sessVal === '24'){
+        const rest = [0,1,2,3,4,5,6].find(d => !trainingDays.includes(d));
+        if(rest !== undefined) infoTxt += ` — راحة: ${DAYS[rest]}`;
+      }else if(trainingDays.length){
+        infoTxt += ' — ' + trainingDays.map(d => dayShortNames[d]).join('، ');
+      }
+      $('origSchedTxt').textContent = infoTxt;
+      $('origSchedInfo').style.display = 'inline-flex';
+    }else{
+      $('origSchedInfo').style.display = 'none';
+    }
+
+    /* Tick the right session pill */
+    if(sessVal){
+      const sessRadio = document.querySelector(`input[name="e_sess"][value="${sessVal}"]`);
+      if(sessRadio){
+        sessRadio.checked = true;
+        if(sessVal === '24'){
+          $('e_daysWrap').style.display='none';
+          $('e_restWrap').classList.add('show');
+          /* Find rest day = the one missing from trainingDays */
+          const rest = [0,1,2,3,4,5,6].find(d => !trainingDays.includes(d));
+          if(rest !== undefined) $('e_restDay').value = String(rest);
+        }else{
+          $('e_daysWrap').style.display='block';
+          $('e_restWrap').classList.remove('show');
+          /* Tick the saved days */
+          trainingDays.forEach(d => {
+            const cb = document.querySelector(`input[name="e_days"][value="${d}"]`);
+            if(cb) cb.checked = true;
+          });
+          updateEditDaysUI(sessVal, trainingDays.length);
+        }
+      }
+    }
+
+    /* Rating */
     document.querySelectorAll('input[name="estar"]').forEach(r=>r.checked=false);
-    if(s.rating>0){const el=document.getElementById('es'+s.rating);if(el)el.checked=true;}
-    $('ratingNote').value=s.ratingNote||'';
-    openModal('editModal');lucide.createIcons();
-  }catch(e){toast(e.message||'خطأ','error');}
-}
-async function doSaveEdit(){
-  if(!editId)return;
-  const btn=$('saveEditBtn');btn.classList.add('loading');
-  try{
-    // ✅ تحويل الوقت لـ 24 ساعة قبل الإرسال
-    const time12 = $('e_time').value;
-    const time24 = to24Hour(time12);
+    if(s.rating>0){
+      const el=document.getElementById('es'+s.rating);
+      if(el)el.checked=true;
+    }
+    $('ratingNote').value = s.ratingNote || '';
 
-    await api('/swimmers/'+editId,'PUT',{
-      fullName:$('e_name').value.trim(),
-      phone:$('e_phone').value.trim(),
-      trainingTime: time24, // ← هنا التحويل
-      goal:$('e_goal').value||'',
-      isActive:$('e_active').value==='true',
-      subscriptionExpiry:$('e_expiry').value||'',
-      trainerName:$('e_trainer').value.trim()
-    });
-    closeModal('editModal');toast('✅ تم التحديث');loadSwimmers();loadStats();
-  }catch(e){toast(e.message||'خطأ','error');}
-  finally{btn.classList.remove('loading');}
+    openModal('editModal');
+    lucide.createIcons();
+  }catch(e){
+    toast(e.message||'خطأ','error');
+  }
 }
+
+/* Save edits — fall back to original data for empty/invalid fields */
+async function doSaveEdit(){
+  if(!editId || !editOriginal){
+    toast('خطأ — جرب تفتح التعديل تاني','error');
+    return;
+  }
+  const btn=$('saveEditBtn');
+  btn.classList.add('loading');
+
+  try{
+    const orig = editOriginal;
+
+    /* ── Helper: pick a value if non-empty, otherwise fall back ── */
+    const pick = (formVal, fallback) => {
+      const v = (formVal ?? '').toString().trim();
+      return v === '' ? (fallback ?? '') : v;
+    };
+
+    /* ── Basic fields with fallback to original ── */
+    const fullName    = pick($('e_name').value,    orig.fullName);
+    const phone       = pick($('e_phone').value,   orig.phone);
+    const goal        = pick($('e_goal').value,    orig.goal);
+    const trainerName = pick($('e_trainer').value, orig.trainerName);
+
+    /* Time: convert 12h → 24h, fall back to original if blank */
+    const time12 = $('e_time').value.trim();
+    let trainingTime = '';
+    if(time12){
+      trainingTime = to24Hour(time12);
+    }else{
+      trainingTime = orig.trainingTime || '';
+    }
+
+    /* Expiry: if blank, keep original (formatted as YYYY-MM-DD) */
+    let subscriptionExpiry = $('e_expiry').value.trim();
+    if(!subscriptionExpiry && orig.subscriptionExpiry){
+      subscriptionExpiry = new Date(orig.subscriptionExpiry).toISOString().split('T')[0];
+    }
+
+    /* isActive — boolean, always present from select */
+    const isActive = $('e_active').value === 'true';
+
+    /* ── Schedule: validate & fall back to original if invalid ── */
+    const sessSelected = document.querySelector('input[name="e_sess"]:checked')?.value;
+    let sessionsCount  = orig.sessionsCount;
+    let trainingDays   = Array.isArray(orig.trainingDays) ? orig.trainingDays.slice() : [];
+
+    if(sessSelected){
+      const newSess = Number(sessSelected);
+      if(newSess === 24){
+        const restDay = $('e_restDay').value;
+        if(!restDay){
+          toast('اختر يوم الراحة','error');
+          btn.classList.remove('loading');
+          return;
+        }
+        sessionsCount = 24;
+        trainingDays  = [0,1,2,3,4,5,6].filter(d => d !== Number(restDay));
+      }else{
+        const req = SESS_DAYS[String(newSess)] || 0;
+        const chk = [...document.querySelectorAll('input[name="e_days"]:checked')].map(c=>Number(c.value));
+        if(chk.length !== req){
+          toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'} للجدول الجديد`,'error');
+          btn.classList.remove('loading');
+          return;
+        }
+        sessionsCount = newSess;
+        trainingDays  = chk;
+      }
+    }
+
+    /* ── Build payload — only include fields with real values ── */
+    const payload = {
+      fullName,
+      phone,
+      trainingTime,
+      goal,
+      isActive,
+      subscriptionExpiry,
+      trainerName,
+      sessionsCount,
+      trainingDays
+    };
+
+    await api('/swimmers/'+editId,'PUT',payload);
+    closeModal('editModal');
+    toast('✅ تم التحديث');
+    loadSwimmers();
+    loadStats();
+  }catch(e){
+    toast(e.message||'خطأ','error');
+  }finally{
+    btn.classList.remove('loading');
+  }
+}
+
 async function doSaveRating(){
   if(!editId)return;
   const starInput=document.querySelector('input[name="estar"]:checked');
   if(!starInput){toast('اختر عدد النجوم أولاً','error');return;}
-  try{await api('/swimmer-auth/swimmers/'+editId+'/rating','PUT',{rating:Number(starInput.value),ratingNote:$('ratingNote').value.trim()});toast('✅ تم حفظ التقييم');loadSwimmers();}
-  catch(e){toast(e.message||'خطأ','error');}
+  try{
+    await api('/swimmer-auth/swimmers/'+editId+'/rating','PUT',{
+      rating: Number(starInput.value),
+      ratingNote: $('ratingNote').value.trim()
+    });
+    toast('✅ تم حفظ التقييم');
+    loadSwimmers();
+  }catch(e){
+    toast(e.message||'خطأ','error');
+  }
 }
 
 /* ══ DELETE ══ */
@@ -1572,31 +1900,36 @@ function $(id){return document.getElementById(id);}
 function show(id,d='block'){$(id).style.display=d;}
 function hide(id){$(id).style.display='none';}
 function openModal(id){$(id).classList.add('show');document.body.style.overflow='hidden';}
-function closeModal(id){$(id).classList.remove('show');document.body.style.overflow='';if(id==='editModal')editId=null;}
+function closeModal(id){
+  $(id).classList.remove('show');
+  document.body.style.overflow='';
+  if(id==='editModal'){
+    editId=null;
+    editOriginal=null; /* ✨ also clear stash */
+  }
+}
 function esc(s){return String(s||'').replace(/'/g,"\\'")}
 let toastT;
 function toast(msg,type='success'){const el=$('toast');el.className=`toast ${type} show`;$('toastMsg').textContent=msg;clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3400);}
-// تحويل من 24 ساعة لـ 12 ساعة مع AM/PM
+
+/* ── Time format helpers ── */
 function to12Hour(time24) {
   if (!time24) return '';
   const [hours, minutes] = time24.split(':');
   const h = parseInt(hours, 10);
+  if(isNaN(h)) return '';
   const ampm = h >= 12 ? 'م' : 'ص';
   const h12 = h % 12 || 12;
   return `${String(h12).padStart(2, '0')}:${minutes} ${ampm}`;
 }
-
-// تحويل من 12 ساعة لـ 24 ساعة
 function to24Hour(time12) {
   if (!time12) return '';
   const match = time12.match(/(\d{1,2}):(\d{2})\s*(ص|م)/);
-  if (!match) return time12; // لو مش بالفورمات المتوقع، رجعه زي ما هو
-  
+  if (!match) return time12;
   let [, h, m, ampm] = match;
   h = parseInt(h, 10);
   if (ampm === 'م' && h !== 12) h += 12;
   if (ampm === 'ص' && h === 12) h = 0;
-  
   return `${String(h).padStart(2, '0')}:${m}`;
 }
 </script>
