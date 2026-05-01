@@ -202,22 +202,29 @@ router.get('/:subscriptionId', protect, async (req, res) => {
 });
 
 
-/* ─────────────────────────────────────────────────────────────
+/* ═══════════════════════════════════════════════════════════════
    PUT /api/swimmers/:subscriptionId
-   ✨ تم إعادة كتابتها باستخدام findOne + save بدلاً من findOneAndUpdate
-      علشان الـ schema validators (اللي بتعتمد على this.sessionsCount)
-      تشتغل صح، وعلشان trainingDays تتحفظ فعلاً.
-   ───────────────────────────────────────────────────────────── */
+   ✨ نسخة تشخيصية — فيها console.log كاملة + verification بعد الحفظ
+   ═══════════════════════════════════════════════════════════════ */
 router.put('/:subscriptionId', protect, async (req, res) => {
+  const TAG = `[PUT /swimmers/${req.params.subscriptionId}]`;
   try {
+    console.log('\n' + '═'.repeat(70));
+    console.log(`${TAG} START`);
+    console.log(`${TAG} req.body =`, JSON.stringify(req.body, null, 2));
+
     const isBoss = req.trainer.role === 'boss';
     const filter = { subscriptionId: req.params.subscriptionId };
     if (!isBoss) filter.trainer = req.trainer._id;
+    console.log(`${TAG} filter =`, filter);
 
     /* 1) هات الـ document الحالي */
     const swimmer = await Swimmer.findOne(filter);
-    if (!swimmer)
+    if (!swimmer) {
+      console.log(`${TAG} ❌ Swimmer NOT FOUND`);
       return res.status(404).json({ success: false, message: 'السباح غير موجود أو لا ينتمي لحسابك' });
+    }
+    console.log(`${TAG} ✓ Found swimmer. BEFORE: sessionsCount=${swimmer.sessionsCount}, trainingDays=[${swimmer.trainingDays}]`);
 
     const allowed = [
       'fullName','phone','trainingTime','goal','isActive',
@@ -229,6 +236,7 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     /* 2) جهّز قيم نظيفة */
     const body = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) body[key] = req.body[key]; });
+    console.log(`${TAG} Filtered body =`, JSON.stringify(body, null, 2));
 
     if (typeof body.fullName    === 'string') body.fullName    = body.fullName.trim();
     if (typeof body.phone       === 'string') body.phone       = body.phone.trim();
@@ -240,11 +248,14 @@ router.put('/:subscriptionId', protect, async (req, res) => {
 
     if (body.sessionsCount !== undefined) body.sessionsCount = Number(body.sessionsCount);
     if (body.trainingDays  !== undefined) {
-      if (!Array.isArray(body.trainingDays))
+      if (!Array.isArray(body.trainingDays)) {
+        console.log(`${TAG} ❌ trainingDays is NOT an array:`, typeof body.trainingDays);
         return res.status(400).json({ success: false, message: 'trainingDays لازم تكون مصفوفة' });
+      }
       body.trainingDays = [...new Set(
         body.trainingDays.map(d => Number(d)).filter(d => Number.isInteger(d) && d >= 0 && d <= 6)
       )];
+      console.log(`${TAG} Normalized trainingDays = [${body.trainingDays}]`);
     }
 
     /* 3) لو في تغيير في الجدول — تحقق من التطابق */
@@ -252,20 +263,29 @@ router.put('/:subscriptionId', protect, async (req, res) => {
       const finalSess = body.sessionsCount !== undefined ? body.sessionsCount : swimmer.sessionsCount;
       const finalDays = body.trainingDays  !== undefined ? body.trainingDays  : swimmer.trainingDays;
 
+      console.log(`${TAG} Schedule check: finalSess=${finalSess}, finalDays=[${finalDays}]`);
+
       const expected = { 8:2, 12:3, 24:6 }[finalSess];
-      if (!expected)
+      if (!expected) {
+        console.log(`${TAG} ❌ Invalid sessionsCount: ${finalSess}`);
         return res.status(400).json({ success: false, message: `عدد الحصص ${finalSess} غير مدعوم` });
-      if (!Array.isArray(finalDays) || finalDays.length !== expected)
+      }
+      if (!Array.isArray(finalDays) || finalDays.length !== expected) {
+        console.log(`${TAG} ❌ Days mismatch: expected ${expected}, got ${Array.isArray(finalDays) ? finalDays.length : 0}`);
         return res.status(400).json({
           success: false,
           message: `اشتراك ${finalSess} حصة يتطلب ${expected} أيام — تم تمرير ${Array.isArray(finalDays) ? finalDays.length : 0}`
         });
+      }
 
-      /* ✨ ترتيب مهم: غيّر sessionsCount الأول قبل trainingDays
-         علشان الـ validator في الـ schema (اللي بيقرأ this.sessionsCount) يشتغل صح */
-      if (body.sessionsCount !== undefined) swimmer.sessionsCount = finalSess;
+      /* ترتيب مهم: غيّر sessionsCount الأول */
+      if (body.sessionsCount !== undefined) {
+        swimmer.sessionsCount = finalSess;
+        console.log(`${TAG} → swimmer.sessionsCount = ${finalSess}`);
+      }
       swimmer.trainingDays = finalDays;
       swimmer.markModified('trainingDays');
+      console.log(`${TAG} → swimmer.trainingDays = [${finalDays}]`);
 
       if (finalSess === 24) {
         const restDay = [0,1,2,3,4,5,6].find(d => !finalDays.includes(d));
@@ -294,11 +314,23 @@ router.put('/:subscriptionId', protect, async (req, res) => {
       swimmer.ratingUpdatedAt = new Date();
     }
 
-    /* 6) احفظ — هيشغّل كل الـ validators صح */
-    await swimmer.save();
+    console.log(`${TAG} BEFORE save: sessionsCount=${swimmer.sessionsCount}, trainingDays=[${swimmer.trainingDays}]`);
+    console.log(`${TAG} isModified('sessionsCount') =`, swimmer.isModified('sessionsCount'));
+    console.log(`${TAG} isModified('trainingDays')  =`, swimmer.isModified('trainingDays'));
 
-    res.json({ success: true, message: 'تم تحديث البيانات', data: swimmer });
+    /* 6) احفظ */
+    const saved = await swimmer.save();
+    console.log(`${TAG} ✓ Saved. AFTER save: sessionsCount=${saved.sessionsCount}, trainingDays=[${saved.trainingDays}]`);
+
+    /* 7) ✨ verification — اقرأ تاني من الـ DB علشان نتأكد إن التغيير اتحفظ فعلاً */
+    const verify = await Swimmer.findOne(filter).lean();
+    console.log(`${TAG} ✓ Verified from DB: sessionsCount=${verify.sessionsCount}, trainingDays=[${verify.trainingDays}]`);
+    console.log(`${TAG} END`);
+    console.log('═'.repeat(70) + '\n');
+
+    res.json({ success: true, message: 'تم تحديث البيانات', data: verify });
   } catch (err) {
+    console.error(`${TAG} ❌ ERROR:`, err);
     if (err.name === 'ValidationError')
       return res.status(400).json({
         success: false,
