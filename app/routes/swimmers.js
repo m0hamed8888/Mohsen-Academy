@@ -211,7 +211,8 @@ router.get('/:subscriptionId', protect,async (req, res) => {
 /* ─────────────────────────────────────────────────────────────
    PUT /api/swimmers/:subscriptionId
    يقبل: fullName, phone, trainingTime, goal, isActive,
-          subscriptionExpiry, trainerName, level, levelNote, rating, ratingNote
+          subscriptionExpiry, trainerName, level, levelNote, rating, ratingNote,
+          sessionsCount, trainingDays   ← ✨ الجداد
    ───────────────────────────────────────────────────────────── */
 router.put('/:subscriptionId', protect, async (req, res) => {
   try {
@@ -219,8 +220,12 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     const filter = { subscriptionId: req.params.subscriptionId };
     if (!isBoss) filter.trainer = req.trainer._id;
 
-    const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
-                     'level','levelNote','rating','ratingNote'];
+    const allowed = [
+      'fullName','phone','trainingTime','goal','isActive',
+      'subscriptionExpiry','trainerName',
+      'level','levelNote','rating','ratingNote',
+      'sessionsCount','trainingDays'   // ← ✨ تمت إضافتهما
+    ];
     const update = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) update[key] = req.body[key]; });
 
@@ -231,6 +236,55 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     if (update.trainingTime === '') update.trainingTime = null;
     if (update.subscriptionExpiry === '') update.subscriptionExpiry = null;
     if ('isActive' in update) update.isActive = (update.isActive === true || update.isActive === 'true');
+
+    /* ─── ✨ NEW: تحقق من الجدول إذا تم إرسال sessionsCount و/أو trainingDays ─── */
+    // نحوّل الأنواع أولاً
+    if (update.sessionsCount !== undefined) {
+      update.sessionsCount = Number(update.sessionsCount);
+    }
+    if (update.trainingDays !== undefined) {
+      if (!Array.isArray(update.trainingDays)) {
+        return res.status(400).json({ success: false, message: 'trainingDays لازم تكون مصفوفة (Array)' });
+      }
+      update.trainingDays = update.trainingDays
+        .map(d => Number(d))
+        .filter(d => Number.isInteger(d) && d >= 0 && d <= 6);
+      // تخلص من أي تكرار (لو حد بعت يوم مرتين بالغلط)
+      update.trainingDays = [...new Set(update.trainingDays)];
+    }
+
+    // إذا أحدهما موجود، لازم نتحقق من التطابق مع الموجود في DB أو الجديد
+    if (update.sessionsCount !== undefined || update.trainingDays !== undefined) {
+      // نقرأ السباح الحالي علشان نقدر نتحقق ضد القيم الحالية لو واحد فقط اتبعت
+      const currentSwimmer = await Swimmer.findOne(filter).select('sessionsCount trainingDays');
+      if (!currentSwimmer) {
+        return res.status(404).json({ success: false, message: 'السباح غير موجود أو لا ينتمي لحسابك' });
+      }
+
+      const finalSess = update.sessionsCount !== undefined ? update.sessionsCount : currentSwimmer.sessionsCount;
+      const finalDays = update.trainingDays  !== undefined ? update.trainingDays  : currentSwimmer.trainingDays;
+
+      const expected = { 8:2, 12:3, 24:6 }[finalSess];
+      if (!expected) {
+        return res.status(400).json({ success: false, message: `عدد الحصص ${finalSess} غير مدعوم — يجب أن يكون 8 أو 12 أو 24` });
+      }
+      if (!Array.isArray(finalDays) || finalDays.length !== expected) {
+        return res.status(400).json({
+          success: false,
+          message: `اشتراك ${finalSess} حصة يتطلب ${expected} أيام — تم تمرير ${Array.isArray(finalDays) ? finalDays.length : 0}`
+        });
+      }
+
+      // تحديث restDay و trainingSchedule بشكل تلقائي علشان البيانات تفضل متسقة
+      if (finalSess === 24) {
+        const restDay = [0,1,2,3,4,5,6].find(d => !finalDays.includes(d));
+        if (restDay !== undefined) update.restDay = restDay;
+        update.trainingSchedule = null;
+      } else {
+        update.restDay = null;
+        update.trainingSchedule = 'custom';
+      }
+    }
 
     // تحديث level: نسجل من عدّله
     if (update.level !== undefined) {
