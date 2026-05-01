@@ -62,9 +62,8 @@ router.post('/register', protect, async (req, res) => {
     res.status(500).json({ success: false, message: 'خطأ في الخادم' });
   }
 });
-
 /* ─────────────────────────────────────────────────────────────
-   GET /api/swimmers/public/search
+   GET /api/swimmers/public/search  ← عام بدون token
    ───────────────────────────────────────────────────────────── */
 router.get('/public/search', async (req, res) => {
   try {
@@ -81,10 +80,10 @@ router.get('/public/search', async (req, res) => {
     };
 
     const swimmers = await Swimmer.find(filter)
-      .select('fullName subscriptionId trainingDays trainingTime dob level trainerName trainer sessionsCount sessionsAttended isActive subscriptionExpiry')
-      .populate('trainer', 'name')
-      .sort({ createdAt: -1 })
-      .limit(6);
+  .select('fullName subscriptionId trainingDays trainingTime dob level trainerName trainer sessionsCount sessionsAttended isActive subscriptionExpiry')
+  .populate('trainer', 'name')
+  .sort({ createdAt: -1 })
+  .limit(6);
 
     res.json({ success: true, total: swimmers.length, data: swimmers });
   } catch (err) {
@@ -94,6 +93,8 @@ router.get('/public/search', async (req, res) => {
 
 /* ─────────────────────────────────────────────────────────────
    GET /api/swimmers
+   فلتر: search, city, page, limit, trainerId, sessionsCount, isActive
+   الكابتن → مشتركيه فقط | Boss → الكل
    ───────────────────────────────────────────────────────────── */
 router.get('/', protect, async (req, res) => {
   try {
@@ -111,6 +112,7 @@ router.get('/', protect, async (req, res) => {
     if (isActive === 'true')  filter.isActive = true;
     if (isActive === 'false') filter.isActive = false;
 
+    // فلتر المدينة — عبر SwimmerUser
     if (city) {
       const usersInCity = await SwimmerUser.find({ city }).select('swimmers');
       const swimmerIds  = usersInCity.flatMap(u => u.swimmers);
@@ -141,7 +143,7 @@ router.get('/', protect, async (req, res) => {
 /* ─────────────────────────────────────────────────────────────
    GET /api/swimmers/:subscriptionId
    ───────────────────────────────────────────────────────────── */
-router.get('/:subscriptionId', protect, async (req, res) => {
+router.get('/:subscriptionId', protect,async (req, res) => {
   try {
     const isBoss  = req.trainer.role === 'boss';
     const filter  = { subscriptionId: req.params.subscriptionId.trim() };
@@ -151,6 +153,7 @@ router.get('/:subscriptionId', protect, async (req, res) => {
     if (!swimmer)
       return res.status(404).json({ success: false, message: isBoss ? 'المشترك غير موجود' : 'المشترك غير موجود أو لا ينتمي لحسابك' });
 
+    // المدينة من SwimmerUser
     const swimmerUser = await SwimmerUser.findOne({ swimmers: swimmer._id }).select('city username');
 
     const today    = new Date(); today.setHours(0,0,0,0);
@@ -183,14 +186,17 @@ router.get('/:subscriptionId', protect, async (req, res) => {
         subscriptionExpiry: swimmer.subscriptionExpiry,
         starsCount:         swimmer.starsCount,
         swamBefore:         swimmer.swamBefore,
+        // level
         level:           swimmer.level,
         levelNote:       swimmer.levelNote,
         levelUpdatedBy:  swimmer.levelUpdatedBy,
         levelUpdatedAt:  swimmer.levelUpdatedAt,
+        // rating
         rating:          swimmer.rating,
         ratingNote:      swimmer.ratingNote,
         ratingUpdatedBy: swimmer.ratingUpdatedBy,
         ratingUpdatedAt: swimmer.ratingUpdatedAt,
+        // مدينة المستخدم
         city:            swimmerUser?.city || null,
         sessions: { total: swimmer.sessionsCount, attended: swimmer.sessionsAttended },
         weekAttendance: attendanceMap,
@@ -202,140 +208,47 @@ router.get('/:subscriptionId', protect, async (req, res) => {
 });
 
 
-/* ═══════════════════════════════════════════════════════════════
+/* ─────────────────────────────────────────────────────────────
    PUT /api/swimmers/:subscriptionId
-   ✨ نسخة تشخيصية — فيها console.log كاملة + verification بعد الحفظ
-   ═══════════════════════════════════════════════════════════════ */
+   يقبل: fullName, phone, trainingTime, goal, isActive,
+          subscriptionExpiry, trainerName, level, levelNote, rating, ratingNote
+   ───────────────────────────────────────────────────────────── */
 router.put('/:subscriptionId', protect, async (req, res) => {
-  const TAG = `[PUT /swimmers/${req.params.subscriptionId}]`;
   try {
-    console.log('\n' + '═'.repeat(70));
-    console.log(`${TAG} START`);
-    console.log(`${TAG} req.body =`, JSON.stringify(req.body, null, 2));
-
     const isBoss = req.trainer.role === 'boss';
     const filter = { subscriptionId: req.params.subscriptionId };
     if (!isBoss) filter.trainer = req.trainer._id;
-    console.log(`${TAG} filter =`, filter);
 
-    /* 1) هات الـ document الحالي */
-    const swimmer = await Swimmer.findOne(filter);
-    if (!swimmer) {
-      console.log(`${TAG} ❌ Swimmer NOT FOUND`);
+    const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
+                     'level','levelNote','rating','ratingNote'];
+    const update = {};
+    allowed.forEach(key => { if (req.body[key] !== undefined) update[key] = req.body[key]; });
+
+    if (typeof update.fullName    === 'string') update.fullName    = update.fullName.trim();
+    if (typeof update.phone       === 'string') update.phone       = update.phone.trim();
+    if (typeof update.trainerName === 'string') update.trainerName = update.trainerName.trim() || null;
+    if (update.goal         === '') update.goal         = null;
+    if (update.trainingTime === '') update.trainingTime = null;
+    if (update.subscriptionExpiry === '') update.subscriptionExpiry = null;
+    if ('isActive' in update) update.isActive = (update.isActive === true || update.isActive === 'true');
+
+    // تحديث level: نسجل من عدّله
+    if (update.level !== undefined) {
+      update.levelUpdatedBy = req.trainer.name;
+      update.levelUpdatedAt = new Date();
+    }
+    // تحديث rating: نسجل من عدّله
+    if (update.rating !== undefined) {
+      update.ratingUpdatedBy = req.trainer.name;
+      update.ratingUpdatedAt = new Date();
+    }
+
+    const swimmer = await Swimmer.findOneAndUpdate(filter, update, { new: true, runValidators: false });
+    if (!swimmer)
       return res.status(404).json({ success: false, message: 'السباح غير موجود أو لا ينتمي لحسابك' });
-    }
-    console.log(`${TAG} ✓ Found swimmer. BEFORE: sessionsCount=${swimmer.sessionsCount}, trainingDays=[${swimmer.trainingDays}]`);
 
-    const allowed = [
-      'fullName','phone','trainingTime','goal','isActive',
-      'subscriptionExpiry','trainerName',
-      'level','levelNote','rating','ratingNote',
-      'sessionsCount','trainingDays'
-    ];
-
-    /* 2) جهّز قيم نظيفة */
-    const body = {};
-    allowed.forEach(key => { if (req.body[key] !== undefined) body[key] = req.body[key]; });
-    console.log(`${TAG} Filtered body =`, JSON.stringify(body, null, 2));
-
-    if (typeof body.fullName    === 'string') body.fullName    = body.fullName.trim();
-    if (typeof body.phone       === 'string') body.phone       = body.phone.trim();
-    if (typeof body.trainerName === 'string') body.trainerName = body.trainerName.trim() || null;
-    if (body.goal               === '') body.goal               = null;
-    if (body.trainingTime       === '') body.trainingTime       = null;
-    if (body.subscriptionExpiry === '') body.subscriptionExpiry = null;
-    if ('isActive' in body) body.isActive = (body.isActive === true || body.isActive === 'true');
-
-    if (body.sessionsCount !== undefined) body.sessionsCount = Number(body.sessionsCount);
-    if (body.trainingDays  !== undefined) {
-      if (!Array.isArray(body.trainingDays)) {
-        console.log(`${TAG} ❌ trainingDays is NOT an array:`, typeof body.trainingDays);
-        return res.status(400).json({ success: false, message: 'trainingDays لازم تكون مصفوفة' });
-      }
-      body.trainingDays = [...new Set(
-        body.trainingDays.map(d => Number(d)).filter(d => Number.isInteger(d) && d >= 0 && d <= 6)
-      )];
-      console.log(`${TAG} Normalized trainingDays = [${body.trainingDays}]`);
-    }
-
-    /* 3) لو في تغيير في الجدول — تحقق من التطابق */
-    if (body.sessionsCount !== undefined || body.trainingDays !== undefined) {
-      const finalSess = body.sessionsCount !== undefined ? body.sessionsCount : swimmer.sessionsCount;
-      const finalDays = body.trainingDays  !== undefined ? body.trainingDays  : swimmer.trainingDays;
-
-      console.log(`${TAG} Schedule check: finalSess=${finalSess}, finalDays=[${finalDays}]`);
-
-      const expected = { 8:2, 12:3, 24:6 }[finalSess];
-      if (!expected) {
-        console.log(`${TAG} ❌ Invalid sessionsCount: ${finalSess}`);
-        return res.status(400).json({ success: false, message: `عدد الحصص ${finalSess} غير مدعوم` });
-      }
-      if (!Array.isArray(finalDays) || finalDays.length !== expected) {
-        console.log(`${TAG} ❌ Days mismatch: expected ${expected}, got ${Array.isArray(finalDays) ? finalDays.length : 0}`);
-        return res.status(400).json({
-          success: false,
-          message: `اشتراك ${finalSess} حصة يتطلب ${expected} أيام — تم تمرير ${Array.isArray(finalDays) ? finalDays.length : 0}`
-        });
-      }
-
-      /* ترتيب مهم: غيّر sessionsCount الأول */
-      if (body.sessionsCount !== undefined) {
-        swimmer.sessionsCount = finalSess;
-        console.log(`${TAG} → swimmer.sessionsCount = ${finalSess}`);
-      }
-      swimmer.trainingDays = finalDays;
-      swimmer.markModified('trainingDays');
-      console.log(`${TAG} → swimmer.trainingDays = [${finalDays}]`);
-
-      if (finalSess === 24) {
-        const restDay = [0,1,2,3,4,5,6].find(d => !finalDays.includes(d));
-        swimmer.restDay = restDay !== undefined ? restDay : null;
-        swimmer.trainingSchedule = null;
-      } else {
-        swimmer.restDay = null;
-        swimmer.trainingSchedule = 'custom';
-      }
-    }
-
-    /* 4) باقي الحقول */
-    const scheduleKeys = new Set(['sessionsCount','trainingDays']);
-    Object.keys(body).forEach(k => {
-      if (scheduleKeys.has(k)) return;
-      swimmer[k] = body[k];
-    });
-
-    /* 5) audit للـ level والـ rating */
-    if (body.level !== undefined) {
-      swimmer.levelUpdatedBy = req.trainer.name;
-      swimmer.levelUpdatedAt = new Date();
-    }
-    if (body.rating !== undefined) {
-      swimmer.ratingUpdatedBy = req.trainer.name;
-      swimmer.ratingUpdatedAt = new Date();
-    }
-
-    console.log(`${TAG} BEFORE save: sessionsCount=${swimmer.sessionsCount}, trainingDays=[${swimmer.trainingDays}]`);
-    console.log(`${TAG} isModified('sessionsCount') =`, swimmer.isModified('sessionsCount'));
-    console.log(`${TAG} isModified('trainingDays')  =`, swimmer.isModified('trainingDays'));
-
-    /* 6) احفظ */
-    const saved = await swimmer.save();
-    console.log(`${TAG} ✓ Saved. AFTER save: sessionsCount=${saved.sessionsCount}, trainingDays=[${saved.trainingDays}]`);
-
-    /* 7) ✨ verification — اقرأ تاني من الـ DB علشان نتأكد إن التغيير اتحفظ فعلاً */
-    const verify = await Swimmer.findOne(filter).lean();
-    console.log(`${TAG} ✓ Verified from DB: sessionsCount=${verify.sessionsCount}, trainingDays=[${verify.trainingDays}]`);
-    console.log(`${TAG} END`);
-    console.log('═'.repeat(70) + '\n');
-
-    res.json({ success: true, message: 'تم تحديث البيانات', data: verify });
+    res.json({ success: true, message: 'تم تحديث البيانات', data: swimmer });
   } catch (err) {
-    console.error(`${TAG} ❌ ERROR:`, err);
-    if (err.name === 'ValidationError')
-      return res.status(400).json({
-        success: false,
-        message: Object.values(err.errors).map(e => e.message).join(' — ')
-      });
     res.status(500).json({ success: false, message: 'خطأ في التحديث: ' + err.message });
   }
 });
@@ -361,5 +274,9 @@ router.delete('/:subscriptionId', protect, async (req, res) => {
     res.status(500).json({ success: false, message: 'خطأ في الحذف: ' + err.message });
   }
 });
+
+
+
+
 
 module.exports = router;
