@@ -1644,17 +1644,18 @@ async function loadSwimmers(){
       const sessClass=tot===8?'s8':tot===12?'s12':'s24';
       const lvHtml=s.level?`<span class="lvl-bdg">LV ${s.level}</span>`:'<span style="color:var(--tm);font-size:.72rem">—</span>';
       return `<tr>
-        <td class="row-num">${offset+i+1}</td>
-        <td>
-          <div class="att-bar">
-            <div class="att-nums">
-              <span class="att-big">${att}</span>
-              <span class="att-sep">/</span>
-              <span class="att-tot">${tot}</span>
-            </div>
-            <div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div>
-          </div>
-        </td>
+  <td class="row-num">${offset+i+1}</td>
+  <td>
+    <div class="att-bar">
+      <div class="att-nums">
+        <span class="att-big">${att}</span>
+        <span class="att-sep">/</span>
+        <span class="att-tot">${tot}</span>
+      </div>
+      <div style="font-size:.58rem;color:var(--tm);margin-top:2px">إجمالي منذ البداية</div>
+      <div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div>
+    </div>
+  </td>
         <td>
           <div class="name-cell">
             <span class="nm"><span style="width:6px;height:6px;border-radius:50%;background:${s.isActive?'var(--ok)':'var(--err)'};display:inline-block;margin-left:5px;vertical-align:middle"></span>${s.fullName}</span>
