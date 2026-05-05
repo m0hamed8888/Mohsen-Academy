@@ -67,8 +67,6 @@ body::after{
 }
 a{text-decoration:none;}
 
-
-  
 .att-bar{display:flex;flex-direction:column;gap:3px}
 .att-nums{display:flex;align-items:baseline;gap:3px}
 .att-big{font-size:1rem;font-weight:800;color:var(--ok)}
@@ -81,6 +79,7 @@ a{text-decoration:none;}
 .time-cell{display:flex;align-items:center;gap:4px;font-size:.75rem;color:var(--ts)}
 .time-cell svg{width:11px;height:11px;opacity:.5;flex-shrink:0}
 .row-num{font-size:.72rem;color:var(--tm);font-weight:600}
+
 /* ══ NAVBAR ══ */
 .nav{
   position:fixed;top:0;inset-inline:0;z-index:100;
@@ -131,6 +130,224 @@ a{text-decoration:none;}
   .logout-btn span{display:none}
   .logout-btn{padding:7px}
 }
+
+/* ══ TODAY SWIMMERS BUTTON ══ */
+.today-btn{
+  position:relative;
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:var(--r-full);
+  background:rgba(0,180,200,.07);
+  border:1px solid rgba(0,180,200,.22);
+  color:var(--teal);
+  font-size:.74rem;font-weight:700;
+  transition:all var(--fast);
+  cursor:pointer;
+}
+.today-btn:hover{background:rgba(0,180,200,.16);box-shadow:0 0 18px rgba(0,180,200,.15)}
+.today-btn svg{width:14px;height:14px;flex-shrink:0}
+.today-btn-count{
+  font-family:var(--f-disp);font-style:italic;
+  font-size:.9rem;color:#fff;
+  line-height:1;
+}
+.today-btn-pulse{
+  position:absolute;top:-3px;right:-3px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ok);
+  box-shadow:0 0 6px var(--ok);
+}
+.today-btn-pulse::after{
+  content:'';position:absolute;inset:-3px;border-radius:50%;
+  background:rgba(0,229,160,.35);
+  animation:pulseRing 1.8s ease-out infinite;
+}
+@keyframes pulseRing{
+  0%{transform:scale(.8);opacity:.8}
+  100%{transform:scale(2.2);opacity:0}
+}
+@media(max-width:639px){
+  .today-btn-label{display:none}
+  .today-btn{padding:7px 10px;gap:4px}
+}
+
+/* ══ TODAY PANEL (dropdown) ══ */
+.today-panel-overlay{
+  position:fixed;inset:0;z-index:95;
+  background:transparent;
+  pointer-events:none;
+  transition:background var(--mid);
+}
+.today-panel-overlay.open{pointer-events:all;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+
+.today-panel{
+  position:fixed;
+  top:var(--nav-h);
+  inset-inline:0;
+  z-index:96;
+  background:rgba(6,11,22,.97);
+  border-bottom:1px solid rgba(0,180,200,.15);
+  border-top:1px solid rgba(0,180,200,.1);
+  max-height:calc(100dvh - var(--nav-h) - 20px);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  transform:translateY(-110%);
+  transition:transform 380ms var(--ease);
+  box-shadow:0 20px 60px rgba(0,0,0,.7),0 4px 30px rgba(0,180,200,.08);
+}
+.today-panel.open{transform:translateY(0)}
+
+.tp-inner{
+  max-width:900px;margin:0 auto;
+  padding:18px 16px 24px;
+}
+
+.tp-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:8px;
+}
+.tp-title{
+  display:flex;align-items:center;gap:9px;
+}
+.tp-title-icon{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(0,212,180,.2),rgba(0,144,255,.2));
+  border:1px solid rgba(0,180,200,.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.tp-title-icon svg{width:16px;height:16px;color:var(--teal)}
+.tp-title-text{}
+.tp-title-main{
+  font-family:var(--f-disp);font-style:italic;
+  font-size:1rem;color:var(--tp);
+}
+.tp-title-sub{font-size:.66rem;color:var(--tm);font-weight:600;margin-top:1px}
+
+.tp-close{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--surf2);border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ts);transition:all var(--fast);flex-shrink:0;
+}
+.tp-close:hover{background:rgba(255,77,109,.14);color:var(--err)}
+.tp-close svg{width:13px;height:13px}
+
+/* ══ TODAY STATS STRIP ══ */
+.tp-stats{
+  display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;
+}
+.tp-stat{
+  flex:1;min-width:80px;
+  display:flex;flex-direction:column;align-items:center;
+  padding:10px 8px;border-radius:var(--r-md);
+  background:var(--surf);border:1px solid var(--bdr);
+  position:relative;overflow:hidden;
+}
+.tp-stat::after{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1)}
+.tp-stat-num{
+  font-family:var(--f-disp);font-style:italic;
+  font-size:1.4rem;line-height:1;
+  background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.tp-stat-lbl{font-size:.58rem;font-weight:700;color:var(--tm);margin-top:3px;letter-spacing:.04em}
+
+/* ══ TIME GROUPS ══ */
+.tp-time-group{margin-bottom:14px}
+.tp-time-label{
+  display:flex;align-items:center;gap:7px;
+  margin-bottom:8px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--bdr);
+}
+.tp-time-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--g1);flex-shrink:0;
+  box-shadow:0 0 8px rgba(0,180,200,.5);
+}
+.tp-time-val{
+  font-size:.78rem;font-weight:800;
+  background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.tp-time-cnt{
+  font-size:.66rem;font-weight:700;
+  padding:1px 8px;border-radius:var(--r-full);
+  background:rgba(0,180,200,.08);border:1px solid rgba(0,180,200,.2);
+  color:var(--teal);margin-right:auto;
+}
+
+/* ══ SWIMMER CARDS (today panel) ══ */
+.tp-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:8px;
+}
+@media(max-width:420px){.tp-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:320px){.tp-cards{grid-template-columns:1fr}}
+
+.tp-card{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  border-radius:var(--r-md);
+  background:var(--surf);border:1px solid var(--bdr);
+  cursor:pointer;
+  transition:all var(--fast);
+  position:relative;overflow:hidden;
+}
+.tp-card::before{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:2.5px;
+  background:var(--g1);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform var(--fast) var(--ease);
+}
+.tp-card:hover{border-color:rgba(0,180,200,.28);background:rgba(255,255,255,.05);transform:translateY(-1px)}
+.tp-card:hover::before{transform:scaleY(1)}
+.tp-card:active{transform:scale(.97)}
+
+.tp-card-av{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--g1);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-disp);font-style:italic;font-size:.95rem;color:#fff;
+  flex-shrink:0;
+  box-shadow:0 0 10px rgba(0,160,200,.3);
+}
+.tp-card-info{flex:1;min-width:0}
+.tp-card-name{
+  font-size:.82rem;font-weight:700;color:var(--tp);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.tp-card-id{font-size:.65rem;color:var(--teal);font-weight:600;margin-top:1px}
+.tp-card-sess{
+  display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;
+}
+.tp-card-att{
+  font-family:var(--f-disp);font-style:italic;
+  font-size:.85rem;color:var(--ok);line-height:1;
+}
+.tp-card-att-lbl{font-size:.56rem;color:var(--tm);font-weight:700}
+
+.tp-empty{
+  text-align:center;padding:40px 20px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.tp-empty-ic{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(0,180,200,.06);border:1px solid rgba(0,180,200,.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.tp-empty-ic svg{width:22px;height:22px;color:var(--tm)}
+.tp-empty-txt{font-size:.82rem;color:var(--tm)}
+
+.tp-loading{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:32px;color:var(--tm);font-size:.82rem;
+}
+.tp-spinner{
+  width:18px;height:18px;border-radius:50%;
+  border:2px solid rgba(0,180,200,.2);
+  border-top-color:var(--teal);
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* ══ BOTTOM NAV ══ */
 .bot-nav{
@@ -298,7 +515,6 @@ a{text-decoration:none;}
 .fc::placeholder{color:var(--tm)}
 select.fc{cursor:pointer}
 select.fc option{background:#080e1c}
-/* ══ Time input styling ══ */
 input[type="time"].fc{
   color-scheme:dark;
   cursor:text;
@@ -779,11 +995,58 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
     </div>
   </div>
   <div class="nav-right">
+    <!-- ══ TODAY SWIMMERS BUTTON ══ -->
+    <button class="today-btn" id="todayBtn" title="متدربو اليوم">
+      <div class="today-btn-pulse" id="todayPulse" style="display:none"></div>
+      <i data-lucide="users-round"></i>
+      <span class="today-btn-label">اليوم</span>
+      <span class="today-btn-count" id="todayBtnCount">—</span>
+    </button>
     <div class="trainer-av" id="trainerAv">ك</div>
     <span class="trainer-nm" id="trainerNm">الكابتن</span>
     <button class="logout-btn" id="logoutBtn"><i data-lucide="log-out"></i><span>خروج</span></button>
   </div>
 </nav>
+
+<!-- TODAY PANEL OVERLAY -->
+<div class="today-panel-overlay" id="todayOverlay"></div>
+
+<!-- TODAY PANEL -->
+<div class="today-panel" id="todayPanel">
+  <div class="tp-inner">
+    <div class="tp-header">
+      <div class="tp-title">
+        <div class="tp-title-icon"><i data-lucide="calendar-clock"></i></div>
+        <div class="tp-title-text">
+          <div class="tp-title-main">متدربو اليوم</div>
+          <div class="tp-title-sub" id="tpDateSub">—</div>
+        </div>
+      </div>
+      <button class="tp-close" id="todayClose"><i data-lucide="x"></i></button>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="tp-stats">
+      <div class="tp-stat">
+        <span class="tp-stat-num" id="tpTotal">—</span>
+        <span class="tp-stat-lbl">إجمالي اليوم</span>
+      </div>
+      <div class="tp-stat">
+        <span class="tp-stat-num" id="tpActive" style="-webkit-text-fill-color:var(--ok);color:var(--ok)">—</span>
+        <span class="tp-stat-lbl">نشطون</span>
+      </div>
+      <div class="tp-stat">
+        <span class="tp-stat-num" id="tpGroups" style="-webkit-text-fill-color:var(--teal);color:var(--teal)">—</span>
+        <span class="tp-stat-lbl">مجموعات</span>
+      </div>
+    </div>
+
+    <!-- Content area -->
+    <div id="tpContent">
+      <div class="tp-loading"><div class="tp-spinner"></div> جاري التحميل...</div>
+    </div>
+  </div>
+</div>
 
 <!-- BOTTOM NAV (mobile) -->
 <nav class="bot-nav" id="botNav" style="display:none">
@@ -1057,12 +1320,9 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{
     <div class="fg fg2" style="gap:12px">
       <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
       <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
-
-      <!-- ✅ تم التغيير: من select إلى input type="time" -->
       <div class="fld"><label>وقت التدريب</label>
         <input type="time" class="fc" id="e_time"/>
       </div>
-
       <div class="fld"><label>الهدف</label>
         <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
       <div class="fld"><label>الحالة</label><select class="fc" id="e_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
@@ -1114,12 +1374,24 @@ let swimmer = null, viewYear = new Date().getFullYear(), viewMonth = new Date().
 let monMap = {}, selDate = null;
 let editId = null, delId = null, delName = '';
 let editingLevel = null;
+let todayPanelOpen = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   token ? initApp() : showLogin();
   bindUI();
+  setTodayDateLabel();
 });
+
+function setTodayDateLabel(){
+  const now = new Date();
+  const dayName = DAYS[now.getDay()];
+  const d = now.getDate();
+  const m = MONTHS[now.getMonth()];
+  const y = now.getFullYear();
+  const el = document.getElementById('tpDateSub');
+  if(el) el.textContent = `${dayName} ${d} ${m} ${y}`;
+}
 
 function bindUI(){
   $('loginBtn').onclick = doLogin;
@@ -1168,6 +1440,132 @@ function bindUI(){
   let sy=0;
   $('editModal').addEventListener('touchstart', e=>{sy=e.touches[0].clientY;},{passive:true});
   $('editModal').addEventListener('touchend', e=>{if(e.changedTouches[0].clientY-sy>80)closeModal('editModal');},{passive:true});
+
+  // Today panel
+  $('todayBtn').onclick = toggleTodayPanel;
+  $('todayClose').onclick = closeTodayPanel;
+  $('todayOverlay').onclick = closeTodayPanel;
+
+  // Close today panel on ESC
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && todayPanelOpen) closeTodayPanel();
+  });
+}
+
+/* ══ TODAY PANEL ══ */
+function toggleTodayPanel(){
+  if(todayPanelOpen) closeTodayPanel();
+  else openTodayPanel();
+}
+
+function openTodayPanel(){
+  todayPanelOpen = true;
+  $('todayPanel').classList.add('open');
+  $('todayOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  loadTodaySwimmers();
+  lucide.createIcons();
+}
+
+function closeTodayPanel(){
+  todayPanelOpen = false;
+  $('todayPanel').classList.remove('open');
+  $('todayOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function loadTodaySwimmers(){
+  $('tpContent').innerHTML = '<div class="tp-loading"><div class="tp-spinner"></div> جاري التحميل...</div>';
+  try{
+    const d = await api('/swimmers?limit=9999');
+    const all = d.data || [];
+    const todayIdx = new Date().getDay();
+    const todaySwimmers = all.filter(s =>
+      s.isActive &&
+      Array.isArray(s.trainingDays) &&
+      s.trainingDays.includes(todayIdx)
+    );
+
+    // Update stats
+    const activeCount = todaySwimmers.filter(s => s.isActive).length;
+    $('tpTotal').textContent = todaySwimmers.length;
+    $('tpActive').textContent = activeCount;
+
+    if(!todaySwimmers.length){
+      $('tpContent').innerHTML = `
+        <div class="tp-empty">
+          <div class="tp-empty-ic"><i data-lucide="calendar-x"></i></div>
+          <div class="tp-empty-txt">لا يوجد متدربون اليوم</div>
+        </div>`;
+      $('tpGroups').textContent = '0';
+      lucide.createIcons();
+      return;
+    }
+
+    // Group by training time
+    const groups = {};
+    todaySwimmers.forEach(s => {
+      const timeKey = s.trainingTime || 'بدون وقت';
+      const timeDisplay = s.trainingTime ? to12Hour(s.trainingTime) : 'بدون وقت';
+      if(!groups[timeKey]) groups[timeKey] = {label: timeDisplay, swimmers: []};
+      groups[timeKey].swimmers.push(s);
+    });
+
+    // Sort groups by time
+    const sortedKeys = Object.keys(groups).sort((a,b) => {
+      if(a === 'بدون وقت') return 1;
+      if(b === 'بدون وقت') return -1;
+      return a.localeCompare(b);
+    });
+
+    $('tpGroups').textContent = sortedKeys.length;
+
+    let html = '';
+    sortedKeys.forEach(key => {
+      const grp = groups[key];
+      html += `
+        <div class="tp-time-group">
+          <div class="tp-time-label">
+            <div class="tp-time-dot"></div>
+            <span class="tp-time-val">${grp.label}</span>
+            <span class="tp-time-cnt">${grp.swimmers.length} متدرب</span>
+          </div>
+          <div class="tp-cards">
+            ${grp.swimmers.map(s => {
+              const initials = (s.fullName||'?').charAt(0);
+              const att = s.sessionsAttended || 0;
+              const tot = s.sessionsCount || 0;
+              return `
+                <div class="tp-card" onclick="goToAttendance('${s.subscriptionId}')">
+                  <div class="tp-card-av">${initials}</div>
+                  <div class="tp-card-info">
+                    <div class="tp-card-name">${s.fullName || '—'}</div>
+                    <div class="tp-card-id">#${s.subscriptionId || ''}</div>
+                  </div>
+                  <div class="tp-card-sess">
+                    <span class="tp-card-att">${att}<span style="font-size:.65rem;color:var(--tm);-webkit-text-fill-color:var(--tm)">/${tot}</span></span>
+                    <span class="tp-card-att-lbl">حصة</span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    $('tpContent').innerHTML = html;
+    lucide.createIcons();
+  }catch(e){
+    $('tpContent').innerHTML = `<div class="tp-empty"><div class="tp-empty-txt">خطأ في التحميل: ${e.message}</div></div>`;
+  }
+}
+
+function goToAttendance(subId){
+  closeTodayPanel();
+  $('attendSearch').value = subId;
+  switchTab('attendance');
+  loadAttendSwimmer();
 }
 
 /* ══ LOGIN ══ */
@@ -1222,6 +1620,9 @@ async function loadStats(){
       s.trainingDays.includes(todayDayIndex)
     ).length;
     $('stToday').textContent = todayCount;
+    // Update today button count & pulse
+    $('todayBtnCount').textContent = todayCount;
+    $('todayPulse').style.display = todayCount > 0 ? 'block' : 'none';
   }catch(e){}
 }
 
@@ -1375,8 +1776,9 @@ async function loadAttendSwimmer(){
     const d=await api('/swimmers/'+subId);swimmer=d.data;
     $('chipAv').textContent=(swimmer.fullName||'?').charAt(0);
     $('chipName').textContent=swimmer.fullName||'—';
-const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
-$('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;    $('ccTot').textContent=swimmer.sessionsCount;
+    const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
+    $('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;
+    $('ccTot').textContent=swimmer.sessionsCount;
     $('ccAtt').textContent=swimmer.sessionsAttended||0;
     $('swimmerChip').classList.add('show');
     viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;
@@ -1500,13 +1902,10 @@ async function openEdit(subId){
     const d=await api('/swimmers/'+subId);const s=d.data;editId=subId;editingLevel=s.level||null;
     $('e_name').value=s.fullName||'';
     $('e_phone').value=s.phone||'';
-
-    // ✅ تحويل الوقت لـ 12 ساعة لما نعرضه
     const rawTime = s.trainingTime || '';
     const timeMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
     const time24 = timeMatch ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}` : '';
-    $('e_time').value = to12Hour(time24); // ← هنا التحويل
-
+    $('e_time').value = to12Hour(time24);
     $('e_goal').value=s.goal||'';
     $('e_active').value=s.isActive?'true':'false';
     $('e_trainer').value=s.trainerName||'';
@@ -1521,14 +1920,12 @@ async function doSaveEdit(){
   if(!editId)return;
   const btn=$('saveEditBtn');btn.classList.add('loading');
   try{
-    // ✅ تحويل الوقت لـ 24 ساعة قبل الإرسال
     const time12 = $('e_time').value;
     const time24 = to24Hour(time12);
-
     await api('/swimmers/'+editId,'PUT',{
       fullName:$('e_name').value.trim(),
       phone:$('e_phone').value.trim(),
-      trainingTime: time24, // ← هنا التحويل
+      trainingTime: time24,
       goal:$('e_goal').value||'',
       isActive:$('e_active').value==='true',
       subscriptionExpiry:$('e_expiry').value||'',
@@ -1576,28 +1973,23 @@ function closeModal(id){$(id).classList.remove('show');document.body.style.overf
 function esc(s){return String(s||'').replace(/'/g,"\\'")}
 let toastT;
 function toast(msg,type='success'){const el=$('toast');el.className=`toast ${type} show`;$('toastMsg').textContent=msg;clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3400);}
-// تحويل من 24 ساعة لـ 12 ساعة مع AM/PM
-function to12Hour(time24) {
-  if (!time24) return '';
-  const [hours, minutes] = time24.split(':');
-  const h = parseInt(hours, 10);
-  const ampm = h >= 12 ? 'م' : 'ص';
-  const h12 = h % 12 || 12;
-  return `${String(h12).padStart(2, '0')}:${minutes} ${ampm}`;
+function to12Hour(time24){
+  if(!time24)return '';
+  const [hours,minutes]=time24.split(':');
+  const h=parseInt(hours,10);
+  const ampm=h>=12?'م':'ص';
+  const h12=h%12||12;
+  return `${String(h12).padStart(2,'0')}:${minutes} ${ampm}`;
 }
-
-// تحويل من 12 ساعة لـ 24 ساعة
-function to24Hour(time12) {
-  if (!time12) return '';
-  const match = time12.match(/(\d{1,2}):(\d{2})\s*(ص|م)/);
-  if (!match) return time12; // لو مش بالفورمات المتوقع، رجعه زي ما هو
-  
-  let [, h, m, ampm] = match;
-  h = parseInt(h, 10);
-  if (ampm === 'م' && h !== 12) h += 12;
-  if (ampm === 'ص' && h === 12) h = 0;
-  
-  return `${String(h).padStart(2, '0')}:${m}`;
+function to24Hour(time12){
+  if(!time12)return '';
+  const match=time12.match(/(\d{1,2}):(\d{2})\s*(ص|م)/);
+  if(!match)return time12;
+  let [,h,m,ampm]=match;
+  h=parseInt(h,10);
+  if(ampm==='م'&&h!==12)h+=12;
+  if(ampm==='ص'&&h===12)h=0;
+  return `${String(h).padStart(2,'0')}:${m}`;
 }
 </script>
 </body>
