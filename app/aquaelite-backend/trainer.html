@@ -1779,7 +1779,7 @@ async function loadAttendSwimmer(){
     const displayTime = swimmer.trainingTime ? to12Hour(swimmer.trainingTime) : '';
     $('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;
     $('ccTot').textContent=swimmer.sessionsCount;
-    $('ccAtt').textContent=swimmer.sessionsAttended||0;
+    // ← السطر ده اتشال
     $('swimmerChip').classList.add('show');
     viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;
     await loadMonthData();lucide.createIcons();
