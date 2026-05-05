@@ -1777,9 +1777,7 @@ async function loadAttendSwimmer(){
     const d=await api('/swimmers/'+subId);
     swimmer=d.data;
     
-    // ← أضف السطرين دول
-    console.log('sessionsAttended من API:', swimmer.sessionsAttended);
-    console.log('ccAtt قبل loadMonthData:', $('ccAtt').textContent);
+  
     
     $('chipAv').textContent=(swimmer.fullName||'?').charAt(0);
     $('chipName').textContent=swimmer.fullName||'—';
@@ -1790,8 +1788,7 @@ async function loadAttendSwimmer(){
     viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;
     await loadMonthData();
     
-    // ← أضف السطر ده
-    console.log('ccAtt بعد loadMonthData:', $('ccAtt').textContent);
+   
     
     lucide.createIcons();
   }catch(e){toast(e.message||'السباح غير موجود','error');}
