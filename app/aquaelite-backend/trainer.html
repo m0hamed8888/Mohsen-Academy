@@ -1787,11 +1787,25 @@ async function loadAttendSwimmer(){
 }
 async function loadMonthData(){
   try{
-    const d=await api(`/attendance/${swimmer.subscriptionId}/month?year=${viewYear}&month=${viewMonth}`);
-    monMap=d.statusMap||{};
-    if(d.sessionsAttended!==undefined)$('ccAtt').textContent=d.sessionsAttended;
-    renderCal();show('monthWrap','block');lucide.createIcons();
-  }catch(e){toast(e.message||'خطأ','error');}
+    const d = await api(`/attendance/${swimmer.subscriptionId}/month?year=${viewYear}&month=${viewMonth}`);
+    monMap = d.statusMap || {};
+    
+    // احسب حضور الشهر الحالي من monMap مباشرةً
+    const monthPresent = Object.values(monMap).filter(r => 
+      r.status === 'present' && !r.isMakeup
+    ).length;
+    const monthMakeup = Object.values(monMap).filter(r => 
+      r.status === 'present' && r.isMakeup
+    ).length;
+    
+    $('ccAtt').textContent = monthPresent + monthMakeup;
+    
+    renderCal();
+    show('monthWrap','block');
+    lucide.createIcons();
+  }catch(e){
+    toast(e.message||'خطأ','error');
+  }
 }
 function renderCal(){
   const grid=$('calGrid'),todayStr=lds(new Date());
@@ -1856,7 +1870,6 @@ async function markMonth(status){
   const saved=selDate.date;
   try{
     const res=await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:selDate.date,status});
-    if(res.sessionsAttended!==undefined)$('ccAtt').textContent=res.sessionsAttended;
     await loadMonthData();reSelect(saved);
     toast(status==='present'?'✅ تم تسجيل الحضور':'❌ تم تسجيل الغياب',status==='present'?'success':'error');
   }catch(e){toast(e.message||'خطأ','error');}
@@ -1876,13 +1889,12 @@ async function confirmMakeup(){
   if(!selDate)return;
   try{
     const res=await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:mDate,status:'present',isMakeup:true});
-    if(res.sessionsAttended!==undefined)$('ccAtt').textContent=res.sessionsAttended;
     hideMakeup();
     const mk=new Date(mDate+'T00:00:00');
     if(mk.getFullYear()===viewYear&&mk.getMonth()+1===viewMonth){
       monMap[mDate]={status:'present',isMakeup:true,id:res.data?._id||null};
     }
-    renderCal();loadMonthData().catch(()=>{});
+    await loadMonthData();
     toast('↩ تم تسجيل اليوم التعويضي','makeup');
   }catch(e){toast(e.message||'خطأ','error');}
 }
@@ -1890,7 +1902,6 @@ async function delMonRec(){
   if(!selDate?.recordId){toast('لا يوجد سجل لهذا اليوم','error');return;}
   try{
     await api('/attendance/'+selDate.recordId,'DELETE');await loadMonthData();toast('تم حذف السجل');
-    const u=await api('/swimmers/'+swimmer.subscriptionId);$('ccAtt').textContent=u.data?.sessionsAttended||0;
   }catch(e){toast(e.message||'خطأ','error');}
 }
 function navMon(dir){viewMonth+=dir;if(viewMonth<1){viewMonth=12;viewYear--;}if(viewMonth>12){viewMonth=1;viewYear++;}loadMonthData();}
