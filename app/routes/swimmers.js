@@ -220,7 +220,8 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     if (!isBoss) filter.trainer = req.trainer._id;
 
 const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
-                 'level','levelNote','rating','ratingNote','trainingDays','sessionsCount','restDay'];
+                 'level','levelNote','rating','ratingNote',
+                 'sessionsCount','trainingDays'];
     const update = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) update[key] = req.body[key]; });
 
