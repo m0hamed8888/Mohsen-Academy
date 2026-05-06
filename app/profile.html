@@ -36,11 +36,10 @@
   --grad-warn:  linear-gradient(135deg,#ffb03a,#ff7f1e);
   --grad-err:   linear-gradient(135deg,#ff4d6d,#cc2244);
 
-  /* Text */
-  --t1: rgba(255,255,255,.97);   /* headings */
-  --t2: rgba(255,255,255,.70);   /* body */
-  --t3: rgba(255,255,255,.42);   /* muted */
-  --t4: rgba(255,255,255,.22);   /* very muted */
+  --t1: rgba(255,255,255,.97);
+  --t2: rgba(255,255,255,.70);
+  --t3: rgba(255,255,255,.42);
+  --t4: rgba(255,255,255,.22);
 
   --f-disp: 'Syne', sans-serif;
   --f-body: 'Cairo', sans-serif;
@@ -54,12 +53,10 @@
   --spring: cubic-bezier(.34,1.56,.64,1);
   --fast:  180ms; --mid: 340ms; --slow: 580ms;
 
-  /* Mobile safe areas */
   --safe-top:    env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ── Reset ── */
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; font-size:16px; }
 body {
@@ -71,22 +68,17 @@ body {
   -webkit-tap-highlight-color:transparent;
   overflow-x:hidden;
   direction:rtl;
-  /* Native momentum scroll */
   -webkit-overflow-scrolling:touch;
 }
 button { cursor:pointer; border:none; background:none; font-family:inherit; -webkit-tap-highlight-color:transparent; }
 a { text-decoration:none; color:inherit; -webkit-tap-highlight-color:transparent; }
 img { max-width:100%; }
-input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
+input, select { font-family:inherit; font-size:16px; }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:rgba(0,200,255,.2); border-radius:4px; }
 
-/* ══════════════════════════════════════
-   BACKGROUND
-══════════════════════════════════════ */
 .bg-mesh {
   position:fixed; inset:0; z-index:0; pointer-events:none;
 }
@@ -99,9 +91,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
     radial-gradient(ellipse at 50% 50%, rgba(0,150,255,.06) 0%, transparent 70%);
 }
 
-/* ══════════════════════════════════════
-   TOP NAV
-══════════════════════════════════════ */
 .top-nav {
   position:sticky; top:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
@@ -137,18 +126,12 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .nav-back:hover, .nav-back:active { color:var(--t1); background:rgba(255,255,255,.1); }
 .nav-back svg { width:14px; height:14px; }
 
-/* ══════════════════════════════════════
-   PAGE
-══════════════════════════════════════ */
 .page {
   position:relative; z-index:1;
   padding:20px 16px calc(88px + var(--safe-bottom));
   max-width:700px; margin:0 auto;
 }
 
-/* ══════════════════════════════════════
-   HERO PROFILE CARD
-══════════════════════════════════════ */
 .hero-card {
   background:var(--card);
   border:1px solid var(--bdr);
@@ -163,7 +146,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   to   { opacity:1; transform:translateY(0); }
 }
 
-/* Colorful top strip */
 .hero-strip {
   height:90px; position:relative;
   background:var(--grad-ocean);
@@ -183,7 +165,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   );
 }
 
-/* Avatar overlap */
 .hero-body { padding:0 20px 24px; position:relative; }
 .hero-av-wrap {
   margin-top:-38px; margin-bottom:14px;
@@ -205,7 +186,7 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   background:rgba(255,77,109,.08);
   border:1px solid rgba(255,77,109,.18);
   transition:all var(--fast);
-  min-height:40px; /* touch target */
+  min-height:40px;
 }
 .logout-btn:active { background:rgba(255,77,109,.18); transform:scale(.97); }
 .logout-btn svg { width:13px; height:13px; }
@@ -232,7 +213,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 }
 .city-pill svg { width:11px; height:11px; }
 
-/* Quick stats row */
 .qs-row {
   display:grid; grid-template-columns:repeat(3,1fr);
   gap:8px; margin-top:20px;
@@ -255,9 +235,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 }
 .qs-lbl { font-size:.72rem; font-weight:600; color:var(--t3); margin-top:4px; line-height:1.3; }
 
-/* ══════════════════════════════════════
-   SECTION HEADER
-══════════════════════════════════════ */
 .sec-hd {
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:14px; gap:10px; flex-wrap:wrap;
@@ -274,15 +251,12 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   font-size:.8rem; font-weight:800;
   box-shadow:0 4px 16px rgba(0,80,200,.35);
   transition:all var(--fast) var(--spring);
-  min-height:44px; /* proper touch target */
+  min-height:44px;
   white-space:nowrap;
 }
 .btn-add:active { transform:scale(.96); box-shadow:0 2px 8px rgba(0,80,200,.25); }
 .btn-add svg { width:14px; height:14px; }
 
-/* ══════════════════════════════════════
-   SEARCH BAR
-══════════════════════════════════════ */
 .search-wrap {
   position:relative; margin-bottom:16px;
   animation:cardIn .5s var(--ease) .2s both;
@@ -297,7 +271,7 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   background:var(--card);
   border:1.5px solid var(--bdr);
   border-radius:var(--r-xl);
-  color:var(--t1); font-size:1rem; /* 16px — prevents iOS zoom */
+  color:var(--t1); font-size:1rem;
   outline:none; direction:rtl;
   transition:border-color var(--mid), box-shadow var(--mid);
   box-shadow:var(--shadow-card);
@@ -308,9 +282,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 }
 .search-wrap input::placeholder { color:var(--t4); }
 
-/* ══════════════════════════════════════
-   SWIMMER CARDS
-══════════════════════════════════════ */
 .sw-list { display:flex; flex-direction:column; gap:12px; }
 
 .sw-card {
@@ -327,14 +298,13 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   box-shadow:0 8px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(0,200,255,.12);
 }
 
-/* Card header — the tap target */
 .sw-head {
   display:flex; align-items:center; gap:14px;
   padding:18px 18px 16px;
   cursor:pointer;
   -webkit-tap-highlight-color:transparent;
   user-select:none;
-  min-height:80px; /* comfortable touch target */
+  min-height:80px;
 }
 .sw-head:active { background:rgba(255,255,255,.03); }
 
@@ -349,7 +319,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .sw-name {
   font-family:var(--f-disp); font-size:1rem; font-weight:700;
   line-height:1.25; margin-bottom:5px;
-  /* Prevent text overflow */
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .sw-tags { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
@@ -391,12 +360,10 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   transition: transform var(--mid) var(--ease), background var(--fast);
 }
 .expand-icon svg { width:13px; height:13px; color:var(--t3); transition:color var(--fast); }
-/* بعد */
 .sw-card.expanded .expand-icon { background:rgba(0,200,255,.1); }
 .sw-card.expanded .expand-icon svg { color:var(--cyan); transform:rotate(180deg); }
 .expand-icon svg { transition: transform var(--mid) var(--ease), color var(--fast); }
 
-/* Progress bar */
 .sw-progress { padding:0 18px 16px; }
 .sp-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .sp-label { font-size:.8rem; font-weight:600; color:var(--t2); }
@@ -419,9 +386,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   box-shadow:0 0 8px rgba(255,255,255,.5);
 }
 
-/* ══════════════════════════════════════
-   EXPAND CONTENT
-══════════════════════════════════════ */
 .sw-expand {
   overflow:hidden;
   max-height:0;
@@ -434,7 +398,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   border-top:1px solid var(--bdr);
 }
 
-/* Info rows */
 .info-row {
   display:flex; align-items:center; gap:10px;
   padding:12px 14px; border-radius:var(--r-md);
@@ -446,7 +409,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .info-row span { color:var(--t2); line-height:1.4; }
 .info-row strong { color:var(--t1); }
 
-/* Expiry status */
 .expiry-ok   { background:rgba(0,229,160,.05); border-color:rgba(0,229,160,.18); }
 .expiry-warn { background:rgba(255,176,58,.05); border-color:rgba(255,176,58,.2); }
 .expiry-err  { background:rgba(255,77,109,.06); border-color:rgba(255,77,109,.18); }
@@ -463,7 +425,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .db-warn { background:rgba(255,176,58,.12); color:var(--warn); }
 .db-err  { background:rgba(255,77,109,.1); color:var(--err); }
 
-/* Details grid */
 .detail-grid {
   display:grid; grid-template-columns:1fr 1fr;
   gap:8px; margin-bottom:12px;
@@ -476,7 +437,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .dg-lbl { font-size:.72rem; font-weight:600; color:var(--t4); margin-bottom:4px; }
 .dg-val { font-size:.9rem; font-weight:700; color:var(--t1); line-height:1.3; }
 
-/* Level block */
 .level-block {
   display:flex; align-items:center; gap:12px;
   padding:14px 16px; border-radius:var(--r-md);
@@ -493,7 +453,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .level-info .level-lbl { font-size:.7rem; font-weight:600; color:var(--t3); }
 .level-info .level-note { font-size:.82rem; font-weight:500; color:var(--t2); margin-top:2px; font-style:italic; }
 
-/* Rating block */
 .rating-block {
   padding:16px; border-radius:var(--r-md);
   background:rgba(255,208,85,.04);
@@ -517,7 +476,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .rating-by { font-size:.72rem; color:var(--t4); margin-top:4px; }
 .no-rating { font-size:.84rem; color:var(--t4); font-style:italic; }
 
-/* Action buttons */
 .sw-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
 .btn-edit {
   display:flex; align-items:center; gap:7px;
@@ -531,9 +489,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .btn-edit:active { background:rgba(255,176,58,.16); transform:scale(.97); }
 .btn-edit svg { width:14px; height:14px; }
 
-/* ══════════════════════════════════════
-   ATTENDANCE CALENDAR
-══════════════════════════════════════ */
 .cal-section { margin-bottom:16px; }
 .cal-sec-title {
   display:flex; align-items:center; gap:7px;
@@ -542,7 +497,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 }
 .cal-sec-title svg { width:15px; height:15px; color:var(--cyan); }
 
-/* Summary row */
 .att-summary {
   display:grid; grid-template-columns:repeat(4,1fr);
   gap:6px; margin-bottom:14px;
@@ -568,7 +522,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .as-r .as-num { color:var(--cyan); }
 .as-r .as-lbl { color:rgba(0,200,255,.6); }
 
-/* Month navigation */
 .cal-nav {
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:10px;
@@ -588,7 +541,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   text-align:center;
 }
 
-/* Day headers */
 .cal-days-hd {
   display:grid; grid-template-columns:repeat(7,1fr);
   gap:3px; margin-bottom:3px;
@@ -598,7 +550,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   padding:4px 2px;
 }
 
-/* Calendar grid */
 .cal-grid {
   display:grid; grid-template-columns:repeat(7,1fr); gap:3px;
 }
@@ -608,7 +559,7 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   align-items:center; justify-content:center;
   border-radius:8px; border:1px solid transparent;
   position:relative; overflow:hidden;
-  min-height:36px; /* comfortable on mobile */
+  min-height:36px;
 }
 .cal-cell.empty { background:transparent; border:none; }
 .cal-cell.rest { background:rgba(255,255,255,.012); opacity:.3; }
@@ -631,7 +582,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .cal-cell.upcoming .cc-num { color:var(--t2); }
 .cc-icon { font-size:.52rem; font-weight:900; margin-top:2px; line-height:1; }
 
-/* Cal legend */
 .cal-legend {
   display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; justify-content:center;
 }
@@ -648,9 +598,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .cld-m { background:rgba(255,176,58,.2); border-color:rgba(255,176,58,.4); }
 .cld-u { background:rgba(0,200,255,.12); border-color:rgba(0,200,255,.25); }
 
-/* ══════════════════════════════════════
-   EMPTY STATE
-══════════════════════════════════════ */
 .empty-state {
   text-align:center; padding:52px 24px;
   animation:cardIn .5s var(--ease) .3s both;
@@ -665,9 +612,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .empty-title { font-family:var(--f-disp); font-size:1.05rem; font-weight:800; margin-bottom:8px; color:var(--t2); }
 .empty-sub { font-size:.88rem; color:var(--t3); line-height:1.6; margin-bottom:24px; }
 
-/* ══════════════════════════════════════
-   SKELETON LOADER
-══════════════════════════════════════ */
 .skeleton-card {
   background:var(--card); border:1px solid var(--bdr);
   border-radius:var(--r-xl); padding:20px 18px;
@@ -688,9 +632,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .skel-line.w40 { width:40%; }
 .skel-bar { height:6px; border-radius:6px; margin-top:14px; }
 
-/* ══════════════════════════════════════
-   BOTTOM NAV
-══════════════════════════════════════ */
 .bottom-nav {
   position:fixed; bottom:0; inset-inline:0; z-index:200;
   display:flex; align-items:center; justify-content:space-around;
@@ -722,9 +663,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .bn-fab:active { transform:scale(.9) rotate(20deg) !important; }
 .bn-fab svg { width:22px; height:22px; }
 
-/* ══════════════════════════════════════
-   MODAL — EDIT
-══════════════════════════════════════ */
 .modal-wrap {
   position:fixed; inset:0; z-index:300;
   display:flex; align-items:flex-end; justify-content:center;
@@ -752,7 +690,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 }
 .modal-wrap.open .modal-sheet { transform:translateY(0); }
 
-/* Sheet handle */
 .sheet-handle {
   display:flex; justify-content:center; padding:12px 0 6px;
   position:sticky; top:0; background:#040e22; z-index:1;
@@ -780,7 +717,6 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
 .sheet-close:active { background:rgba(255,77,109,.15); color:var(--err); }
 .sheet-close svg { width:14px; height:14px; }
 
-/* Form fields */
 .field { display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
 .field label { font-size:.82rem; font-weight:700; color:var(--t3); }
 .fc {
@@ -788,7 +724,7 @@ input, select { font-family:inherit; font-size:16px; /* Prevent iOS zoom */ }
   background:rgba(255,255,255,.05);
   border:1.5px solid var(--bdr);
   border-radius:var(--r-md);
-  color:var(--t1); font-size:1rem; /* 16px prevents iOS zoom */
+  color:var(--t1); font-size:1rem;
   outline:none; direction:rtl;
   transition:border-color var(--mid), box-shadow var(--mid);
   -webkit-appearance:none;
@@ -813,9 +749,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
 .btn-save.loading { opacity:.6; pointer-events:none; }
 .btn-save svg { width:17px; height:17px; }
 
-/* ══════════════════════════════════════
-   TOAST
-══════════════════════════════════════ */
 .toast {
   position:fixed; bottom:calc(80px + var(--safe-bottom));
   left:50%; transform:translateX(-50%) translateY(10px);
@@ -833,9 +766,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
 .toast.inf { background:rgba(0,200,255,.12);border:1px solid rgba(0,200,255,.3);color:var(--cyan); }
 .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-/* ══════════════════════════════════════
-   ANIMATIONS
-══════════════════════════════════════ */
 @keyframes spin { to { transform:rotate(360deg); } }
 .spinner {
   width:20px; height:20px; border-radius:50%;
@@ -843,9 +773,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
   animation:spin .7s linear infinite; display:inline-block;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE TWEAKS
-══════════════════════════════════════ */
 @media(max-width:380px) {
   .qs-num { font-size:1.5rem; }
   .qs-lbl { font-size:.65rem; }
@@ -865,7 +792,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
 
 <div class="bg-mesh"></div>
 
-<!-- ════ NAV ════ -->
 <nav class="top-nav">
   <a href="home.html" class="nav-brand">
     <div class="nav-brand-badge"><i data-lucide="waves"></i></div>
@@ -877,10 +803,8 @@ select.fc option { background:#0a1428; color:var(--t1); }
   </a>
 </nav>
 
-<!-- ════ PAGE ════ -->
 <main class="page">
 
-  <!-- Hero profile card -->
   <div class="hero-card" id="heroCard" style="opacity:0">
     <div class="hero-strip">
       <div class="hero-strip-waves"></div>
@@ -920,7 +844,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
     </div>
   </div>
 
-  <!-- Section header -->
   <div class="sec-hd" id="swHeader" style="opacity:0">
     <div class="sec-title">
       <i data-lucide="users"></i>
@@ -932,15 +855,12 @@ select.fc option { background:#0a1428; color:var(--t1); }
     </a>
   </div>
 
-  <!-- Search -->
   <div class="search-wrap" id="searchWrap" style="opacity:0">
     <i data-lucide="search" class="ico"></i>
     <input type="text" id="swSearch" placeholder="ابحث بالاسم أو رقم الاشتراك..."/>
   </div>
 
-  <!-- Swimmer list -->
   <div class="sw-list" id="swList">
-    <!-- Skeletons -->
     <div class="skeleton-card" style="animation-delay:.15s">
       <div style="display:flex;align-items:center;gap:14px">
         <div class="skel skel-av"></div>
@@ -965,7 +885,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
 
 </main>
 
-<!-- ════ BOTTOM NAV ════ -->
 <nav class="bottom-nav">
   <a href="home.html" class="bn-item">
     <i data-lucide="home"></i>
@@ -980,7 +899,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
   </a>
 </nav>
 
-<!-- ════ EDIT MODAL (Bottom Sheet) ════ -->
 <div class="modal-wrap" id="editModal">
   <div class="modal-backdrop" id="editBackdrop"></div>
   <div class="modal-sheet">
@@ -1018,7 +936,6 @@ select.fc option { background:#0a1428; color:var(--t1); }
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"><span id="toastMsg"></span></div>
 
 <script>
@@ -1144,13 +1061,13 @@ function swimmerCard(s, idx) {
       <div class="sw-info">
         <div class="sw-name">${s.fullName}</div>
         <div class="sw-tags">
-<span class="sw-id" onclick="event.stopPropagation();copyId('${s.subscriptionId}')" style="cursor:pointer;user-select:none" title="انسخ الرقم">
-  #${s.subscriptionId} 📋
-</span>       
+          <span class="sw-id" onclick="event.stopPropagation();copyId('${s.subscriptionId}')" style="cursor:pointer;user-select:none" title="انسخ الرقم">
+            #${s.subscriptionId} 📋
+          </span>
         </div>
       </div>
 
-   <div class="sw-status">
+      <div class="sw-status">
         <span class="status-pill ${s.isActive ? 'sp-active' : 'sp-inactive'}">
           <span class="dot"></span>${s.isActive ? 'نشط' : 'منتهي'}
         </span>
@@ -1159,7 +1076,7 @@ function swimmerCard(s, idx) {
           <span style="font-size:.68rem;font-weight:700;color:var(--t3)">المزيد</span>
         </div>
       </div>
-    </div>  <!-- ← إقفال sw-head -->
+    </div>
 
     <div class="sw-progress">
       <div class="sp-top">
@@ -1182,12 +1099,8 @@ function swimmerCard(s, idx) {
 function buildExpand(s) {
   const days = (s.trainingDays || []).map(d => DAYS[d]).join('، ') || '—';
   const start = s.subscriptionStart ? new Date(s.subscriptionStart) : null;
-  const daysSince = start ? Math.floor((Date.now() - start.getTime()) / 86400000) : null;
 
-  // Expiry row
   const expiryRow = buildExpiryRow(s);
-
-  // Level
   const levelHtml = s.level ? `
     <div class="level-block">
       <div class="level-num">LV ${s.level}</div>
@@ -1197,10 +1110,8 @@ function buildExpand(s) {
       </div>
     </div>` : '';
 
-  // Rating
   const ratingHtml = buildRating(s);
 
-  // Stars experience
   const expStarsHtml = s.starsCount ? `
     <div class="dg-item" style="grid-column:1/-1">
       <div class="dg-lbl">خبرة سابقة</div>
@@ -1247,18 +1158,18 @@ function buildExpand(s) {
 function buildExpiryRow(s) {
   const att = s.sessionsAttended || 0, tot = s.sessionsCount || 1;
   if (att >= tot)
-    return `<div class="info-row expiry-err"><i data-lucide="alert-circle"></i><span style="color:var(--err)">انتهت جميع الحصص (${att}/${tot})</span></div>`;
+    return `<div class="info-row expiry-err" id="expiryRow-${s.subscriptionId}"><i data-lucide="alert-circle"></i><span style="color:var(--err)">انتهت جميع الحصص (${att}/${tot})</span></div>`;
 
   if (s.subscriptionExpiry) {
     const exp = new Date(s.subscriptionExpiry), now = new Date(); now.setHours(0,0,0,0);
     const diff = Math.ceil((exp - now) / 86400000);
     if (diff < 0)
-      return `<div class="info-row expiry-err"><i data-lucide="calendar-x"></i><span>انتهى الاشتراك في <strong>${fmtDate(s.subscriptionExpiry)}</strong></span></div>`;
+      return `<div class="info-row expiry-err" id="expiryRow-${s.subscriptionId}"><i data-lucide="calendar-x"></i><span>انتهى الاشتراك في <strong>${fmtDate(s.subscriptionExpiry)}</strong></span></div>`;
 
     const txt = diff === 0 ? 'ينتهي اليوم' : diff === 1 ? 'ينتهي غداً' : `ينتهي بعد ${diff} يوم`;
     const cls = diff <= 7 ? 'expiry-err db-err' : diff <= 30 ? 'expiry-warn db-warn' : 'expiry-ok db-ok';
     const rowCls = diff <= 7 ? 'expiry-err' : diff <= 30 ? 'expiry-warn' : 'expiry-ok';
-    return `<div class="info-row ${rowCls}"><i data-lucide="calendar"></i><span>انتهاء الاشتراك: <strong>${fmtDate(s.subscriptionExpiry)}</strong></span><span class="days-badge ${cls}">${txt}</span></div>`;
+    return `<div class="info-row ${rowCls}" id="expiryRow-${s.subscriptionId}"><i data-lucide="calendar"></i><span>انتهاء الاشتراك: <strong>${fmtDate(s.subscriptionExpiry)}</strong></span><span class="days-badge ${cls}">${txt}</span></div>`;
   }
   return '';
 }
@@ -1289,13 +1200,13 @@ async function toggleCard(subId) {
 }
 
 /* ══════════════════════════════════════
-   CALENDAR
+   CALENDAR — مع تحديث بيانات الشهر الحالي
 ══════════════════════════════════════ */
 async function loadCalendar(subId) {
   const s = swimmers.find(x => x.subscriptionId === subId);
   if (!s) return;
+  const now = new Date();
   if (!calState[subId]) {
-    const now = new Date();
     calState[subId] = { year: now.getFullYear(), month: now.getMonth() + 1, statusMap: {} };
   }
   const state = calState[subId];
@@ -1304,11 +1215,61 @@ async function loadCalendar(subId) {
   try {
     const d = await api(`/attendance/${subId}/month?year=${state.year}&month=${state.month}`);
     state.statusMap = d.statusMap || {};
+
+    /* ─── تحديث progress bar وصف الانتهاء ببيانات الشهر الحالي ─── */
+    const isCurrentMonth = (
+      state.year  === now.getFullYear() &&
+      state.month === now.getMonth() + 1
+    );
+    if (isCurrentMonth && d.sessionsCount > 0) {
+      const freshAtt = d.stats?.presentCount ?? 0;
+      const freshTot = d.sessionsCount;
+      /* حدّث الكائن في الذاكرة */
+      s.sessionsAttended = freshAtt;
+      s.sessionsCount    = freshTot;
+      /* حدّث الـ DOM مباشرة */
+      refreshProgressBar(subId, freshAtt, freshTot);
+      refreshExpiryRow(subId, d);
+    }
+    /* ─────────────────────────────────────────────────────────────── */
+
     renderCalendar(s, state, wrap);
     lucide.createIcons();
   } catch(e) {
     wrap.innerHTML = `<div class="cal-sec-title"><i data-lucide="calendar-days"></i>سجل الحضور</div><div style="color:var(--t4);font-size:.8rem;padding:8px 0">تعذّر تحميل البيانات</div>`;
   }
+}
+
+/**
+ * يحدّث شريط التقدم في أعلى الكارت بدون إعادة رسمه
+ */
+function refreshProgressBar(subId, att, tot) {
+  const card = g(`swc-${subId}`);
+  if (!card) return;
+  const pct = Math.min(100, Math.round((att / Math.max(tot, 1)) * 100));
+  const spLabel = card.querySelector('.sp-label');
+  const spPct   = card.querySelector('.sp-pct');
+  const spFill  = card.querySelector('.sp-fill');
+  if (spLabel) spLabel.innerHTML = `الحضور: <strong style="color:var(--t1)">${att}/${tot} حصة</strong>`;
+  if (spPct)   spPct.textContent = `${pct}%`;
+  if (spFill)  spFill.style.width = `${pct}%`;
+}
+
+/**
+ * يحدّث صف انتهاء الاشتراك:
+ * - لو API الشهر الحالي رجّع sessionsCount > 0 يبقى في اشتراك نشط
+ *   فنبدّل رسالة "انتهى الاشتراك" برسالة الحصص المتبقية
+ */
+function refreshExpiryRow(subId, d) {
+  const row = g(`expiryRow-${subId}`);
+  if (!row) return;
+  /* الاشتراك موجود وفيه حصص */
+  const remaining = d.stats?.remaining ?? (d.sessionsCount - (d.stats?.presentCount || 0));
+  row.className = 'info-row expiry-ok';
+  row.innerHTML = `
+    <i data-lucide="calendar-check"></i>
+    <span>اشتراك الشهر الحالي نشط — متبقي <strong>${remaining}</strong> حصة من ${d.sessionsCount}</span>`;
+  lucide.createIcons();
 }
 
 function renderCalendar(s, state, wrap) {
@@ -1342,7 +1303,6 @@ function renderCalendar(s, state, wrap) {
     cells += `<div class="cal-cell ${cls}"><span class="cc-num">${d}</span>${ico ? `<span class="cc-icon">${ico}</span>` : ''}</div>`;
   }
 
-  // Calculate remaining
   let remaining = 0;
   for (let d = 1; d <= lastDate; d++) {
     const date = new Date(year, month - 1, d);
@@ -1446,7 +1406,6 @@ function bindUI() {
   g('closeEdit').onclick = () => closeSheet('editModal');
   g('saveBtn').onclick = doSave;
 
-  // Swipe down to close sheet
   let startY = 0;
   const sheet = document.querySelector('.modal-sheet');
   sheet.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive:true });
@@ -1454,7 +1413,6 @@ function bindUI() {
     if (e.changedTouches[0].clientY - startY > 80) closeSheet('editModal');
   }, { passive:true });
 
-  // Search
   let sTimer;
   g('swSearch').addEventListener('input', e => {
     clearTimeout(sTimer);
@@ -1467,9 +1425,6 @@ function doLogout() {
   window.location.href = 'auth.html';
 }
 
-/* ══════════════════════════════════════
-   MODAL HELPERS
-══════════════════════════════════════ */
 function openSheet(id)  { g(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeSheet(id) { g(id).classList.remove('open'); document.body.style.overflow = ''; if (id === 'editModal') editId = null; }
 
@@ -1488,11 +1443,11 @@ async function api(path, method = 'GET', body = null) {
   }
   return d;
 }
+
 function copyId(id) {
   navigator.clipboard.writeText(id)
     .then(() => toast('تم نسخ رقم الاشتراك ✓', 'ok'))
     .catch(() => {
-      // fallback لو clipboard مش شغال (بعض المتصفحات)
       const el = document.createElement('textarea');
       el.value = id;
       el.style.position = 'fixed'; el.style.opacity = '0';
@@ -1503,9 +1458,6 @@ function copyId(id) {
     });
 }
 
-/* ══════════════════════════════════════
-   HELPERS
-══════════════════════════════════════ */
 function g(id) { return document.getElementById(id); }
 function dateStr(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function fmtDate(d) { const dt = new Date(d); return `${dt.getDate()} ${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`; }
@@ -1518,7 +1470,6 @@ function toast(msg, type = 'inf') {
   clearTimeout(toastT);
   toastT = setTimeout(() => el.classList.remove('show'), 3400);
 }
-
 </script>
 </body>
 </html>
