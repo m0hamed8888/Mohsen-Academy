@@ -1636,11 +1636,29 @@ async function loadSwimmers(){
     const search=$('tableSearch').value, city=$('cityFilter').value;
     const qs=new URLSearchParams({search,page,limit:15});if(city)qs.set('city',city);
     const d=await api('/swimmers?'+qs);
-    if(!d.data?.length){tbody.innerHTML=`<tr><td colspan="9" class="no-data">لا توجد نتائج</td></tr>`;$('pagination').innerHTML='';return;}
-    const DAYS_S=['أحد','اثن','ثلا','أربع','خميس','جمعة','سبت'];
-    const offset=(page-1)*15;
-    tbody.innerHTML=d.data.map((s,i)=>{
-      const att=s.sessionsAttended??0, tot=s.sessionsCount??0;
+if(!d.data?.length){tbody.innerHTML=`<tr><td colspan="9" class="no-data">لا توجد نتائج</td></tr>`;$('pagination').innerHTML='';return;}
+
+// جيب حضور الشهر الحالي لكل سباح بالتوازي
+const now=new Date();
+const cy=now.getFullYear(), cm=now.getMonth()+1;
+const monthDataArr = await Promise.all(
+  d.data.map(s =>
+    api(`/attendance/${s.subscriptionId}/month?year=${cy}&month=${cm}`)
+      .then(r => ({ id: s.subscriptionId, map: r.statusMap || {} }))
+      .catch(() => ({ id: s.subscriptionId, map: {} }))
+  )
+);
+const monthDataMap = {};
+monthDataArr.forEach(m => { monthDataMap[m.id] = m.map; });
+
+const DAYS_S=['أحد','اثن','ثلا','أربع','خميس','جمعة','سبت'];
+const offset=(page-1)*15;
+tbody.innerHTML=d.data.map((s,i)=>{
+  // حضور الشهر الحالي بس
+  const mMap = monthDataMap[s.subscriptionId] || {};
+  const att = Object.values(mMap).filter(r => r.status === 'present').length;
+  const tot=s.sessionsCount??0;
+      
       const pct=tot?Math.round(att/tot*100):0;
       const daysHtml=(s.trainingDays||[]).map(d=>`<span class="day-pip">${DAYS_S[d]}</span>`).join('');
       const sessClass=tot===8?'s8':tot===12?'s12':'s24';
@@ -1654,7 +1672,7 @@ async function loadSwimmers(){
         <span class="att-sep">/</span>
         <span class="att-tot">${tot}</span>
       </div>
-      <div style="font-size:.58rem;color:var(--tm);margin-top:2px">إجمالي منذ البداية</div>
+<div style="font-size:.58rem;color:var(--tm);margin-top:2px">حضور هذا الشهر</div>
       <div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div>
     </div>
   </td>
