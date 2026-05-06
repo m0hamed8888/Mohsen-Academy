@@ -219,11 +219,24 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     const filter = { subscriptionId: req.params.subscriptionId };
     if (!isBoss) filter.trainer = req.trainer._id;
 
-    const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
-                     'level','levelNote','rating','ratingNote'];
+const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
+                 'level','levelNote','rating','ratingNote','trainingDays','sessionsCount','restDay'];
     const update = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) update[key] = req.body[key]; });
 
+     // التحقق من trainingDays و sessionsCount لو اتبعتوا
+if (update.sessionsCount !== undefined) {
+  update.sessionsCount = Number(update.sessionsCount);
+}
+if (update.trainingDays !== undefined) {
+  update.trainingDays = update.trainingDays.map(Number);
+  const sess = update.sessionsCount || (await Swimmer.findOne(filter))?.sessionsCount;
+  const expected = { 8:2, 12:3, 24:6 }[sess];
+  if (expected && update.trainingDays.length !== expected) {
+    return res.status(400).json({ success: false, message: `عدد الأيام غير صح — المطلوب ${expected} أيام` });
+  }
+}
+     
     if (typeof update.fullName    === 'string') update.fullName    = update.fullName.trim();
     if (typeof update.phone       === 'string') update.phone       = update.phone.trim();
     if (typeof update.trainerName === 'string') update.trainerName = update.trainerName.trim() || null;
