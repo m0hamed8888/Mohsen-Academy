@@ -28,8 +28,6 @@ input,select,textarea{font-family:inherit;outline:none}
 body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 70% 55% at 75% -10%,rgba(0,180,200,.14),transparent),radial-gradient(ellipse 45% 45% at 5% 85%,rgba(91,78,255,.1),transparent),radial-gradient(ellipse 35% 35% at 95% 95%,rgba(0,120,255,.07),transparent);pointer-events:none;}
 body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Ccircle cx='1' cy='1' r='.6' fill='rgba(255,255,255,.016)'/%3E%3C/svg%3E");pointer-events:none;}
 a{text-decoration:none;}
-
-/* ══ ATTENDANCE BAR ══ */
 .att-bar{display:flex;flex-direction:column;gap:3px}
 .att-nums{display:flex;align-items:baseline;gap:3px}
 .att-big{font-size:1rem;font-weight:800;color:var(--ok)}
@@ -42,8 +40,6 @@ a{text-decoration:none;}
 .time-cell{display:flex;align-items:center;gap:4px;font-size:.75rem;color:var(--ts)}
 .time-cell svg{width:11px;height:11px;opacity:.5;flex-shrink:0}
 .row-num{font-size:.72rem;color:var(--tm);font-weight:600}
-
-/* ══ NAVBAR ══ */
 .nav{position:fixed;top:0;inset-inline:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(4,8,18,.84);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-bottom:1px solid rgba(0,180,200,.08);}
 .nav-brand{display:flex;align-items:center;gap:10px}
 .brand-ic{width:36px;height:36px;border-radius:10px;background:var(--g1);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(0,160,200,.5);flex-shrink:0;}
@@ -58,8 +54,6 @@ a{text-decoration:none;}
 .logout-btn:hover{background:rgba(255,77,109,.14)}
 .logout-btn svg{width:13px;height:13px}
 @media(max-width:639px){.trainer-nm{display:none}.logout-btn span{display:none}.logout-btn{padding:7px}}
-
-/* ══ TODAY BTN ══ */
 .today-btn{position:relative;display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--r-full);background:rgba(0,180,200,.07);border:1px solid rgba(0,180,200,.22);color:var(--teal);font-size:.74rem;font-weight:700;transition:all var(--fast);cursor:pointer;}
 .today-btn:hover{background:rgba(0,180,200,.16);box-shadow:0 0 18px rgba(0,180,200,.15)}
 .today-btn svg{width:14px;height:14px;flex-shrink:0}
@@ -68,8 +62,6 @@ a{text-decoration:none;}
 .today-btn-pulse::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:rgba(0,229,160,.35);animation:pulseRing 1.8s ease-out infinite;}
 @keyframes pulseRing{0%{transform:scale(.8);opacity:.8}100%{transform:scale(2.2);opacity:0}}
 @media(max-width:639px){.today-btn-label{display:none}.today-btn{padding:7px 10px;gap:4px}}
-
-/* ══ TODAY PANEL ══ */
 .today-panel-overlay{position:fixed;inset:0;z-index:95;background:transparent;pointer-events:none;transition:background var(--mid);}
 .today-panel-overlay.open{pointer-events:all;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
 .today-panel{position:fixed;top:var(--nav-h);inset-inline:0;z-index:96;background:rgba(6,11,22,.97);border-bottom:1px solid rgba(0,180,200,.15);border-top:1px solid rgba(0,180,200,.1);max-height:calc(100dvh - var(--nav-h) - 20px);overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(-110%);transition:transform 380ms var(--ease);box-shadow:0 20px 60px rgba(0,0,0,.7),0 4px 30px rgba(0,180,200,.08);}
@@ -114,8 +106,6 @@ a{text-decoration:none;}
 .tp-loading{display:flex;align-items:center;justify-content:center;gap:10px;padding:32px;color:var(--tm);font-size:.82rem;}
 .tp-spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(0,180,200,.2);border-top-color:var(--teal);animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ══ BOTTOM NAV ══ */
 .bot-nav{position:fixed;bottom:0;inset-inline:0;z-index:100;height:calc(var(--bot-h) + var(--safe-b));padding-bottom:var(--safe-b);background:rgba(4,8,18,.9);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-top:1px solid rgba(0,180,200,.07);display:flex;align-items:flex-start;padding-top:8px;}
 .bot-items{display:flex;flex:1;justify-content:space-around}
 .bot-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 8px;border-radius:var(--r-md);color:var(--tm);font-size:.56rem;font-weight:700;transition:all var(--fast);position:relative;}
@@ -123,34 +113,24 @@ a{text-decoration:none;}
 .bot-item.active{color:var(--teal)}
 .bot-item.active svg{filter:drop-shadow(0 0 7px rgba(0,212,180,.8));transform:translateY(-1px)}
 .bot-item.active::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:30px;height:2px;border-radius:1px;background:var(--g2);box-shadow:0 0 10px var(--teal);}
-
-/* ══ DESKTOP TABS ══ */
 .desk-tabs{display:none;gap:4px;background:rgba(255,255,255,.022);padding:5px;border-radius:var(--r-full);border:1px solid var(--bdr);margin-bottom:22px;}
 .dtb{flex:1;padding:9px 10px;border-radius:var(--r-full);font-size:.78rem;font-weight:700;color:var(--tm);transition:all var(--fast) var(--ease);display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;}
 .dtb svg{width:14px;height:14px;flex-shrink:0}
 .dtb.active{background:var(--g1);color:#fff;box-shadow:0 4px 18px rgba(0,120,200,.45)}
 .dtb:not(.active):hover{color:var(--ts);background:var(--surf2)}
-
-/* ══ WRAP ══ */
 .wrap{position:relative;z-index:1;padding:calc(var(--nav-h)+16px) 12px calc(var(--bot-h) + var(--safe-b) + 14px);max-width:900px;margin:0 auto;min-height:100dvh;}
 .panel{display:none;animation:fadeUp var(--mid) var(--ease) both}
 .panel.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* ══ STATS ROW ══ */
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .stat-c{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-lg);padding:14px 10px;text-align:center;position:relative;overflow:hidden;transition:transform var(--fast);}
 .stat-c::after{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1)}
 .stat-v{font-family:var(--f-disp);font-size:1.85rem;font-style:italic;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;}
 .stat-l{font-size:.6rem;font-weight:700;color:var(--tm);margin-top:4px;letter-spacing:.05em}
-
-/* ══ GLASS CARD ══ */
 .gc{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-xl);padding:20px 16px;position:relative;overflow:hidden;margin:2.5rem 0 5rem 0;}
 .gc::before{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1)}
 .gc-title{font-family:var(--f-disp);font-size:1.1rem;font-style:italic;margin-bottom:18px;display:flex;align-items:center;gap:9px;}
 .gc-title svg{width:16px;height:16px;color:var(--teal)}
-
-/* ══ TOOLBAR ══ */
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .srch-wrap{position:relative;flex:1;min-width:150px}
 .srch-ic{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--tm);pointer-events:none}
@@ -162,8 +142,6 @@ a{text-decoration:none;}
 .btn-ref{height:38px;padding:0 14px;border-radius:var(--r-full);background:rgba(0,180,200,.08);border:1px solid rgba(0,180,200,.22);color:var(--teal);font-size:.76rem;font-weight:700;display:flex;align-items:center;gap:5px;transition:all var(--fast);white-space:nowrap;}
 .btn-ref:hover{background:rgba(0,180,200,.16)}
 .btn-ref svg{width:13px;height:13px}
-
-/* ══ TABLE ══ */
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r-md);margin:0 -2px}
 .tbl{width:100%;border-collapse:collapse;font-size:.78rem;min-width:520px}
 .tbl th{padding:9px 11px;text-align:right;font-weight:700;font-size:.66rem;color:var(--tm);border-bottom:1px solid var(--bdr);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
@@ -173,8 +151,6 @@ a{text-decoration:none;}
 .sub-id{font-family:var(--f-disp);font-style:italic;font-weight:700;color:var(--teal);font-size:.8rem}
 .nm{font-weight:700;color:var(--tp)}
 .no-data{text-align:center;padding:40px;color:var(--tm);font-size:.85rem}
-
-/* ══ BADGES ══ */
 .bdg{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-full);font-size:.65rem;font-weight:800}
 .bdg-on{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.22);color:var(--ok)}
 .bdg-off{background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.2);color:var(--err)}
@@ -184,8 +160,6 @@ a{text-decoration:none;}
 .s8{background:rgba(0,200,255,.07);border:1px solid rgba(0,200,255,.2);color:#00c8ff}
 .s12{background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);color:var(--ok)}
 .s24{background:rgba(255,181,71,.07);border:1px solid rgba(255,181,71,.2);color:var(--warn)}
-
-/* ══ ACTION BUTTONS ══ */
 .act-btns{display:flex;gap:4px;flex-wrap:wrap}
 .act-btn{padding:5px 8px;border-radius:var(--r-sm);font-size:.68rem;font-weight:700;display:inline-flex;align-items:center;gap:3px;transition:all var(--fast)}
 .act-btn svg{width:11px;height:11px;flex-shrink:0}
@@ -195,14 +169,10 @@ a{text-decoration:none;}
 .ab-edit:hover{background:rgba(255,181,71,.15)}
 .ab-del{color:var(--err);background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.18)}
 .ab-del:hover{background:rgba(255,77,109,.15)}
-
-/* ══ PAGINATION ══ */
 .pag{display:flex;justify-content:center;gap:6px;margin-top:14px;flex-wrap:wrap}
 .pg-btn{min-width:32px;height:32px;padding:0 6px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;color:var(--tm);background:var(--surf);border:1px solid var(--bdr);transition:all var(--fast)}
 .pg-btn:hover{color:var(--teal);border-color:rgba(0,180,200,.3)}
 .pg-btn.active{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(0,120,200,.4)}
-
-/* ══ FORM ══ */
 .fc{width:100%;height:46px;padding:0 14px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:var(--r-md);color:var(--tp);font-size:.87rem;font-weight:500;direction:rtl;transition:border-color var(--mid),box-shadow var(--mid);}
 .fc:focus{border-color:rgba(0,180,200,.4);box-shadow:0 0 0 3px rgba(0,180,200,.07)}
 .fc::placeholder{color:var(--tm)}
@@ -244,8 +214,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .btn-sec svg{width:13px;height:13px}
 .btn-cancel{flex:1;padding:11px;border-radius:var(--r-md);font-weight:800;font-size:.85rem;background:var(--surf2);border:1px solid var(--bdr);color:var(--ts);transition:all var(--fast);}
 .btn-cancel:hover{background:var(--surf3)}
-
-/* ══ ATTENDANCE ══ */
 .att-search-row{display:flex;gap:8px;margin-bottom:16px}
 .att-search-row .fc{flex:1}
 .swimmer-chip{display:none;background:rgba(0,180,200,.05);border:1px solid rgba(0,180,200,.15);border-radius:var(--r-lg);padding:14px 16px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
@@ -315,8 +283,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .makeup-row label{font-size:.74rem;font-weight:700;color:var(--ts);display:block;margin-bottom:6px}
 .makeup-row-inner{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .makeup-row-inner .fc{flex:1;min-width:140px;height:40px;font-size:.82rem}
-
-/* ══ MODALS ══ */
 .mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
 .mo.show{opacity:1;pointer-events:all}
 .mo-card{width:100%;max-width:580px;background:#070c18;border:1px solid var(--bdr2);border-radius:var(--r-2xl) var(--r-2xl) 0 0;padding:10px 20px 24px;max-height:92dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;transform:translateY(22px);transition:transform var(--mid) var(--ease);}
@@ -341,8 +307,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .conf-btns{display:flex;gap:8px}
 .btn-do-del{flex:1;padding:11px;border-radius:var(--r-md);font-weight:800;font-size:.85rem;background:var(--err);color:#fff;border:none;transition:all var(--fast)}
 .btn-do-del:hover{background:#ff2248;box-shadow:0 0 20px rgba(255,77,109,.45)}
-.lv-note{width:100%;height:38px;padding:0 12px;background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:var(--r-sm);color:var(--tp);font-size:.82rem;direction:rtl}
-.lv-note:focus{border-color:rgba(0,180,200,.38)}
 .rating-sec{background:rgba(245,200,66,.04);border:1px solid rgba(245,200,66,.12);border-radius:var(--r-md);padding:14px;margin-top:10px}
 .rating-title{font-size:.74rem;font-weight:700;color:var(--ts);margin-bottom:10px;display:flex;align-items:center;gap:5px}
 .rating-title svg{width:12px;height:12px;color:#f5c842}
@@ -356,8 +320,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .btn-rate{padding:8px 16px;border-radius:var(--r-full);font-size:.74rem;font-weight:700;background:rgba(245,200,66,.09);border:1px solid rgba(245,200,66,.26);color:#f5c842;transition:all var(--fast);display:inline-flex;align-items:center;gap:5px}
 .btn-rate:hover{background:rgba(245,200,66,.18)}
 .btn-rate svg{width:12px;height:12px}
-
-/* ══ LOGIN ══ */
 #loginScreen{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
 .login-card{width:100%;max-width:380px;background:rgba(255,255,255,.032);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(0,180,200,.1);border-radius:var(--r-2xl);padding:36px 24px;position:relative;overflow:hidden;margin:auto;}
 .login-card::before{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1)}
@@ -372,16 +334,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .lerr{display:none;align-items:center;gap:7px;padding:10px 13px;border-radius:var(--r-sm);background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);font-size:.75rem;color:var(--err);margin-bottom:8px}
 .lerr.show{display:flex}
 .lerr svg{width:13px;height:13px;flex-shrink:0}
-
-/* ══ TOAST ══ */
 .toast{position:fixed;bottom:calc(var(--bot-h) + var(--safe-b) + 10px);left:50%;transform:translateX(-50%) translateY(12px);z-index:300;display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r-full);font-size:.82rem;font-weight:700;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity var(--mid),transform var(--mid) var(--ease);white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;}
 .toast.success{background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.3);color:var(--ok)}
 .toast.error{background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);color:var(--err)}
 .toast.makeup{background:rgba(255,159,67,.12);border:1px solid rgba(255,159,67,.3);color:var(--makeup)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;flex-shrink:0}
-
-/* ══ LEVELS ══ */
 .lv-warn-banner{border:1px solid rgba(255,77,109,.35);background:rgba(255,77,109,.06);border-radius:var(--r-lg);padding:16px 18px;margin-bottom:20px;display:flex;gap:14px;align-items:flex-start;}
 .lv-warn-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,77,109,.15);border:1px solid rgba(255,77,109,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .lv-warn-icon svg{width:18px;height:18px;color:var(--err)}
@@ -415,40 +373,43 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .lv-private-note svg{width:13px;height:13px;color:var(--tm);flex-shrink:0;margin-top:2px}
 .lv-private-note-text{font-size:.72rem;color:var(--tm);line-height:1.6}
 
-/* ══ SCHEDULE SECTION ══ */
-.sch-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
-.sch-month{font-size:.78rem;color:var(--ts);font-weight:600}
-.sch-add-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r-full);background:rgba(0,180,200,.08);border:1px solid rgba(0,180,200,.22);color:var(--teal);font-size:.78rem;font-weight:700;transition:all var(--fast);cursor:pointer;}
-.sch-add-btn:hover{background:rgba(0,180,200,.18);box-shadow:0 0 16px rgba(0,180,200,.15)}
-.sch-add-btn svg{width:14px;height:14px}
-.sch-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
-.sch-sum-card{background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:var(--r-md);padding:10px 8px;text-align:center;}
-.sch-sum-num{font-family:var(--f-disp);font-size:1.5rem;font-style:italic;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
-.sch-sum-lbl{font-size:.58rem;font-weight:700;color:var(--tm);margin-top:3px}
-.sch-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
-.sch-leg{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--ts);}
-.sch-leg-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
-.sch-timeline{display:flex;flex-direction:column;gap:3px;}
-.sch-slot{display:grid;grid-template-columns:72px 1fr;align-items:start;min-height:50px;}
-.sch-time-col{padding-top:6px;text-align:left;padding-left:10px;border-left:1px solid var(--bdr);}
-.sch-time-txt{font-size:.72rem;color:var(--tm);white-space:nowrap;}
-.sch-pills-col{padding:4px 0 4px 10px;display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;}
-.sch-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:var(--r-md);border:1px solid;font-size:.76rem;cursor:pointer;transition:opacity .15s;max-width:100%;}
-.sch-pill:hover{opacity:.8}
-.sch-pill-name{font-weight:700;}
-.sch-pill-members{font-size:.66rem;opacity:.7;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.sch-pill-del{font-size:.8rem;opacity:.45;cursor:pointer;padding:0 2px;margin-right:2px;}
-.sch-pill-del:hover{opacity:1}
-.sch-empty{text-align:center;padding:32px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.sch-empty svg{width:36px;height:36px;color:var(--tm);opacity:.4}
-.sch-empty-txt{font-size:.82rem;color:var(--tm)}
-
-/* ══ SCHEDULE MODAL ══ */
-.sch-mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
-.sch-mo.show{opacity:1;pointer-events:all}
-.sch-mo-card{width:100%;max-width:520px;background:#070c18;border:1px solid var(--bdr2);border-radius:var(--r-2xl) var(--r-2xl) 0 0;padding:10px 20px 32px;max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;transform:translateY(22px);transition:transform var(--mid) var(--ease);}
-.sch-mo.show .sch-mo-card{transform:translateY(0)}
-.sch-mo-card::before{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1);border-radius:var(--r-2xl) var(--r-2xl) 0 0}
+/* ═══ SCHEDULE NEW ═══ */
+.sch-day-tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.sch-day-tab{flex:1;min-width:56px;padding:8px 4px 6px;border-radius:var(--r-sm);border:1.5px solid var(--bdr);background:var(--surf);color:var(--tm);font-size:.74rem;font-weight:700;text-align:center;cursor:pointer;transition:all var(--fast);display:flex;flex-direction:column;align-items:center;gap:2px;-webkit-user-select:none;user-select:none;}
+.sch-day-tab:hover{border-color:rgba(0,180,200,.28);color:var(--ts);}
+.sch-day-tab.active{border-color:var(--teal);background:rgba(0,180,200,.1);color:var(--teal);}
+.sch-day-cnt{font-size:.58rem;font-weight:800;padding:1px 7px;border-radius:99px;background:rgba(0,180,200,.12);color:var(--teal);line-height:1.2;}
+.sch-day-tab.active .sch-day-cnt{background:rgba(0,229,160,.18);color:var(--ok);}
+.sch-shift-lbl{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:rgba(255,255,255,.025);border-bottom:1px solid var(--bdr);}
+.sch-shift-lbl.shift-day{color:var(--ok);}
+.sch-shift-lbl.shift-blocked{color:var(--err);opacity:.5;}
+.sch-shift-lbl.shift-evening{color:var(--purple);}
+.sch-shift-lbl svg{width:12px;height:12px;flex-shrink:0;}
+.sch-hour-row{display:grid;grid-template-columns:68px 1fr;align-items:stretch;min-height:46px;border-bottom:1px solid rgba(255,255,255,.025);transition:background var(--fast);}
+.sch-hour-row:last-child{border-bottom:none;}
+.sch-hour-time{display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--tm);background:rgba(255,255,255,.015);border-left:1px solid rgba(255,255,255,.03);}
+.sch-hour-body{display:flex;align-items:center;padding:0 10px;transition:background var(--fast);min-height:46px;}
+.sch-hour-row.hr-free{cursor:pointer;}
+.sch-hour-row.hr-free:hover .sch-hour-body{background:rgba(0,229,160,.06);}
+.sch-hour-row.hr-booked .sch-hour-body{background:rgba(255,255,255,.02);}
+.sch-hour-row.hr-blocked{opacity:.25;pointer-events:none;}
+.sch-hour-row.hr-blocked .sch-hour-time{background:rgba(255,255,255,.01);}
+.sch-hour-row.hr-blocked .sch-hour-body{background:rgba(255,255,255,.008);}
+.sch-free-txt{font-size:.72rem;color:var(--ok);opacity:.4;font-weight:600;}
+.sch-hr-pill{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:var(--r-sm);border:1px solid;font-size:.76rem;width:100%;cursor:pointer;transition:opacity .15s;}
+.sch-hr-pill:hover{opacity:.8;}
+.sch-hr-pill-type{font-weight:800;white-space:nowrap;}
+.sch-hr-pill-names{font-size:.68rem;opacity:.7;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sch-hr-pill-days{font-size:.6rem;opacity:.45;white-space:nowrap;flex-shrink:0;direction:ltr;}
+.sch-hr-pill-del{font-size:.8rem;opacity:.35;cursor:pointer;padding:0 2px;flex-shrink:0;line-height:1;}
+.sch-hr-pill-del:hover{opacity:1;color:var(--err);}
+.sch-hour-tl{border:1px solid var(--bdr);border-radius:var(--r-lg);overflow:hidden;}
+.sch-tl-empty{text-align:center;padding:24px 16px;color:var(--tm);font-size:.82rem;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.sch-tl-empty svg{width:28px;height:28px;opacity:.35;}
+.sch-modal-days{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.sch-modal-day{display:flex;align-items:center;justify-content:center;padding:9px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.76rem;font-weight:700;color:var(--ts);transition:all var(--fast);}
+.sch-modal-day input{display:none;}
+.sch-modal-day:has(input:checked){border-color:var(--teal);background:rgba(0,180,200,.1);color:#fff;}
 .sch-type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:4px;}
 .sch-type-btn{padding:12px 8px;border-radius:var(--r-md);border:1.5px solid var(--bdr);background:var(--surf);color:var(--ts);font-size:.8rem;font-weight:700;cursor:pointer;transition:all var(--fast);text-align:center;}
 .sch-type-btn:hover{border-color:rgba(0,180,200,.3);color:var(--tp)}
@@ -461,8 +422,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-name-row .fc{flex:1;height:40px;font-size:.84rem;}
 .sch-conflict{font-size:.75rem;color:var(--err);padding:8px 12px;border-radius:var(--r-sm);background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);display:none;margin-top:6px;}
 .sch-conflict.show{display:block}
+.sch-mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
+.sch-mo.show{opacity:1;pointer-events:all}
+.sch-mo-card{width:100%;max-width:520px;background:#070c18;border:1px solid var(--bdr2);border-radius:var(--r-2xl) var(--r-2xl) 0 0;padding:10px 20px 32px;max-height:88dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;transform:translateY(22px);transition:transform var(--mid) var(--ease);}
+.sch-mo.show .sch-mo-card{transform:translateY(0)}
+.sch-mo-card::before{content:'';position:absolute;top:0;inset-inline:0;height:1.5px;background:var(--g1);border-radius:var(--r-2xl) var(--r-2xl) 0 0}
 
-/* ══ RESPONSIVE ══ */
 @media(min-width:640px){.wrap{padding:calc(var(--nav-h)+20px) 20px 30px}.bot-nav{display:none}.desk-tabs{display:flex}.toast{bottom:20px}.mo{align-items:center;padding:16px}.mo-card{border-radius:var(--r-2xl);max-width:580px}.mo-card::before{border-radius:var(--r-2xl) var(--r-2xl) 0 0}.mo-drag{display:none}.sch-mo{align-items:center;padding:16px}.sch-mo-card{border-radius:var(--r-2xl)}.sch-mo-card::before{border-radius:var(--r-2xl)}}
 @media(min-width:1024px){.wrap{padding:calc(var(--nav-h)+24px) 24px 40px}}
 .mt-4{margin-top:4px}.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
@@ -470,7 +435,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="login-glow"></div>
@@ -486,7 +450,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav class="nav" id="mainNav" style="display:none">
   <div class="nav-brand">
     <div class="brand-ic"><a href="../home.html"><i data-lucide="waves"></i></a></div>
@@ -530,7 +493,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- BOTTOM NAV -->
 <nav class="bot-nav" id="botNav" style="display:none">
   <div class="bot-items">
     <button class="bot-item active" data-tab="swimmers"><i data-lucide="users"></i><span>السباحون</span></button>
@@ -541,14 +503,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </nav>
 
-<!-- APP -->
 <main class="wrap" id="mainApp" style="display:none">
   <div class="stats-row">
     <div class="stat-c"><div class="stat-v" id="stTotal">—</div><div class="stat-l">إجمالي</div></div>
     <div class="stat-c"><div class="stat-v" id="stActive" style="color:var(--ok)">—</div><div class="stat-l">نشطون</div></div>
     <div class="stat-c"><div class="stat-v" id="stToday">0</div><div class="stat-l">حضور اليوم</div></div>
   </div>
-
   <div class="desk-tabs">
     <button class="dtb active" data-tab="swimmers"><i data-lucide="users"></i> السباحون</button>
     <button class="dtb" data-tab="create"><i data-lucide="user-plus"></i> اشتراك جديد</button>
@@ -557,34 +517,17 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     <button class="dtb" data-tab="levels"><i data-lucide="bar-chart-2"></i> Levels</button>
   </div>
 
-  <!-- SWIMMERS -->
   <div class="panel active" id="panel-swimmers">
     <div class="gc">
       <div class="gc-title"><i data-lucide="users"></i> قائمة السباحين</div>
       <div class="toolbar">
         <div class="srch-wrap"><i data-lucide="search" class="srch-ic"></i><input type="text" class="srch" id="tableSearch" placeholder="ابحث بالاسم أو رقم الاشتراك..."/></div>
-        <select class="fc-sm" id="cityFilter">
-          <option value="">كل المدن</option>
-          <option value="الشروق">الشروق</option>
-          <option value="العاشر من رمضان">العاشر من رمضان</option>
-          <option value="المستقبل">المستقبل</option>
-          <option value="بدر">بدر</option>
-        </select>
+        <select class="fc-sm" id="cityFilter"><option value="">كل المدن</option><option value="الشروق">الشروق</option><option value="العاشر من رمضان">العاشر من رمضان</option><option value="المستقبل">المستقبل</option><option value="بدر">بدر</option></select>
         <button class="btn-ref" id="refreshBtn"><i data-lucide="refresh-cw"></i>تحديث</button>
       </div>
       <div class="tbl-wrap">
         <table class="tbl">
-          <thead><tr>
-            <th style="width:36px">#</th>
-            <th style="width:80px">الحضور</th>
-            <th>الاسم</th>
-            <th style="width:50px">العمر</th>
-            <th style="width:140px">أيام التدريب</th>
-            <th style="width:88px">الساعة</th>
-            <th style="width:62px">Level</th>
-            <th style="width:72px">الحصص</th>
-            <th style="width:90px"></th>
-          </tr></thead>
+          <thead><tr><th style="width:36px">#</th><th style="width:80px">الحضور</th><th>الاسم</th><th style="width:50px">العمر</th><th style="width:140px">أيام التدريب</th><th style="width:88px">الساعة</th><th style="width:62px">Level</th><th style="width:72px">الحصص</th><th style="width:90px"></th></tr></thead>
           <tbody id="swimmersBody"><tr><td colspan="9" class="no-data">جاري التحميل...</td></tr></tbody>
         </table>
       </div>
@@ -592,7 +535,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
   </div>
 
-  <!-- CREATE -->
   <div class="panel" id="panel-create">
     <div class="gc">
       <div class="gc-title"><i data-lucide="user-plus"></i> اشتراك جديد</div>
@@ -602,21 +544,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
           <div class="fld"><label><i data-lucide="calendar"></i> تاريخ الميلاد</label><input type="date" class="fc" id="c_dob" required/></div>
           <div class="fld"><label><i data-lucide="phone"></i> رقم التواصل</label><input type="tel" class="fc" id="c_phone" placeholder="01XXXXXXXXX" required/></div>
           <div class="fld"><label><i data-lucide="clock"></i> ساعة التدريب</label><input type="time" class="fc" id="c_time"/></div>
-          <div class="fld"><label><i data-lucide="help-circle"></i> مارس السباحة قبل؟</label>
-            <select class="fc" id="c_swam"><option value="">اختر</option><option value="yes">نعم</option><option value="no">لا</option></select></div>
-          <div class="fld"><label><i data-lucide="target"></i> الهدف</label>
-            <select class="fc" id="c_goal"><option value="">اختر الهدف</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
+          <div class="fld"><label><i data-lucide="help-circle"></i> مارس السباحة قبل؟</label><select class="fc" id="c_swam"><option value="">اختر</option><option value="yes">نعم</option><option value="no">لا</option></select></div>
+          <div class="fld"><label><i data-lucide="target"></i> الهدف</label><select class="fc" id="c_goal"><option value="">اختر الهدف</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
           <div class="fld"><label><i data-lucide="calendar-plus"></i> تاريخ بداية الاشتراك</label><input type="date" class="fc" id="c_startDate"/></div>
           <div class="fld"><label><i data-lucide="calendar-x-2"></i> نهاية الاشتراك</label><input type="date" class="fc" id="c_expiry"/></div>
           <div class="fld"><label><i data-lucide="user-check"></i> المدرب المسؤول</label><input type="text" class="fc" id="c_trainer" placeholder="اسم المدرب"/></div>
-          <div class="fld"><label><i data-lucide="map-pin"></i> المدينة</label>
-            <select class="fc" id="c_city">
-              <option value="">اختر المدينة</option>
-              <option value="الشروق">الشروق</option>
-              <option value="العاشر من رمضان">العاشر من رمضان</option>
-              <option value="المستقبل">المستقبل</option>
-              <option value="بدر">بدر</option>
-            </select></div>
+          <div class="fld"><label><i data-lucide="map-pin"></i> المدينة</label><select class="fc" id="c_city"><option value="">اختر المدينة</option><option value="الشروق">الشروق</option><option value="العاشر من رمضان">العاشر من رمضان</option><option value="المستقبل">المستقبل</option><option value="بدر">بدر</option></select></div>
         </div>
         <div class="fld mt-16">
           <label><i data-lucide="layers-3"></i> عدد الحصص</label>
@@ -627,10 +560,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
           </div>
         </div>
         <div id="c_daysWrap" class="fld mt-12" style="display:none">
-          <label style="display:flex;align-items:center;justify-content:space-between">
-            <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
-            <span class="days-ctr" id="daysCtr"></span>
-          </label>
+          <label style="display:flex;align-items:center;justify-content:space-between"><span><i data-lucide="calendar-check"></i> أيام التدريب</span><span class="days-ctr" id="daysCtr"></span></label>
           <div class="days-grid">
             <label class="day-cb"><input type="checkbox" name="c_days" value="0"/><span>أحد</span></label>
             <label class="day-cb"><input type="checkbox" name="c_days" value="1"/><span>اثنين</span></label>
@@ -651,7 +581,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
   </div>
 
-  <!-- ATTENDANCE -->
   <div class="panel" id="panel-attendance">
     <div class="gc">
       <div class="gc-title"><i data-lucide="calendar-check"></i> تسجيل الحضور</div>
@@ -681,9 +610,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
           <span class="mn-lbl" id="monLbl">—</span>
           <button class="mn-btn" id="nextMon">‹</button>
         </div>
-        <div class="cal-hd">
-          <div class="cal-hd-d">أحد</div><div class="cal-hd-d">اثنين</div><div class="cal-hd-d">ثلاثاء</div><div class="cal-hd-d">أربعاء</div><div class="cal-hd-d">خميس</div><div class="cal-hd-d">جمعة</div><div class="cal-hd-d">سبت</div>
-        </div>
+        <div class="cal-hd"><div class="cal-hd-d">أحد</div><div class="cal-hd-d">اثنين</div><div class="cal-hd-d">ثلاثاء</div><div class="cal-hd-d">أربعاء</div><div class="cal-hd-d">خميس</div><div class="cal-hd-d">جمعة</div><div class="cal-hd-d">سبت</div></div>
         <div class="cal-grid" id="calGrid"></div>
         <div class="sel-lbl" id="selLbl">اضغط على يوم تدريب لتحديده</div>
         <div class="att-actions">
@@ -703,7 +630,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
   </div>
 
-  <!-- ══ SCHEDULE ══ -->
   <div class="panel" id="panel-schedule">
     <div class="gc">
       <div class="sch-header">
@@ -713,27 +639,32 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
         </div>
         <button class="sch-add-btn" id="schAddBtn"><i data-lucide="plus"></i> إضافة مجموعة</button>
       </div>
-
-      <div class="sch-summary">
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalGroups">0</div><div class="sch-sum-lbl">مجموعات</div></div>
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalPeople">0</div><div class="sch-sum-lbl">متدربون</div></div>
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schFreeSlots">—</div><div class="sch-sum-lbl">وقت فاضي</div></div>
+      <div class="sch-day-tabs" id="schDayTabs">
+        <button class="sch-day-tab active" data-day="0"><span>أحد</span><span class="sch-day-cnt" id="schDC0">0</span></button>
+        <button class="sch-day-tab" data-day="1"><span>اثنين</span><span class="sch-day-cnt" id="schDC1">0</span></button>
+        <button class="sch-day-tab" data-day="2"><span>ثلاثاء</span><span class="sch-day-cnt" id="schDC2">0</span></button>
+        <button class="sch-day-tab" data-day="3"><span>أربعاء</span><span class="sch-day-cnt" id="schDC3">0</span></button>
+        <button class="sch-day-tab" data-day="4"><span>خميس</span><span class="sch-day-cnt" id="schDC4">0</span></button>
+        <button class="sch-day-tab" data-day="5"><span>جمعة</span><span class="sch-day-cnt" id="schDC5">0</span></button>
+        <button class="sch-day-tab" data-day="6"><span>سبت</span><span class="sch-day-cnt" id="schDC6">0</span></button>
       </div>
-
+      <div class="sch-summary">
+        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalGroups">0</div><div class="sch-sum-lbl">مجموعات اليوم</div></div>
+        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalPeople">0</div><div class="sch-sum-lbl">متدربون</div></div>
+        <div class="sch-sum-card"><div class="sch-sum-num" id="schFreeSlots">—</div><div class="sch-sum-lbl">ساعات فاضية</div></div>
+      </div>
       <div class="sch-legend">
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(55,138,221,.25);border:1px solid #378ADD"></div> فرد واحد</div>
+        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.3)"></div> فارغ</div>
+        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(55,138,221,.25);border:1px solid #378ADD"></div> فرد</div>
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(99,153,34,.25);border:1px solid #639922"></div> ٣ أفراد</div>
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(127,119,221,.25);border:1px solid #7F77DD"></div> ٥ أفراد</div>
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(186,117,23,.25);border:1px solid #BA7517"></div> مجموعة مخصصة</div>
+        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(186,117,23,.25);border:1px solid #BA7517"></div> مخصص</div>
+        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.2)"></div> محظور</div>
       </div>
-
-      <div class="sch-timeline" id="schTimeline">
-        <div class="sch-empty"><i data-lucide="calendar-off"></i><div class="sch-empty-txt">لا توجد مجموعات — اضغط "إضافة مجموعة"</div></div>
-      </div>
+      <div class="sch-hour-tl" id="schHourTimeline"></div>
     </div>
   </div>
 
-  <!-- LEVELS -->
   <div class="panel" id="panel-levels">
     <div class="gc">
       <div class="gc-title"><i data-lucide="bar-chart-2"></i> مستويات الأكاديمية</div>
@@ -760,7 +691,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </main>
 
-<!-- EDIT MODAL -->
 <div class="mo" id="editModal">
   <div class="mo-card">
     <div class="mo-drag"></div>
@@ -772,8 +702,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
       <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
       <div class="fld"><label>وقت التدريب</label><input type="time" class="fc" id="e_time"/></div>
-      <div class="fld"><label>الهدف</label>
-        <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
+      <div class="fld"><label>الهدف</label><select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
       <div class="fld"><label>الحالة</label><select class="fc" id="e_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
       <div class="fld"><label>نهاية الاشتراك</label><input type="date" class="fc" id="e_expiry"/></div>
       <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="e_trainer"/></div>
@@ -787,10 +716,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       </div>
     </div>
     <div class="fld mt-12" id="e_daysWrap">
-      <label style="display:flex;align-items:center;justify-content:space-between">
-        <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
-        <span class="days-ctr" id="eDaysCtr"></span>
-      </label>
+      <label style="display:flex;align-items:center;justify-content:space-between"><span><i data-lucide="calendar-check"></i> أيام التدريب</span><span class="days-ctr" id="eDaysCtr"></span></label>
       <div class="days-grid">
         <label class="day-cb"><input type="checkbox" name="e_days" value="0"/><span>أحد</span></label>
         <label class="day-cb"><input type="checkbox" name="e_days" value="1"/><span>اثنين</span></label>
@@ -803,13 +729,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
     <div class="fld rest-wrap mt-12" id="e_restWrap">
       <label><i data-lucide="moon"></i> يوم الراحة الأسبوعي</label>
-      <select class="fc" id="e_restDay">
-        <option value="">اختر يوم الراحة</option>
-        <option value="0">الأحد</option><option value="1">الاثنين</option>
-        <option value="2">الثلاثاء</option><option value="3">الأربعاء</option>
-        <option value="4">الخميس</option><option value="5">الجمعة</option>
-        <option value="6">السبت</option>
-      </select>
+      <select class="fc" id="e_restDay"><option value="">اختر يوم الراحة</option><option value="0">الأحد</option><option value="1">الاثنين</option><option value="2">الثلاثاء</option><option value="3">الأربعاء</option><option value="4">الخميس</option><option value="5">الجمعة</option><option value="6">السبت</option></select>
     </div>
     <div class="rating-sec">
       <div class="rating-title"><i data-lucide="star"></i> التقييم (1–5 نجوم)</div>
@@ -827,7 +747,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- CONFIRM DELETE -->
 <div class="conf-ov" id="confirmModal">
   <div class="conf-card">
     <div class="conf-ic"><i data-lucide="trash-2"></i></div>
@@ -840,7 +759,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- SCHEDULE MODAL -->
 <div class="sch-mo" id="schModal">
   <div class="sch-mo-card">
     <div class="mo-drag"></div>
@@ -848,34 +766,40 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="mo-title" id="schModalTitle"><i data-lucide="layout-grid"></i> إضافة مجموعة</div>
       <button class="mo-close" onclick="closeSchModal()"><i data-lucide="x"></i></button>
     </div>
-
     <div class="fld mt-4">
-      <label><i data-lucide="users"></i> نوع المجموعة</label>
-      <div class="sch-type-grid">
-        <button class="sch-type-btn" id="scht1" onclick="schSelectType(1)"><i data-lucide="user"></i> فرد واحد</button>
-        <button class="sch-type-btn" id="scht3" onclick="schSelectType(3)"><i data-lucide="users"></i> ٣ أفراد</button>
-        <button class="sch-type-btn" id="scht5" onclick="schSelectType(5)"><i data-lucide="users"></i> ٥ أفراد</button>
-        <button class="sch-type-btn" id="scht0" onclick="schSelectType(0)"><i data-lucide="sliders"></i> مخصص</button>
+      <label><i data-lucide="calendar-check"></i> أيام المجموعة</label>
+      <div class="sch-modal-days">
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="0"/><span>أحد</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="1"/><span>اثنين</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="2"/><span>ثلاثاء</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="3"/><span>أربعاء</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="4"/><span>خميس</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="5"/><span>جمعة</span></label>
+        <label class="sch-modal-day"><input type="checkbox" name="sch_days" value="6"/><span>سبت</span></label>
       </div>
     </div>
-
+    <div class="fld mt-12">
+      <label><i data-lucide="users"></i> نوع المجموعة</label>
+      <div class="sch-type-grid">
+        <button class="sch-type-btn" id="scht1" onclick="schSelectType(1)">فرد واحد</button>
+        <button class="sch-type-btn" id="scht3" onclick="schSelectType(3)">٣ أفراد</button>
+        <button class="sch-type-btn" id="scht5" onclick="schSelectType(5)">٥ أفراد</button>
+        <button class="sch-type-btn" id="scht0" onclick="schSelectType(0)">مخصص</button>
+      </div>
+    </div>
     <div class="fld mt-12" id="schCustomWrap" style="display:none">
       <label><i data-lucide="hash"></i> عدد الأفراد</label>
       <input type="number" class="fc" id="schCustomCount" min="1" max="30" placeholder="مثال: 7" oninput="schBuildNames()"/>
     </div>
-
     <div class="fld mt-12">
       <label><i data-lucide="clock"></i> ساعة التدريب</label>
       <input type="time" class="fc" id="schTime"/>
     </div>
-
     <div class="fld mt-12">
       <label><i data-lucide="user-check"></i> أسماء المتدربين <span style="font-size:.68rem;color:var(--tm)">(اختياري)</span></label>
       <div class="sch-names-list" id="schNamesList"><span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span></div>
     </div>
-
-    <div class="sch-conflict" id="schConflict">⚠️ يوجد مجموعة بنفس الوقت — اختر وقتاً مختلفاً</div>
-
+    <div class="sch-conflict" id="schConflict">⚠️ يوجد مجموعة بنفس الوقت في واحد من الأيام المختارة</div>
     <button class="btn-pri mt-16" onclick="schSave()"><i data-lucide="save"></i><span>حفظ المجموعة</span></button>
   </div>
 </div>
@@ -883,253 +807,144 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastMsg">تم</span></div>
 
 <script>
-const API = 'https://backend-mohsen-swimming-academy.vercel.app/api';
-const DAYS = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
-const MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-const SESS_DAYS = {'8':2,'12':3};
+const API='https://backend-mohsen-swimming-academy.vercel.app/api';
+const DAYS=['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
+const MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const SESS_DAYS={'8':2,'12':3};
+let token=localStorage.getItem('aq_token')||null,trainer=null,page=1;
+let swimmer=null,viewYear=new Date().getFullYear(),viewMonth=new Date().getMonth()+1;
+let monMap={},selDate=null,editId=null,delId=null,delName='',todayPanelOpen=false;
 
-let token = localStorage.getItem('aq_token') || null;
-let trainer = null;
-let page = 1;
-let swimmer = null, viewYear = new Date().getFullYear(), viewMonth = new Date().getMonth()+1;
-let monMap = {}, selDate = null;
-let editId = null, delId = null, delName = '';
-let todayPanelOpen = false;
-
-/* ══ SCHEDULE STATE ══ */
-const SCH_KEY = 'aqScheduleV2';
-let schGroups = JSON.parse(localStorage.getItem(SCH_KEY) || '[]');
-let schEditId = null;
-let schSelectedType = null;
-
-const SCH_STYLES = {
-  1: {bg:'rgba(55,138,221,.15)', border:'#378ADD', text:'#60b4ff', label:'فرد ١'},
-  3: {bg:'rgba(99,153,34,.15)',  border:'#639922', text:'#8fc94a', label:'٣ أفراد'},
-  5: {bg:'rgba(127,119,221,.15)',border:'#7F77DD', text:'#a78bfa', label:'٥ أفراد'},
-  0: {bg:'rgba(186,117,23,.15)', border:'#BA7517', text:'#ffb547', label:'مخصص'},
+/* ══ SCHEDULE ══ */
+const SCH_KEY='aqScheduleV3';
+let schGroups=JSON.parse(localStorage.getItem(SCH_KEY)||'[]');
+let schEditId=null,schSelectedType=null,schViewDay=new Date().getDay();
+const SCH_STYLES={
+  1:{bg:'rgba(55,138,221,.15)',border:'#378ADD',text:'#60b4ff',label:'فرد ١'},
+  3:{bg:'rgba(99,153,34,.15)',border:'#639922',text:'#8fc94a',label:'٣ أفراد'},
+  5:{bg:'rgba(127,119,221,.15)',border:'#7F77DD',text:'#a78bfa',label:'٥ أفراد'},
+  0:{bg:'rgba(186,117,23,.15)',border:'#BA7517',text:'#ffb547',label:'مخصص'},
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
-  token ? initApp() : showLogin();
-  bindUI();
-  setTodayDateLabel();
-  schRender();
-  schUpdateMonthLabel();
-});
+document.addEventListener('DOMContentLoaded',()=>{lucide.createIcons();token?initApp():showLogin();bindUI();setTodayDateLabel();schAutoToday();schRender();});
 
 function setTodayDateLabel(){
-  const now = new Date();
-  const el = document.getElementById('tpDateSub');
-  if(el) el.textContent = `${DAYS[now.getDay()]} ${now.getDate()} ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+  const n=new Date(),el=$('tpDateSub');
+  if(el)el.textContent=`${DAYS[n.getDay()]} ${n.getDate()} ${MONTHS[n.getMonth()]} ${n.getFullYear()}`;
 }
 
 function bindUI(){
-  $('loginBtn').onclick = doLogin;
-  $('loginPass').addEventListener('keydown', e => e.key==='Enter' && doLogin());
-  $('logoutBtn').onclick = doLogout;
-
-  document.querySelectorAll('.dtb[data-tab], .bot-item[data-tab]').forEach(b => {
-    b.addEventListener('click', () => switchTab(b.dataset.tab));
-  });
-
-  let dSearch;
-  $('tableSearch').addEventListener('input', ()=>{clearTimeout(dSearch);dSearch=setTimeout(()=>{page=1;loadSwimmers();},380);});
-  $('cityFilter').addEventListener('change', ()=>{page=1;loadSwimmers();});
-  let refreshTimeout;
-  $('refreshBtn').onclick = () => {
-    clearTimeout(refreshTimeout);
-    $('refreshBtn').disabled = true;
-    refreshTimeout = setTimeout(() => { page=1; loadSwimmers(); $('refreshBtn').disabled=false; }, 500);
-  };
-
-  $('createForm').addEventListener('submit', doCreate);
-  document.querySelectorAll('input[name="c_sess"]').forEach(r=>r.addEventListener('change', onSessChange));
-  document.querySelectorAll('input[name="c_days"]').forEach(c=>c.addEventListener('change', onDaysChange));
-
-  $('attendSearchBtn').onclick = loadAttendSwimmer;
-  $('attendSearch').addEventListener('keydown', e=>e.key==='Enter'&&loadAttendSwimmer());
-  $('prevMon').onclick = ()=>navMon(-1);
-  $('nextMon').onclick = ()=>navMon(1);
-  $('mPBtn').onclick  = ()=>markMonth('present');
-  $('mABtn').onclick  = ()=>markMonth('absent');
-  $('mMBtn').onclick  = openMakeupPicker;
-  $('confirmMakeupBtn').onclick = confirmMakeup;
-  $('mDelBtn').onclick = delMonRec;
-
-  $('closeEdit').onclick = ()=>closeModal('editModal');
-  $('editModal').addEventListener('click', e=>e.target===e.currentTarget&&closeModal('editModal'));
-  $('saveEditBtn').onclick = doSaveEdit;
-  $('saveRatingBtn').onclick = doSaveRating;
-  $('cancelDel').onclick = ()=>closeModal('confirmModal');
-  $('doDel').onclick = doDelete;
-
+  $('loginBtn').onclick=doLogin;
+  $('loginPass').addEventListener('keydown',e=>e.key==='Enter'&&doLogin());
+  $('logoutBtn').onclick=doLogout;
+  document.querySelectorAll('.dtb[data-tab],.bot-item[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+  let dS;$('tableSearch').addEventListener('input',()=>{clearTimeout(dS);dS=setTimeout(()=>{page=1;loadSwimmers();},380);});
+  $('cityFilter').addEventListener('change',()=>{page=1;loadSwimmers();});
+  let rT;$('refreshBtn').onclick=()=>{clearTimeout(rT);$('refreshBtn').disabled=true;rT=setTimeout(()=>{page=1;loadSwimmers();$('refreshBtn').disabled=false;},500);};
+  $('createForm').addEventListener('submit',doCreate);
+  document.querySelectorAll('input[name="c_sess"]').forEach(r=>r.addEventListener('change',onSessChange));
+  document.querySelectorAll('input[name="c_days"]').forEach(c=>c.addEventListener('change',onDaysChange));
+  $('attendSearchBtn').onclick=loadAttendSwimmer;
+  $('attendSearch').addEventListener('keydown',e=>e.key==='Enter'&&loadAttendSwimmer());
+  $('prevMon').onclick=()=>navMon(-1);$('nextMon').onclick=()=>navMon(1);
+  $('mPBtn').onclick=()=>markMonth('present');$('mABtn').onclick=()=>markMonth('absent');
+  $('mMBtn').onclick=openMakeupPicker;$('confirmMakeupBtn').onclick=confirmMakeup;$('mDelBtn').onclick=delMonRec;
+  $('closeEdit').onclick=()=>closeModal('editModal');
+  $('editModal').addEventListener('click',e=>e.target===e.currentTarget&&closeModal('editModal'));
+  $('saveEditBtn').onclick=doSaveEdit;$('saveRatingBtn').onclick=doSaveRating;
+  $('cancelDel').onclick=()=>closeModal('confirmModal');$('doDel').onclick=doDelete;
   let sy=0;
-  $('editModal').addEventListener('touchstart', e=>{sy=e.touches[0].clientY;},{passive:true});
-  $('editModal').addEventListener('touchend', e=>{if(e.changedTouches[0].clientY-sy>80)closeModal('editModal');},{passive:true});
-
-  $('todayBtn').onclick = toggleTodayPanel;
-  $('todayClose').onclick = closeTodayPanel;
-  $('todayOverlay').onclick = closeTodayPanel;
-  document.addEventListener('keydown', e => { if(e.key==='Escape' && todayPanelOpen) closeTodayPanel(); });
-
-  $('schAddBtn').onclick = schOpenAdd;
-  $('schModal').addEventListener('click', e => e.target === e.currentTarget && closeSchModal());
+  $('editModal').addEventListener('touchstart',e=>{sy=e.touches[0].clientY;},{passive:true});
+  $('editModal').addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-sy>80)closeModal('editModal');},{passive:true});
+  $('todayBtn').onclick=toggleTodayPanel;$('todayClose').onclick=closeTodayPanel;$('todayOverlay').onclick=closeTodayPanel;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&todayPanelOpen)closeTodayPanel();});
+  $('schAddBtn').onclick=schOpenAdd;
+  $('schModal').addEventListener('click',e=>e.target===e.currentTarget&&closeSchModal());
+  document.querySelectorAll('.sch-day-tab').forEach(b=>b.addEventListener('click',()=>{schViewDay=Number(b.dataset.day);schRender();}));
 }
 
 /* ══ TODAY PANEL ══ */
-function toggleTodayPanel(){ todayPanelOpen ? closeTodayPanel() : openTodayPanel(); }
-function openTodayPanel(){
-  todayPanelOpen=true; $('todayPanel').classList.add('open'); $('todayOverlay').classList.add('open');
-  document.body.style.overflow='hidden'; loadTodaySwimmers(); lucide.createIcons();
-}
-function closeTodayPanel(){
-  todayPanelOpen=false; $('todayPanel').classList.remove('open'); $('todayOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
+function toggleTodayPanel(){todayPanelOpen?closeTodayPanel():openTodayPanel();}
+function openTodayPanel(){todayPanelOpen=true;$('todayPanel').classList.add('open');$('todayOverlay').classList.add('open');document.body.style.overflow='hidden';loadTodaySwimmers();lucide.createIcons();}
+function closeTodayPanel(){todayPanelOpen=false;$('todayPanel').classList.remove('open');$('todayOverlay').classList.remove('open');document.body.style.overflow='';}
 async function loadTodaySwimmers(){
   $('tpContent').innerHTML='<div class="tp-loading"><div class="tp-spinner"></div> جاري التحميل...</div>';
   try{
-    const d=await api('/swimmers?limit=9999');
-    const all=d.data||[];
-    const todayIdx=new Date().getDay();
-    const todaySwimmers=all.filter(s=>s.isActive&&Array.isArray(s.trainingDays)&&s.trainingDays.includes(todayIdx));
-    $('tpTotal').textContent=todaySwimmers.length;
-    $('tpActive').textContent=todaySwimmers.filter(s=>s.isActive).length;
-    if(!todaySwimmers.length){
-      $('tpContent').innerHTML=`<div class="tp-empty"><div class="tp-empty-ic"><i data-lucide="calendar-x"></i></div><div class="tp-empty-txt">لا يوجد متدربون اليوم</div></div>`;
-      $('tpGroups').textContent='0'; lucide.createIcons(); return;
-    }
-    const groups={};
-    todaySwimmers.forEach(s=>{
-      const k=s.trainingTime||'بدون وقت';
-      const lbl=s.trainingTime?to12Hour(s.trainingTime):'بدون وقت';
-      if(!groups[k])groups[k]={label:lbl,swimmers:[]};
-      groups[k].swimmers.push(s);
-    });
-    const sortedKeys=Object.keys(groups).sort((a,b)=>{if(a==='بدون وقت')return 1;if(b==='بدون وقت')return -1;return a.localeCompare(b);});
-    $('tpGroups').textContent=sortedKeys.length;
-    let html='';
-    sortedKeys.forEach(key=>{
-      const grp=groups[key];
-      html+=`<div class="tp-time-group"><div class="tp-time-label"><div class="tp-time-dot"></div><span class="tp-time-val">${grp.label}</span><span class="tp-time-cnt">${grp.swimmers.length} متدرب</span></div><div class="tp-cards">${grp.swimmers.map(s=>{const att=s.sessionsAttended||0;const tot=s.sessionsCount||0;return`<div class="tp-card" onclick="goToAttendance('${s.subscriptionId}')"><div class="tp-card-av">${(s.fullName||'?').charAt(0)}</div><div class="tp-card-info"><div class="tp-card-name">${s.fullName||'—'}</div><div class="tp-card-id">#${s.subscriptionId||''}</div></div><div class="tp-card-sess"><span class="tp-card-att">${att}<span style="font-size:.65rem;color:var(--tm);-webkit-text-fill-color:var(--tm)">/${tot}</span></span><span class="tp-card-att-lbl">حصة</span></div></div>`;}).join('')}</div></div>`;
-    });
-    $('tpContent').innerHTML=html; lucide.createIcons();
+    const d=await api('/swimmers?limit=9999'),all=d.data||[];
+    const ti=new Date().getDay(),todayS=all.filter(s=>s.isActive&&Array.isArray(s.trainingDays)&&s.trainingDays.includes(ti));
+    $('tpTotal').textContent=todayS.length;$('tpActive').textContent=todayS.filter(s=>s.isActive).length;
+    if(!todayS.length){$('tpContent').innerHTML=`<div class="tp-empty"><div class="tp-empty-ic"><i data-lucide="calendar-x"></i></div><div class="tp-empty-txt">لا يوجد متدربون اليوم</div></div>`;$('tpGroups').textContent='0';lucide.createIcons();return;}
+    const groups={};todayS.forEach(s=>{const k=s.trainingTime||'بدون',lbl=s.trainingTime?to12Hour(s.trainingTime):'بدون وقت';if(!groups[k])groups[k]={label:lbl,swimmers:[]};groups[k].swimmers.push(s);});
+    const sk=Object.keys(groups).sort((a,b)=>{if(a==='بدون وقت')return 1;if(b==='بدون وقت')return -1;return a.localeCompare(b);});
+    $('tpGroups').textContent=sk.length;
+    let html='';sk.forEach(key=>{const g=groups[key];html+=`<div class="tp-time-group"><div class="tp-time-label"><div class="tp-time-dot"></div><span class="tp-time-val">${g.label}</span><span class="tp-time-cnt">${g.swimmers.length} متدرب</span></div><div class="tp-cards">${g.swimmers.map(s=>{const att=s.sessionsAttended||0,tot=s.sessionsCount||0;return`<div class="tp-card" onclick="goToAttendance('${s.subscriptionId}')"><div class="tp-card-av">${(s.fullName||'?').charAt(0)}</div><div class="tp-card-info"><div class="tp-card-name">${s.fullName||'—'}</div><div class="tp-card-id">#${s.subscriptionId||''}</div></div><div class="tp-card-sess"><span class="tp-card-att">${att}<span style="font-size:.65rem;color:var(--tm)">/${tot}</span></span><span class="tp-card-att-lbl">حصة</span></div></div>`;}).join('')}</div></div>`;});
+    $('tpContent').innerHTML=html;lucide.createIcons();
   }catch(e){$('tpContent').innerHTML=`<div class="tp-empty"><div class="tp-empty-txt">خطأ: ${e.message}</div></div>`;}
 }
-function goToAttendance(subId){ closeTodayPanel(); $('attendSearch').value=subId; switchTab('attendance'); loadAttendSwimmer(); }
+function goToAttendance(subId){closeTodayPanel();$('attendSearch').value=subId;switchTab('attendance');loadAttendSwimmer();}
 
 /* ══ LOGIN ══ */
-function showLogin(){ show('loginScreen'); hide('mainNav'); hide('mainApp'); hide('botNav'); }
+function showLogin(){show('loginScreen');hide('mainNav');hide('mainApp');hide('botNav');}
 async function doLogin(){
-  const user=$('loginUser').value.trim(), pass=$('loginPass').value;
-  $('loginErr').classList.remove('show');
-  $('loginBtn').classList.add('loading'); $('loginBtnTxt').textContent='جاري الدخول...';
-  try{
-    const res=await api('/auth/login','POST',{username:user,password:pass},false);
-    token=res.token; trainer=res.trainer;
-    localStorage.setItem('aq_token',token); localStorage.setItem('aq_trainer',JSON.stringify(trainer));
-    initApp();
-  }catch(e){
-    $('loginErrMsg').textContent=e.message||'بيانات غير صحيحة';
-    $('loginErr').classList.add('show');
-    if(typeof gsap!=='undefined') gsap.fromTo('.login-card',{x:-6},{x:0,duration:.4,ease:'elastic.out(1.5,.3)'});
-  }finally{ $('loginBtn').classList.remove('loading'); $('loginBtnTxt').textContent='تسجيل الدخول'; lucide.createIcons(); }
+  const u=$('loginUser').value.trim(),p=$('loginPass').value;
+  $('loginErr').classList.remove('show');$('loginBtn').classList.add('loading');$('loginBtnTxt').textContent='جاري الدخول...';
+  try{const res=await api('/auth/login','POST',{username:u,password:p},false);token=res.token;trainer=res.trainer;localStorage.setItem('aq_token',token);localStorage.setItem('aq_trainer',JSON.stringify(trainer));initApp();}
+  catch(e){$('loginErrMsg').textContent=e.message||'بيانات غير صحيحة';$('loginErr').classList.add('show');if(typeof gsap!=='undefined')gsap.fromTo('.login-card',{x:-6},{x:0,duration:.4,ease:'elastic.out(1.5,.3)'});}
+  finally{$('loginBtn').classList.remove('loading');$('loginBtnTxt').textContent='تسجيل الدخول';lucide.createIcons();}
 }
-function doLogout(){ token=null; trainer=null; localStorage.removeItem('aq_token'); localStorage.removeItem('aq_trainer'); showLogin(); }
+function doLogout(){token=null;trainer=null;localStorage.removeItem('aq_token');localStorage.removeItem('aq_trainer');showLogin();}
 
 /* ══ INIT ══ */
 function initApp(){
   if(!trainer){try{trainer=JSON.parse(localStorage.getItem('aq_trainer'));}catch(e){}}
-  hide('loginScreen'); show('mainNav','flex'); show('mainApp','block'); show('botNav','flex');
-  if(trainer){
-    $('trainerNm').textContent=trainer.name||'الكابتن';
-    $('trainerAv').textContent=(trainer.name||'ك').charAt(0);
-    $('c_trainer').value=trainer.name||'';
-  }
-  lucide.createIcons(); loadSwimmers(); loadStats();
+  hide('loginScreen');show('mainNav','flex');show('mainApp','block');show('botNav','flex');
+  if(trainer){$('trainerNm').textContent=trainer.name||'الكابتن';$('trainerAv').textContent=(trainer.name||'ك').charAt(0);$('c_trainer').value=trainer.name||'';}
+  lucide.createIcons();loadSwimmers();loadStats();
 }
-
 function switchTab(tab){
   document.querySelectorAll('.dtb[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
   document.querySelectorAll('.bot-item[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===`panel-${tab}`));
+  if(tab==='schedule')schRender();
 }
 
 /* ══ STATS ══ */
 async function loadStats(){
-  try{
-    const d=await api('/swimmers?limit=9999');
-    const all=d.data||[];
-    $('stTotal').textContent=d.total??all.length;
-    $('stActive').textContent=all.filter(s=>s.isActive).length;
-    const todayDayIndex=new Date().getDay();
-    const todayCount=all.filter(s=>s.isActive&&Array.isArray(s.trainingDays)&&s.trainingDays.includes(todayDayIndex)).length;
-    $('stToday').textContent=todayCount;
-    $('todayBtnCount').textContent=todayCount;
-    $('todayPulse').style.display=todayCount>0?'block':'none';
-  }catch(e){}
+  try{const d=await api('/swimmers?limit=9999'),all=d.data||[];$('stTotal').textContent=d.total??all.length;$('stActive').textContent=all.filter(s=>s.isActive).length;const ti=new Date().getDay(),tc=all.filter(s=>s.isActive&&Array.isArray(s.trainingDays)&&s.trainingDays.includes(ti)).length;$('stToday').textContent=tc;$('todayBtnCount').textContent=tc;$('todayPulse').style.display=tc>0?'block':'none';}catch(e){}
 }
 
 /* ══ SWIMMERS ══ */
 async function loadSwimmers(){
-  const tbody=$('swimmersBody');
-  tbody.innerHTML=`<tr><td colspan="9" class="no-data">جاري التحميل...</td></tr>`;
+  const tbody=$('swimmersBody');tbody.innerHTML=`<tr><td colspan="9" class="no-data">جاري التحميل...</td></tr>`;
   try{
-    const search=$('tableSearch').value, city=$('cityFilter').value;
-    const qs=new URLSearchParams({search,page,limit:15});
-    if(city) qs.set('city',city);
+    const search=$('tableSearch').value,city=$('cityFilter').value,qs=new URLSearchParams({search,page,limit:15});if(city)qs.set('city',city);
     const d=await api('/swimmers?'+qs);
-    if(!d.data?.length){ tbody.innerHTML=`<tr><td colspan="9" class="no-data">لا توجد نتائج</td></tr>`; $('pagination').innerHTML=''; return; }
-    const now=new Date(); const cy=now.getFullYear(), cm=now.getMonth()+1;
-    const monthDataArr=await Promise.all(d.data.map(s=>api(`/attendance/${s.subscriptionId}/month?year=${cy}&month=${cm}`).then(r=>({id:s.subscriptionId,map:r.statusMap||{}})).catch(()=>({id:s.subscriptionId,map:{}}))));
-    const monthDataMap={};
-    monthDataArr.forEach(m=>{monthDataMap[m.id]=m.map;});
-    const DAYS_S=['أحد','اثن','ثلا','أربع','خميس','جمعة','سبت'];
-    const offset=(page-1)*15;
+    if(!d.data?.length){tbody.innerHTML=`<tr><td colspan="9" class="no-data">لا توجد نتائج</td></tr>`;$('pagination').innerHTML='';return;}
+    const now=new Date(),cy=now.getFullYear(),cm=now.getMonth()+1;
+    const mDArr=await Promise.all(d.data.map(s=>api(`/attendance/${s.subscriptionId}/month?year=${cy}&month=${cm}`).then(r=>({id:s.subscriptionId,map:r.statusMap||{}})).catch(()=>({id:s.subscriptionId,map:{}}))));
+    const mDM={};mDArr.forEach(m=>{mDM[m.id]=m.map;});
+    const DS=['أحد','اثن','ثلا','أربع','خميس','جمعة','سبت'],off=(page-1)*15;
     tbody.innerHTML=d.data.map((s,i)=>{
-      const mMap=monthDataMap[s.subscriptionId]||{};
-      const att=Object.values(mMap).filter(r=>r.status==='present').length;
-      const tot=s.sessionsCount??0;
-      const pct=tot?Math.round(att/tot*100):0;
-      const daysHtml=(s.trainingDays||[]).map(d=>`<span class="day-pip">${DAYS_S[d]}</span>`).join('');
-      const sessClass=tot===8?'s8':tot===12?'s12':'s24';
-      const lvHtml=s.level?`<span class="lvl-bdg">LV ${s.level}</span>`:'<span style="color:var(--tm);font-size:.72rem">—</span>';
-      return `<tr>
-        <td class="row-num">${offset+i+1}</td>
-        <td><div class="att-bar"><div class="att-nums"><span class="att-big">${att}</span><span class="att-sep">/</span><span class="att-tot">${tot}</span></div><div style="font-size:.58rem;color:var(--tm);margin-top:2px">حضور هذا الشهر</div><div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div></div></td>
-        <td><div class="name-cell"><span class="nm"><span style="width:6px;height:6px;border-radius:50%;background:${s.isActive?'var(--ok)':'var(--err)'};display:inline-block;margin-left:5px;vertical-align:middle"></span>${s.fullName}</span><span class="sub-id" style="font-size:.68rem;color:var(--teal)">${s.subscriptionId||''}</span></div></td>
-        <td style="color:var(--ts)">${s.age??'—'}</td>
-        <td><div class="days-wrap">${daysHtml||'—'}</div></td>
-        <td><span class="time-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${s.trainingTime?to12Hour(s.trainingTime):'—'}</span></td>
-        <td>${lvHtml}</td>
-        <td><span class="sess-bdg ${sessClass}">${tot} حصة</span></td>
-        <td><div class="act-btns">
-          <button class="act-btn ab-att" onclick="quickAttend('${s.subscriptionId}')" title="الحضور"><i data-lucide="calendar-check"></i></button>
-          <button class="act-btn ab-edit" onclick="openEdit('${s.subscriptionId}')" title="تعديل"><i data-lucide="pencil"></i></button>
-          <button class="act-btn ab-del" onclick="askDelete('${s.subscriptionId}','${esc(s.fullName)}')" title="حذف"><i data-lucide="trash-2"></i></button>
-        </div></td>
-      </tr>`;
+      const mM=mDM[s.subscriptionId]||{},att=Object.values(mM).filter(r=>r.status==='present').length,tot=s.sessionsCount||0,pct=tot?Math.round(att/tot*100):0;
+      const dH=(s.trainingDays||[]).map(d=>`<span class="day-pip">${DS[d]}</span>`).join('');
+      const sC=tot===8?'s8':tot===12?'s12':'s24';
+      const lvH=s.level?`<span class="lvl-bdg">LV ${s.level}</span>`:'<span style="color:var(--tm);font-size:.72rem">—</span>';
+      return`<tr><td class="row-num">${off+i+1}</td><td><div class="att-bar"><div class="att-nums"><span class="att-big">${att}</span><span class="att-sep">/</span><span class="att-tot">${tot}</span></div><div style="font-size:.58rem;color:var(--tm);margin-top:2px">الشهر</div><div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div></div></td><td><div class="name-cell"><span class="nm"><span style="width:6px;height:6px;border-radius:50%;background:${s.isActive?'var(--ok)':'var(--err)'};display:inline-block;margin-left:5px;vertical-align:middle"></span>${s.fullName}</span><span class="sub-id" style="font-size:.68rem;color:var(--teal)">${s.subscriptionId||''}</span></div></td><td style="color:var(--ts)">${s.age??'—'}</td><td><div class="days-wrap">${dH||'—'}</div></td><td><span class="time-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${s.trainingTime?to12Hour(s.trainingTime):'—'}</span></td><td>${lvH}</td><td><span class="sess-bdg ${sC}">${tot} حصة</span></td><td><div class="act-btns"><button class="act-btn ab-att" onclick="quickAttend('${s.subscriptionId}')" title="الحضور"><i data-lucide="calendar-check"></i></button><button class="act-btn ab-edit" onclick="openEdit('${s.subscriptionId}')" title="تعديل"><i data-lucide="pencil"></i></button><button class="act-btn ab-del" onclick="askDelete('${s.subscriptionId}','${esc(s.fullName)}')" title="حذف"><i data-lucide="trash-2"></i></button></div></td></tr>`;
     }).join('');
-    buildPag(d.pages); lucide.createIcons();
-  }catch(e){ tbody.innerHTML=`<tr><td colspan="9" class="no-data">خطأ: ${e.message}</td></tr>`; }
-  $('refreshBtn').disabled=true;
-  setTimeout(()=>$('refreshBtn').disabled=false,3000);
+    buildPag(d.pages);lucide.createIcons();
+  }catch(e){tbody.innerHTML=`<tr><td colspan="9" class="no-data">خطأ: ${e.message}</td></tr>`;}
+  $('refreshBtn').disabled=true;setTimeout(()=>$('refreshBtn').disabled=false,3000);
 }
-function buildPag(pages){
-  const el=$('pagination');
-  if(!pages||pages<=1){el.innerHTML='';return;}
-  el.innerHTML=Array.from({length:pages},(_,i)=>`<button class="pg-btn${i+1===page?' active':''}" onclick="page=${i+1};loadSwimmers()">${i+1}</button>`).join('');
-}
-function quickAttend(subId){ $('attendSearch').value=subId; switchTab('attendance'); loadAttendSwimmer(); }
+function buildPag(pages){const el=$('pagination');if(!pages||pages<=1){el.innerHTML='';return;}el.innerHTML=Array.from({length:pages},(_,i)=>`<button class="pg-btn${i+1===page?' active':''}" onclick="page=${i+1};loadSwimmers()">${i+1}</button>`).join('');}
+function quickAttend(subId){$('attendSearch').value=subId;switchTab('attendance');loadAttendSwimmer();}
 
 /* ══ CREATE ══ */
 function onSessChange(){
   const val=document.querySelector('input[name="c_sess"]:checked')?.value;
   document.querySelectorAll('input[name="c_days"]').forEach(c=>{c.checked=false;c.closest('.day-cb').classList.remove('locked');});
-  if(val==='24'){ $('c_daysWrap').style.display='none'; $('c_restWrap').classList.add('show'); }
-  else if(val){ $('c_daysWrap').style.display='block'; $('c_restWrap').classList.remove('show'); updateDaysUI(val,0); }
-  else{ $('c_daysWrap').style.display='none'; $('c_restWrap').classList.remove('show'); }
+  if(val==='24'){$('c_daysWrap').style.display='none';$('c_restWrap').classList.add('show');}
+  else if(val){$('c_daysWrap').style.display='block';$('c_restWrap').classList.remove('show');updateDaysUI(val,0);}
+  else{$('c_daysWrap').style.display='none';$('c_restWrap').classList.remove('show');}
 }
 function updateDaysUI(val,cnt){
   const max=SESS_DAYS[val]||0,rem=max-cnt,ctr=$('daysCtr'),hint=$('daysHint');
@@ -1139,428 +954,222 @@ function updateDaysUI(val,cnt){
   document.querySelectorAll('input[name="c_days"]').forEach(c=>c.closest('.day-cb').classList.toggle('locked',!c.checked&&cnt>=max));
 }
 function onDaysChange(e){
-  const val=document.querySelector('input[name="c_sess"]:checked')?.value;
-  const cnt=document.querySelectorAll('input[name="c_days"]:checked').length;
-  const max=SESS_DAYS[val]||0;
-  if(e.target.checked&&cnt>max){e.target.checked=false;return;}
-  if(val&&max) updateDaysUI(val,document.querySelectorAll('input[name="c_days"]:checked').length);
+  const val=document.querySelector('input[name="c_sess"]:checked')?.value,max=SESS_DAYS[val]||0;
+  if(e.target.checked&&document.querySelectorAll('input[name="c_days"]:checked').length>max){e.target.checked=false;return;}
+  if(val&&max)updateDaysUI(val,document.querySelectorAll('input[name="c_days"]:checked').length);
 }
 async function doCreate(e){
   e.preventDefault();
-  const name=$('c_name').value.trim(), dob=$('c_dob').value, phone=$('c_phone').value.trim();
-  const time=$('c_time').value, swam=$('c_swam').value, goal=$('c_goal').value;
-  const startDate=$('c_startDate').value, expiry=$('c_expiry').value;
-  const trainerV=$('c_trainer').value.trim(), city=$('c_city').value;
-  const sessVal=document.querySelector('input[name="c_sess"]:checked')?.value;
-  const restDay=$('c_restDay').value;
+  const name=$('c_name').value.trim(),dob=$('c_dob').value,phone=$('c_phone').value.trim(),time=$('c_time').value,swam=$('c_swam').value,goal=$('c_goal').value,startDate=$('c_startDate').value,expiry=$('c_expiry').value,trainerV=$('c_trainer').value.trim(),city=$('c_city').value;
+  const sessVal=document.querySelector('input[name="c_sess"]:checked')?.value,restDay=$('c_restDay').value;
   if(!name||!dob||!phone||!goal||!sessVal){toast('من فضلك اكمل الحقول المطلوبة','error');return;}
   let trainingDays=[];
-  if(sessVal==='24'){
-    if(!restDay){toast('اختر يوم الراحة','error');return;}
-    trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(restDay));
-  }else{
-    const req=SESS_DAYS[sessVal]||0;
-    const chk=[...document.querySelectorAll('input[name="c_days"]:checked')].map(c=>Number(c.value));
-    if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}
-    trainingDays=chk;
-  }
-  const btn=$('createBtn'); btn.classList.add('loading');
-  try{
-    const res=await api('/swimmers/register','POST',{fullName:name,dob,phone,swamBefore:swam||'no',goal,sessionsCount:Number(sessVal),trainingDays,trainingTime:time,trainerName:trainerV,subscriptionStart:startDate||null,subscriptionExpiry:expiry||null,city:city||null,restDay:sessVal==='24'?Number(restDay):null});
-    toast(`✅ تم الحفظ — رقم الاشتراك: ${res.data.subscriptionId}`);
-    $('createForm').reset(); $('c_daysWrap').style.display='none'; $('c_restWrap').classList.remove('show');
-    document.querySelectorAll('input[name="c_days"]').forEach(c=>{c.checked=false;c.closest('.day-cb').classList.remove('locked');});
-    loadSwimmers(); loadStats(); setTimeout(()=>switchTab('swimmers'),1200);
-  }catch(err){toast(err.message||'خطأ','error');}
-  finally{ btn.classList.remove('loading'); }
+  if(sessVal==='24'){if(!restDay){toast('اختر يوم الراحة','error');return;}trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(restDay));}
+  else{const req=SESS_DAYS[sessVal]||0,chk=[...document.querySelectorAll('input[name="c_days"]:checked')].map(c=>Number(c.value));if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}trainingDays=chk;}
+  const btn=$('createBtn');btn.classList.add('loading');
+  try{const res=await api('/swimmers/register','POST',{fullName:name,dob,phone,swamBefore:swam||'no',goal,sessionsCount:Number(sessVal),trainingDays,trainingTime:time,trainerName:trainerV,subscriptionStart:startDate||null,subscriptionExpiry:expiry||null,city:city||null,restDay:sessVal==='24'?Number(restDay):null});toast(`✅ تم الحفظ — رقم الاشتراك: ${res.data.subscriptionId}`);$('createForm').reset();$('c_daysWrap').style.display='none';$('c_restWrap').classList.remove('show');document.querySelectorAll('input[name="c_days"]').forEach(c=>{c.checked=false;c.closest('.day-cb').classList.remove('locked');});loadSwimmers();loadStats();setTimeout(()=>switchTab('swimmers'),1200);}
+  catch(err){toast(err.message||'خطأ','error');}
+  finally{btn.classList.remove('loading');}
 }
 
 /* ══ ATTENDANCE ══ */
 async function loadAttendSwimmer(){
-  const subId=$('attendSearch').value.trim(); if(!subId) return;
-  hide('monthWrap'); $('swimmerChip').classList.remove('show');
-  try{
-    const d=await api('/swimmers/'+subId); swimmer=d.data;
-    $('chipAv').textContent=(swimmer.fullName||'?').charAt(0);
-    $('chipName').textContent=swimmer.fullName||'—';
-    const displayTime=swimmer.trainingTime?to12Hour(swimmer.trainingTime):'';
-    $('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${displayTime?' — '+displayTime:''}`;
-    $('ccTot').textContent=swimmer.sessionsCount;
-    $('swimmerChip').classList.add('show');
-    viewYear=new Date().getFullYear(); viewMonth=new Date().getMonth()+1;
-    await loadMonthData(); lucide.createIcons();
-  }catch(e){ toast(e.message||'السباح غير موجود','error'); }
+  const subId=$('attendSearch').value.trim();if(!subId)return;hide('monthWrap');$('swimmerChip').classList.remove('show');
+  try{const d=await api('/swimmers/'+subId);swimmer=d.data;$('chipAv').textContent=(swimmer.fullName||'?').charAt(0);$('chipName').textContent=swimmer.fullName||'—';const dt=swimmer.trainingTime?to12Hour(swimmer.trainingTime):'';$('chipSub').textContent=`#${swimmer.subscriptionId} — ${swimmer.sessionsCount} حصة${dt?' — '+dt:''}`;$('ccTot').textContent=swimmer.sessionsCount;$('swimmerChip').classList.add('show');viewYear=new Date().getFullYear();viewMonth=new Date().getMonth()+1;await loadMonthData();lucide.createIcons();}
+  catch(e){toast(e.message||'السباح غير موجود','error');}
 }
 async function loadMonthData(){
-  try{
-    const d=await api(`/attendance/${swimmer.subscriptionId}/month?year=${viewYear}&month=${viewMonth}`);
-    monMap=d.statusMap||{};
-    const monthPresent=Object.values(monMap).filter(r=>r.status==='present'&&!r.isMakeup).length;
-    const monthMakeup=Object.values(monMap).filter(r=>r.status==='present'&&r.isMakeup).length;
-    $('ccAtt').textContent=monthPresent+monthMakeup;
-    renderCal(); show('monthWrap','block'); lucide.createIcons();
-  }catch(e){ toast(e.message||'خطأ','error'); }
+  try{const d=await api(`/attendance/${swimmer.subscriptionId}/month?year=${viewYear}&month=${viewMonth}`);monMap=d.statusMap||{};const mP=Object.values(monMap).filter(r=>r.status==='present'&&!r.isMakeup).length,mMk=Object.values(monMap).filter(r=>r.status==='present'&&r.isMakeup).length;$('ccAtt').textContent=mP+mMk;renderCal();show('monthWrap','block');lucide.createIcons();}
+  catch(e){toast(e.message||'خطأ','error');}
 }
 function renderCal(){
-  const grid=$('calGrid'), todayStr=lds(new Date());
-  const now=new Date(); now.setHours(0,0,0,0);
-  const last=new Date(viewYear,viewMonth,0).getDate();
-  const first=new Date(viewYear,viewMonth-1,1).getDay();
+  const grid=$('calGrid'),todayStr=lds(new Date()),nowD=new Date();nowD.setHours(0,0,0,0);
+  const last=new Date(viewYear,viewMonth,0).getDate(),first=new Date(viewYear,viewMonth-1,1).getDay();
   $('monLbl').textContent=`${MONTHS[viewMonth-1]} ${viewYear}`;
-  const nowD=new Date();
-  $('nextMon').disabled=(viewYear===nowD.getFullYear()&&viewMonth===nowD.getMonth()+1);
-  const pad=n=>String(n).padStart(2,'0');
-  let html='', p=0, a=0, mk=0;
-  for(let i=0;i<first;i++) html+='<div class="cal-cell empty"></div>';
+  const nD=new Date();$('nextMon').disabled=(viewYear===nD.getFullYear()&&viewMonth===nD.getMonth()+1);
+  const pad=n=>String(n).padStart(2,'0');let html='',p=0,a=0,mk=0;
+  for(let i=0;i<first;i++)html+='<div class="cal-cell empty"></div>';
   for(let d=1;d<=last;d++){
-    const date=new Date(viewYear,viewMonth-1,d), di=date.getDay();
-    const ds=`${viewYear}-${pad(viewMonth)}-${pad(d)}`;
-    const isTD=(swimmer.trainingDays||[]).includes(di);
-    const isToday=ds===todayStr, rec=monMap[ds];
-    let state='rest', icon='';
-    if(isTD){
-      if(rec?.isMakeup&&rec?.status==='present'){state='makeup';mk++;icon='↩';}
-      else if(rec?.status==='absent'){state='absent';a++;icon='✕';}
-      else if(rec?.status==='present'){state='present';p++;icon='✓';}
-      else if(isToday){state='today-c';icon='●';}
-      else{state='upcoming';}
-    }
-    const recId=rec?.id||'', isMk=rec?.isMakeup?'true':'false';
-    const click=isTD?`onclick="selCell(this,'${ds}',${di},'${recId}',${isMk})"` :'';
+    const date=new Date(viewYear,viewMonth-1,d),di=date.getDay(),ds=`${viewYear}-${pad(viewMonth)}-${pad(d)}`;
+    const isTD=(swimmer.trainingDays||[]).includes(di),isToday=ds===todayStr,rec=monMap[ds];
+    let state='rest',icon='';
+    if(isTD){if(rec?.isMakeup&&rec?.status==='present'){state='makeup';mk++;icon='↩';}else if(rec?.status==='absent'){state='absent';a++;icon='✕';}else if(rec?.status==='present'){state='present';p++;icon='✓';}else if(isToday){state='today-c';icon='●';}else{state='upcoming';}}
+    const rId=rec?.id||'',iMk=rec?.isMakeup?'true':'false';
+    const click=isTD?`onclick="selCell(this,'${ds}',${di},'${rId}',${iMk})"`:'';
     html+=`<div class="cal-cell ${state}" ${click}><span class="cc-num">${d}</span>${icon?`<span class="cc-ic">${icon}</span>`:''}</div>`;
   }
-  grid.innerHTML=html;
-  $('mP').textContent=p; $('mA').textContent=a; $('mM').textContent=mk; $('mR').textContent=calcRem();
-  selDate=null; $('selLbl').textContent='اضغط على يوم تدريب لتحديده';
-  $('mDelBtn').classList.remove('show'); hideMakeup();
+  grid.innerHTML=html;$('mP').textContent=p;$('mA').textContent=a;$('mM').textContent=mk;$('mR').textContent=calcRem();
+  selDate=null;$('selLbl').textContent='اضغط على يوم تدريب لتحديده';$('mDelBtn').classList.remove('show');hideMakeup();
 }
 function calcRem(){
-  const now=new Date(); now.setHours(0,0,0,0);
-  const y=viewYear, m=viewMonth, last=new Date(y,m,0).getDate();
-  const isCur=(y===now.getFullYear()&&m===now.getMonth()+1);
-  const pad=n=>String(n).padStart(2,'0');
-  let r=0;
-  for(let d=1;d<=last;d++){
-    const date=new Date(y,m-1,d);
-    if(!(swimmer.trainingDays||[]).includes(date.getDay())) continue;
-    const ds=`${y}-${pad(m)}-${pad(d)}`;
-    const rec=monMap[ds];
-    const isFuture=isCur?date>=now:date>=new Date(y,m-1,1);
-    if(isFuture&&(!rec||rec.status!=='present')) r++;
-  }
+  const now=new Date();now.setHours(0,0,0,0);const y=viewYear,m=viewMonth,last=new Date(y,m,0).getDate(),isCur=(y===now.getFullYear()&&m===now.getMonth()+1),pad=n=>String(n).padStart(2,'0');let r=0;
+  for(let d=1;d<=last;d++){const date=new Date(y,m-1,d);if(!(swimmer.trainingDays||[]).includes(date.getDay()))continue;const ds=`${y}-${pad(m)}-${pad(d)}`,rec=monMap[ds],isFut=isCur?date>=now:date>=new Date(y,m-1,1);if(isFut&&(!rec||rec.status!=='present'))r++;}
   return r;
 }
-function selCell(cell,ds,di,recId,isMk){
-  document.querySelectorAll('.cal-cell.selected').forEach(c=>c.classList.remove('selected'));
-  cell.classList.add('selected');
-  selDate={date:ds,dayIdx:di,recordId:recId||null,isMakeup:isMk==='true'||isMk===true};
-  const d=new Date(ds+'T00:00:00');
-  $('selLbl').textContent=`المحدد: ${DAYS[di]} ${d.getDate()} ${MONTHS[d.getMonth()]}`;
-  $('mDelBtn').classList.toggle('show',!!recId);
-  hideMakeup(); lucide.createIcons();
+function selCell(cell,ds,di,rId,iMk){
+  document.querySelectorAll('.cal-cell.selected').forEach(c=>c.classList.remove('selected'));cell.classList.add('selected');
+  selDate={date:ds,dayIdx:di,recordId:rId||null,isMakeup:iMk==='true'||iMk===true};
+  const d=new Date(ds+'T00:00:00');$('selLbl').textContent=`المحدد: ${DAYS[di]} ${d.getDate()} ${MONTHS[d.getMonth()]}`;
+  $('mDelBtn').classList.toggle('show',!!rId);hideMakeup();lucide.createIcons();
 }
 async function markMonth(status){
-  if(!selDate){toast('اختر يوماً أولاً','error');return;}
-  const saved=selDate.date;
-  try{
-    await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:selDate.date,status});
-    await loadMonthData(); reSelect(saved);
-    toast(status==='present'?'✅ تم تسجيل الحضور':'❌ تم تسجيل الغياب',status==='present'?'success':'error');
-  }catch(e){ toast(e.message||'خطأ','error'); }
+  if(!selDate){toast('اختر يوماً أولاً','error');return;}const saved=selDate.date;
+  try{await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:selDate.date,status});await loadMonthData();reSelect(saved);toast(status==='present'?'✅ تم تسجيل الحضور':'❌ تم تسجيل الغياب',status==='present'?'success':'error');}
+  catch(e){toast(e.message||'خطأ','error');}
 }
-function reSelect(ds){
-  document.querySelectorAll('#calGrid .cal-cell[onclick]').forEach(cell=>{
-    if((cell.getAttribute('onclick')||'').includes(`'${ds}'`)) cell.click();
-  });
-}
-function openMakeupPicker(){
-  if(!selDate){toast('اختر يوماً أولاً','error');return;}
-  $('makeupRow').classList.add('show');
-  const t=new Date(); t.setDate(t.getDate()+1); $('makeupDateIn').value=lds(t);
-}
+function reSelect(ds){document.querySelectorAll('#calGrid .cal-cell[onclick]').forEach(cell=>{if((cell.getAttribute('onclick')||'').includes(`'${ds}'`))cell.click();});}
+function openMakeupPicker(){if(!selDate){toast('اختر يوماً أولاً','error');return;}$('makeupRow').classList.add('show');const t=new Date();t.setDate(t.getDate()+1);$('makeupDateIn').value=lds(t);}
 async function confirmMakeup(){
-  const mDate=$('makeupDateIn').value; if(!mDate){toast('اختر تاريخ التعويضي','error');return;}
-  if(!selDate) return;
-  try{
-    const res=await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:mDate,status:'present',isMakeup:true});
-    hideMakeup();
-    const mk=new Date(mDate+'T00:00:00');
-    if(mk.getFullYear()===viewYear&&mk.getMonth()+1===viewMonth) monMap[mDate]={status:'present',isMakeup:true,id:res.data?._id||null};
-    await loadMonthData(); toast('↩ تم تسجيل اليوم التعويضي','makeup');
-  }catch(e){ toast(e.message||'خطأ','error'); }
+  const mDate=$('makeupDateIn').value;if(!mDate){toast('اختر تاريخ التعويضي','error');return;}if(!selDate)return;
+  try{const res=await api('/attendance','POST',{subscriptionId:swimmer.subscriptionId,date:mDate,status:'present',isMakeup:true});hideMakeup();const mk=new Date(mDate+'T00:00:00');if(mk.getFullYear()===viewYear&&mk.getMonth()+1===viewMonth)monMap[mDate]={status:'present',isMakeup:true,id:res.data?._id||null};await loadMonthData();toast('↩ تم تسجيل اليوم التعويضي','makeup');}
+  catch(e){toast(e.message||'خطأ','error');}
 }
-async function delMonRec(){
-  if(!selDate?.recordId){toast('لا يوجد سجل لهذا اليوم','error');return;}
-  try{ await api('/attendance/'+selDate.recordId,'DELETE'); await loadMonthData(); toast('تم حذف السجل'); }
-  catch(e){ toast(e.message||'خطأ','error'); }
-}
-function navMon(dir){ viewMonth+=dir; if(viewMonth<1){viewMonth=12;viewYear--;} if(viewMonth>12){viewMonth=1;viewYear++;} loadMonthData(); }
-function hideMakeup(){ $('makeupRow').classList.remove('show'); }
+async function delMonRec(){if(!selDate?.recordId){toast('لا يوجد سجل لهذا اليوم','error');return;}try{await api('/attendance/'+selDate.recordId,'DELETE');await loadMonthData();toast('تم حذف السجل');}catch(e){toast(e.message||'خطأ','error');}}
+function navMon(dir){viewMonth+=dir;if(viewMonth<1){viewMonth=12;viewYear--;}if(viewMonth>12){viewMonth=1;viewYear++;}loadMonthData();}
+function hideMakeup(){$('makeupRow').classList.remove('show');}
 
 /* ══ EDIT ══ */
 async function openEdit(subId){
-  try{
-    const d=await api('/swimmers/'+subId); const s=d.data; editId=subId;
-    $('e_name').value=s.fullName||''; $('e_phone').value=s.phone||'';
-    const rawTime=s.trainingTime||'';
-    const timeMatch=rawTime.match(/^(\d{1,2}):(\d{2})/);
-    $('e_time').value=timeMatch?`${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}`:'';
-    $('e_goal').value=s.goal||''; $('e_active').value=s.isActive?'true':'false';
-    $('e_trainer').value=s.trainerName||'';
-    $('e_expiry').value=s.subscriptionExpiry?new Date(s.subscriptionExpiry).toISOString().split('T')[0]:'';
-    const sessVal=String(s.sessionsCount||'8');
-    document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.checked=r.value===sessVal);
-    const currentDays=s.trainingDays||[];
-    document.querySelectorAll('input[name="e_days"]').forEach(c=>{ c.checked=currentDays.includes(Number(c.value)); c.closest('.day-cb').classList.remove('locked'); });
-    if(sessVal==='24'){
-      const restDay=[0,1,2,3,4,5,6].find(d=>!currentDays.includes(d));
-      $('e_restDay').value=restDay!==undefined?String(restDay):'';
-      $('e_daysWrap').style.display='none'; $('e_restWrap').classList.add('show');
-    }else{ $('e_daysWrap').style.display='block'; $('e_restWrap').classList.remove('show'); }
-    updateEditDaysUI(sessVal,currentDays.length);
-    document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.addEventListener('change',onEditSessChange));
-    document.querySelectorAll('input[name="e_days"]').forEach(c=>c.addEventListener('change',onEditDaysChange));
-    document.querySelectorAll('input[name="estar"]').forEach(r=>r.checked=false);
-    if(s.rating>0){const el=document.getElementById('es'+s.rating);if(el)el.checked=true;}
-    $('ratingNote').value=s.ratingNote||'';
-    openModal('editModal'); lucide.createIcons();
-  }catch(e){ toast(e.message||'خطأ','error'); }
+  try{const d=await api('/swimmers/'+subId),s=d.data;editId=subId;$('e_name').value=s.fullName||'';$('e_phone').value=s.phone||'';const rT=s.trainingTime||'',tM=rT.match(/^(\d{1,2}):(\d{2})/);$('e_time').value=tM?`${String(tM[1]).padStart(2,'0')}:${tM[2]}`:'';$('e_goal').value=s.goal||'';$('e_active').value=s.isActive?'true':'false';$('e_trainer').value=s.trainerName||'';$('e_expiry').value=s.subscriptionExpiry?new Date(s.subscriptionExpiry).toISOString().split('T')[0]:'';
+    const sV=String(s.sessionsCount||'8');document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.checked=r.value===sV);const cD=s.trainingDays||[];document.querySelectorAll('input[name="e_days"]').forEach(c=>{c.checked=cD.includes(Number(c.value));c.closest('.day-cb').classList.remove('locked');});
+    if(sV==='24'){const rD=[0,1,2,3,4,5,6].find(d=>!cD.includes(d));$('e_restDay').value=rD!==undefined?String(rD):'';$('e_daysWrap').style.display='none';$('e_restWrap').classList.add('show');}
+    else{$('e_daysWrap').style.display='block';$('e_restWrap').classList.remove('show');updateEditDaysUI(sV,cD.length);}
+    document.querySelectorAll('input[name="e_sess"]').forEach(r=>r.addEventListener('change',onEditSessChange));document.querySelectorAll('input[name="e_days"]').forEach(c=>c.addEventListener('change',onEditDaysChange));
+    document.querySelectorAll('input[name="estar"]').forEach(r=>r.checked=false);if(s.rating>0){const el=document.getElementById('es'+s.rating);if(el)el.checked=true;}$('ratingNote').value=s.ratingNote||'';
+    openModal('editModal');lucide.createIcons();}
+  catch(e){toast(e.message||'خطأ','error');}
 }
-function updateEditDaysUI(sessVal,cnt){
-  const max=SESS_DAYS[sessVal]||0; const ctr=$('eDaysCtr'); if(!ctr) return;
-  const rem=max-cnt;
-  if(cnt===0){ctr.textContent=sessVal==='8'?'اختر يومين':'اختر ٣ أيام';ctr.className='days-ctr';}
-  else if(cnt<max){ctr.textContent=`متبقي ${rem}`;ctr.className='days-ctr';}
-  else{ctr.textContent='✓ اكتملت';ctr.className='days-ctr done';}
-  document.querySelectorAll('input[name="e_days"]').forEach(c=>c.closest('.day-cb').classList.toggle('locked',!c.checked&&cnt>=max));
-}
-function onEditSessChange(){
-  const val=document.querySelector('input[name="e_sess"]:checked')?.value;
-  document.querySelectorAll('input[name="e_days"]').forEach(c=>{ c.checked=false; c.closest('.day-cb').classList.remove('locked'); });
-  if(val==='24'){ $('e_daysWrap').style.display='none'; $('e_restWrap').classList.add('show'); }
-  else if(val){ $('e_daysWrap').style.display='block'; $('e_restWrap').classList.remove('show'); updateEditDaysUI(val,0); }
-}
-function onEditDaysChange(e){
-  const val=document.querySelector('input[name="e_sess"]:checked')?.value;
-  const max=SESS_DAYS[val]||0;
-  const cnt=document.querySelectorAll('input[name="e_days"]:checked').length;
-  if(e.target.checked&&cnt>max){e.target.checked=false;return;}
-  if(val&&max) updateEditDaysUI(val,document.querySelectorAll('input[name="e_days"]:checked').length);
-}
+function updateEditDaysUI(sV,cnt){const max=SESS_DAYS[sV]||0,ctr=$('eDaysCtr');if(!ctr)return;const rem=max-cnt;if(cnt===0){ctr.textContent=sV==='8'?'اختر يومين':'اختر ٣ أيام';ctr.className='days-ctr';}else if(cnt<max){ctr.textContent=`متبقي ${rem}`;ctr.className='days-ctr';}else{ctr.textContent='✓ اكتملت';ctr.className='days-ctr done';}document.querySelectorAll('input[name="e_days"]').forEach(c=>c.closest('.day-cb').classList.toggle('locked',!c.checked&&cnt>=max));}
+function onEditSessChange(){const val=document.querySelector('input[name="e_sess"]:checked')?.value;document.querySelectorAll('input[name="e_days"]').forEach(c=>{c.checked=false;c.closest('.day-cb').classList.remove('locked');});if(val==='24'){$('e_daysWrap').style.display='none';$('e_restWrap').classList.add('show');}else if(val){$('e_daysWrap').style.display='block';$('e_restWrap').classList.remove('show');updateEditDaysUI(val,0);}}
+function onEditDaysChange(e){const val=document.querySelector('input[name="e_sess"]:checked')?.value,max=SESS_DAYS[val]||0;if(e.target.checked&&document.querySelectorAll('input[name="e_days"]:checked').length>max){e.target.checked=false;return;}if(val&&max)updateEditDaysUI(val,document.querySelectorAll('input[name="e_days"]:checked").length);}
 async function doSaveEdit(){
-  if(!editId) return;
-  const sessVal=document.querySelector('input[name="e_sess"]:checked')?.value;
-  if(!sessVal){toast('اختر عدد الحصص','error');return;}
-  let trainingDays=[];
-  if(sessVal==='24'){
-    const restDay=$('e_restDay').value;
-    if(restDay===''){toast('اختر يوم الراحة','error');return;}
-    trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(restDay));
-  }else{
-    const req=SESS_DAYS[sessVal]||0;
-    const chk=[...document.querySelectorAll('input[name="e_days"]:checked')].map(c=>Number(c.value));
-    if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}
-    trainingDays=chk;
-  }
-  const btn=$('saveEditBtn'); btn.classList.add('loading');
-  try{
-    await api('/swimmers/'+editId,'PUT',{fullName:$('e_name').value.trim(),phone:$('e_phone').value.trim(),trainingTime:$('e_time').value||'',goal:$('e_goal').value||'',isActive:$('e_active').value==='true',subscriptionExpiry:$('e_expiry').value||'',trainerName:$('e_trainer').value.trim(),sessionsCount:Number(sessVal),trainingDays});
-    closeModal('editModal'); toast('✅ تم التحديث'); loadSwimmers(); loadStats();
-  }catch(e){ toast(e.message||'خطأ','error'); }
-  finally{ btn.classList.remove('loading'); }
+  if(!editId)return;const sV=document.querySelector('input[name="e_sess"]:checked')?.value;if(!sV){toast('اختر عدد الحصص','error');return;}
+  let trainingDays=[];if(sV==='24'){const rD=$('e_restDay').value;if(rD===''){toast('اختر يوم الراحة','error');return;}trainingDays=[0,1,2,3,4,5,6].filter(d=>d!==Number(rD));}
+  else{const req=SESS_DAYS[sV]||0,chk=[...document.querySelectorAll('input[name="e_days"]:checked')].map(c=>Number(c.value));if(chk.length!==req){toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'error');return;}trainingDays=chk;}
+  const btn=$('saveEditBtn');btn.classList.add('loading');
+  try{await api('/swimmers/'+editId,'PUT',{fullName:$('e_name').value.trim(),phone:$('e_phone').value.trim(),trainingTime:$('e_time').value||'',goal:$('e_goal').value||'',isActive:$('e_active').value==='true',subscriptionExpiry:$('e_expiry').value||'',trainerName:$('e_trainer').value.trim(),sessionsCount:Number(sV),trainingDays});closeModal('editModal');toast('✅ تم التحديث');loadSwimmers();loadStats();}
+  catch(e){toast(e.message||'خطأ','error');}finally{btn.classList.remove('loading');}
 }
-async function doSaveRating(){
-  if(!editId) return;
-  const starInput=document.querySelector('input[name="estar"]:checked');
-  if(!starInput){toast('اختر عدد النجوم أولاً','error');return;}
-  try{ await api('/swimmer-auth/swimmers/'+editId+'/rating','PUT',{rating:Number(starInput.value),ratingNote:$('ratingNote').value.trim()}); toast('✅ تم حفظ التقييم'); loadSwimmers(); }
-  catch(e){ toast(e.message||'خطأ','error'); }
-}
+async function doSaveRating(){if(!editId)return;const sI=document.querySelector('input[name="estar"]:checked');if(!sI){toast('اختر عدد النجوم أولاً','error');return;}try{await api('/swimmer-auth/swimmers/'+editId+'/rating','PUT',{rating:Number(sI.value),ratingNote:$('ratingNote').value.trim()});toast('✅ تم حفظ التقييم');loadSwimmers();}catch(e){toast(e.message||'خطأ','error');}}
 
 /* ══ DELETE ══ */
-function askDelete(subId,name){ delId=subId; delName=name; $('confirmName').textContent=name; openModal('confirmModal'); lucide.createIcons(); }
-async function doDelete(){
-  if(!delId) return;
-  try{ await api('/swimmers/'+delId,'DELETE'); closeModal('confirmModal'); toast('✅ تم حذف '+delName); loadSwimmers(); loadStats(); }
-  catch(e){ toast(e.message||'خطأ','error'); }
-  finally{ delId=null; delName=''; }
-}
+function askDelete(subId,name){delId=subId;delName=name;$('confirmName').textContent=name;openModal('confirmModal');lucide.createIcons();}
+async function doDelete(){if(!delId)return;try{await api('/swimmers/'+delId,'DELETE');closeModal('confirmModal');toast('✅ تم حذف '+delName);loadSwimmers();loadStats();}catch(e){toast(e.message||'خطأ','error');}finally{delId=null;delName='';}}
 
-/* ══ SCHEDULE LOGIC ══ */
-function schSaveStorage(){ localStorage.setItem(SCH_KEY, JSON.stringify(schGroups)); }
-
-function schTimeToMin(t){ if(!t) return -1; const [h,m]=t.split(':').map(Number); return h*60+m; }
-
-function schTo12(t){
-  if(!t) return '—';
-  const [h,m]=t.split(':').map(Number);
-  const ampm=h>=12?'م':'ص'; const h12=h%12||12;
-  return `${String(h12).padStart(2,'0')}:${String(m).padStart(2,'0')} ${ampm}`;
-}
-
-function schHasConflict(time, excludeId){
-  return schGroups.some(g=>g.id!==excludeId&&g.time===time);
-}
-
-function schUpdateMonthLabel(){
-  const now=new Date();
-  if($('schMonthLabel')) $('schMonthLabel').textContent=`جدول ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
-}
-
-function schUpdateSummary(){
-  const total=schGroups.length;
-  let totalPeople=0;
-  schGroups.forEach(g=>{
-    if(g.type===0) totalPeople+=(g.customCount||0);
-    else totalPeople+=(g.type||0);
-  });
-  if($('schTotalGroups')) $('schTotalGroups').textContent=total;
-  if($('schTotalPeople')) $('schTotalPeople').textContent=totalPeople;
-  if($('schFreeSlots')) $('schFreeSlots').textContent=total>0?`${total} موعد`:'لا يوجد';
-}
-
+/* ═══════ SCHEDULE LOGIC ═══════ */
+function schAutoToday(){schViewDay=new Date().getDay();}
+function schSaveStorage(){localStorage.setItem(SCH_KEY,JSON.stringify(schGroups));}
+function schTo12(t){if(!t)return'—';const[h,m]=t.split(':').map(Number),ampm=h>=12?'م':'ص',h12=h%12||12;return`${String(h12).padStart(2,'0')}:${String(m).padStart(2,'0')} ${ampm}`;}
+function schTimeToMin(t){if(!t)return-1;const[h,m]=t.split(':').map(Number);return h*60+m;}
+function schIsBlocked(h){return h>=19||h<9;}
+function schGroupsForDay(dayIdx){return schGroups.filter(g=>Array.isArray(g.days)&&g.days.includes(dayIdx));}
+function schschGroupsForDay(dayIdx){return schGroups.filter(g=>Array.isArray(g.days)&&g.days.includes(dayIdx));}
+function schHasConflict(time,days,excludeId){if(!days||!days.length)return false;return schGroups.some(g=>g.id!==excludeId&&g.time===time&&Array.isArray(g.days)&&g.days.some(d=>days.includes(d)));}
+function schUpdateDayCounts(){for(let i=0;i<7;i++){const cnt=schGroupsForDay(i).length;const el=document.getElementById('schDC'+i);if(el)el.textContent=cnt;}}
 function schRender(){
-  schUpdateMonthLabel();
-  schUpdateSummary();
-  const tl=$('schTimeline');
-  if(!tl) return;
-  if(!schGroups.length){
-    tl.innerHTML=`<div class="sch-empty"><i data-lucide="calendar-off"></i><div class="sch-empty-txt">لا توجد مجموعات — اضغط "إضافة مجموعة"</div></div>`;
-    lucide.createIcons(); return;
-  }
-  const sorted=[...schGroups].sort((a,b)=>schTimeToMin(a.time)-schTimeToMin(b.time));
+  document.querySelectorAll('.sch-day-tab').forEach(b=>b.classList.toggle('active',Number(b.dataset.day)===schViewDay));
+  const now=new Date();if($('schMonthLabel'))$('schMonthLabel').textContent=`${DAYS[schViewDay]} — ${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+  schUpdateDayCounts();
+  const dayGroups=schGroupsForDay(schViewDay);
+  const tl=$('schHourTimeline');if(!tl)return;
+  let totalPeople=0;dayGroups.forEach(g=>{if(g.type===0)totalPeople+=(g.customCount||0);else totalPeople+=(g.type||0);});
+  $('schTotalGroups').textContent=dayGroups.length;$('schTotalPeople').textContent=totalPeople;
+  const timeMap={};dayGroups.forEach(g=>{timeMap[g.time]=g;});
+  let freeCount=0;for(let h=9;h<=18;h++){if(!schIsBlocked(h)&&!timeMap[String(h).padStart(2,'0')+':00'])freeCount++;}
+  $('schFreeSlots').textContent=freeCount;
   let html='';
-  sorted.forEach(g=>{
-    const st=SCH_STYLES[g.type]||SCH_STYLES[0];
-    const names=(g.names||[]).filter(n=>n.trim());
-    const countLabel=g.type===0?`${g.customCount||'?'} أفراد`:st.label;
-    const membersText=names.length?names.join(' · '):countLabel;
-    html+=`
-      <div class="sch-slot">
-        <div class="sch-time-col"><span class="sch-time-txt">${schTo12(g.time)}</span></div>
-        <div class="sch-pills-col">
-          <div class="sch-pill" style="background:${st.bg};border-color:${st.border};color:${st.text}" onclick="schOpenEdit('${g.id}')">
-            <span class="sch-pill-name">${g.type===0?`${g.customCount||''} أفراد`:st.label}</span>
-            <span class="sch-pill-members">${membersText}</span>
-            <span class="sch-pill-del" onclick="event.stopPropagation();schDelete('${g.id}')" title="حذف">✕</span>
-          </div>
-        </div>
-      </div>`;
-  });
-  tl.innerHTML=html; lucide.createIcons();
+  for(let h=9;h<=18;h++){
+    const hStr=String(h).padStart(2,'0')+':00';
+    const blocked=schIsBlocked(h);
+    if(blocked){
+      html+=`<div class="sch-hour-row hr-blocked"><div class="sch-hour-time">${schTo12(hStr)}</div><div class="sch-hour-body" style="justify-content:center;font-size:.72rem;color:var(--err);opacity:.5">محظور</div></div>`;
+      continue;
+    }
+    const g=timeMap[hStr];
+    if(g){
+      const st=SCH_STYLES[g.type]||SCH_STYLES[0];
+      const names=(g.names||[]).filter(n=>n.trim());
+      const countLabel=g.type===0?`${g.customCount||'?'} أفراد`:st.label;
+      const membersText=names.length?names.join(' · '):countLabel;
+      const otherDays=(g.days||[]).filter(d=>d!==schViewDay).map(d=>DAYS[d]).join('، ');
+      html+=`<div class="sch-hour-row hr-booked"><div class="sch-hour-time">${schTo12(hStr)}</div><div class="sch-hour-body"><div class="sch-hr-pill" style="background:${st.bg};border-color:${st.border};color:${st.text}" onclick="schOpenEdit('${g.id}')"><span class="sch-hr-pill-type">${g.type===0?countLabel:st.label}</span><span class="sch-hr-pill-names">${membersText}</span>${otherDays?`<span class="sch-hr-pill-days">${otherDays}</span>`:''}<span class="sch-hr-pill-del" onclick="event.stopPropagation();schDelete('${g.id}')" title="حذف">✕</span></div></div></div>`;
+    }else{
+      html+=`<div class="sch-hour-row hr-free" onclick="schQuickAdd('${hStr}')"><div class="sch-hour-time">${schTo12(hStr)}</div><div class="sch-hour-body"><span class="sch-free-txt">+ إضافة مجموعة</span></div></div>`;
+    }
+  }
+  tl.innerHTML=html;lucide.createIcons();
 }
 
+function schQuickAdd(time){schOpenAdd();$('schTime').value=time;}
 function schOpenAdd(){
-  schEditId=null; schSelectedType=null;
-  if($('schModalTitle')) $('schModalTitle').innerHTML=`<i data-lucide="layout-grid"></i> إضافة مجموعة`;
-  $('schTime').value='';
-  $('schCustomWrap').style.display='none';
-  $('schCustomCount').value='';
+  schEditId=null;schSelectedType=null;
+  if($('schModalTitle'))$('schModalTitle').innerHTML=`<i data-lucide="layout-grid"></i> إضافة مجموعة`;
+  $('schTime').value='';$('schCustomWrap').style.display='none';$('schCustomCount').value='';
   $('schConflict').classList.remove('show');
-  document.querySelectorAll('.sch-type-btn').forEach(b=>{ b.className='sch-type-btn'; });
+  document.querySelectorAll('.sch-type-btn').forEach(b=>{b.className='sch-type-btn';});
+  document.querySelectorAll('input[name="sch_days"]').forEach(c=>{c.checked=false;});
+  if(schViewDay>=0){const cb=document.querySelector(`input[name="sch_days"][value="${schViewDay}"]`);if(cb)cb.checked=true;}
   schBuildNames(0);
-  $('schModal').classList.add('show');
-  document.body.style.overflow='hidden';
-  lucide.createIcons();
+  $('schModal').classList.add('show');document.body.style.overflow='hidden';lucide.createIcons();
 }
-
 function schOpenEdit(id){
-  const g=schGroups.find(x=>x.id===id); if(!g) return;
-  schEditId=id; schSelectedType=g.type;
-  if($('schModalTitle')) $('schModalTitle').innerHTML=`<i data-lucide="pencil"></i> تعديل المجموعة`;
-  $('schTime').value=g.time||'';
-  $('schConflict').classList.remove('show');
+  const g=schGroups.find(x=>x.id===id);if(!g)return;
+  schEditId=id;schSelectedType=g.type;
+  if($('schModalTitle'))$('schModalTitle').innerHTML=`<i data-lucide="pencil"></i> تعديل المجموعة`;
+  $('schTime').value=g.time||'';$('schConflict').classList.remove('show');
   document.querySelectorAll('.sch-type-btn').forEach(b=>b.className='sch-type-btn');
-  const btn=document.getElementById('scht'+g.type);
-  if(btn) btn.className=`sch-type-btn sel-${g.type}`;
-  if(g.type===0){ $('schCustomWrap').style.display='block'; $('schCustomCount').value=g.customCount||''; schBuildNames(g.customCount||0,g.names||[]); }
-  else{ $('schCustomWrap').style.display='none'; schBuildNames(g.type,g.names||[]); }
-  $('schModal').classList.add('show');
-  document.body.style.overflow='hidden';
-  lucide.createIcons();
+  const btn=document.getElementById('scht'+g.type);if(btn)btn.className=`sch-type-btn sel-${g.type}`;
+  document.querySelectorAll('input[name="sch_days"]').forEach(c=>{c.checked=Array.isArray(g.days)&&g.days.includes(Number(c.value));});
+  if(g.type===0){$('schCustomWrap').style.display='block';$('schCustomCount').value=g.customCount||'';schBuildNames(g.customCount||0,g.names||[]);}
+  else{$('schCustomWrap').style.display='none';schBuildNames(g.type,g.names||[]);}
+  $('schModal').classList.add('show');document.body.style.overflow='hidden';lucide.createIcons();
 }
-
 function schSelectType(t){
-  schSelectedType=t;
-  document.querySelectorAll('.sch-type-btn').forEach(b=>b.className='sch-type-btn');
-  const btn=document.getElementById('scht'+t);
-  if(btn) btn.className=`sch-type-btn sel-${t}`;
+  schSelectedType=t;document.querySelectorAll('.sch-type-btn').forEach(b=>b.className='sch-type-btn');
+  const btn=document.getElementById('scht'+t);if(btn)btn.className=`sch-type-btn sel-${t}`;
   $('schCustomWrap').style.display=t===0?'block':'none';
-  if(t!==0) schBuildNames(t);
-  lucide.createIcons();
+  if(t!==0)schBuildNames(t);lucide.createIcons();
 }
-
-function schBuildNames(count, existing=[]){
-  const list=$('schNamesList');
-  if(!count){ list.innerHTML='<span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span>'; return; }
-  let html='';
-  for(let i=0;i<count;i++){
-    const val=existing[i]||'';
-    html+=`<div class="sch-name-row"><input type="text" class="fc" style="height:40px;font-size:.84rem" placeholder="اسم المتدرب ${i+1}" value="${val}"/></div>`;
-  }
+function schBuildNames(count,existing){
+  const list=$('schNamesList');if(!count){list.innerHTML='<span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span>';return;}
+  let html='';for(let i=0;i<count;i++){const val=(existing||[])[i]||'';html+=`<div class="sch-name-row"><input type="text" class="fc" style="height:40px;font-size:.84rem" placeholder="اسم المتدرب ${i+1}" value="${val}"/></div>`;}
   list.innerHTML=html;
 }
-
 function schSave(){
-  const time=$('schTime').value;
-  if(!time){toast('اختر ساعة التدريب','error');return;}
+  const time=$('schTime').value;if(!time){toast('اختر ساعة التدريب','error');return;}
   if(schSelectedType===null){toast('اختر نوع المجموعة','error');return;}
-  if(schHasConflict(time,schEditId)){ $('schConflict').classList.add('show'); return; }
+  const days=[...document.querySelectorAll('input[name="sch_days"]:checked')].map(c=>Number(c.value));
+  if(!days.length){toast('اختر يوم واحد على الأقل','error');return;}
+  if(schHasConflict(time,days,schEditId)){$('schConflict').classList.add('show');return;}
   $('schConflict').classList.remove('show');
   const names=[...document.querySelectorAll('#schNamesList input')].map(i=>i.value.trim());
   const customCount=schSelectedType===0?(parseInt($('schCustomCount').value)||0):null;
-  if(schEditId){
-    const idx=schGroups.findIndex(g=>g.id===schEditId);
-    if(idx>=0) schGroups[idx]={...schGroups[idx],type:schSelectedType,time,names,customCount};
-  }else{
-    schGroups.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),type:schSelectedType,time,names,customCount});
-  }
-  schSaveStorage(); closeSchModal(); schRender();
-  toast(schEditId?'✅ تم التعديل':'✅ تمت الإضافة');
+  if(schEditId){const idx=schGroups.findIndex(g=>g.id===schEditId);if(idx>=0)schGroups[idx]={...schGroups[idx],type:schSelectedType,time,names,days,customCount};}
+  else{schGroups.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),type:schSelectedType,time,names,days,customCount});}
+  schSaveStorage();closeSchModal();schRender();toast(schEditId?'✅ تم التعديل':'✅ تمت الإضافة');
 }
-
-function schDelete(id){
-  if(!confirm('تأكيد حذف المجموعة؟')) return;
-  schGroups=schGroups.filter(g=>g.id!==id);
-  schSaveStorage(); schRender(); toast('تم حذف المجموعة');
-}
-
-function closeSchModal(){
-  $('schModal').classList.remove('show');
-  document.body.style.overflow='';
-  schEditId=null; schSelectedType=null;
-}
+function schDelete(id){schGroups=schGroups.filter(g=>g.id!==id);schSaveStorage();schRender();toast('تم حذف المجموعة');}
+function closeSchModal(){$('schModal').classList.remove('show');document.body.style.overflow='';schEditId=null;schSelectedType=null;}
 
 /* ══ API ══ */
 async function api(path,method='GET',body=null,useToken=true){
-  const headers={'Content-Type':'application/json'};
-  if(useToken&&token) headers['Authorization']=`Bearer ${token}`;
-  const opts={method,headers}; if(body) opts.body=JSON.stringify(body);
-  const res=await fetch(`${API}${path}`,opts);
-  const data=await res.json().catch(()=>({message:`HTTP ${res.status}`}));
-  if(!res.ok){ if(res.status===401&&path!=='/auth/login') doLogout(); throw new Error(data.message||`HTTP ${res.status}`); }
-  return data;
+  const headers={'Content-Type':'application/json'};if(useToken&&token)headers['Authorization']=`Bearer ${token}`;
+  const opts={method,headers};if(body)opts.body=JSON.stringify(body);
+  const res=await fetch(`${API}${path}`,opts);const data=await res.json().catch(()=>({message:`HTTP ${res.status}`}));
+  if(!res.ok){if(res.status===401&&path!=='/auth/login')doLogout();throw new Error(data.message||`HTTP ${res.status}`);}return data;
 }
 
 /* ══ HELPERS ══ */
-function lds(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
-function $(id){ return document.getElementById(id); }
-function show(id,d='block'){ $(id).style.display=d; }
-function hide(id){ $(id).style.display='none'; }
-function openModal(id){ $(id).classList.add('show'); document.body.style.overflow='hidden'; }
-function closeModal(id){ $(id).classList.remove('show'); document.body.style.overflow=''; if(id==='editModal') editId=null; }
-function esc(s){ return String(s||'').replace(/'/g,"\\'"); }
+function lds(d){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function $(id){return document.getElementById(id);}
+function show(id,d='block'){$(id).style.display=d;}
+function hide(id){$(id).style.display='none';}
+function openModal(id){$(id).classList.add('show');document.body.style.overflow='hidden';}
+function closeModal(id){$(id).classList.remove('show');document.body.style.overflow='';if(id==='editModal')editId=null;}
+function esc(s){return String(s||'').replace(/'/g,"\\'");}
 let toastT;
-function toast(msg,type='success'){
-  const el=$('toast'); el.className=`toast ${type} show`; $('toastMsg').textContent=msg;
-  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),3400);
-}
-function to12Hour(time24){
-  if(!time24) return '';
-  const [hours,minutes]=time24.split(':');
-  const h=parseInt(hours,10); const ampm=h>=12?'م':'ص'; const h12=h%12||12;
-  return `${String(h12).padStart(2,'0')}:${minutes} ${ampm}`;
-}
+function toast(msg,type='success'){const el=$('toast');el.className=`toast ${type} show`;$('toastMsg').textContent=msg;clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),3400);}
+function to12Hour(time24){if(!time24)return'';const[hours,minutes]=time24.split(':'),h=parseInt(hours,10),ampm=h>=12?'م':'ص',h12=h%12||12;return`${String(h12).padStart(2,'0')}:${minutes} ${ampm}`;}
 </script>
 </body>
 </html>
