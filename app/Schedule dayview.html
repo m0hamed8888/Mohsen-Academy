@@ -22,7 +22,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:var(--f-body);background:var(--bg);color:var(--tp);min-height:100dvh;-webkit-font-smoothing:antialiased;direction:rtl;overflow-x:hidden;overscroll-behavior:none;  padding: 5rem 0;}
+body{font-family:var(--f-body);background:var(--bg);color:var(--tp);min-height:100dvh;-webkit-font-smoothing:antialiased;direction:rtl;overflow-x:hidden;overscroll-behavior:none;padding:5rem 0;}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 input,select,textarea{font-family:inherit;outline:none}
 
@@ -101,27 +101,48 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .tl-row.half-hour .tl-time{border-right-color:rgba(255,255,255,.02);}
 
 /* ══ BOOKING PILL ══ */
-.booking-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--r-md);border:1.5px solid;font-size:.78rem;margin:3px 0;cursor:pointer;transition:all var(--fast);max-width:100%;position:relative;}
+/* Base pill — overridden per-pill by inline style */
+.booking-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--r-md);border:1.5px solid;font-size:.78rem;margin:3px 0;cursor:pointer;transition:all var(--fast);max-width:100%;position:relative;width:100%;}
 .booking-pill:hover{opacity:.85;transform:translateX(-2px)}
+
+/* Completion indicator dot */
+.bp-completion-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
 .bp-type{font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:var(--r-full);opacity:.75;flex-shrink:0;}
 .bp-name{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.bp-members{font-size:.66rem;opacity:.6;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bp-members{font-size:.66rem;opacity:.6;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* Completion badge */
+.bp-completion{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:var(--r-full);flex-shrink:0;}
+.bp-completion.full{background:rgba(0,229,160,.18);color:#00e5a0;border:1px solid rgba(0,229,160,.35);}
+.bp-completion.partial{background:rgba(255,181,71,.12);color:#ffb547;border:1px solid rgba(255,181,71,.3);}
+.bp-completion.empty{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);}
+
+/* Multi-day badge on pill */
+.bp-days-badge{font-size:.56rem;font-weight:800;padding:1px 6px;border-radius:var(--r-full);background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);flex-shrink:0;white-space:nowrap;}
+
 .bp-del{font-size:.8rem;opacity:.4;cursor:pointer;padding:0 3px;flex-shrink:0;transition:opacity var(--fast);}
 .bp-del:hover{opacity:1}
+
+/* Conflict warning stripe on pill */
+.booking-pill.has-conflict{box-shadow:0 0 0 1.5px rgba(255,181,71,.5) inset;}
+.booking-pill.has-conflict::after{content:'⚠';position:absolute;top:-6px;right:8px;font-size:.6rem;background:rgba(255,181,71,.2);border:1px solid rgba(255,181,71,.4);color:#ffb547;border-radius:var(--r-full);padding:0px 5px;line-height:1.6}
 
 /* slot hover add */
 .tl-slot-add{position:absolute;inset:3px 12px 3px;border-radius:var(--r-sm);border:1.5px dashed rgba(0,180,200,.18);display:flex;align-items:center;justify-content:center;gap:6px;font-size:.72rem;color:var(--tm);opacity:0;cursor:pointer;transition:all var(--fast);pointer-events:none;}
 .tl-slot-add svg{width:13px;height:13px}
 .tl-slot:not(.has-booking):hover .tl-slot-add{opacity:1;pointer-events:all;background:rgba(0,180,200,.03);}
 
-/* ══ CONFLICT BADGE ══ */
-.conflict-row{display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-sm);background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.25);font-size:.75rem;color:var(--err);margin-bottom:12px;}
+/* ══ CONFLICT BANNER ══ */
+.conflict-row{display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-sm);background:rgba(255,181,71,.07);border:1px solid rgba(255,181,71,.25);font-size:.75rem;color:var(--warn);margin-bottom:12px;}
 .conflict-row svg{width:13px;height:13px;flex-shrink:0}
 
 /* ══ LEGEND ══ */
 .legend-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
 .leg{display:flex;align-items:center;gap:5px;font-size:.66rem;color:var(--ts);}
 .leg-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+/* completion legend */
+.leg-circle{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 
 /* ══ MODAL ══ */
 .mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
@@ -170,14 +191,21 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-name-row{display:flex;gap:6px;align-items:center;}
 .sch-name-row .fc{flex:1;height:40px;font-size:.84rem;}
 
-/* days checkboxes */
+/* ── DAYS MULTI-SELECT (new for group modal) ── */
+.days-sel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
+.day-sel-btn{display:flex;align-items:center;justify-content:center;padding:9px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.74rem;font-weight:800;color:var(--ts);transition:all var(--fast);user-select:none;}
+.day-sel-btn.selected{border-color:var(--teal);background:rgba(0,180,200,.12);color:var(--teal);}
+.day-sel-btn.today-mark{border-color:rgba(0,229,160,.35);}
+.day-sel-btn.today-mark.selected{border-color:var(--ok);background:rgba(0,229,160,.12);color:var(--ok);}
+
+/* days checkboxes (block modal) */
 .days-check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
 .day-ck{display:flex;align-items:center;justify-content:center;padding:8px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.74rem;font-weight:700;color:var(--ts);transition:all var(--fast);}
 .day-ck input{display:none}
 .day-ck:has(input:checked){border-color:var(--err);background:rgba(255,77,109,.1);color:#ff8a9e}
 
-/* conflict warning */
-.conflict-warn{display:none;align-items:center;gap:7px;padding:9px 12px;border-radius:var(--r-sm);background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.25);font-size:.75rem;color:var(--err);margin:8px 0;}
+/* conflict warning in modal */
+.conflict-warn{display:none;align-items:center;gap:7px;padding:9px 12px;border-radius:var(--r-sm);background:rgba(255,181,71,.07);border:1px solid rgba(255,181,71,.25);font-size:.75rem;color:var(--warn);margin:8px 0;}
 .conflict-warn.show{display:flex}
 .conflict-warn svg{width:13px;height:13px;flex-shrink:0}
 
@@ -197,6 +225,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 /* Toast */
 .toast{position:fixed;bottom:calc(var(--bot-h) + var(--safe-b) + 10px);left:50%;transform:translateX(-50%) translateY(12px);z-index:300;display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r-full);font-size:.82rem;font-weight:700;backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity var(--mid),transform var(--mid) var(--ease);white-space:nowrap;max-width:calc(100vw - 32px);}
 .toast.success{background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.3);color:var(--ok)}
+.toast.warn{background:rgba(255,181,71,.12);border:1px solid rgba(255,181,71,.3);color:var(--warn)}
 .toast.error{background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);color:var(--err)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;flex-shrink:0}
@@ -211,6 +240,10 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .bi-del:hover{background:rgba(255,77,109,.22)}
 .bi-del svg{width:12px;height:12px}
 .empty-blocks{text-align:center;padding:20px;font-size:.78rem;color:var(--tm);}
+
+/* Section divider */
+.modal-section{font-size:.74rem;font-weight:800;color:var(--ts);display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.modal-section svg{width:12px;height:12px;color:var(--teal)}
 
 @media(min-width:640px){
   .wrap{padding:calc(var(--nav-h)+20px) 20px 30px}
@@ -246,7 +279,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     <a href="./aquaelite-backend/trainer.html" class="bot-item"><i data-lucide="users"></i><span>السباحون</span></a>
     <a href="./aquaelite-backend/trainer.html#create" class="bot-item"><i data-lucide="user-plus"></i><span>اشتراك</span></a>
     <a href="./aquaelite-backend/trainer.html#attendance" class="bot-item"><i data-lucide="calendar-check"></i><span>الحضور</span></a>
-    <a href="./aquaelite-backend/trainer.html.html" class="bot-item active"><i data-lucide="layout-grid"></i><span>الجدول</span></a>
+    <a href="./aquaelite-backend/trainer.html" class="bot-item active"><i data-lucide="layout-grid"></i><span>الجدول</span></a>
     <a href="./aquaelite-backend/trainer.html#levels" class="bot-item"><i data-lucide="bar-chart-2"></i><span>Levels</span></a>
   </div>
 </nav>
@@ -278,12 +311,20 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       </div>
     </div>
 
+    <!-- LEGEND -->
     <div class="legend-row">
       <div class="leg"><div class="leg-dot" style="background:rgba(55,138,221,.3);border:1px solid #378ADD"></div> فرد</div>
       <div class="leg"><div class="leg-dot" style="background:rgba(99,153,34,.3);border:1px solid #639922"></div> ٣ أفراد</div>
       <div class="leg"><div class="leg-dot" style="background:rgba(127,119,221,.3);border:1px solid #7F77DD"></div> ٥ أفراد</div>
       <div class="leg"><div class="leg-dot" style="background:rgba(186,117,23,.3);border:1px solid #BA7517"></div> مخصص</div>
       <div class="leg"><div class="leg-dot" style="background:repeating-linear-gradient(45deg,rgba(255,77,109,.2) 0px,rgba(255,77,109,.2) 4px,transparent 4px,transparent 8px);border:1px solid rgba(255,77,109,.3)"></div> محظور</div>
+    </div>
+    <!-- Completion legend -->
+    <div class="legend-row" style="margin-bottom:0;padding-bottom:14px;border-bottom:1px solid var(--bdr);margin-bottom:14px;">
+      <div class="leg"><div class="leg-circle" style="background:#00e5a0;box-shadow:0 0 5px rgba(0,229,160,.5)"></div> مكتملة</div>
+      <div class="leg"><div class="leg-circle" style="background:#ffb547"></div> جزئية</div>
+      <div class="leg"><div class="leg-circle" style="background:rgba(255,255,255,.2)"></div> فارغة</div>
+      <div class="leg" style="opacity:.7"><span style="font-size:.7rem">⚠</span> تعارض وقت</div>
     </div>
 
     <div class="timeline-wrap" id="timelineWrap">
@@ -302,6 +343,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <button class="mo-close" onclick="closeGroupModal()"><i data-lucide="x"></i></button>
     </div>
 
+    <!-- Type -->
     <div class="fld">
       <label><i data-lucide="users"></i> نوع المجموعة</label>
       <div class="sch-type-grid">
@@ -317,13 +359,27 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <input type="number" class="fc" id="schCustomCount" min="1" max="30" placeholder="مثال: 7" oninput="schBuildNames()"/>
     </div>
 
+    <!-- Time -->
     <div class="fld mt-12">
       <label><i data-lucide="clock"></i> ساعة التدريب</label>
       <input type="time" class="fc" id="schTime" oninput="checkConflict()"/>
     </div>
 
-    <div class="conflict-warn" id="schConflictWarn"><i data-lucide="alert-triangle"></i> يوجد مجموعة في نفس الوقت — اختر وقتاً مختلفاً</div>
+    <!-- Soft conflict warning -->
+    <div class="conflict-warn" id="schConflictWarn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span id="schConflictMsg">تنبيه — يوجد مجموعة في نفس الوقت</span>
+    </div>
 
+    <!-- Days multi-select (NEW) -->
+    <div class="fld mt-12">
+      <label><i data-lucide="calendar"></i> الأيام <span style="font-size:.66rem;color:var(--tm)">(اختر يوم أو أكثر)</span></label>
+      <div class="days-sel-grid" id="schDaysGrid">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Names -->
     <div class="fld mt-12">
       <label><i data-lucide="user-check"></i> أسماء المتدربين <span style="font-size:.66rem;color:var(--tm)">(اختياري)</span></label>
       <div class="sch-names-list" id="schNamesList"><span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span></div>
@@ -342,7 +398,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <button class="mo-close" onclick="closeBlockModal()"><i data-lucide="x"></i></button>
     </div>
 
-    <p style="font-size:.78rem;color:var(--ts);margin-bottom:16px;line-height:1.7">حدد نطاق زمني ستُحظر فيه الحجوزات في الأيام المختارة. مثال: ٧ مساءً → ٩ مساءً كل يوم.</p>
+    <p style="font-size:.78rem;color:var(--ts);margin-bottom:16px;line-height:1.7">حدد نطاق زمني ستُحظر فيه الحجوزات في الأيام المختارة.</p>
 
     <div class="fg2">
       <div class="fld">
@@ -382,134 +438,171 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastMsg">تم</span></div>
 
 <script>
-const DAYS_AR = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const DAYS_AR    = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 const DAYS_SHORT = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
-const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const MONTHS_AR  = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 
-// Working hours: 9AM-1PM, break 7PM-9PM, 9PM-11PM
-// Full timeline: 09:00 - 23:00, blocked slots: 19:00 - 21:00
-const TIMELINE_START = 9;  // 9am
-const TIMELINE_END = 23;   // 11pm
+const TIMELINE_START = 9;
+const TIMELINE_END   = 23;
 const DEFAULT_BLOCKS = [
   { id: 'default-break', from: '19:00', to: '21:00', days: [0,1,2,3,4,5,6], label: 'استراحة (٧م–٩م)' }
 ];
 
-const SCH_KEY = 'aqScheduleV2';
+const SCH_KEY   = 'aqScheduleV2';
 const BLOCK_KEY = 'aqBlocksV1';
 
-let schGroups = JSON.parse(localStorage.getItem(SCH_KEY) || '[]');
-let blocks = JSON.parse(localStorage.getItem(BLOCK_KEY) || 'null') ?? DEFAULT_BLOCKS;
+let schGroups = JSON.parse(localStorage.getItem(SCH_KEY)   || '[]');
+let blocks    = JSON.parse(localStorage.getItem(BLOCK_KEY) || 'null') ?? DEFAULT_BLOCKS;
 
-let selectedDay = new Date().getDay();
-let editId = null;
-let schSelectedType = null;
-let prefillTime = null;
+let selectedDay       = new Date().getDay();
+let editId            = null;
+let schSelectedType   = null;
+let schSelectedDays   = [];   // ← NEW: multi-day selection
 
+// ── Colour styles per type ───────────────────────────────────────
 const SCH_STYLES = {
-  1: {bg:'rgba(55,138,221,.15)', border:'#378ADD', text:'#60b4ff', label:'فرد'},
-  3: {bg:'rgba(99,153,34,.15)',  border:'#639922', text:'#8fc94a', label:'٣ أفراد'},
-  5: {bg:'rgba(127,119,221,.15)',border:'#7F77DD', text:'#a78bfa', label:'٥ أفراد'},
-  0: {bg:'rgba(186,117,23,.15)', border:'#BA7517', text:'#ffb547', label:'مخصص'},
+  1: { bg:'rgba(55,138,221,.15)',  border:'#378ADD', text:'#60b4ff', label:'فرد'    },
+  3: { bg:'rgba(99,153,34,.15)',   border:'#639922', text:'#8fc94a', label:'٣ أفراد'},
+  5: { bg:'rgba(127,119,221,.15)', border:'#7F77DD', text:'#a78bfa', label:'٥ أفراد'},
+  0: { bg:'rgba(186,117,23,.15)',  border:'#BA7517', text:'#ffb547', label:'مخصص'  },
 };
 
-// ── INIT ──────────────────────────────────────────────────────────
+// ── Completion helpers ───────────────────────────────────────────
+/**
+ * Returns { filled, total } counts for a group.
+ * "Filled" = a name slot that has a non-empty string.
+ */
+function groupCompletion(g) {
+  const total  = g.type === 0 ? (g.customCount || 0) : (g.type || 0);
+  const names  = (g.names || []);
+  const filled = names.filter(n => n && n.trim()).length;
+  return { filled, total };
+}
+
+/**
+ * Returns CSS colour for the completion dot.
+ *   full    → green (#00e5a0)
+ *   partial → yellow (#ffb547)
+ *   empty   → dim white
+ */
+function completionColor(filled, total) {
+  if (total === 0) return 'rgba(255,255,255,.2)';
+  if (filled === total) return '#00e5a0';
+  if (filled > 0)       return '#ffb547';
+  return 'rgba(255,255,255,.2)';
+}
+
+function completionLabel(filled, total) {
+  if (total === 0) return '';
+  if (filled === total) return 'مكتملة';
+  return `${filled}/${total}`;
+}
+
+function completionClass(filled, total) {
+  if (total === 0) return 'empty';
+  if (filled === total) return 'full';
+  if (filled > 0)  return 'partial';
+  return 'empty';
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   renderDayFilter();
   renderTimeline();
   renderBlockList();
   $('blockMgrBtn').onclick = openBlockModal;
-  $('tlAddBtn').onclick = () => openGroupModal(null, null);
+  $('tlAddBtn').onclick    = () => openGroupModal(null, null);
   $('groupModal').addEventListener('click', e => e.target === e.currentTarget && closeGroupModal());
   $('blockModal').addEventListener('click', e => e.target === e.currentTarget && closeBlockModal());
 });
 
-// ── HELPERS ───────────────────────────────────────────────────────
-function $(id){ return document.getElementById(id); }
-function timeToMin(t){ if(!t) return -1; const [h,m]=t.split(':').map(Number); return h*60+m; }
-function minToTime(m){ return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`; }
-function to12(t){
+// ── HELPERS ──────────────────────────────────────────────────────
+function $(id)           { return document.getElementById(id); }
+function timeToMin(t)    { if(!t) return -1; const [h,m]=t.split(':').map(Number); return h*60+m; }
+function minToTime(m)    { return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`; }
+function to12(t) {
   if(!t) return '—';
-  const [h,m]=t.split(':').map(Number);
-  const ampm=h>=12?'م':'ص'; const h12=h%12||12;
+  const [h,m] = t.split(':').map(Number);
+  const ampm  = h>=12 ? 'م' : 'ص';
+  const h12   = h%12 || 12;
   return `${String(h12).padStart(2,'0')}:${String(m).padStart(2,'0')} ${ampm}`;
 }
-function saveGroups(){ localStorage.setItem(SCH_KEY, JSON.stringify(schGroups)); }
-function saveBlocks(){ localStorage.setItem(BLOCK_KEY, JSON.stringify(blocks)); }
+function saveGroups() { localStorage.setItem(SCH_KEY,   JSON.stringify(schGroups)); }
+function saveBlocks() { localStorage.setItem(BLOCK_KEY, JSON.stringify(blocks)); }
 
 let toastT;
-function toast(msg,type='success'){
-  const el=$('toast'); el.className=`toast ${type} show`; $('toastMsg').textContent=msg;
-  clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove('show'),3200);
+function toast(msg, type='success') {
+  const el = $('toast');
+  el.className = `toast ${type} show`;
+  $('toastMsg').textContent = msg;
+  clearTimeout(toastT);
+  toastT = setTimeout(() => el.classList.remove('show'), 3400);
 }
 
-// ── DAY FILTER ────────────────────────────────────────────────────
-function renderDayFilter(){
-  const bar = $('dayFilterBar');
+// ── DAY FILTER ───────────────────────────────────────────────────
+function renderDayFilter() {
+  const bar      = $('dayFilterBar');
   const todayIdx = new Date().getDay();
-  bar.innerHTML = DAYS_SHORT.map((name, idx) => {
-    const count = schGroups.filter(g => (g.days||[]).includes(idx)).length;
-    const isToday = idx === todayIdx;
+  bar.innerHTML  = DAYS_SHORT.map((name, idx) => {
+    const count    = schGroups.filter(g => (g.days||[]).includes(idx)).length;
+    const isToday  = idx === todayIdx;
     const isActive = idx === selectedDay;
     return `<button class="day-btn${isActive?' active':''}${isToday?' today-day':''}" onclick="selectDay(${idx})">
       <span class="db-name">${name}</span>
       <span class="db-count">${count} مجموعة</span>
     </button>`;
   }).join('');
-  // update label
-  const tlLabel = $('tlDayLabel');
+
+  const tlLabel  = $('tlDayLabel');
   tlLabel.innerHTML = DAYS_AR[selectedDay];
-  const todayBadge = document.createElement('span');
-  todayBadge.className = 'tl-today-badge';
-  todayBadge.textContent = 'اليوم';
+  const todayBadge  = document.createElement('span');
+  todayBadge.className   = 'tl-today-badge';
+  todayBadge.textContent  = 'اليوم';
   todayBadge.style.display = selectedDay === todayIdx ? 'inline-flex' : 'none';
   tlLabel.appendChild(todayBadge);
 }
 
-function selectDay(idx){
+function selectDay(idx) {
   selectedDay = idx;
   renderDayFilter();
   renderTimeline();
 }
 
-// ── STATS ─────────────────────────────────────────────────────────
-function updateStats(){
-  var dayGroups = schGroups.filter(function(g){ return (g.days||[]).includes(selectedDay); });
-  var people = 0;
-  for(var pi=0;pi<dayGroups.length;pi++){
-    var pg = dayGroups[pi];
-    if(pg.type===0) people += (pg.customCount||0);
-    else people += (pg.type||0);
-  }
+// ── STATS ────────────────────────────────────────────────────────
+function updateStats() {
+  const dayGroups = schGroups.filter(g => (g.days||[]).includes(selectedDay));
+  let people = 0;
+  dayGroups.forEach(g => {
+    people += g.type === 0 ? (g.customCount||0) : (g.type||0);
+  });
   $('stGroups').textContent = dayGroups.length;
   $('stPeople').textContent = people;
-  var slots = buildSlots();
-  var freeCount = 0;
-  for(var si=0;si<slots.length;si++){
-    if(!slots[si].blocked && !slots[si].bookings.length && slots[si].isFullHour) freeCount++;
-  }
+  const slots = buildSlots();
+  let freeCount = 0;
+  slots.forEach(s => { if(!s.blocked && !s.bookings.length && s.isFullHour) freeCount++; });
   $('stFree').textContent = freeCount;
   renderConflictBanner(dayGroups);
 }
 
-// ── BUILD SLOTS ───────────────────────────────────────────────────
-function isBlockedAt(hour, minute, dayIdx){
+// ── BUILD SLOTS ──────────────────────────────────────────────────
+function isBlockedAt(hour, minute, dayIdx) {
   return blocks.some(b => {
     if(!(b.days||[]).includes(dayIdx)) return false;
     const from = timeToMin(b.from), to = timeToMin(b.to);
-    const cur = hour*60 + minute;
+    const cur  = hour*60 + minute;
     return cur >= from && cur < to;
   });
 }
 
-function buildSlots(){
+function buildSlots() {
   const dayGroups = schGroups.filter(g => (g.days||[]).includes(selectedDay));
   const slots = [];
-  for(let h = TIMELINE_START; h < TIMELINE_END; h++){
-    for(let half = 0; half < 2; half++){
-      const min = half * 30;
+  for(let h = TIMELINE_START; h < TIMELINE_END; h++) {
+    for(let half = 0; half < 2; half++) {
+      const min  = half * 30;
       const time = minToTime(h*60 + min);
-      const blocked = isBlockedAt(h, min, selectedDay);
+      const blocked  = isBlockedAt(h, min, selectedDay);
       const bookings = dayGroups.filter(g => {
         const gm = timeToMin(g.time);
         return gm >= h*60+min && gm < h*60+min+30;
@@ -520,19 +613,23 @@ function buildSlots(){
   return slots;
 }
 
-// ── TIMELINE RENDER ───────────────────────────────────────────────
-function renderTimeline(){
-  const wrap = $('timelineWrap');
+// ── TIMELINE RENDER ──────────────────────────────────────────────
+function renderTimeline() {
+  const wrap  = $('timelineWrap');
   if(!wrap) return;
   const slots = buildSlots();
   updateStats();
 
+  // Collect conflict times for the selected day
+  const dayGroups   = schGroups.filter(g => (g.days||[]).includes(selectedDay));
+  const allTimes    = dayGroups.map(g => g.time);
+  const conflictSet = new Set(allTimes.filter((t,i) => allTimes.indexOf(t) !== i));
+
   let html = '';
-  for(let i = 0; i < slots.length; i++){
-    const slot = slots[i];
+  slots.forEach(slot => {
     const hasBookings = slot.bookings.length > 0;
     const classes = ['tl-row'];
-    if(slot.blocked) classes.push('blocked');
+    if(slot.blocked)   classes.push('blocked');
     if(!slot.isFullHour) classes.push('half-hour');
 
     const timeLabel = slot.isFullHour
@@ -541,11 +638,11 @@ function renderTimeline(){
 
     let slotContent = '';
 
-    if(slot.blocked){
-      if(slot.isFullHour){
+    if(slot.blocked) {
+      if(slot.isFullHour) {
         const blk = blocks.find(b => {
           const bFrom = timeToMin(b.from), bTo = timeToMin(b.to);
-          const cur = slot.hour * 60;
+          const cur   = slot.hour * 60;
           return (b.days||[]).includes(selectedDay) && cur >= bFrom && cur < bTo;
         });
         slotContent = `<div class="blocked-label">
@@ -554,50 +651,69 @@ function renderTimeline(){
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>${blk ? blk.label : 'محظور'}</div>`;
       }
-      // half-hour blocked rows show nothing
     } else {
-      const bookingHtml = slot.bookings.map(function(g){
-        const st = SCH_STYLES[g.type] || SCH_STYLES[0];
-        const names = (g.names||[]).filter(function(n){ return n.trim(); });
+      // Build booking pills
+      const bookingHtml = slot.bookings.map(g => {
+        const st  = SCH_STYLES[g.type] || SCH_STYLES[0];
+        const { filled, total } = groupCompletion(g);
+        const dotColor = completionColor(filled, total);
+        const cLabel   = completionLabel(filled, total);
+        const cClass   = completionClass(filled, total);
+        const isConflict = conflictSet.has(g.time);
+
+        // Multi-day badge: if group spans more than 1 day show it
+        const daysCount = (g.days||[]).length;
+        const daysBadge = daysCount > 1
+          ? `<span class="bp-days-badge">${daysCount} أيام</span>`
+          : '';
+
+        const names = (g.names||[]).filter(n => n.trim());
         const membersText = names.length
           ? names.slice(0,3).join(' · ') + (names.length > 3 ? '...' : '')
-          : (g.type === 0 ? (g.customCount||'?') + ' أفراد' : st.label);
-        return '<div class="booking-pill" style="background:' + st.bg + ';border-color:' + st.border + ';color:' + st.text + '" onclick="openGroupModal(\'' + g.id + '\')">'
-          + '<span class="bp-type">' + to12(g.time) + '</span>'
-          + '<span class="bp-name">' + (g.type === 0 ? (g.customCount||'?') + ' أفراد' : st.label) + '</span>'
-          + '<span class="bp-members">' + membersText + '</span>'
-          + '<span class="bp-del" onclick="event.stopPropagation();deleteGroup(\'' + g.id + '\')" title="حذف">✕</span>'
-          + '</div>';
+          : (g.type===0 ? (g.customCount||'?')+' أفراد' : st.label);
+
+        return `<div class="booking-pill${isConflict?' has-conflict':''}"
+          style="background:${st.bg};border-color:${st.border};color:${st.text}"
+          onclick="openGroupModal('${g.id}')">
+          <span class="bp-completion-dot" style="background:${dotColor};box-shadow:${filled===total&&total>0?'0 0 6px '+dotColor:'none'}"></span>
+          <span class="bp-type">${to12(g.time)}</span>
+          <span class="bp-name">${g.type===0?(g.customCount||'?')+' أفراد':st.label}</span>
+          <span class="bp-members">${membersText}</span>
+          ${daysBadge}
+          ${cLabel ? `<span class="bp-completion ${cClass}">${cLabel}</span>` : ''}
+          <span class="bp-del" onclick="event.stopPropagation();deleteGroup('${g.id}')" title="حذف">✕</span>
+        </div>`;
       }).join('');
 
       slotContent = bookingHtml
-        + '<div class="tl-slot-add" onclick="openGroupModal(null,\'' + slot.time + '\')">'
-        + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>'
-        + 'إضافة مجموعة</div>';
+        + `<div class="tl-slot-add" onclick="openGroupModal(null,'${slot.time}')">
+             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+             إضافة مجموعة
+           </div>`;
     }
 
-    html += '<div class="' + classes.join(' ') + '">'
-      + '<div class="tl-time">' + timeLabel + '</div>'
-      + '<div class="tl-slot' + (hasBookings ? ' has-booking' : '') + '">' + slotContent + '</div>'
-      + '</div>';
-  }
+    html += `<div class="${classes.join(' ')}">
+      <div class="tl-time">${timeLabel}</div>
+      <div class="tl-slot${hasBookings?' has-booking':''}">${slotContent}</div>
+    </div>`;
+  });
 
   wrap.innerHTML = html;
   lucide.createIcons();
 }
 
-// ── CONFLICT BANNER ───────────────────────────────────────────────
-function renderConflictBanner(dayGroups){
+// ── CONFLICT BANNER ──────────────────────────────────────────────
+function renderConflictBanner(dayGroups) {
   const banner = $('conflictBanner');
-  const times = dayGroups.map(g => g.time);
-  const dups = times.filter((t,i) => times.indexOf(t) !== i);
-  if(dups.length){
+  const times  = dayGroups.map(g => g.time);
+  const dups   = times.filter((t,i) => times.indexOf(t) !== i);
+  if(dups.length) {
     const uniq = [...new Set(dups)];
     banner.style.display = 'block';
     banner.innerHTML = uniq.map(t => `
       <div class="conflict-row" style="margin-bottom:6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        تعارض في الوقت: ${to12(t)} — يوم ${DAYS_AR[selectedDay]}
+        تنبيه: ${to12(t)} — يوم ${DAYS_AR[selectedDay]} فيه مجموعتان في نفس الوقت
       </div>`).join('');
   } else {
     banner.style.display = 'none';
@@ -605,46 +721,70 @@ function renderConflictBanner(dayGroups){
   }
 }
 
-// ── GROUP MODAL ───────────────────────────────────────────────────
-function openGroupModal(id, time){
-  editId = id;
-  schSelectedType = null;
-  prefillTime = time;
+// ── DAYS GRID (inside group modal) ──────────────────────────────
+function renderModalDaysGrid() {
+  const todayIdx = new Date().getDay();
+  const grid = $('schDaysGrid');
+  grid.innerHTML = DAYS_SHORT.map((name, idx) => {
+    const isSelected = schSelectedDays.includes(idx);
+    const isToday    = idx === todayIdx;
+    return `<div class="day-sel-btn${isSelected?' selected':''}${isToday?' today-mark':''}"
+      onclick="toggleModalDay(${idx})">${name}</div>`;
+  }).join('');
+}
 
-  if(id){
+function toggleModalDay(idx) {
+  if(schSelectedDays.includes(idx)) {
+    schSelectedDays = schSelectedDays.filter(d => d !== idx);
+  } else {
+    schSelectedDays.push(idx);
+  }
+  renderModalDaysGrid();
+  checkConflict();
+}
+
+// ── GROUP MODAL ──────────────────────────────────────────────────
+function openGroupModal(id, time) {
+  editId        = id;
+  schSelectedType = null;
+
+  if(id) {
     const g = schGroups.find(x => x.id === id);
     if(!g) return;
     $('groupModalTitle').innerHTML = `<i data-lucide="pencil"></i> تعديل المجموعة`;
-    schSelectedType = g.type;
+    schSelectedType  = g.type;
+    schSelectedDays  = [...(g.days||[selectedDay])];
     $('schTime').value = g.time || '';
-    document.querySelectorAll('.sch-type-btn').forEach(b => b.className = 'sch-type-btn');
+    document.querySelectorAll('.sch-type-btn').forEach(b => b.className='sch-type-btn');
     const btn = $('scht'+g.type);
     if(btn) btn.className = `sch-type-btn sel-${g.type}`;
     if(g.type===0){ $('schCustomWrap').style.display='block'; $('schCustomCount').value=g.customCount||''; schBuildNames(g.customCount||0, g.names||[]); }
-    else{ $('schCustomWrap').style.display='none'; schBuildNames(g.type, g.names||[]); }
+    else { $('schCustomWrap').style.display='none'; schBuildNames(g.type, g.names||[]); }
   } else {
     $('groupModalTitle').innerHTML = `<i data-lucide="layout-grid"></i> إضافة مجموعة`;
+    schSelectedDays  = [selectedDay];
     $('schTime').value = time || '';
     $('schCustomWrap').style.display = 'none';
     $('schCustomCount').value = '';
-    document.querySelectorAll('.sch-type-btn').forEach(b => b.className = 'sch-type-btn');
+    document.querySelectorAll('.sch-type-btn').forEach(b => b.className='sch-type-btn');
     schBuildNames(0);
   }
   $('schConflictWarn').classList.remove('show');
+  renderModalDaysGrid();
   $('groupModal').classList.add('show');
   document.body.style.overflow = 'hidden';
   lucide.createIcons();
 }
 
-function closeGroupModal(){
+function closeGroupModal() {
   $('groupModal').classList.remove('show');
   document.body.style.overflow = '';
   editId = null; schSelectedType = null;
 }
 
-function schSelectType(t){
+function schSelectType(t) {
   schSelectedType = t;
-  document.querySelectorAll('.sch-type-btn').forEach(b => b.className = 'sch-type-btn');
+  document.querySelectorAll('.sch-type-btn').forEach(b => b.className='sch-type-btn');
   const btn = $('scht'+t);
   if(btn) btn.className = `sch-type-btn sel-${t}`;
   $('schCustomWrap').style.display = t===0 ? 'block' : 'none';
@@ -652,82 +792,94 @@ function schSelectType(t){
   lucide.createIcons();
 }
 
-function schBuildNames(count, existing=[]){
+function schBuildNames(count, existing=[]) {
   const list = $('schNamesList');
   if(!count){ list.innerHTML='<span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span>'; return; }
   let html = '';
   for(let i=0;i<count;i++){
-    const val = existing[i] || '';
+    const val = existing[i]||'';
     html += `<div class="sch-name-row"><input type="text" class="fc" style="height:40px;font-size:.84rem" placeholder="اسم المتدرب ${i+1}" value="${val}"/></div>`;
   }
   list.innerHTML = html;
 }
 
-function checkConflict(){
+// Soft conflict check — only warns, never blocks
+function checkConflict() {
   const time = $('schTime').value;
   if(!time){ $('schConflictWarn').classList.remove('show'); return; }
-  // check blocked
-  const min = timeToMin(time);
-  if(isBlockedAt(Math.floor(min/60), min%60, selectedDay)){
-    $('schConflictWarn').innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> هذا الوقت محظور`;
+
+  const min  = timeToMin(time);
+  const hour = Math.floor(min/60), minute = min%60;
+
+  // Check if blocked for ANY of the selected days
+  const blockedDays = schSelectedDays.filter(d => isBlockedAt(hour, minute, d));
+  if(blockedDays.length) {
+    $('schConflictMsg').textContent = `⚠ تنبيه: هذا الوقت محظور في: ${blockedDays.map(d=>DAYS_SHORT[d]).join(' · ')} — يمكنك الحفظ رغم ذلك`;
     $('schConflictWarn').classList.add('show');
     return;
   }
-  // check existing group same time same day
-  const conflict = schGroups.find(g => g.id !== editId && g.time === time && (g.days||[]).includes(selectedDay));
-  if(conflict){
-    $('schConflictWarn').innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> يوجد مجموعة في نفس الوقت لهذا اليوم`;
+
+  // Check duplicate times in selected days
+  const conflictDays = schSelectedDays.filter(d => {
+    return schGroups.some(g => g.id !== editId && g.time === time && (g.days||[]).includes(d));
+  });
+  if(conflictDays.length) {
+    $('schConflictMsg').textContent = `⚠ تنبيه: يوجد مجموعة في نفس الوقت في: ${conflictDays.map(d=>DAYS_SHORT[d]).join(' · ')} — يمكنك الحفظ رغم ذلك`;
     $('schConflictWarn').classList.add('show');
   } else {
     $('schConflictWarn').classList.remove('show');
   }
 }
 
-function schSave(){
+function schSave() {
   const time = $('schTime').value;
-  if(!time){ toast('اختر ساعة التدريب','error'); return; }
+  if(!time)                 { toast('اختر ساعة التدريب','error'); return; }
   if(schSelectedType===null){ toast('اختر نوع المجموعة','error'); return; }
+  if(!schSelectedDays.length){ toast('اختر يوماً واحداً على الأقل','error'); return; }
 
-  // block check — warn only, don't block saving
-  const min = timeToMin(time);
-  if(isBlockedAt(Math.floor(min/60), min%60, selectedDay)){
-    $('schConflictWarn').innerHTML = '⚠️ تنبيه: هذا الوقت محظور — تم الحفظ على مسؤوليتك';
-    $('schConflictWarn').classList.add('show');
-  } else {
-    // conflict check — warn only, don't block saving
-    const conflict = schGroups.find(g => g.id !== editId && g.time === time && (g.days||[]).includes(selectedDay));
-    if(conflict){
-      $('schConflictWarn').innerHTML = '⚠️ تنبيه: يوجد مجموعة في نفس الوقت — تم الحفظ على مسؤوليتك';
-      $('schConflictWarn').classList.add('show');
-    } else {
-      $('schConflictWarn').classList.remove('show');
-    }
-  }
-
-  const names = [...document.querySelectorAll('#schNamesList input')].map(i => i.value.trim());
+  // Always save — conflict is just a soft warning
+  const names       = [...document.querySelectorAll('#schNamesList input')].map(i => i.value.trim());
   const customCount = schSelectedType===0 ? (parseInt($('schCustomCount').value)||0) : null;
 
-  if(editId){
+  // Check for conflict silently to decide toast type
+  const hasConflict = schSelectedDays.some(d =>
+    schGroups.some(g => g.id !== editId && g.time === time && (g.days||[]).includes(d))
+  );
+
+  if(editId) {
     const idx = schGroups.findIndex(g => g.id === editId);
-    if(idx>=0) schGroups[idx] = {...schGroups[idx], type:schSelectedType, time, names, customCount};
-  } else {
-    schGroups.push({
-      id: Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+    if(idx>=0) schGroups[idx] = {
+      ...schGroups[idx],
       type: schSelectedType,
       time,
       names,
       customCount,
-      days: [selectedDay]   // assigned to current day by default
+      days: schSelectedDays
+    };
+  } else {
+    schGroups.push({
+      id:          Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+      type:        schSelectedType,
+      time,
+      names,
+      customCount,
+      days:        schSelectedDays
     });
   }
+
   saveGroups();
   closeGroupModal();
   renderDayFilter();
   renderTimeline();
-  toast(editId ? '✅ تم التعديل' : '✅ تمت الإضافة');
+
+  if(hasConflict) {
+    toast('⚠ تم الحفظ مع تعارض في الوقت','warn');
+  } else {
+    toast(editId ? '✅ تم التعديل' : '✅ تمت الإضافة');
+  }
 }
 
-function deleteGroup(id){
+function deleteGroup(id) {
   if(!confirm('تأكيد حذف المجموعة؟')) return;
   schGroups = schGroups.filter(g => g.id !== id);
   saveGroups();
@@ -736,11 +888,11 @@ function deleteGroup(id){
   toast('تم حذف المجموعة');
 }
 
-// ── BLOCK MANAGER ─────────────────────────────────────────────────
-function openBlockModal(){
+// ── BLOCK MANAGER ────────────────────────────────────────────────
+function openBlockModal() {
   $('blkFrom').value = '';
-  $('blkTo').value = '';
-  document.querySelectorAll('input[name="blk_day"]').forEach(c => c.checked = false);
+  $('blkTo').value   = '';
+  document.querySelectorAll('input[name="blk_day"]').forEach(c => c.checked=false);
   $('blkAllDays').checked = false;
   renderBlockList();
   $('blockModal').classList.add('show');
@@ -748,28 +900,27 @@ function openBlockModal(){
   lucide.createIcons();
 }
 
-function closeBlockModal(){
+function closeBlockModal() {
   $('blockModal').classList.remove('show');
   document.body.style.overflow = '';
   renderTimeline();
 }
 
-function toggleAllDays(e){
-  // toggle handled below
+function toggleAllDays(e) {
   setTimeout(() => {
     const all = $('blkAllDays').checked;
-    document.querySelectorAll('input[name="blk_day"]').forEach(c => c.checked = all);
+    document.querySelectorAll('input[name="blk_day"]').forEach(c => c.checked=all);
   }, 0);
 }
 
-function addBlock(){
+function addBlock() {
   const from = $('blkFrom').value, to = $('blkTo').value;
   if(!from || !to){ toast('اختر وقت البداية والنهاية','error'); return; }
   if(timeToMin(from) >= timeToMin(to)){ toast('وقت البداية يجب أن يكون قبل النهاية','error'); return; }
   const days = [...document.querySelectorAll('input[name="blk_day"]:checked')].map(c => Number(c.value));
   if(!days.length){ toast('اختر يوماً واحداً على الأقل','error'); return; }
   blocks.push({
-    id: Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+    id:    Date.now().toString(36)+Math.random().toString(36).slice(2,5),
     from, to, days,
     label: `${to12(from)} → ${to12(to)}`
   });
@@ -780,19 +931,16 @@ function addBlock(){
   document.querySelectorAll('input[name="blk_day"]').forEach(c => c.checked=false);
 }
 
-function deleteBlock(id){
+function deleteBlock(id) {
   blocks = blocks.filter(b => b.id !== id);
   saveBlocks();
   renderBlockList();
 }
 
-function renderBlockList(){
+function renderBlockList() {
   const list = $('blockList');
   if(!list) return;
-  if(!blocks.length){
-    list.innerHTML='<div class="empty-blocks">لا توجد أوقات محظورة</div>';
-    return;
-  }
+  if(!blocks.length){ list.innerHTML='<div class="empty-blocks">لا توجد أوقات محظورة</div>'; return; }
   list.innerHTML = blocks.map(b => {
     const daysText = b.days.length===7 ? 'كل الأيام' : b.days.map(d=>DAYS_SHORT[d]).join(' · ');
     return `<div class="block-item">
@@ -800,7 +948,14 @@ function renderBlockList(){
         <div class="bi-time">${to12(b.from)} ← ${to12(b.to)}</div>
         <div class="bi-days">${daysText}</div>
       </div>
-      <button class="bi-del" onclick="deleteBlock('${b.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg></button>
+      <button class="bi-del" onclick="deleteBlock('${b.id}')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+          <path d="M10 11v6M14 11v6"/>
+          <path d="M9 6V4h6v2"/>
+        </svg>
+      </button>
     </div>`;
   }).join('');
   lucide.createIcons();
