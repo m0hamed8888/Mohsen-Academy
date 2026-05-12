@@ -219,39 +219,40 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     const filter = { subscriptionId: req.params.subscriptionId };
     if (!isBoss) filter.trainer = req.trainer._id;
 
-const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
-                 'level','levelNote','rating','ratingNote',
-                 'sessionsCount','trainingDays'];
+    const allowed = ['fullName','phone','trainingTime','goal','isActive','subscriptionExpiry','trainerName',
+                     'level','levelNote','rating','ratingNote',
+                     'sessionsCount','trainingDays','restDay'];
+
     const update = {};
     allowed.forEach(key => { if (req.body[key] !== undefined) update[key] = req.body[key]; });
 
-     // التحقق من trainingDays و sessionsCount لو اتبعتوا
-if (update.sessionsCount !== undefined) {
-  update.sessionsCount = Number(update.sessionsCount);
-}
-if (update.trainingDays !== undefined) {
-  update.trainingDays = update.trainingDays.map(Number);
-  const sess = update.sessionsCount || (await Swimmer.findOne(filter))?.sessionsCount;
-  const expected = { 8:2, 12:3, 24:6 }[sess];
-  if (expected && update.trainingDays.length !== expected) {
-    return res.status(400).json({ success: false, message: `عدد الأيام غير صح — المطلوب ${expected} أيام` });
-  }
-}
-     
+    if (update.sessionsCount !== undefined) {
+      update.sessionsCount = Number(update.sessionsCount);
+    }
+    if (update.trainingDays !== undefined) {
+      update.trainingDays = update.trainingDays.map(Number);
+      const sess = update.sessionsCount || (await Swimmer.findOne(filter))?.sessionsCount;
+      const expected = { 8:2, 12:3, 24:6 }[sess];
+      if (expected && update.trainingDays.length !== expected) {
+        return res.status(400).json({ success: false, message: `عدد الأيام غير صح — المطلوب ${expected} أيام` });
+      }
+    }
+    if (update.restDay !== undefined) {
+      update.restDay = Number(update.restDay);
+    }
+
     if (typeof update.fullName    === 'string') update.fullName    = update.fullName.trim();
     if (typeof update.phone       === 'string') update.phone       = update.phone.trim();
     if (typeof update.trainerName === 'string') update.trainerName = update.trainerName.trim() || null;
-    if (update.goal         === '') update.goal         = null;
-    if (update.trainingTime === '') update.trainingTime = null;
+    if (update.goal               === '') update.goal               = null;
+    if (update.trainingTime       === '') update.trainingTime       = null;
     if (update.subscriptionExpiry === '') update.subscriptionExpiry = null;
     if ('isActive' in update) update.isActive = (update.isActive === true || update.isActive === 'true');
 
-    // تحديث level: نسجل من عدّله
     if (update.level !== undefined) {
       update.levelUpdatedBy = req.trainer.name;
       update.levelUpdatedAt = new Date();
     }
-    // تحديث rating: نسجل من عدّله
     if (update.rating !== undefined) {
       update.ratingUpdatedBy = req.trainer.name;
       update.ratingUpdatedAt = new Date();
