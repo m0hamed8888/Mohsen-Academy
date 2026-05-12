@@ -114,9 +114,9 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 
 /* Completion badge */
 .bp-completion{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:var(--r-full);flex-shrink:0;}
-.bp-completion.full{background:rgba(0,229,160,.18);color:#00e5a0;border:1px solid rgba(0,229,160,.35);}
-.bp-completion.partial{background:rgba(255,181,71,.12);color:#ffb547;border:1px solid rgba(255,181,71,.3);}
-.bp-completion.empty{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);}
+.bp-completion.full{background:#00a85e;color:#fff;border:1px solid #00e5a0;box-shadow:0 0 10px rgba(0,168,94,.55);}
+.bp-completion.partial{background:#c96d00;color:#fff;border:1px solid #ffb547;box-shadow:0 0 8px rgba(201,109,0,.4);}
+.bp-completion.empty{background:rgba(255,255,255,.08);color:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.13);}
 
 /* Multi-day badge on pill */
 .bp-days-badge{font-size:.56rem;font-weight:800;padding:1px 6px;border-radius:var(--r-full);background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);flex-shrink:0;white-space:nowrap;}
@@ -321,8 +321,8 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
     <!-- Completion legend -->
     <div class="legend-row" style="margin-bottom:0;padding-bottom:14px;border-bottom:1px solid var(--bdr);margin-bottom:14px;">
-      <div class="leg"><div class="leg-circle" style="background:#00e5a0;box-shadow:0 0 5px rgba(0,229,160,.5)"></div> مكتملة</div>
-      <div class="leg"><div class="leg-circle" style="background:#ffb547"></div> جزئية</div>
+      <div class="leg"><div class="leg-circle" style="background:#00d97a;box-shadow:0 0 7px rgba(0,217,122,.7)"></div> مكتملة</div>
+      <div class="leg"><div class="leg-circle" style="background:#ff8c00;box-shadow:0 0 5px rgba(255,140,0,.5)"></div> جزئية</div>
       <div class="leg"><div class="leg-circle" style="background:rgba(255,255,255,.2)"></div> فارغة</div>
       <div class="leg" style="opacity:.7"><span style="font-size:.7rem">⚠</span> تعارض وقت</div>
     </div>
@@ -486,10 +486,10 @@ function groupCompletion(g) {
  *   empty   → dim white
  */
 function completionColor(filled, total) {
-  if (total === 0) return 'rgba(255,255,255,.2)';
-  if (filled === total) return '#00e5a0';
-  if (filled > 0)       return '#ffb547';
-  return 'rgba(255,255,255,.2)';
+  if (total === 0) return 'rgba(255,255,255,.18)';
+  if (filled === total) return '#00d97a';   /* vivid green */
+  if (filled > 0)       return '#ff8c00';   /* deep orange — clearly distinct */
+  return 'rgba(255,255,255,.18)';
 }
 
 function completionLabel(filled, total) {
@@ -675,7 +675,7 @@ function renderTimeline() {
         return `<div class="booking-pill${isConflict?' has-conflict':''}"
           style="background:${st.bg};border-color:${st.border};color:${st.text}"
           onclick="openGroupModal('${g.id}')">
-          <span class="bp-completion-dot" style="background:${dotColor};box-shadow:${filled===total&&total>0?'0 0 6px '+dotColor:'none'}"></span>
+          <span class="bp-completion-dot" style="background:${dotColor};box-shadow:${filled===total&&total>0?'0 0 7px '+dotColor+', 0 0 14px '+dotColor+'55':'none'}"></span>
           <span class="bp-type">${to12(g.time)}</span>
           <span class="bp-name">${g.type===0?(g.customCount||'?')+' أفراد':st.label}</span>
           <span class="bp-members">${membersText}</span>
