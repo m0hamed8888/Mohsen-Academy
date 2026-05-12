@@ -536,7 +536,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     <button class="bot-item active" data-tab="swimmers"><i data-lucide="users"></i><span>السباحون</span></button>
     <button class="bot-item" data-tab="create"><i data-lucide="user-plus"></i><span>اشتراك جديد</span></button>
     <button class="bot-item" data-tab="attendance"><i data-lucide="calendar-check"></i><span>الحضور</span></button>
-    <button class="bot-item" data-tab="schedule"><i data-lucide="layout-grid"></i><span>الجدول</span></button>
+<a class="bot-item" href="../Schedule dayview.html"><i data-lucide="layout-grid"></i><span>الجدول</span></a>
     <button class="bot-item" data-tab="levels"><i data-lucide="bar-chart-2"></i><span>Levels</span></button>
   </div>
 </nav>
@@ -553,7 +553,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     <button class="dtb active" data-tab="swimmers"><i data-lucide="users"></i> السباحون</button>
     <button class="dtb" data-tab="create"><i data-lucide="user-plus"></i> اشتراك جديد</button>
     <button class="dtb" data-tab="attendance"><i data-lucide="calendar-check"></i> الحضور</button>
-    <button class="dtb" data-tab="schedule"><i data-lucide="layout-grid"></i> جدول المجموعات</button>
+<a class="dtb" href="../Schedule dayview.html" style="text-decoration:none"><i data-lucide="layout-grid"></i> جدول المجموعات</a>
     <button class="dtb" data-tab="levels"><i data-lucide="bar-chart-2"></i> Levels</button>
   </div>
 
@@ -703,36 +703,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
   </div>
 
-  <!-- ══ SCHEDULE ══ -->
-  <div class="panel" id="panel-schedule">
-    <div class="gc">
-      <div class="sch-header">
-        <div>
-          <div class="gc-title" style="margin-bottom:4px"><i data-lucide="layout-grid"></i> جدول المجموعات</div>
-          <div class="sch-month" id="schMonthLabel">—</div>
-        </div>
-        <button class="sch-add-btn" id="schAddBtn"><i data-lucide="plus"></i> إضافة مجموعة</button>
-      </div>
-
-      <div class="sch-summary">
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalGroups">0</div><div class="sch-sum-lbl">مجموعات</div></div>
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalPeople">0</div><div class="sch-sum-lbl">متدربون</div></div>
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schFreeSlots">—</div><div class="sch-sum-lbl">وقت فاضي</div></div>
-      </div>
-
-      <div class="sch-legend">
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(55,138,221,.25);border:1px solid #378ADD"></div> فرد واحد</div>
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(99,153,34,.25);border:1px solid #639922"></div> ٣ أفراد</div>
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(127,119,221,.25);border:1px solid #7F77DD"></div> ٥ أفراد</div>
-        <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(186,117,23,.25);border:1px solid #BA7517"></div> مجموعة مخصصة</div>
-      </div>
-
-      <div class="sch-timeline" id="schTimeline">
-        <div class="sch-empty"><i data-lucide="calendar-off"></i><div class="sch-empty-txt">لا توجد مجموعات — اضغط "إضافة مجموعة"</div></div>
-      </div>
-    </div>
-  </div>
-
+ 
   <!-- LEVELS -->
   <div class="panel" id="panel-levels">
     <div class="gc">
@@ -840,45 +811,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- SCHEDULE MODAL -->
-<div class="sch-mo" id="schModal">
-  <div class="sch-mo-card">
-    <div class="mo-drag"></div>
-    <div class="mo-hd">
-      <div class="mo-title" id="schModalTitle"><i data-lucide="layout-grid"></i> إضافة مجموعة</div>
-      <button class="mo-close" onclick="closeSchModal()"><i data-lucide="x"></i></button>
-    </div>
 
-    <div class="fld mt-4">
-      <label><i data-lucide="users"></i> نوع المجموعة</label>
-      <div class="sch-type-grid">
-        <button class="sch-type-btn" id="scht1" onclick="schSelectType(1)"><i data-lucide="user"></i> فرد واحد</button>
-        <button class="sch-type-btn" id="scht3" onclick="schSelectType(3)"><i data-lucide="users"></i> ٣ أفراد</button>
-        <button class="sch-type-btn" id="scht5" onclick="schSelectType(5)"><i data-lucide="users"></i> ٥ أفراد</button>
-        <button class="sch-type-btn" id="scht0" onclick="schSelectType(0)"><i data-lucide="sliders"></i> مخصص</button>
-      </div>
-    </div>
-
-    <div class="fld mt-12" id="schCustomWrap" style="display:none">
-      <label><i data-lucide="hash"></i> عدد الأفراد</label>
-      <input type="number" class="fc" id="schCustomCount" min="1" max="30" placeholder="مثال: 7" oninput="schBuildNames()"/>
-    </div>
-
-    <div class="fld mt-12">
-      <label><i data-lucide="clock"></i> ساعة التدريب</label>
-      <input type="time" class="fc" id="schTime"/>
-    </div>
-
-    <div class="fld mt-12">
-      <label><i data-lucide="user-check"></i> أسماء المتدربين <span style="font-size:.68rem;color:var(--tm)">(اختياري)</span></label>
-      <div class="sch-names-list" id="schNamesList"><span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span></div>
-    </div>
-
-    <div class="sch-conflict" id="schConflict">⚠️ يوجد مجموعة بنفس الوقت — اختر وقتاً مختلفاً</div>
-
-    <button class="btn-pri mt-16" onclick="schSave()"><i data-lucide="save"></i><span>حفظ المجموعة</span></button>
-  </div>
-</div>
 
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastMsg">تم</span></div>
 
