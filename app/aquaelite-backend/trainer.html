@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -421,13 +422,41 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-add-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r-full);background:rgba(0,180,200,.08);border:1px solid rgba(0,180,200,.22);color:var(--teal);font-size:.78rem;font-weight:700;transition:all var(--fast);cursor:pointer;}
 .sch-add-btn:hover{background:rgba(0,180,200,.18);box-shadow:0 0 16px rgba(0,180,200,.15)}
 .sch-add-btn svg{width:14px;height:14px}
-.sch-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
+.sch-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .sch-sum-card{background:rgba(255,255,255,.025);border:1px solid var(--bdr);border-radius:var(--r-md);padding:10px 8px;text-align:center;}
 .sch-sum-num{font-family:var(--f-disp);font-size:1.5rem;font-style:italic;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
 .sch-sum-lbl{font-size:.58rem;font-weight:700;color:var(--tm);margin-top:3px}
 .sch-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
 .sch-leg{display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--ts);}
 .sch-leg-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
+
+/* ══ SCHEDULE DAY FILTER TABS ══ */
+.sch-day-tabs{display:flex;gap:5px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.sch-day-tabs::-webkit-scrollbar{display:none}
+.sch-day-tab{flex-shrink:0;display:flex;align-items:center;gap:5px;padding:7px 13px;border-radius:var(--r-full);font-size:.74rem;font-weight:700;color:var(--tm);background:var(--surf);border:1px solid var(--bdr);cursor:pointer;transition:all var(--fast);white-space:nowrap;}
+.sch-day-tab:hover:not(.active){color:var(--ts);border-color:var(--bdr2)}
+.sch-day-tab.active{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(0,120,200,.4)}
+.sch-day-tab.has-groups:not(.active){border-color:rgba(0,180,200,.35);color:var(--teal)}
+.sch-day-tab.is-today:not(.active){border-color:rgba(0,229,160,.4);color:var(--ok)}
+.sch-day-dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.7;flex-shrink:0;}
+
+/* ══ SCHEDULE HOUR TIMELINE ══ */
+.sch-work-banner{display:flex;align-items:center;gap:9px;padding:9px 14px;border-radius:var(--r-md);font-size:.74rem;font-weight:700;margin-bottom:6px;}
+.sch-work-banner.open{background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.2);color:var(--ok);}
+.sch-work-banner.close{background:rgba(255,77,109,.06);border:1px solid rgba(255,77,109,.2);color:var(--err);margin-top:4px;margin-bottom:0;}
+.sch-work-banner svg{width:13px;height:13px;flex-shrink:0}
+.sch-hour-timeline{display:flex;flex-direction:column;}
+.sch-hour-row{display:grid;grid-template-columns:70px 1fr;min-height:54px;position:relative;}
+.sch-hour-row+.sch-hour-row .sch-h-time{border-top:1px solid rgba(255,255,255,.028);}
+.sch-h-time{display:flex;flex-direction:column;justify-content:flex-start;padding:10px 10px 8px 4px;border-left:2px solid rgba(255,255,255,.06);}
+.sch-h-time.booked{border-left-color:rgba(0,180,200,.55);}
+.sch-h-time-val{font-size:.69rem;font-weight:700;color:var(--tm);white-space:nowrap;line-height:1.2;}
+.sch-h-body{padding:7px 0 7px 10px;display:flex;flex-wrap:wrap;gap:5px;align-items:flex-start;}
+.sch-free-btn{flex:1;min-height:36px;min-width:80px;border-radius:var(--r-md);border:1.5px dashed rgba(0,180,200,.16);background:transparent;display:flex;align-items:center;justify-content:center;gap:5px;color:rgba(0,180,200,.28);font-size:.72rem;font-weight:600;cursor:pointer;transition:all var(--fast);}
+.sch-free-btn:hover{border-color:rgba(0,180,200,.5);background:rgba(0,180,200,.07);color:var(--teal);}
+.sch-free-btn svg{width:11px;height:11px;}
+
+/* ══ SCHEDULE ALL-VIEW ══ */
 .sch-timeline{display:flex;flex-direction:column;gap:3px;}
 .sch-slot{display:grid;grid-template-columns:72px 1fr;align-items:start;min-height:50px;}
 .sch-time-col{padding-top:6px;text-align:left;padding-left:10px;border-left:1px solid var(--bdr);}
@@ -439,9 +468,13 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-pill-members{font-size:.66rem;opacity:.7;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .sch-pill-del{font-size:.8rem;opacity:.45;cursor:pointer;padding:0 2px;margin-right:2px;}
 .sch-pill-del:hover{opacity:1}
+.sch-pill-days{font-size:.6rem;opacity:.55;font-style:italic;}
 .sch-empty{text-align:center;padding:32px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;}
 .sch-empty svg{width:36px;height:36px;color:var(--tm);opacity:.4}
 .sch-empty-txt{font-size:.82rem;color:var(--tm)}
+.sch-day-empty{text-align:center;padding:28px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;margin:4px 0;}
+.sch-day-empty svg{width:30px;height:30px;color:var(--tm);opacity:.35}
+.sch-day-empty-txt{font-size:.78rem;color:var(--tm)}
 
 /* ══ SCHEDULE MODAL ══ */
 .sch-mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
@@ -461,6 +494,12 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-name-row .fc{flex:1;height:40px;font-size:.84rem;}
 .sch-conflict{font-size:.75rem;color:var(--err);padding:8px 12px;border-radius:var(--r-sm);background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);display:none;margin-top:6px;}
 .sch-conflict.show{display:block}
+.sch-time-err{font-size:.72rem;color:var(--warn);padding:7px 12px;border-radius:var(--r-sm);background:rgba(255,181,71,.06);border:1px solid rgba(255,181,71,.2);display:none;margin-top:5px;}
+.sch-time-err.show{display:block}
+.sch-days-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:4px;}
+.sch-day-cb{display:flex;align-items:center;justify-content:center;padding:7px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.73rem;font-weight:700;color:var(--ts);transition:all var(--fast);}
+.sch-day-cb input{display:none}
+.sch-day-cb:has(input:checked){border-color:var(--teal);background:rgba(0,180,200,.1);color:#fff}
 
 /* ══ RESPONSIVE ══ */
 @media(min-width:640px){.wrap{padding:calc(var(--nav-h)+20px) 20px 30px}.bot-nav{display:none}.desk-tabs{display:flex}.toast{bottom:20px}.mo{align-items:center;padding:16px}.mo-card{border-radius:var(--r-2xl);max-width:580px}.mo-card::before{border-radius:var(--r-2xl) var(--r-2xl) 0 0}.mo-drag{display:none}.sch-mo{align-items:center;padding:16px}.sch-mo-card{border-radius:var(--r-2xl)}.sch-mo-card::before{border-radius:var(--r-2xl)}}
@@ -491,7 +530,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   <div class="nav-brand">
     <div class="brand-ic"><a href="../home.html"><i data-lucide="waves"></i></a></div>
     <div class="brand-txt">
-      <span class="brand-name"><a href="../Finance-panel.html">AquaElite</a></span>
+      <span class="brand-name"><a href="../home.html">AquaElite</a></span>
       <span class="brand-role">Captain Panel</span>
     </div>
   </div>
@@ -717,17 +756,29 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="sch-summary">
         <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalGroups">0</div><div class="sch-sum-lbl">مجموعات</div></div>
         <div class="sch-sum-card"><div class="sch-sum-num" id="schTotalPeople">0</div><div class="sch-sum-lbl">متدربون</div></div>
-        <div class="sch-sum-card"><div class="sch-sum-num" id="schFreeSlots">—</div><div class="sch-sum-lbl">وقت فاضي</div></div>
+        <div class="sch-sum-card"><div class="sch-sum-num" id="schFreeSlots">—</div><div class="sch-sum-lbl">أوقات فاضية</div></div>
       </div>
 
-      <div class="sch-legend">
+      <!-- DAY FILTER TABS -->
+      <div class="sch-day-tabs" id="schDayTabs">
+        <button class="sch-day-tab active" data-day="all" onclick="schSelectDay('all')">الكل</button>
+        <button class="sch-day-tab" data-day="0" onclick="schSelectDay(0)">الأحد</button>
+        <button class="sch-day-tab" data-day="1" onclick="schSelectDay(1)">الاثنين</button>
+        <button class="sch-day-tab" data-day="2" onclick="schSelectDay(2)">الثلاثاء</button>
+        <button class="sch-day-tab" data-day="3" onclick="schSelectDay(3)">الأربعاء</button>
+        <button class="sch-day-tab" data-day="4" onclick="schSelectDay(4)">الخميس</button>
+        <button class="sch-day-tab" data-day="5" onclick="schSelectDay(5)">الجمعة</button>
+        <button class="sch-day-tab" data-day="6" onclick="schSelectDay(6)">السبت</button>
+      </div>
+
+      <div class="sch-legend" id="schLegend">
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(55,138,221,.25);border:1px solid #378ADD"></div> فرد واحد</div>
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(99,153,34,.25);border:1px solid #639922"></div> ٣ أفراد</div>
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(127,119,221,.25);border:1px solid #7F77DD"></div> ٥ أفراد</div>
         <div class="sch-leg"><div class="sch-leg-dot" style="background:rgba(186,117,23,.25);border:1px solid #BA7517"></div> مجموعة مخصصة</div>
       </div>
 
-      <div class="sch-timeline" id="schTimeline">
+      <div id="schTimeline">
         <div class="sch-empty"><i data-lucide="calendar-off"></i><div class="sch-empty-txt">لا توجد مجموعات — اضغط "إضافة مجموعة"</div></div>
       </div>
     </div>
@@ -859,14 +910,29 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       </div>
     </div>
 
-    <div class="fld mt-12" id="schCustomWrap" style="display:none">
+    <div class="fld mt-10" id="schCustomWrap" style="display:none">
       <label><i data-lucide="hash"></i> عدد الأفراد</label>
       <input type="number" class="fc" id="schCustomCount" min="1" max="30" placeholder="مثال: 7" oninput="schBuildNames()"/>
     </div>
 
     <div class="fld mt-12">
       <label><i data-lucide="clock"></i> ساعة التدريب</label>
-      <input type="time" class="fc" id="schTime"/>
+      <input type="time" class="fc" id="schTime" oninput="schCheckTimeRange()"/>
+      <div class="sch-time-err" id="schTimeErr">⛔ الوقت المسموح من 09:00 ص حتى 07:00 م فقط</div>
+    </div>
+
+    <!-- ══ NEW: DAYS SELECTION ══ -->
+    <div class="fld mt-12">
+      <label><i data-lucide="calendar-days"></i> أيام التدريب <span style="font-size:.65rem;color:var(--tm);font-weight:500">(اختياري)</span></label>
+      <div class="sch-days-grid">
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="0"/><span>أحد</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="1"/><span>اثنين</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="2"/><span>ثلاثاء</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="3"/><span>أربعاء</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="4"/><span>خميس</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="5"/><span>جمعة</span></label>
+        <label class="sch-day-cb"><input type="checkbox" name="sch_days" value="6"/><span>سبت</span></label>
+      </div>
     </div>
 
     <div class="fld mt-12">
@@ -874,7 +940,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="sch-names-list" id="schNamesList"><span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span></div>
     </div>
 
-    <div class="sch-conflict" id="schConflict">⚠️ يوجد مجموعة بنفس الوقت — اختر وقتاً مختلفاً</div>
+    <div class="sch-conflict" id="schConflict">⚠️ يوجد تعارض في الوقت لنفس الأيام — غيّر الوقت أو الأيام</div>
 
     <button class="btn-pri mt-16" onclick="schSave()"><i data-lucide="save"></i><span>حفظ المجموعة</span></button>
   </div>
@@ -887,6 +953,13 @@ const API = 'https://backend-mohsen-swimming-academy.vercel.app/api';
 const DAYS = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
 const MONTHS = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 const SESS_DAYS = {'8':2,'12':3};
+
+/* ══ SCHEDULE CONSTANTS ══ */
+const SCH_OPEN_HOUR  = 9;   // 09:00 ص
+const SCH_CLOSE_HOUR = 19;  // 07:00 م
+// All valid training hours (inclusive of open, exclusive of close)
+const SCH_HOURS = Array.from({length: SCH_CLOSE_HOUR - SCH_OPEN_HOUR}, (_, i) => SCH_OPEN_HOUR + i);
+// [9,10,11,12,13,14,15,16,17,18]
 
 let token = localStorage.getItem('aq_token') || null;
 let trainer = null;
@@ -901,6 +974,7 @@ const SCH_KEY = 'aqScheduleV2';
 let schGroups = JSON.parse(localStorage.getItem(SCH_KEY) || '[]');
 let schEditId = null;
 let schSelectedType = null;
+let schSelectedDay = 'all';
 
 const SCH_STYLES = {
   1: {bg:'rgba(55,138,221,.15)', border:'#378ADD', text:'#60b4ff', label:'فرد ١'},
@@ -928,11 +1002,9 @@ function bindUI(){
   $('loginBtn').onclick = doLogin;
   $('loginPass').addEventListener('keydown', e => e.key==='Enter' && doLogin());
   $('logoutBtn').onclick = doLogout;
-
   document.querySelectorAll('.dtb[data-tab], .bot-item[data-tab]').forEach(b => {
     b.addEventListener('click', () => switchTab(b.dataset.tab));
   });
-
   let dSearch;
   $('tableSearch').addEventListener('input', ()=>{clearTimeout(dSearch);dSearch=setTimeout(()=>{page=1;loadSwimmers();},380);});
   $('cityFilter').addEventListener('change', ()=>{page=1;loadSwimmers();});
@@ -942,11 +1014,9 @@ function bindUI(){
     $('refreshBtn').disabled = true;
     refreshTimeout = setTimeout(() => { page=1; loadSwimmers(); $('refreshBtn').disabled=false; }, 500);
   };
-
   $('createForm').addEventListener('submit', doCreate);
   document.querySelectorAll('input[name="c_sess"]').forEach(r=>r.addEventListener('change', onSessChange));
   document.querySelectorAll('input[name="c_days"]').forEach(c=>c.addEventListener('change', onDaysChange));
-
   $('attendSearchBtn').onclick = loadAttendSwimmer;
   $('attendSearch').addEventListener('keydown', e=>e.key==='Enter'&&loadAttendSwimmer());
   $('prevMon').onclick = ()=>navMon(-1);
@@ -956,23 +1026,19 @@ function bindUI(){
   $('mMBtn').onclick  = openMakeupPicker;
   $('confirmMakeupBtn').onclick = confirmMakeup;
   $('mDelBtn').onclick = delMonRec;
-
   $('closeEdit').onclick = ()=>closeModal('editModal');
   $('editModal').addEventListener('click', e=>e.target===e.currentTarget&&closeModal('editModal'));
   $('saveEditBtn').onclick = doSaveEdit;
   $('saveRatingBtn').onclick = doSaveRating;
   $('cancelDel').onclick = ()=>closeModal('confirmModal');
   $('doDel').onclick = doDelete;
-
   let sy=0;
   $('editModal').addEventListener('touchstart', e=>{sy=e.touches[0].clientY;},{passive:true});
   $('editModal').addEventListener('touchend', e=>{if(e.changedTouches[0].clientY-sy>80)closeModal('editModal');},{passive:true});
-
   $('todayBtn').onclick = toggleTodayPanel;
   $('todayClose').onclick = closeTodayPanel;
   $('todayOverlay').onclick = closeTodayPanel;
   document.addEventListener('keydown', e => { if(e.key==='Escape' && todayPanelOpen) closeTodayPanel(); });
-
   $('schAddBtn').onclick = schOpenAdd;
   $('schModal').addEventListener('click', e => e.target === e.currentTarget && closeSchModal());
 }
@@ -1386,10 +1452,16 @@ async function doDelete(){
   finally{ delId=null; delName=''; }
 }
 
-/* ══ SCHEDULE LOGIC ══ */
+/* ══════════════════════════════════════════════
+   SCHEDULE LOGIC — UPDATED
+══════════════════════════════════════════════ */
 function schSaveStorage(){ localStorage.setItem(SCH_KEY, JSON.stringify(schGroups)); }
 
-function schTimeToMin(t){ if(!t) return -1; const [h,m]=t.split(':').map(Number); return h*60+m; }
+function schTimeToMin(t){
+  if(!t) return -1;
+  const [h,m]=t.split(':').map(Number);
+  return h*60+m;
+}
 
 function schTo12(t){
   if(!t) return '—';
@@ -1398,8 +1470,21 @@ function schTo12(t){
   return `${String(h12).padStart(2,'0')}:${String(m).padStart(2,'0')} ${ampm}`;
 }
 
-function schHasConflict(time, excludeId){
-  return schGroups.some(g=>g.id!==excludeId&&g.time===time);
+/* Check time-only conflict (ignores day), used in "الكل" view */
+function schHasTimeConflict(time, excludeId){
+  return schGroups.some(g => g.id!==excludeId && g.time===time);
+}
+
+/* Day-aware conflict: same time + at least one shared day */
+function schHasDayConflict(time, days, excludeId){
+  if(!days || !days.length) return schHasTimeConflict(time, excludeId);
+  return schGroups.some(g => {
+    if(g.id === excludeId) return false;
+    if(g.time !== time) return false;
+    const gDays = g.days || [];
+    if(!gDays.length) return true; // existing group has no days = applies all
+    return days.some(d => gDays.includes(d));
+  });
 }
 
 function schUpdateMonthLabel(){
@@ -1416,14 +1501,58 @@ function schUpdateSummary(){
   });
   if($('schTotalGroups')) $('schTotalGroups').textContent=total;
   if($('schTotalPeople')) $('schTotalPeople').textContent=totalPeople;
-  if($('schFreeSlots')) $('schFreeSlots').textContent=total>0?`${total} موعد`:'لا يوجد';
+  // Count free hour-slots across all days for current selected view
+  if($('schFreeSlots')){
+    if(schSelectedDay==='all'){
+      $('schFreeSlots').textContent=total>0?`${total} موعد`:'لا يوجد';
+    } else {
+      const dayGroups=schGroups.filter(g=>(g.days||[]).includes(Number(schSelectedDay)));
+      const usedHours=new Set(dayGroups.map(g=>{if(!g.time)return null;return g.time.split(':')[0];}));
+      const freeCount=SCH_HOURS.length-usedHours.size;
+      $('schFreeSlots').textContent=freeCount>0?freeCount:0;
+    }
+  }
 }
 
+/* Update day tab indicators */
+function schUpdateDayTabs(){
+  const todayIdx = new Date().getDay();
+  document.querySelectorAll('.sch-day-tab[data-day]').forEach(tab=>{
+    const day=tab.dataset.day;
+    tab.classList.remove('has-groups','is-today');
+    if(day!=='all'){
+      const di=Number(day);
+      const hasGroups=schGroups.some(g=>{
+        const gd=g.days||[];
+        return gd.length===0 || gd.includes(di);
+      });
+      if(hasGroups && tab.dataset.day!==String(schSelectedDay)) tab.classList.add('has-groups');
+      if(di===todayIdx) tab.classList.add('is-today');
+    }
+  });
+}
+
+/* Main render dispatcher */
 function schRender(){
   schUpdateMonthLabel();
   schUpdateSummary();
-  const tl=$('schTimeline');
-  if(!tl) return;
+  schUpdateDayTabs();
+  if(schSelectedDay==='all') schRenderAll();
+  else schRenderDay(Number(schSelectedDay));
+}
+
+/* Select a day tab */
+function schSelectDay(day){
+  schSelectedDay = day;
+  document.querySelectorAll('.sch-day-tab').forEach(t=>{
+    t.classList.toggle('active', t.dataset.day===String(day));
+  });
+  schRender();
+}
+
+/* ══ ALL-DAYS VIEW ══ */
+function schRenderAll(){
+  const tl=$('schTimeline'); if(!tl) return;
   if(!schGroups.length){
     tl.innerHTML=`<div class="sch-empty"><i data-lucide="calendar-off"></i><div class="sch-empty-txt">لا توجد مجموعات — اضغط "إضافة مجموعة"</div></div>`;
     lucide.createIcons(); return;
@@ -1435,9 +1564,14 @@ function schRender(){
     const names=(g.names||[]).filter(n=>n.trim());
     const countLabel=g.type===0?`${g.customCount||'?'} أفراد`:st.label;
     const membersText=names.length?names.join(' · '):countLabel;
+    const gDays=g.days||[];
+    const daysText=gDays.length?gDays.map(d=>DAYS[d]).join(' · '):'كل الأيام';
     html+=`
       <div class="sch-slot">
-        <div class="sch-time-col"><span class="sch-time-txt">${schTo12(g.time)}</span></div>
+        <div class="sch-time-col">
+          <span class="sch-time-txt">${schTo12(g.time)}</span>
+          <span style="font-size:.6rem;color:var(--tm);display:block;margin-top:2px">${daysText}</span>
+        </div>
         <div class="sch-pills-col">
           <div class="sch-pill" style="background:${st.bg};border-color:${st.border};color:${st.text}" onclick="schOpenEdit('${g.id}')">
             <span class="sch-pill-name">${g.type===0?`${g.customCount||''} أفراد`:st.label}</span>
@@ -1450,6 +1584,98 @@ function schRender(){
   tl.innerHTML=html; lucide.createIcons();
 }
 
+/* ══ SINGLE-DAY TIMELINE VIEW ══ */
+function schRenderDay(dayIdx){
+  const tl=$('schTimeline'); if(!tl) return;
+  // Groups for this day (include groups with no days = applies to all)
+  const dayGroups=schGroups.filter(g=>{
+    const gd=g.days||[];
+    return gd.length===0 || gd.includes(dayIdx);
+  });
+  let html='';
+  // Opening work banner
+  html+=`<div class="sch-work-banner open"><i data-lucide="play-circle"></i> 09:00 ص — بداية العمل</div>`;
+  html+=`<div class="sch-hour-timeline">`;
+  let bookedCount=0;
+  SCH_HOURS.forEach(hour=>{
+    const hourStr=String(hour).padStart(2,'0')+':00';
+    // Groups at this exact hour (match the hour part of time)
+    const atHour=dayGroups.filter(g=>{
+      if(!g.time) return false;
+      return parseInt(g.time.split(':')[0],10)===hour;
+    });
+    const isBooked=atHour.length>0;
+    if(isBooked) bookedCount++;
+    const timeLabel=schTo12(hourStr);
+    html+=`<div class="sch-hour-row ${isBooked?'':'free'}">`;
+    html+=`<div class="sch-h-time ${isBooked?'booked':''}"><span class="sch-h-time-val">${timeLabel}</span></div>`;
+    html+=`<div class="sch-h-body">`;
+    if(isBooked){
+      atHour.forEach(g=>{
+        const st=SCH_STYLES[g.type]||SCH_STYLES[0];
+        const names=(g.names||[]).filter(n=>n.trim());
+        const countLabel=g.type===0?`${g.customCount||'?'} أفراد`:st.label;
+        const membersText=names.length?names.slice(0,4).join(' · ')+(names.length>4?` +${names.length-4}`:''):countLabel;
+        html+=`<div class="sch-pill" style="background:${st.bg};border-color:${st.border};color:${st.text}" onclick="schOpenEdit('${g.id}')">
+          <span class="sch-pill-name">${g.type===0?`${g.customCount||''} أفراد`:st.label}</span>
+          <span class="sch-pill-members">${membersText}</span>
+          <span class="sch-pill-del" onclick="event.stopPropagation();schDelete('${g.id}')" title="حذف">✕</span>
+        </div>`;
+      });
+    } else {
+      html+=`<button class="sch-free-btn" onclick="schOpenAddAtTime('${hourStr}',${dayIdx})">
+        <i data-lucide="plus"></i> فاضي
+      </button>`;
+    }
+    html+=`</div></div>`;
+  });
+  html+=`</div>`;
+  // Closing work banner
+  html+=`<div class="sch-work-banner close" style="margin-top:6px"><i data-lucide="stop-circle"></i> 07:00 م — نهاية العمل</div>`;
+  // Summary for the day
+  if(dayGroups.length===0){
+    html+=`<div class="sch-day-empty" style="margin-top:8px"><i data-lucide="calendar-check"></i><div class="sch-day-empty-txt">يوم ${DAYS[dayIdx]} فاضي بالكامل — كل الأوقات متاحة</div></div>`;
+  } else {
+    html+=`<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:100px;padding:9px 10px;border-radius:var(--r-md);background:rgba(0,180,200,.06);border:1px solid rgba(0,180,200,.15);text-align:center;">
+        <div style="font-family:var(--f-disp);font-style:italic;font-size:1.3rem;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${bookedCount}</div>
+        <div style="font-size:.6rem;font-weight:700;color:var(--tm);margin-top:2px">مواعيد محجوزة</div>
+      </div>
+      <div style="flex:1;min-width:100px;padding:9px 10px;border-radius:var(--r-md);background:rgba(0,229,160,.05);border:1px solid rgba(0,229,160,.15);text-align:center;">
+        <div style="font-family:var(--f-disp);font-style:italic;font-size:1.3rem;color:var(--ok)">${SCH_HOURS.length-bookedCount}</div>
+        <div style="font-size:.6rem;font-weight:700;color:var(--tm);margin-top:2px">أوقات فاضية</div>
+      </div>
+    </div>`;
+  }
+  tl.innerHTML=html; lucide.createIcons();
+}
+
+/* Quick-add from a free slot in timeline */
+function schOpenAddAtTime(time, dayIdx){
+  schOpenAdd();
+  setTimeout(()=>{
+    $('schTime').value=time;
+    // Pre-check the day
+    document.querySelectorAll('input[name="sch_days"]').forEach(c=>{
+      c.checked = Number(c.value)===dayIdx;
+    });
+    schCheckTimeRange();
+  }, 80);
+}
+
+/* Validate time is within working hours */
+function schCheckTimeRange(){
+  const time=$('schTime').value;
+  const err=$('schTimeErr'); if(!err) return;
+  if(!time){err.classList.remove('show');return;}
+  const h=parseInt(time.split(':')[0],10);
+  if(h < SCH_OPEN_HOUR || h >= SCH_CLOSE_HOUR){
+    err.classList.add('show');
+  } else {
+    err.classList.remove('show');
+  }
+}
+
 function schOpenAdd(){
   schEditId=null; schSelectedType=null;
   if($('schModalTitle')) $('schModalTitle').innerHTML=`<i data-lucide="layout-grid"></i> إضافة مجموعة`;
@@ -1457,7 +1683,9 @@ function schOpenAdd(){
   $('schCustomWrap').style.display='none';
   $('schCustomCount').value='';
   $('schConflict').classList.remove('show');
+  $('schTimeErr').classList.remove('show');
   document.querySelectorAll('.sch-type-btn').forEach(b=>{ b.className='sch-type-btn'; });
+  document.querySelectorAll('input[name="sch_days"]').forEach(c=>c.checked=false);
   schBuildNames(0);
   $('schModal').classList.add('show');
   document.body.style.overflow='hidden';
@@ -1470,6 +1698,12 @@ function schOpenEdit(id){
   if($('schModalTitle')) $('schModalTitle').innerHTML=`<i data-lucide="pencil"></i> تعديل المجموعة`;
   $('schTime').value=g.time||'';
   $('schConflict').classList.remove('show');
+  $('schTimeErr').classList.remove('show');
+  // Populate days
+  const gDays=g.days||[];
+  document.querySelectorAll('input[name="sch_days"]').forEach(c=>{
+    c.checked=gDays.includes(Number(c.value));
+  });
   document.querySelectorAll('.sch-type-btn').forEach(b=>b.className='sch-type-btn');
   const btn=document.getElementById('scht'+g.type);
   if(btn) btn.className=`sch-type-btn sel-${g.type}`;
@@ -1505,15 +1739,27 @@ function schSave(){
   const time=$('schTime').value;
   if(!time){toast('اختر ساعة التدريب','error');return;}
   if(schSelectedType===null){toast('اختر نوع المجموعة','error');return;}
-  if(schHasConflict(time,schEditId)){ $('schConflict').classList.add('show'); return; }
+  // Validate time within working hours
+  const h=parseInt(time.split(':')[0],10);
+  if(h < SCH_OPEN_HOUR || h >= SCH_CLOSE_HOUR){
+    toast(`الوقت المسموح من 09:00 ص حتى 07:00 م فقط`,'error');
+    $('schTimeErr').classList.add('show');
+    return;
+  }
+  // Get selected days
+  const days=[...document.querySelectorAll('input[name="sch_days"]:checked')].map(c=>Number(c.value));
+  // Check conflict
+  if(schHasDayConflict(time, days, schEditId)){
+    $('schConflict').classList.add('show'); return;
+  }
   $('schConflict').classList.remove('show');
   const names=[...document.querySelectorAll('#schNamesList input')].map(i=>i.value.trim());
   const customCount=schSelectedType===0?(parseInt($('schCustomCount').value)||0):null;
   if(schEditId){
     const idx=schGroups.findIndex(g=>g.id===schEditId);
-    if(idx>=0) schGroups[idx]={...schGroups[idx],type:schSelectedType,time,names,customCount};
+    if(idx>=0) schGroups[idx]={...schGroups[idx],type:schSelectedType,time,days,names,customCount};
   }else{
-    schGroups.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),type:schSelectedType,time,names,customCount});
+    schGroups.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),type:schSelectedType,time,days,names,customCount});
   }
   schSaveStorage(); closeSchModal(); schRender();
   toast(schEditId?'✅ تم التعديل':'✅ تمت الإضافة');
