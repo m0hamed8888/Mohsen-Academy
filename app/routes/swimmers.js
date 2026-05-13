@@ -229,27 +229,18 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     if (update.sessionsCount !== undefined) {
       update.sessionsCount = Number(update.sessionsCount);
     }
-
     if (update.trainingDays !== undefined) {
       update.trainingDays = update.trainingDays.map(Number);
-
-      // جيب الـ sessionsCount من الـ update أو من الـ DB
-      let sess = update.sessionsCount;
-      if (!sess) {
-        const existing = await Swimmer.findOne(filter).select('sessionsCount');
-        sess = existing?.sessionsCount;
-      }
-
+      const sess = update.sessionsCount || (await Swimmer.findOne(filter))?.sessionsCount;
       const expected = { 8:2, 12:3, 24:6 }[sess];
       if (expected && update.trainingDays.length !== expected) {
-        return res.status(400).json({
-          success: false,
-          message: `عدد الأيام غير صح — المطلوب ${expected} أيام وأُرسل ${update.trainingDays.length}`
-        });
+        return res.status(400).json({ success: false, message: `عدد الأيام غير صح — المطلوب ${expected} أيام` });
       }
     }
+    if (update.restDay !== undefined) {
+      update.restDay = Number(update.restDay);
+    }
 
-    if (update.restDay !== undefined) update.restDay = Number(update.restDay);
     if (typeof update.fullName    === 'string') update.fullName    = update.fullName.trim();
     if (typeof update.phone       === 'string') update.phone       = update.phone.trim();
     if (typeof update.trainerName === 'string') update.trainerName = update.trainerName.trim() || null;
@@ -258,20 +249,16 @@ router.put('/:subscriptionId', protect, async (req, res) => {
     if (update.subscriptionExpiry === '') update.subscriptionExpiry = null;
     if ('isActive' in update) update.isActive = (update.isActive === true || update.isActive === 'true');
 
-    if (update.level  !== undefined) { update.levelUpdatedBy  = req.trainer.name; update.levelUpdatedAt  = new Date(); }
-    if (update.rating !== undefined) { update.ratingUpdatedBy = req.trainer.name; update.ratingUpdatedAt = new Date(); }
+    if (update.level !== undefined) {
+      update.levelUpdatedBy = req.trainer.name;
+      update.levelUpdatedAt = new Date();
+    }
+    if (update.rating !== undefined) {
+      update.ratingUpdatedBy = req.trainer.name;
+      update.ratingUpdatedAt = new Date();
+    }
 
-    // ✅ الحل الجوهري: استخدم $set صريح وشغّل الـ update مباشرة على الـ DB بدون validators
-    const swimmer = await Swimmer.findOneAndUpdate(
-      filter,
-      { $set: update },          // ← $set صريح
-      {
-        new:           true,
-        runValidators: false,    // ← إيقاف Mongoose validators تماماً
-        strict:        false,    // ← قبول أي field
-      }
-    );
-
+const swimmer = await Swimmer.findOneAndUpdate(filter, { $set: update }, { new: true, runValidators: false });
     if (!swimmer)
       return res.status(404).json({ success: false, message: 'السباح غير موجود أو لا ينتمي لحسابك' });
 
