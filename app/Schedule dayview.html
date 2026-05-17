@@ -101,34 +101,21 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .tl-row.half-hour .tl-time{border-right-color:rgba(255,255,255,.02);}
 
 /* ══ BOOKING PILL ══ */
-/* Base pill — overridden per-pill by inline style */
 .booking-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--r-md);border:1.5px solid;font-size:.78rem;margin:3px 0;cursor:pointer;transition:all var(--fast);max-width:100%;position:relative;width:100%;}
 .booking-pill:hover{opacity:.85;transform:translateX(-2px)}
-
-/* Completion indicator dot */
 .bp-completion-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-
 .bp-type{font-size:.62rem;font-weight:800;padding:2px 7px;border-radius:var(--r-full);opacity:.75;flex-shrink:0;}
 .bp-name{font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .bp-members{font-size:.66rem;opacity:.6;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-/* Completion badge */
 .bp-completion{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:var(--r-full);flex-shrink:0;}
 .bp-completion.full{background:#00a85e;color:#fff;border:1px solid #00e5a0;box-shadow:0 0 10px rgba(0,168,94,.55);}
 .bp-completion.partial{background:#c96d00;color:#fff;border:1px solid #ffb547;box-shadow:0 0 8px rgba(201,109,0,.4);}
 .bp-completion.empty{background:rgba(255,255,255,.08);color:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.13);}
-
-/* Multi-day badge on pill */
 .bp-days-badge{font-size:.56rem;font-weight:800;padding:1px 6px;border-radius:var(--r-full);background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);flex-shrink:0;white-space:nowrap;}
-
 .bp-del{font-size:.8rem;opacity:.4;cursor:pointer;padding:0 3px;flex-shrink:0;transition:opacity var(--fast);}
 .bp-del:hover{opacity:1}
-
-/* Conflict warning stripe on pill */
 .booking-pill.has-conflict{box-shadow:0 0 0 1.5px rgba(255,181,71,.5) inset;}
 .booking-pill.has-conflict::after{content:'⚠';position:absolute;top:-6px;right:8px;font-size:.6rem;background:rgba(255,181,71,.2);border:1px solid rgba(255,181,71,.4);color:#ffb547;border-radius:var(--r-full);padding:0px 5px;line-height:1.6}
-
-/* slot hover add */
 .tl-slot-add{position:absolute;inset:3px 12px 3px;border-radius:var(--r-sm);border:1.5px dashed rgba(0,180,200,.18);display:flex;align-items:center;justify-content:center;gap:6px;font-size:.72rem;color:var(--tm);opacity:0;cursor:pointer;transition:all var(--fast);pointer-events:none;}
 .tl-slot-add svg{width:13px;height:13px}
 .tl-slot:not(.has-booking):hover .tl-slot-add{opacity:1;pointer-events:all;background:rgba(0,180,200,.03);}
@@ -141,7 +128,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .legend-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
 .leg{display:flex;align-items:center;gap:5px;font-size:.66rem;color:var(--ts);}
 .leg-dot{width:9px;height:9px;border-radius:3px;flex-shrink:0;}
-/* completion legend */
 .leg-circle{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 
 /* ══ MODAL ══ */
@@ -191,12 +177,80 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .sch-name-row{display:flex;gap:6px;align-items:center;}
 .sch-name-row .fc{flex:1;height:40px;font-size:.84rem;}
 
-/* ── DAYS MULTI-SELECT (new for group modal) ── */
+/* ── DAYS MULTI-SELECT ── */
 .days-sel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
 .day-sel-btn{display:flex;align-items:center;justify-content:center;padding:9px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.74rem;font-weight:800;color:var(--ts);transition:all var(--fast);user-select:none;}
 .day-sel-btn.selected{border-color:var(--teal);background:rgba(0,180,200,.12);color:var(--teal);}
 .day-sel-btn.today-mark{border-color:rgba(0,229,160,.35);}
 .day-sel-btn.today-mark.selected{border-color:var(--ok);background:rgba(0,229,160,.12);color:var(--ok);}
+
+/* ── PER-DAY TIMES (NEW) ── */
+.day-times-section{
+  background:rgba(0,180,200,.04);
+  border:1px solid rgba(0,180,200,.12);
+  border-radius:var(--r-md);
+  padding:12px 14px;
+  margin-top:4px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.day-time-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.day-time-label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:72px;
+  flex-shrink:0;
+}
+.day-time-name{
+  font-size:.76rem;
+  font-weight:800;
+  color:var(--ts);
+}
+.day-time-today-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--ok);
+  box-shadow:0 0 6px var(--ok);
+  flex-shrink:0;
+}
+.day-time-input-wrap{
+  position:relative;
+  flex:1;
+}
+.day-time-input-wrap input[type="time"].fc{
+  height:40px;
+  font-size:.84rem;
+  padding-left:36px;
+}
+.day-time-copy-btn{
+  position:absolute;
+  left:8px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:var(--r-sm);
+  background:rgba(0,180,200,.1);border:1px solid rgba(0,180,200,.2);
+  color:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--fast);
+  cursor:pointer;
+}
+.day-time-copy-btn:hover{background:rgba(0,180,200,.22)}
+.day-time-copy-btn svg{width:11px;height:11px}
+.day-time-conflict{
+  font-size:.6rem;font-weight:800;
+  padding:2px 7px;border-radius:var(--r-full);
+  background:rgba(255,181,71,.12);border:1px solid rgba(255,181,71,.3);
+  color:var(--warn);white-space:nowrap;flex-shrink:0;
+}
+.day-time-blocked{
+  font-size:.6rem;font-weight:800;
+  padding:2px 7px;border-radius:var(--r-full);
+  background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);
+  color:var(--err);white-space:nowrap;flex-shrink:0;
+}
 
 /* days checkboxes (block modal) */
 .days-check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
@@ -319,7 +373,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="leg"><div class="leg-dot" style="background:rgba(186,117,23,.3);border:1px solid #BA7517"></div> مخصص</div>
       <div class="leg"><div class="leg-dot" style="background:repeating-linear-gradient(45deg,rgba(255,77,109,.2) 0px,rgba(255,77,109,.2) 4px,transparent 4px,transparent 8px);border:1px solid rgba(255,77,109,.3)"></div> محظور</div>
     </div>
-    <!-- Completion legend -->
     <div class="legend-row" style="margin-bottom:0;padding-bottom:14px;border-bottom:1px solid var(--bdr);margin-bottom:14px;">
       <div class="leg"><div class="leg-circle" style="background:#00d97a;box-shadow:0 0 7px rgba(0,217,122,.7)"></div> مكتملة</div>
       <div class="leg"><div class="leg-circle" style="background:#ff8c00;box-shadow:0 0 5px rgba(255,140,0,.5)"></div> جزئية</div>
@@ -327,9 +380,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <div class="leg" style="opacity:.7"><span style="font-size:.7rem">⚠</span> تعارض وقت</div>
     </div>
 
-    <div class="timeline-wrap" id="timelineWrap">
-      <!-- rendered by JS -->
-    </div>
+    <div class="timeline-wrap" id="timelineWrap"></div>
   </div>
 
 </main>
@@ -359,24 +410,24 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <input type="number" class="fc" id="schCustomCount" min="1" max="30" placeholder="مثال: 7" oninput="schBuildNames()"/>
     </div>
 
-    <!-- Time -->
+    <!-- Days multi-select -->
     <div class="fld mt-12">
-      <label><i data-lucide="clock"></i> ساعة التدريب</label>
-      <input type="time" class="fc" id="schTime" oninput="checkConflict()"/>
+      <label><i data-lucide="calendar"></i> الأيام <span style="font-size:.66rem;color:var(--tm)">(اختر يوم أو أكثر)</span></label>
+      <div class="days-sel-grid" id="schDaysGrid"></div>
+    </div>
+
+    <!-- ══ PER-DAY TIMES (NEW) ══ -->
+    <div class="fld mt-12" id="schDayTimesWrap" style="display:none">
+      <label><i data-lucide="clock"></i> مواعيد التدريب
+        <span style="font-size:.62rem;color:var(--tm);font-weight:600">(كل يوم بوقت مستقل)</span>
+      </label>
+      <div class="day-times-section" id="schDayTimesList"></div>
     </div>
 
     <!-- Soft conflict warning -->
     <div class="conflict-warn" id="schConflictWarn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span id="schConflictMsg">تنبيه — يوجد مجموعة في نفس الوقت</span>
-    </div>
-
-    <!-- Days multi-select (NEW) -->
-    <div class="fld mt-12">
-      <label><i data-lucide="calendar"></i> الأيام <span style="font-size:.66rem;color:var(--tm)">(اختر يوم أو أكثر)</span></label>
-      <div class="days-sel-grid" id="schDaysGrid">
-        <!-- rendered by JS -->
-      </div>
+      <span id="schConflictMsg">تنبيه</span>
     </div>
 
     <!-- Names -->
@@ -457,9 +508,10 @@ let blocks    = JSON.parse(localStorage.getItem(BLOCK_KEY) || 'null') ?? DEFAULT
 let selectedDay       = new Date().getDay();
 let editId            = null;
 let schSelectedType   = null;
-let schSelectedDays   = [];   // ← NEW: multi-day selection
+let schSelectedDays   = [];
+let schSelectedDayTimes = {};  // ← NEW: { dayIndex: "HH:MM" }
 
-// ── Colour styles per type ───────────────────────────────────────
+// ── Colour styles per type ──
 const SCH_STYLES = {
   1: { bg:'rgba(55,138,221,.15)',  border:'#378ADD', text:'#60b4ff', label:'فرد'    },
   3: { bg:'rgba(99,153,34,.15)',   border:'#639922', text:'#8fc94a', label:'٣ أفراد'},
@@ -467,37 +519,24 @@ const SCH_STYLES = {
   0: { bg:'rgba(186,117,23,.15)',  border:'#BA7517', text:'#ffb547', label:'مخصص'  },
 };
 
-// ── Completion helpers ───────────────────────────────────────────
-/**
- * Returns { filled, total } counts for a group.
- * "Filled" = a name slot that has a non-empty string.
- */
+// ── Completion helpers ──
 function groupCompletion(g) {
   const total  = g.type === 0 ? (g.customCount || 0) : (g.type || 0);
   const names  = (g.names || []);
   const filled = names.filter(n => n && n.trim()).length;
   return { filled, total };
 }
-
-/**
- * Returns CSS colour for the completion dot.
- *   full    → green (#00e5a0)
- *   partial → yellow (#ffb547)
- *   empty   → dim white
- */
 function completionColor(filled, total) {
   if (total === 0) return 'rgba(255,255,255,.18)';
-  if (filled === total) return '#00d97a';   /* vivid green */
-  if (filled > 0)       return '#ff8c00';   /* deep orange — clearly distinct */
+  if (filled === total) return '#00d97a';
+  if (filled > 0)       return '#ff8c00';
   return 'rgba(255,255,255,.18)';
 }
-
 function completionLabel(filled, total) {
   if (total === 0) return '';
   if (filled === total) return 'مكتملة';
   return `${filled}/${total}`;
 }
-
 function completionClass(filled, total) {
   if (total === 0) return 'empty';
   if (filled === total) return 'full';
@@ -505,7 +544,14 @@ function completionClass(filled, total) {
   return 'empty';
 }
 
-// ── INIT ─────────────────────────────────────────────────────────
+// ── NEW: Get per-day time for a group ──
+function getGroupTimeForDay(g, dayIdx) {
+  if (g.times && g.times[String(dayIdx)] !== undefined) return g.times[String(dayIdx)];
+  if (g.times && g.times[dayIdx] !== undefined) return g.times[dayIdx];
+  return g.time || ''; // backward compat
+}
+
+// ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   renderDayFilter();
@@ -517,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('blockModal').addEventListener('click', e => e.target === e.currentTarget && closeBlockModal());
 });
 
-// ── HELPERS ──────────────────────────────────────────────────────
+// ── HELPERS ──
 function $(id)           { return document.getElementById(id); }
 function timeToMin(t)    { if(!t) return -1; const [h,m]=t.split(':').map(Number); return h*60+m; }
 function minToTime(m)    { return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`; }
@@ -540,7 +586,7 @@ function toast(msg, type='success') {
   toastT = setTimeout(() => el.classList.remove('show'), 3400);
 }
 
-// ── DAY FILTER ───────────────────────────────────────────────────
+// ── DAY FILTER ──
 function renderDayFilter() {
   const bar      = $('dayFilterBar');
   const todayIdx = new Date().getDay();
@@ -569,13 +615,11 @@ function selectDay(idx) {
   renderTimeline();
 }
 
-// ── STATS ────────────────────────────────────────────────────────
+// ── STATS ──
 function updateStats() {
   const dayGroups = schGroups.filter(g => (g.days||[]).includes(selectedDay));
   let people = 0;
-  dayGroups.forEach(g => {
-    people += g.type === 0 ? (g.customCount||0) : (g.type||0);
-  });
+  dayGroups.forEach(g => { people += g.type === 0 ? (g.customCount||0) : (g.type||0); });
   $('stGroups').textContent = dayGroups.length;
   $('stPeople').textContent = people;
   const slots = buildSlots();
@@ -585,7 +629,7 @@ function updateStats() {
   renderConflictBanner(dayGroups);
 }
 
-// ── BUILD SLOTS ──────────────────────────────────────────────────
+// ── BUILD SLOTS ──
 function isBlockedAt(hour, minute, dayIdx) {
   return blocks.some(b => {
     if(!(b.days||[]).includes(dayIdx)) return false;
@@ -603,8 +647,10 @@ function buildSlots() {
       const min  = half * 30;
       const time = minToTime(h*60 + min);
       const blocked  = isBlockedAt(h, min, selectedDay);
+      // Use per-day time for filtering
       const bookings = dayGroups.filter(g => {
-        const gm = timeToMin(g.time);
+        const gTime = getGroupTimeForDay(g, selectedDay);
+        const gm = timeToMin(gTime);
         return gm >= h*60+min && gm < h*60+min+30;
       });
       slots.push({ time, hour: h, min, blocked, bookings, isFullHour: half===0 });
@@ -613,17 +659,16 @@ function buildSlots() {
   return slots;
 }
 
-// ── TIMELINE RENDER ──────────────────────────────────────────────
+// ── TIMELINE RENDER ──
 function renderTimeline() {
   const wrap  = $('timelineWrap');
   if(!wrap) return;
   const slots = buildSlots();
   updateStats();
 
-  // Collect conflict times for the selected day
   const dayGroups   = schGroups.filter(g => (g.days||[]).includes(selectedDay));
-  const allTimes    = dayGroups.map(g => g.time);
-  const conflictSet = new Set(allTimes.filter((t,i) => allTimes.indexOf(t) !== i));
+  const allTimes    = dayGroups.map(g => getGroupTimeForDay(g, selectedDay));
+  const conflictSet = new Set(allTimes.filter((t,i) => t && allTimes.indexOf(t) !== i));
 
   let html = '';
   slots.forEach(slot => {
@@ -652,21 +697,18 @@ function renderTimeline() {
           </svg>${blk ? blk.label : 'محظور'}</div>`;
       }
     } else {
-      // Build booking pills
       const bookingHtml = slot.bookings.map(g => {
         const st  = SCH_STYLES[g.type] || SCH_STYLES[0];
         const { filled, total } = groupCompletion(g);
         const dotColor = completionColor(filled, total);
         const cLabel   = completionLabel(filled, total);
         const cClass   = completionClass(filled, total);
-        const isConflict = conflictSet.has(g.time);
-
-        // Multi-day badge: if group spans more than 1 day show it
+        const gTime    = getGroupTimeForDay(g, selectedDay);
+        const isConflict = conflictSet.has(gTime);
         const daysCount = (g.days||[]).length;
         const daysBadge = daysCount > 1
           ? `<span class="bp-days-badge">${daysCount} أيام</span>`
           : '';
-
         const names = (g.names||[]).filter(n => n.trim());
         const membersText = names.length
           ? names.slice(0,3).join(' · ') + (names.length > 3 ? '...' : '')
@@ -676,7 +718,7 @@ function renderTimeline() {
           style="background:${st.bg};border-color:${st.border};color:${st.text}"
           onclick="openGroupModal('${g.id}')">
           <span class="bp-completion-dot" style="background:${dotColor};box-shadow:${filled===total&&total>0?'0 0 7px '+dotColor+', 0 0 14px '+dotColor+'55':'none'}"></span>
-          <span class="bp-type">${to12(g.time)}</span>
+          <span class="bp-type">${to12(gTime)}</span>
           <span class="bp-name">${g.type===0?(g.customCount||'?')+' أفراد':st.label}</span>
           <span class="bp-members">${membersText}</span>
           ${daysBadge}
@@ -702,11 +744,11 @@ function renderTimeline() {
   lucide.createIcons();
 }
 
-// ── CONFLICT BANNER ──────────────────────────────────────────────
+// ── CONFLICT BANNER ──
 function renderConflictBanner(dayGroups) {
   const banner = $('conflictBanner');
-  const times  = dayGroups.map(g => g.time);
-  const dups   = times.filter((t,i) => times.indexOf(t) !== i);
+  const times  = dayGroups.map(g => getGroupTimeForDay(g, selectedDay));
+  const dups   = times.filter((t,i) => t && times.indexOf(t) !== i);
   if(dups.length) {
     const uniq = [...new Set(dups)];
     banner.style.display = 'block';
@@ -721,7 +763,7 @@ function renderConflictBanner(dayGroups) {
   }
 }
 
-// ── DAYS GRID (inside group modal) ──────────────────────────────
+// ── DAYS GRID (inside group modal) ──
 function renderModalDaysGrid() {
   const todayIdx = new Date().getDay();
   const grid = $('schDaysGrid');
@@ -733,44 +775,166 @@ function renderModalDaysGrid() {
   }).join('');
 }
 
-function toggleModalDay(idx) {
-  if(schSelectedDays.includes(idx)) {
-    schSelectedDays = schSelectedDays.filter(d => d !== idx);
-  } else {
-    schSelectedDays.push(idx);
+// ── NEW: Get first available time from schSelectedDayTimes ──
+function getFirstSelectedTime() {
+  const sorted = [...schSelectedDays].sort((a,b)=>a-b);
+  for (const d of sorted) {
+    if (schSelectedDayTimes[d]) return schSelectedDayTimes[d];
   }
-  renderModalDaysGrid();
+  return '';
+}
+
+// ── NEW: Copy first time to all days ──
+function copyFirstTimeToAll() {
+  const first = getFirstSelectedTime();
+  if (!first) return;
+  schSelectedDays.forEach(d => {
+    if (!schSelectedDayTimes[d]) schSelectedDayTimes[d] = first;
+  });
+  renderDayTimesSection();
   checkConflict();
 }
 
-// ── GROUP MODAL ──────────────────────────────────────────────────
+// ── NEW: Update one day's time from input ──
+function updateDayTime(dayIdx, val) {
+  schSelectedDayTimes[dayIdx] = val;
+  // Refresh conflict indicators inline
+  checkConflict();
+  refreshDayTimeConflictIndicators();
+}
+
+// ── NEW: Render per-day time rows ──
+function renderDayTimesSection() {
+  const wrap = $('schDayTimesWrap');
+  const list = $('schDayTimesList');
+  const todayIdx = new Date().getDay();
+
+  if (!schSelectedDays.length) {
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.style.display = 'block';
+
+  const sorted = [...schSelectedDays].sort((a, b) => a - b);
+  list.innerHTML = sorted.map((idx, i) => {
+    const val = schSelectedDayTimes[idx] || '';
+    const isToday = idx === todayIdx;
+    const todayDot = isToday ? `<span class="day-time-today-dot" title="اليوم"></span>` : '';
+    // Show copy icon only for days after the first that are empty
+    const showCopy = i > 0 && !val;
+
+    return `<div class="day-time-row" id="dtr-${idx}">
+      <div class="day-time-label">
+        ${todayDot}
+        <span class="day-time-name">${DAYS_AR[idx]}</span>
+      </div>
+      <div class="day-time-input-wrap">
+        <input type="time" class="fc" id="dti-${idx}" value="${val}"
+          style="height:40px;font-size:.84rem;padding-right:14px;padding-left:${showCopy?'36px':'14px'}"
+          oninput="updateDayTime(${idx}, this.value)"/>
+        ${showCopy ? `
+        <button class="day-time-copy-btn" onclick="copyTimeFromFirst(${idx})" title="نسخ وقت اليوم الأول">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>` : ''}
+      </div>
+      <span id="dti-warn-${idx}" style="display:none" class="day-time-conflict">تعارض</span>
+      <span id="dti-block-${idx}" style="display:none" class="day-time-blocked">محظور</span>
+    </div>`;
+  }).join('');
+
+  lucide.createIcons();
+  refreshDayTimeConflictIndicators();
+}
+
+// ── NEW: Copy first time to a specific day ──
+function copyTimeFromFirst(dayIdx) {
+  const first = getFirstSelectedTime();
+  if (!first) { toast('حدد وقت اليوم الأول أولاً', 'error'); return; }
+  schSelectedDayTimes[dayIdx] = first;
+  const inp = $(`dti-${dayIdx}`);
+  if (inp) { inp.value = first; }
+  renderDayTimesSection();
+  checkConflict();
+}
+
+// ── NEW: Refresh inline conflict/block badges per day ──
+function refreshDayTimeConflictIndicators() {
+  schSelectedDays.forEach(idx => {
+    const time = schSelectedDayTimes[idx] || '';
+    const warnEl  = $(`dti-warn-${idx}`);
+    const blockEl = $(`dti-block-${idx}`);
+    if (!warnEl || !blockEl) return;
+
+    if (!time) { warnEl.style.display='none'; blockEl.style.display='none'; return; }
+    const min = timeToMin(time);
+    const hour = Math.floor(min/60), minute = min%60;
+
+    if (isBlockedAt(hour, minute, idx)) {
+      blockEl.style.display = 'inline-flex';
+      warnEl.style.display  = 'none';
+    } else {
+      blockEl.style.display = 'none';
+      const conflict = schGroups.some(g =>
+        g.id !== editId &&
+        getGroupTimeForDay(g, idx) === time &&
+        (g.days||[]).includes(idx)
+      );
+      warnEl.style.display = conflict ? 'inline-flex' : 'none';
+    }
+  });
+}
+
+function toggleModalDay(idx) {
+  if (schSelectedDays.includes(idx)) {
+    schSelectedDays = schSelectedDays.filter(d => d !== idx);
+    delete schSelectedDayTimes[idx];
+  } else {
+    schSelectedDays.push(idx);
+    // Auto-fill with first selected time
+    const first = getFirstSelectedTime();
+    schSelectedDayTimes[idx] = first || '';
+  }
+  renderModalDaysGrid();
+  renderDayTimesSection();
+  checkConflict();
+}
+
+// ── GROUP MODAL ──
 function openGroupModal(id, time) {
   editId        = id;
   schSelectedType = null;
 
-  if(id) {
+  if (id) {
     const g = schGroups.find(x => x.id === id);
-    if(!g) return;
+    if (!g) return;
     $('groupModalTitle').innerHTML = `<i data-lucide="pencil"></i> تعديل المجموعة`;
     schSelectedType  = g.type;
     schSelectedDays  = [...(g.days||[selectedDay])];
-    $('schTime').value = g.time || '';
+
+    // Load per-day times
+    schSelectedDayTimes = {};
+    schSelectedDays.forEach(d => {
+      schSelectedDayTimes[d] = getGroupTimeForDay(g, d) || '';
+    });
+
     document.querySelectorAll('.sch-type-btn').forEach(b => b.className='sch-type-btn');
     const btn = $('scht'+g.type);
-    if(btn) btn.className = `sch-type-btn sel-${g.type}`;
-    if(g.type===0){ $('schCustomWrap').style.display='block'; $('schCustomCount').value=g.customCount||''; schBuildNames(g.customCount||0, g.names||[]); }
-    else { $('schCustomWrap').style.display='none'; schBuildNames(g.type, g.names||[]); }
+    if (btn) btn.className = `sch-type-btn sel-${g.type}`;
+    if (g.type===0) { $('schCustomWrap').style.display='block'; $('schCustomCount').value=g.customCount||''; schBuildNames(g.customCount||0, g.names||[]); }
+    else            { $('schCustomWrap').style.display='none'; schBuildNames(g.type, g.names||[]); }
   } else {
     $('groupModalTitle').innerHTML = `<i data-lucide="layout-grid"></i> إضافة مجموعة`;
     schSelectedDays  = [selectedDay];
-    $('schTime').value = time || '';
+    schSelectedDayTimes = { [selectedDay]: time || '' };
     $('schCustomWrap').style.display = 'none';
     $('schCustomCount').value = '';
     document.querySelectorAll('.sch-type-btn').forEach(b => b.className='sch-type-btn');
     schBuildNames(0);
   }
+
   $('schConflictWarn').classList.remove('show');
   renderModalDaysGrid();
+  renderDayTimesSection();
   $('groupModal').classList.add('show');
   document.body.style.overflow = 'hidden';
   lucide.createIcons();
@@ -803,66 +967,81 @@ function schBuildNames(count, existing=[]) {
   list.innerHTML = html;
 }
 
-// Soft conflict check — only warns, never blocks
+// ── CONFLICT CHECK (per-day) ──
 function checkConflict() {
-  const time = $('schTime').value;
-  if(!time){ $('schConflictWarn').classList.remove('show'); return; }
+  // Summary warning in the warn banner
+  const warns = [];
+  schSelectedDays.forEach(d => {
+    const time = schSelectedDayTimes[d] || '';
+    if (!time) return;
+    const min = timeToMin(time);
+    const hour = Math.floor(min/60), minute = min%60;
 
-  const min  = timeToMin(time);
-  const hour = Math.floor(min/60), minute = min%60;
-
-  // Check if blocked for ANY of the selected days
-  const blockedDays = schSelectedDays.filter(d => isBlockedAt(hour, minute, d));
-  if(blockedDays.length) {
-    $('schConflictMsg').textContent = `⚠ تنبيه: هذا الوقت محظور في: ${blockedDays.map(d=>DAYS_SHORT[d]).join(' · ')} — يمكنك الحفظ رغم ذلك`;
-    $('schConflictWarn').classList.add('show');
-    return;
-  }
-
-  // Check duplicate times in selected days
-  const conflictDays = schSelectedDays.filter(d => {
-    return schGroups.some(g => g.id !== editId && g.time === time && (g.days||[]).includes(d));
+    if (isBlockedAt(hour, minute, d)) {
+      warns.push(`${DAYS_SHORT[d]}: محظور`);
+    } else {
+      const conflict = schGroups.some(g =>
+        g.id !== editId &&
+        getGroupTimeForDay(g, d) === time &&
+        (g.days||[]).includes(d)
+      );
+      if (conflict) warns.push(`${DAYS_SHORT[d]}: تعارض`);
+    }
   });
-  if(conflictDays.length) {
-    $('schConflictMsg').textContent = `⚠ تنبيه: يوجد مجموعة في نفس الوقت في: ${conflictDays.map(d=>DAYS_SHORT[d]).join(' · ')} — يمكنك الحفظ رغم ذلك`;
+
+  if (warns.length) {
+    $('schConflictMsg').textContent = `⚠ ${warns.join(' | ')} — يمكنك الحفظ رغم ذلك`;
     $('schConflictWarn').classList.add('show');
   } else {
     $('schConflictWarn').classList.remove('show');
   }
+  refreshDayTimeConflictIndicators();
 }
 
 function schSave() {
-  const time = $('schTime').value;
-  if(!time)                 { toast('اختر ساعة التدريب','error'); return; }
-  if(schSelectedType===null){ toast('اختر نوع المجموعة','error'); return; }
-  if(!schSelectedDays.length){ toast('اختر يوماً واحداً على الأقل','error'); return; }
+  if (schSelectedType === null) { toast('اختر نوع المجموعة', 'error'); return; }
+  if (!schSelectedDays.length)  { toast('اختر يوماً واحداً على الأقل', 'error'); return; }
 
-  // Always save — conflict is just a soft warning
+  // Validate at least one day has a time
+  const daysWithTime = schSelectedDays.filter(d => schSelectedDayTimes[d]);
+  if (!daysWithTime.length) { toast('حدد وقت التدريب لكل يوم', 'error'); return; }
+
+  // Fill missing times from first available
+  const firstTime = getFirstSelectedTime();
+  schSelectedDays.forEach(d => {
+    if (!schSelectedDayTimes[d]) schSelectedDayTimes[d] = firstTime;
+  });
+
   const names       = [...document.querySelectorAll('#schNamesList input')].map(i => i.value.trim());
   const customCount = schSelectedType===0 ? (parseInt($('schCustomCount').value)||0) : null;
 
-  // Check for conflict silently to decide toast type
-  const hasConflict = schSelectedDays.some(d =>
-    schGroups.some(g => g.id !== editId && g.time === time && (g.days||[]).includes(d))
-  );
+  // Build times object (string keys for JSON safety)
+  const timesObj = {};
+  schSelectedDays.forEach(d => { timesObj[String(d)] = schSelectedDayTimes[d] || firstTime; });
 
-  if(editId) {
+  // Primary time = first selected day's time (for backward compat)
+  const primaryTime = timesObj[String(schSelectedDays[0])] || firstTime;
+
+  // Check any conflict
+  const hasConflict = schSelectedDays.some(d => {
+    const t = timesObj[String(d)];
+    return t && schGroups.some(g => g.id !== editId && getGroupTimeForDay(g, d) === t && (g.days||[]).includes(d));
+  });
+
+  if (editId) {
     const idx = schGroups.findIndex(g => g.id === editId);
-    if(idx>=0) schGroups[idx] = {
+    if (idx >= 0) schGroups[idx] = {
       ...schGroups[idx],
-      type: schSelectedType,
-      time,
-      names,
-      customCount,
-      days: schSelectedDays
+      type: schSelectedType, time: primaryTime, times: timesObj,
+      names, customCount, days: schSelectedDays
     };
   } else {
     schGroups.push({
       id:          Date.now().toString(36)+Math.random().toString(36).slice(2,5),
       type:        schSelectedType,
-      time,
-      names,
-      customCount,
+      time:        primaryTime,
+      times:       timesObj,
+      names,       customCount,
       days:        schSelectedDays
     });
   }
@@ -872,8 +1051,8 @@ function schSave() {
   renderDayFilter();
   renderTimeline();
 
-  if(hasConflict) {
-    toast('⚠ تم الحفظ مع تعارض في الوقت','warn');
+  if (hasConflict) {
+    toast('⚠ تم الحفظ مع تعارض في الوقت', 'warn');
   } else {
     toast(editId ? '✅ تم التعديل' : '✅ تمت الإضافة');
   }
@@ -888,7 +1067,7 @@ function deleteGroup(id) {
   toast('تم حذف المجموعة');
 }
 
-// ── BLOCK MANAGER ────────────────────────────────────────────────
+// ── BLOCK MANAGER ──
 function openBlockModal() {
   $('blkFrom').value = '';
   $('blkTo').value   = '';
