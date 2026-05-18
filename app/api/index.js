@@ -14,6 +14,8 @@ app.use(cors({
     'http://localhost:5500',
     'http://127.0.0.1:3000',
     'http://localhost:3000',
+    'https://mohsenacademy.com',      // ← أضف السطر ده
+    'https://www.mohsenacademy.com',  // ← وده
   ],
   methods:        ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
