@@ -1,6 +1,6 @@
 const express  = require('express');
 const router   = express.Router();
-const Schedule = require('../models/Schedule');
+const Schedule = require('../models/schedule');
 const { protect } = require('../middleware/auth');
 
 // جميع المسارات محمية — لازم token صالح
