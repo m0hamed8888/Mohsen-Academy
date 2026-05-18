@@ -51,12 +51,7 @@ app.use('/api/auth',         require('../routes/auth'));
 app.use('/api/swimmers',     require('../routes/swimmers'));
 app.use('/api/attendance',   require('../routes/attendance'));
 app.use('/api/swimmer-auth', swimmerAuthRouter);
-try {
-  app.use('/api/schedule', require('../routes/Schedule'));
-  console.log('Schedule route loaded OK');
-} catch(e) {
-  console.error('Schedule route FAILED:', e.message);
-}
+app.use('/api/schedule',     require('../routes/schedule'));
 /* ── 404 handler ─────────────────────────────────────────────── */
 app.use((req, res) => {
   res.status(404).json({ success: false, message: `المسار ${req.originalUrl} غير موجود` });
