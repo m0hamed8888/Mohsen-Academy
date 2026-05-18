@@ -1303,27 +1303,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  lucide.createIcons();
+ lucide.createIcons();
   showPageLoader();
 
-  // ── 2. Fetch months list for this trainer ──
-  await refreshMonthsCache();
-
-  // ── 3. If first ever launch → init current month ──
-  if (!monthHasData(viewYear, viewMonth) && monthsCache.length === 0) {
-    schGroups = [];
-    blocks    = DEFAULT_BLOCKS;
-    await persistMonth();  // creates the first document in DB
-  } else {
-    await loadMonthData();
+  try {
+    await refreshMonthsCache();
+    if (!monthHasData(viewYear, viewMonth) && monthsCache.length === 0) {
+      schGroups = [];
+      blocks    = DEFAULT_BLOCKS;
+      await persistMonth();
+    } else {
+      await loadMonthData();
+    }
+  } catch(e) {
+    console.error('Init error:', e);
+    toast('خطأ في تحميل البيانات — تحقق من الاتصال', 'error');
+  } finally {
+    hidePageLoader();
   }
 
-  hidePageLoader();
-
-  // ── 4. Render ──────────────────────────────
   renderAll();
 
-  // ── 5. Events ──────────────────────────────
   $('blockMgrBtn').onclick = openBlockModal;
   $('tlAddBtn').onclick    = () => openGroupModal(null, null);
   $('groupModal').addEventListener('click', e=>e.target===e.currentTarget && closeGroupModal());
