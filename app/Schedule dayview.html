@@ -50,6 +50,13 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .bot-item.active svg{filter:drop-shadow(0 0 7px rgba(0,212,180,.8));transform:translateY(-1px)}
 .bot-item.active::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:30px;height:2px;border-radius:1px;background:var(--g2);box-shadow:0 0 10px var(--teal);}
 
+/* ══ LOADING OVERLAY ══ */
+.page-loader{position:fixed;inset:0;z-index:200;background:rgba(4,8,18,.85);backdrop-filter:blur(10px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .3s;}
+.page-loader.hidden{opacity:0;pointer-events:none}
+.loader-spinner{width:44px;height:44px;border:3px solid rgba(0,180,200,.15);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite;}
+.loader-text{font-size:.82rem;font-weight:700;color:var(--ts)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 /* ══ WRAP ══ */
 .wrap{position:relative;z-index:1;padding:calc(var(--nav-h)+16px) 12px calc(var(--bot-h) + var(--safe-b) + 14px);max-width:900px;margin:0 auto;min-height:100dvh;}
 
@@ -72,7 +79,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .month-badge-past{display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--r-full);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--tm);font-size:.6rem;font-weight:800;margin-top:3px;}
 .month-badge-future{display:inline-flex;align-items:center;padding:2px 10px;border-radius:var(--r-full);background:rgba(0,136,255,.08);border:1px solid rgba(0,136,255,.25);color:var(--teal2);font-size:.6rem;font-weight:800;margin-top:3px;}
 
-/* New month actions */
 .new-month-bar{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:var(--r-md);background:rgba(0,180,200,.05);border:1px solid rgba(0,180,200,.14);margin-bottom:12px;}
 .new-month-bar svg{width:15px;height:15px;color:var(--teal);flex-shrink:0}
 .new-month-bar-text{flex:1;font-size:.78rem;color:var(--ts);line-height:1.5}
@@ -85,7 +91,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .nm-fresh-btn:hover{background:rgba(255,255,255,.09);color:var(--tp)}
 .nm-fresh-btn svg{width:13px;height:13px}
 
-/* copy source picker */
 .copy-source-picker{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
 .csp-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:var(--r-md);background:rgba(255,255,255,.03);border:1px solid var(--bdr);cursor:pointer;transition:all var(--fast);}
 .csp-item:hover{background:rgba(0,180,200,.07);border-color:rgba(0,180,200,.25)}
@@ -136,8 +141,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .blocked-label svg{width:12px;height:12px}
 .tl-row.half-hour .tl-time{border-right-color:rgba(255,255,255,.02);}
 
-/* readonly overlay for past months */
-.timeline-readonly{pointer-events:none;opacity:.7;}
 .readonly-banner{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--r-md);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);font-size:.76rem;color:var(--ts);margin-bottom:12px;}
 .readonly-banner svg{width:14px;height:14px;color:var(--warn);flex-shrink:0}
 
@@ -185,13 +188,11 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background-image:url("da
 .mo-close:hover{background:rgba(255,77,109,.14);color:var(--err)}
 .mo-close svg{width:14px;height:14px}
 
-/* copy source modal */
 .copy-mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
 .copy-mo.show{opacity:1;pointer-events:all}
 .copy-mo .mo-card{border-top-color:rgba(0,180,200,.25);}
 .copy-mo .mo-card::before{background:var(--g2)}
 
-/* Block modal */
 .block-mo{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--mid);}
 .block-mo.show{opacity:1;pointer-events:all}
 .block-mo .mo-card{border-top:1px solid rgba(255,77,109,.25);}
@@ -280,6 +281,11 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 .bi-del svg{width:12px;height:12px}
 .empty-blocks{text-align:center;padding:20px;font-size:.78rem;color:var(--tm);}
 
+/* Saving indicator */
+.saving-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 1s ease-in-out infinite;position:fixed;top:22px;left:16px;z-index:101;opacity:0;transition:opacity .2s;}
+.saving-dot.show{opacity:1}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.4);opacity:1}}
+
 @media(min-width:640px){
   .wrap{padding:calc(var(--nav-h)+20px) 20px 30px}
   .bot-nav{display:none}
@@ -290,6 +296,15 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 </style>
 </head>
 <body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">جاري تحميل الجدول…</div>
+</div>
+
+<!-- SAVING DOT -->
+<div class="saving-dot" id="savingDot"></div>
 
 <!-- NAVBAR -->
 <nav class="nav">
@@ -335,7 +350,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       </button>
     </div>
 
-    <!-- new month prompt (shown only when month has no data) -->
     <div id="newMonthBar" style="display:none">
       <div class="new-month-bar">
         <i data-lucide="sparkles"></i>
@@ -440,7 +454,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <label><i data-lucide="user-check"></i> أسماء المتدربين <span style="font-size:.66rem;color:var(--tm)">(اختياري)</span></label>
       <div class="sch-names-list" id="schNamesList"><span style="font-size:.76rem;color:var(--tm)">اختر نوع المجموعة أولاً</span></div>
     </div>
-    <button class="btn-pri mt-16" onclick="schSave()"><i data-lucide="save"></i><span>حفظ المجموعة</span></button>
+    <button class="btn-pri mt-16" id="schSaveBtn" onclick="schSave()"><i data-lucide="save"></i><span>حفظ المجموعة</span></button>
   </div>
 </div>
 
@@ -499,6 +513,32 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 
 <script>
 // ══════════════════════════════════════════════
+//  API CONFIG
+//  ⚠ تأكد إن الـ token key هنا نفس اللي بتحفظه في trainer.html
+// ══════════════════════════════════════════════
+const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000/api'
+  : 'https://backend-mohsen-swimming-academy.vercel.app/api';
+
+const TOKEN_KEY = 'token'; // ← غيّر ده لو trainer.html بيستخدم مفتاح تاني
+
+function getToken()      { return localStorage.getItem(TOKEN_KEY); }
+function authHeaders()   { return { 'Authorization': `Bearer ${getToken()}`, 'Content-Type': 'application/json' }; }
+
+async function apiFetch(method, path, body) {
+  const opts = { method, headers: authHeaders() };
+  if (body !== undefined) opts.body = JSON.stringify(body);
+  const res = await fetch(API_BASE + path, opts);
+  if (res.status === 401) {
+    window.location.href = 'auth.html';
+    throw new Error('Unauthorized');
+  }
+  return res.json();
+}
+const apiGet = path        => apiFetch('GET',  path);
+const apiPut = (path, b)   => apiFetch('PUT',  path, b);
+
+// ══════════════════════════════════════════════
 //  CONSTANTS
 // ══════════════════════════════════════════════
 const DAYS_AR    = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
@@ -513,54 +553,44 @@ const DEFAULT_BLOCKS = [
 ];
 
 // ══════════════════════════════════════════════
-//  MONTH-KEYED STORAGE HELPERS
-//  Key pattern: aqSch_{YYYY}_{MM}  /  aqBlk_{YYYY}_{MM}
-// ══════════════════════════════════════════════
-function monthKey(y, m)      { return `${y}_${String(m).padStart(2,'0')}`; }
-function schKey(y, m)        { return `aqSch_${monthKey(y,m)}`; }
-function blkKey(y, m)        { return `aqBlk_${monthKey(y,m)}`; }
-
-function loadGroups(y, m)    { return JSON.parse(localStorage.getItem(schKey(y,m)) || 'null'); }
-function loadBlocks(y, m)    { return JSON.parse(localStorage.getItem(blkKey(y,m)) || 'null'); }
-function saveGroupsFor(y, m, data) { localStorage.setItem(schKey(y,m), JSON.stringify(data)); }
-function saveBlocksFor(y, m, data) { localStorage.setItem(blkKey(y,m), JSON.stringify(data)); }
-
-function monthHasData(y, m)  { return localStorage.getItem(schKey(y,m)) !== null; }
-
-// List all months that have data, sorted desc
-function allDataMonths() {
-  const months = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const k = localStorage.key(i);
-    const match = k && k.match(/^aqSch_(\d{4})_(\d{2})$/);
-    if (match) months.push({ y: parseInt(match[1]), m: parseInt(match[2]) });
-  }
-  return months.sort((a,b) => b.y !== a.y ? b.y - a.y : b.m - a.m);
-}
-
-// ══════════════════════════════════════════════
 //  STATE
 // ══════════════════════════════════════════════
-const NOW         = new Date();
-let viewYear      = NOW.getFullYear();
-let viewMonth     = NOW.getMonth() + 1;   // 1-based
-let selectedDay   = NOW.getDay();
-let editId        = null;
-let schSelectedType   = null;
-let schSelectedDays   = [];
+const NOW      = new Date();
+let viewYear   = NOW.getFullYear();
+let viewMonth  = NOW.getMonth() + 1;
+let selectedDay = NOW.getDay();
+let editId     = null;
+let schSelectedType     = null;
+let schSelectedDays     = [];
 let schSelectedDayTimes = {};
 
-// current month data (loaded per navigation)
-let schGroups = [];
-let blocks    = [];
+let schGroups    = [];
+let blocks       = [];
+let monthsCache  = []; // [{ y, m, count }]  — loaded once on init
 
 // ══════════════════════════════════════════════
-//  COMPUTED SHORTCUTS
+//  CACHE HELPERS
 // ══════════════════════════════════════════════
 const isCurrentMonth = () => viewYear === NOW.getFullYear() && viewMonth === NOW.getMonth()+1;
 const isPastMonth    = () => viewYear < NOW.getFullYear() || (viewYear === NOW.getFullYear() && viewMonth < NOW.getMonth()+1);
 const isFutureMonth  = () => viewYear > NOW.getFullYear() || (viewYear === NOW.getFullYear() && viewMonth > NOW.getMonth()+1);
-const isReadonly     = () => false; // allow edit in all months for flexibility
+
+function monthHasData(y, m) {
+  return monthsCache.some(d => d.y === y && d.m === m);
+}
+
+function updateMonthsCache(y, m, count) {
+  const ex = monthsCache.find(d => d.y === y && d.m === m);
+  if (ex) ex.count = count;
+  else monthsCache.push({ y, m, count });
+}
+
+async function refreshMonthsCache() {
+  try {
+    const res = await apiGet('/schedule/months');
+    if (res.success) monthsCache = res.data || [];
+  } catch(e) { console.error('refreshMonthsCache:', e); }
+}
 
 // ══════════════════════════════════════════════
 //  COLOUR STYLES
@@ -601,6 +631,14 @@ function getGroupTimeForDay(g, dayIdx) {
   return g.time || '';
 }
 
+// Saving indicator
+let savingTimer;
+function showSaving() {
+  $('savingDot').classList.add('show');
+  clearTimeout(savingTimer);
+  savingTimer = setTimeout(()=>$('savingDot').classList.remove('show'), 2500);
+}
+
 let toastT;
 function toast(msg, type='success') {
   const el = $('toast');
@@ -611,27 +649,52 @@ function toast(msg, type='success') {
 }
 
 // ══════════════════════════════════════════════
-//  LOAD MONTH DATA
+//  LOADING
 // ══════════════════════════════════════════════
-function loadMonthData() {
-  const raw = loadGroups(viewYear, viewMonth);
-  schGroups  = raw ?? [];
-  const rawB = loadBlocks(viewYear, viewMonth);
-  blocks     = rawB ?? DEFAULT_BLOCKS;
+function showPageLoader()  { $('pageLoader').classList.remove('hidden'); }
+function hidePageLoader()  { $('pageLoader').classList.add('hidden'); }
+
+// ══════════════════════════════════════════════
+//  API — LOAD & SAVE
+// ══════════════════════════════════════════════
+async function loadMonthData() {
+  try {
+    const res = await apiGet(`/schedule/${viewYear}/${viewMonth}`);
+    if (res.success && res.data) {
+      schGroups = res.data.groups || [];
+      blocks    = res.data.blocks ?? DEFAULT_BLOCKS;
+    } else {
+      // no data yet for this month
+      schGroups = [];
+      blocks    = DEFAULT_BLOCKS;
+    }
+  } catch(e) {
+    console.error('loadMonthData:', e);
+    schGroups = [];
+    blocks    = DEFAULT_BLOCKS;
+  }
 }
 
-function saveGroups() { saveGroupsFor(viewYear, viewMonth, schGroups); }
-function saveBlocks() { saveBlocksFor(viewYear, viewMonth, blocks); }
+async function persistMonth() {
+  // Always sends both groups + blocks together (single document per month)
+  showSaving();
+  const res = await apiPut(`/schedule/${viewYear}/${viewMonth}`, { groups: schGroups, blocks });
+  if (!res.success) throw new Error(res.message || 'خطأ في الحفظ');
+  updateMonthsCache(viewYear, viewMonth, schGroups.length);
+}
 
 // ══════════════════════════════════════════════
 //  MONTH NAVIGATION
 // ══════════════════════════════════════════════
-function navigateMonth(dir) {
+async function navigateMonth(dir) {
   viewMonth += dir;
   if (viewMonth > 12) { viewMonth = 1; viewYear++; }
   if (viewMonth < 1)  { viewMonth = 12; viewYear--; }
-  loadMonthData();
-  // Keep selectedDay, but if going to current month snap to today
+
+  showPageLoader();
+  await loadMonthData();
+  hidePageLoader();
+
   if (isCurrentMonth()) selectedDay = NOW.getDay();
   renderAll();
 }
@@ -642,58 +705,57 @@ function renderMonthSwitcher() {
   $('monthSub').textContent = isCurrentMonth() ? 'الشهر الحالي' : isPastMonth() ? 'شهر سابق' : 'شهر قادم';
 
   const badge = $('monthBadge');
-  if (isCurrentMonth())     badge.innerHTML = '<span class="month-badge-current">● الشهر ده</span>';
-  else if (isPastMonth())   badge.innerHTML = '<span class="month-badge-past">أرشيف</span>';
-  else                      badge.innerHTML = '<span class="month-badge-future">مستقبلي</span>';
+  if (isCurrentMonth())   badge.innerHTML = '<span class="month-badge-current">● الشهر ده</span>';
+  else if (isPastMonth()) badge.innerHTML = '<span class="month-badge-past">أرشيف</span>';
+  else                    badge.innerHTML = '<span class="month-badge-future">مستقبلي</span>';
 
-  // Show new-month bar only if no data yet
   const hasData = monthHasData(viewYear, viewMonth);
-  $('newMonthBar').style.display = hasData ? 'none' : 'block';
-  $('newMonthName').textContent  = `${MONTHS_AR[viewMonth-1]} ${viewYear}`;
-
-  // Show/hide main content
-  $('mainStatsRow').style.display  = hasData ? 'grid' : 'none';
+  $('newMonthBar').style.display   = hasData ? 'none'  : 'block';
+  $('newMonthName').textContent    = `${MONTHS_AR[viewMonth-1]} ${viewYear}`;
+  $('mainStatsRow').style.display  = hasData ? 'grid'  : 'none';
   $('mainContent').style.display   = hasData ? 'block' : 'none';
   $('timelineCard').style.display  = hasData ? 'block' : 'none';
+  $('readonlyBanner').style.display = 'none';
 
-  // readonly banner
-  $('readonlyBanner').style.display = 'none'; // all months editable
-
-  // Add button availability
   const addBtn = $('tlAddBtn');
   if (addBtn) { addBtn.disabled = false; addBtn.style.opacity = '1'; }
 
-  // prev button: don't go before earliest meaningful date
   $('prevMonthBtn').disabled = (viewYear <= 2024 && viewMonth <= 1);
 }
 
 // ══════════════════════════════════════════════
 //  INIT FRESH / COPY
 // ══════════════════════════════════════════════
-function initFreshMonth() {
-  saveGroupsFor(viewYear, viewMonth, []);
-  saveBlocksFor(viewYear, viewMonth, DEFAULT_BLOCKS);
-  loadMonthData();
-  renderAll();
-  toast(`✅ تم إنشاء ${MONTHS_AR[viewMonth-1]} ${viewYear}`);
+async function initFreshMonth() {
+  try {
+    schGroups = [];
+    blocks    = DEFAULT_BLOCKS;
+    await persistMonth();
+    renderAll();
+    toast(`✅ تم إنشاء ${MONTHS_AR[viewMonth-1]} ${viewYear}`);
+  } catch(e) {
+    toast('خطأ في إنشاء الشهر — تحقق من الاتصال', 'error');
+  }
 }
 
-function openCopySourceModal() {
-  const months = allDataMonths().filter(d => !(d.y===viewYear && d.m===viewMonth));
+async function openCopySourceModal() {
+  // Use cached list (already fetched on init)
+  const months = monthsCache
+    .filter(d => !(d.y === viewYear && d.m === viewMonth))
+    .sort((a,b) => b.y !== a.y ? b.y - a.y : b.m - a.m);
+
   const list = $('copySourceList');
   if (!months.length) {
-    list.innerHTML = '<div class="empty-blocks" style="text-align:center;padding:20px;font-size:.78rem;color:var(--tm)">لا توجد شهور محفوظة للنسخ منها</div>';
+    list.innerHTML = '<div class="empty-blocks">لا توجد شهور محفوظة للنسخ منها</div>';
   } else {
-    list.innerHTML = months.map(d => {
-      const g = loadGroups(d.y, d.m) || [];
-      return `<div class="csp-item" onclick="copyFromMonth(${d.y},${d.m})">
+    list.innerHTML = months.map(d => `
+      <div class="csp-item" onclick="copyFromMonth(${d.y},${d.m})">
         <div class="csp-item-info">
           <div class="csp-month">${MONTHS_AR[d.m-1]} ${d.y}</div>
-          <div class="csp-count">${g.length} مجموعة</div>
+          <div class="csp-count">${d.count} مجموعة</div>
         </div>
         <div class="csp-arrow"><i data-lucide="arrow-left"></i></div>
-      </div>`;
-    }).join('');
+      </div>`).join('');
   }
   $('copyModal').classList.add('show');
   document.body.style.overflow = 'hidden';
@@ -705,33 +767,36 @@ function closeCopyModal() {
   document.body.style.overflow = '';
 }
 
-function copyFromMonth(fromY, fromM) {
-  // Deep-clone groups (new IDs so they're independent)
-  const srcGroups = loadGroups(fromY, fromM) || [];
-  const newGroups = srcGroups.map(g => ({
-    ...JSON.parse(JSON.stringify(g)),
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2,5) + Math.random().toString(36).slice(2,3)
-  }));
-  const srcBlocks = loadBlocks(fromY, fromM) || DEFAULT_BLOCKS;
-  const newBlocks = JSON.parse(JSON.stringify(srcBlocks));
+async function copyFromMonth(fromY, fromM) {
+  try {
+    const res = await apiGet(`/schedule/${fromY}/${fromM}`);
+    if (!res.success || !res.data) { toast('تعذر جلب بيانات الشهر', 'error'); return; }
 
-  saveGroupsFor(viewYear, viewMonth, newGroups);
-  saveBlocksFor(viewYear, viewMonth, newBlocks);
-  loadMonthData();
-  closeCopyModal();
-  renderAll();
-  toast(`✅ تم النسخ من ${MONTHS_AR[fromM-1]} ${fromY}`);
+    // Deep-clone with new IDs so they're independent
+    schGroups = (res.data.groups || []).map(g => ({
+      ...JSON.parse(JSON.stringify(g)),
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+    }));
+    blocks = JSON.parse(JSON.stringify(res.data.blocks ?? DEFAULT_BLOCKS));
+
+    await persistMonth();
+    closeCopyModal();
+    renderAll();
+    toast(`✅ تم النسخ من ${MONTHS_AR[fromM-1]} ${fromY}`);
+  } catch(e) {
+    toast('خطأ في النسخ', 'error');
+  }
 }
 
 // ══════════════════════════════════════════════
 //  DAY FILTER
 // ══════════════════════════════════════════════
 function renderDayFilter() {
-  const bar      = $('dayFilterBar');
+  const bar     = $('dayFilterBar');
   if (!bar) return;
   const todayIdx = isCurrentMonth() ? NOW.getDay() : -1;
   bar.innerHTML  = DAYS_SHORT.map((name, idx) => {
-    const count    = schGroups.filter(g => (g.days||[]).includes(idx)).length;
+    const count    = schGroups.filter(g=>(g.days||[]).includes(idx)).length;
     const isToday  = idx === todayIdx;
     const isActive = idx === selectedDay;
     return `<button class="day-btn${isActive?' active':''}${isToday?' today-day':''}" onclick="selectDay(${idx})">
@@ -744,8 +809,8 @@ function renderDayFilter() {
   if (!tlLabel) return;
   tlLabel.innerHTML = DAYS_AR[selectedDay];
   const todayBadge = document.createElement('span');
-  todayBadge.className    = 'tl-today-badge';
-  todayBadge.textContent  = 'اليوم';
+  todayBadge.className   = 'tl-today-badge';
+  todayBadge.textContent = 'اليوم';
   todayBadge.style.display = (selectedDay === todayIdx) ? 'inline-flex' : 'none';
   tlLabel.appendChild(todayBadge);
 }
@@ -779,7 +844,7 @@ function isBlockedAt(h, min, dayIdx) {
   return blocks.some(b => {
     if(!(b.days||[]).includes(dayIdx)) return false;
     const from = timeToMin(b.from), to = timeToMin(b.to);
-    const cur  = h*60 + min;
+    const cur  = h*60+min;
     return cur >= from && cur < to;
   });
 }
@@ -790,7 +855,7 @@ function buildSlots() {
   for (let h = TIMELINE_START; h < TIMELINE_END; h++) {
     for (let half = 0; half < 2; half++) {
       const min  = half * 30;
-      const time = minToTime(h*60 + min);
+      const time = minToTime(h*60+min);
       const blocked  = isBlockedAt(h, min, selectedDay);
       const bookings = dayGroups.filter(g => {
         const gm = timeToMin(getGroupTimeForDay(g, selectedDay));
@@ -815,7 +880,7 @@ function renderTimeline() {
   let html = '';
   slots.forEach(slot => {
     const classes = ['tl-row'];
-    if (slot.blocked)    classes.push('blocked');
+    if (slot.blocked)     classes.push('blocked');
     if (!slot.isFullHour) classes.push('half-hour');
 
     const timeLabel = slot.isFullHour
@@ -830,20 +895,23 @@ function renderTimeline() {
           const cur   = slot.hour * 60;
           return (b.days||[]).includes(selectedDay) && cur >= bFrom && cur < bTo;
         });
-        slotContent = `<div class="blocked-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>${blk?blk.label:'محظور'}</div>`;
+        slotContent = `<div class="blocked-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          ${blk?blk.label:'محظور'}
+        </div>`;
       }
     } else {
       const bookingHtml = slot.bookings.map(g => {
         const st = SCH_STYLES[g.type] || SCH_STYLES[0];
         const { filled, total } = groupCompletion(g);
-        const dotColor  = completionColor(filled, total);
-        const cLabel    = completionLabel(filled, total);
-        const cClass    = completionClass(filled, total);
-        const gTime     = getGroupTimeForDay(g, selectedDay);
+        const dotColor   = completionColor(filled, total);
+        const cLabel     = completionLabel(filled, total);
+        const cClass     = completionClass(filled, total);
+        const gTime      = getGroupTimeForDay(g, selectedDay);
         const isConflict = conflictSet.has(gTime);
-        const daysCount = (g.days||[]).length;
-        const daysBadge = daysCount > 1 ? `<span class="bp-days-badge">${daysCount} أيام</span>` : '';
-        const names     = (g.names||[]).filter(n=>n.trim());
+        const daysCount  = (g.days||[]).length;
+        const daysBadge  = daysCount > 1 ? `<span class="bp-days-badge">${daysCount} أيام</span>` : '';
+        const names      = (g.names||[]).filter(n=>n.trim());
         const membersText = names.length ? names.slice(0,3).join(' · ')+(names.length>3?'...':'') : (g.type===0?(g.customCount||'?')+' أفراد':st.label);
         return `<div class="booking-pill${isConflict?' has-conflict':''}"
           style="background:${st.bg};border-color:${st.border};color:${st.text}"
@@ -891,9 +959,6 @@ function renderConflictBanner(dayGroups) {
   }
 }
 
-// ══════════════════════════════════════════════
-//  RENDER ALL
-// ══════════════════════════════════════════════
 function renderAll() {
   renderMonthSwitcher();
   if (monthHasData(viewYear, viewMonth)) {
@@ -954,7 +1019,7 @@ function renderDayTimesSection() {
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         </button>`:''}
       </div>
-      <span id="dti-warn-${idx}" style="display:none" class="day-time-conflict">تعارض</span>
+      <span id="dti-warn-${idx}"  style="display:none" class="day-time-conflict">تعارض</span>
       <span id="dti-block-${idx}" style="display:none" class="day-time-blocked">محظور</span>
     </div>`;
   }).join('');
@@ -974,7 +1039,7 @@ function copyTimeFromFirst(dayIdx) {
 
 function refreshDayTimeConflictIndicators() {
   schSelectedDays.forEach(idx => {
-    const time    = schSelectedDayTimes[idx] || '';
+    const time   = schSelectedDayTimes[idx] || '';
     const warnEl  = $(`dti-warn-${idx}`);
     const blockEl = $(`dti-block-${idx}`);
     if (!warnEl || !blockEl) return;
@@ -1090,7 +1155,7 @@ function checkConflict() {
   refreshDayTimeConflictIndicators();
 }
 
-function schSave() {
+async function schSave() {
   if (schSelectedType === null) { toast('اختر نوع المجموعة','error'); return; }
   if (!schSelectedDays.length)  { toast('اختر يوماً واحداً على الأقل','error'); return; }
   const daysWithTime = schSelectedDays.filter(d=>schSelectedDayTimes[d]);
@@ -1111,6 +1176,7 @@ function schSave() {
     return t && schGroups.some(g=>g.id!==editId && getGroupTimeForDay(g,d)===t && (g.days||[]).includes(d));
   });
 
+  const wasEdit = !!editId;
   if (editId) {
     const idx = schGroups.findIndex(g=>g.id===editId);
     if (idx>=0) schGroups[idx] = { ...schGroups[idx], type:schSelectedType, time:primaryTime, times:timesObj, names, customCount, days:schSelectedDays };
@@ -1118,20 +1184,33 @@ function schSave() {
     schGroups.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), type:schSelectedType, time:primaryTime, times:timesObj, names, customCount, days:schSelectedDays });
   }
 
-  saveGroups();
-  closeGroupModal();
-  renderDayFilter();
-  renderTimeline();
-  toast(hasConflict ? '⚠ تم الحفظ مع تعارض في الوقت' : (editId ? '✅ تم التعديل' : '✅ تمت الإضافة'), hasConflict?'warn':'success');
+  // Disable save button while persisting
+  const saveBtn = $('schSaveBtn');
+  saveBtn.disabled = true;
+  try {
+    await persistMonth();
+    closeGroupModal();
+    renderDayFilter();
+    renderTimeline();
+    toast(hasConflict ? '⚠ تم الحفظ مع تعارض في الوقت' : (wasEdit ? '✅ تم التعديل' : '✅ تمت الإضافة'), hasConflict?'warn':'success');
+  } catch(e) {
+    toast('خطأ في الحفظ — تحقق من الاتصال', 'error');
+  } finally {
+    saveBtn.disabled = false;
+  }
 }
 
-function deleteGroup(id) {
+async function deleteGroup(id) {
   if (!confirm('تأكيد حذف المجموعة؟')) return;
   schGroups = schGroups.filter(g=>g.id!==id);
-  saveGroups();
-  renderDayFilter();
-  renderTimeline();
-  toast('تم حذف المجموعة');
+  try {
+    await persistMonth();
+    renderDayFilter();
+    renderTimeline();
+    toast('تم حذف المجموعة');
+  } catch(e) {
+    toast('خطأ في الحذف', 'error');
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -1161,24 +1240,38 @@ function toggleAllDays(e) {
   }, 0);
 }
 
-function addBlock() {
+async function addBlock() {
   const from = $('blkFrom').value, to = $('blkTo').value;
-  if (!from || !to)                   { toast('اختر وقت البداية والنهاية','error'); return; }
+  if (!from || !to)                     { toast('اختر وقت البداية والنهاية','error'); return; }
   if (timeToMin(from) >= timeToMin(to)) { toast('وقت البداية قبل النهاية','error'); return; }
   const days = [...document.querySelectorAll('input[name="blk_day"]:checked')].map(c=>Number(c.value));
   if (!days.length) { toast('اختر يوماً واحداً على الأقل','error'); return; }
-  blocks.push({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,5), from, to, days, label:`${to12(from)} → ${to12(to)}` });
-  saveBlocks();
-  renderBlockList();
-  toast('✅ تم إضافة الحظر');
-  $('blkFrom').value=''; $('blkTo').value='';
-  document.querySelectorAll('input[name="blk_day"]').forEach(c=>c.checked=false);
+
+  blocks.push({
+    id: Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+    from, to, days,
+    label:`${to12(from)} → ${to12(to)}`
+  });
+
+  try {
+    await persistMonth();
+    renderBlockList();
+    toast('✅ تم إضافة الحظر');
+    $('blkFrom').value=''; $('blkTo').value='';
+    document.querySelectorAll('input[name="blk_day"]').forEach(c=>c.checked=false);
+  } catch(e) {
+    toast('خطأ في حفظ الحظر', 'error');
+  }
 }
 
-function deleteBlock(id) {
+async function deleteBlock(id) {
   blocks = blocks.filter(b=>b.id!==id);
-  saveBlocks();
-  renderBlockList();
+  try {
+    await persistMonth();
+    renderBlockList();
+  } catch(e) {
+    toast('خطأ في الحذف', 'error');
+  }
 }
 
 function renderBlockList() {
@@ -1201,27 +1294,36 @@ function renderBlockList() {
 }
 
 // ══════════════════════════════════════════════
-//  BOOTSTRAP — auto-init current month if no data
+//  BOOTSTRAP
 // ══════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
-
-  // If current month has no data at all, seed it automatically
-  if (!monthHasData(viewYear, viewMonth)) {
-    // Check if there's a previous month to auto-copy from
-    const prev = allDataMonths();
-    if (prev.length > 0) {
-      // Don't auto-copy, let user decide — just load empty state
-    } else {
-      // Very first launch — init with empty data so UI shows
-      saveGroupsFor(viewYear, viewMonth, []);
-      saveBlocksFor(viewYear, viewMonth, DEFAULT_BLOCKS);
-    }
+document.addEventListener('DOMContentLoaded', async () => {
+  // ── 1. Check auth ─────────────────────────
+  if (!getToken()) {
+    window.location.href = 'auth.html';
+    return;
   }
 
-  loadMonthData();
+  lucide.createIcons();
+  showPageLoader();
+
+  // ── 2. Fetch months list for this trainer ──
+  await refreshMonthsCache();
+
+  // ── 3. If first ever launch → init current month ──
+  if (!monthHasData(viewYear, viewMonth) && monthsCache.length === 0) {
+    schGroups = [];
+    blocks    = DEFAULT_BLOCKS;
+    await persistMonth();  // creates the first document in DB
+  } else {
+    await loadMonthData();
+  }
+
+  hidePageLoader();
+
+  // ── 4. Render ──────────────────────────────
   renderAll();
 
+  // ── 5. Events ──────────────────────────────
   $('blockMgrBtn').onclick = openBlockModal;
   $('tlAddBtn').onclick    = () => openGroupModal(null, null);
   $('groupModal').addEventListener('click', e=>e.target===e.currentTarget && closeGroupModal());
