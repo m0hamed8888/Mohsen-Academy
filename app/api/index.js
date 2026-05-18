@@ -49,7 +49,7 @@ app.use('/api/auth',         require('../routes/auth'));
 app.use('/api/swimmers',     require('../routes/swimmers'));
 app.use('/api/attendance',   require('../routes/attendance'));
 app.use('/api/swimmer-auth', swimmerAuthRouter);
-app.use('/api/schedule', require('../routes/schedule'));
+app.use('/api/schedule', require('../routes/Schedule'));
 /* ── 404 handler ─────────────────────────────────────────────── */
 app.use((req, res) => {
   res.status(404).json({ success: false, message: `المسار ${req.originalUrl} غير موجود` });
