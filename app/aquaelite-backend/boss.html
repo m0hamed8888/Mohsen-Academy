@@ -916,7 +916,7 @@ select.fc option{background:#0a0f20}
     <div class="ll">
       <div class="ll-ic"><i data-lucide="crown"></i></div>
       <h1>Boss Panel</h1>
-      <p><a href="../home.html">الرجوع ألي الرئيسية</a></p>
+      <p>لوحة تحكم المدير العام</p>
     </div>
     <div class="lerr" id="loginErr"><i data-lucide="alert-circle"></i><span id="loginErrMsg">خطأ</span></div>
     <div class="lf"><label>اسم المستخدم</label><input type="text" id="loginUser" class="fc" placeholder="boss" autocomplete="username"/></div>
@@ -932,12 +932,12 @@ select.fc option{background:#0a0f20}
   <a class="nav-brand" href="#">
     <div class="brand-logo"><i data-lucide="crown"></i></div>
     <div class="brand-text">
-      <span class="brand-name"><a href="../home.html">AquaElite</a></span>
+      <span class="brand-name"><a href="../index.html">AquaElite</a></span>
       <span class="brand-sub">Boss Panel</span>
     </div>
   </a>
   <div style="display:flex;align-items:center;gap:8px">
-    <div class="boss-crown"><i data-lucide="crown" style="width:10px;height:10px"></i> <a href="./trainer.html">BOSS back</a></div>
+    <div class="boss-crown"><i data-lucide="crown" style="width:10px;height:10px"></i> BOSS</div>
     <div class="nav-right">
       <div class="boss-av" id="bossAv">B</div>
       <button id="logoutBtn" class="logout-btn"><i data-lucide="log-out"></i><span>خروج</span></button>
@@ -953,6 +953,9 @@ select.fc option{background:#0a0f20}
     <button class="bnav-item" data-tab="report"><i data-lucide="bar-chart-2"></i><span>التقرير</span></button>
     <button class="bnav-item" data-tab="users"><i data-lucide="users-round"></i><span>المستخدمون</span></button>
     <button class="bnav-item" data-tab="add-trainer"><i data-lucide="user-plus"></i><span>كابتن جديد</span></button>
+    <button class="bnav-item" data-tab="backup">
+  <i data-lucide="database"></i><span>Backup</span>
+</button>
   </div>
 </nav>
 
@@ -973,6 +976,9 @@ select.fc option{background:#0a0f20}
     <button class="dtb" data-tab="report"><i data-lucide="bar-chart-2"></i> التقرير</button>
     <button class="dtb" data-tab="users"><i data-lucide="users-round"></i> المستخدمون</button>
     <button class="dtb" data-tab="add-trainer"><i data-lucide="user-plus"></i> كابتن جديد</button>
+    <button class="dtb" data-tab="backup">
+  <i data-lucide="database"></i> Backup
+</button>
   </div>
 
   <!-- ══ TRAINERS PANEL ══ -->
@@ -1139,6 +1145,55 @@ select.fc option{background:#0a0f20}
       </button>
     </div>
   </div>
+  <div class="panel" id="panel-backup">
+  <div class="page-hd">
+    <div class="page-title">النسخ الاحتياطي</div>
+    <div class="page-sub">تنزيل نسخة كاملة من قاعدة البيانات — Boss فقط</div>
+  </div>
+ 
+  <!-- Info card -->
+  <div class="gc" style="max-width:560px">
+    <div class="gc-hd">
+      <div class="gc-title"><i data-lucide="database"></i> معلومات قاعدة البيانات</div>
+      <button class="btn-sec" id="refreshInfoBtn" onclick="loadBackupInfo()">
+        <i data-lucide="refresh-cw"></i> تحديث
+      </button>
+    </div>
+ 
+    <!-- حالة التحميل -->
+    <div id="backupInfoLoading" style="color:var(--tm);font-size:.84rem;padding:10px 0">
+      اضغط "تحديث" لعرض محتوى قاعدة البيانات
+    </div>
+ 
+    <!-- نتيجة الـ info -->
+    <div id="backupInfoResult" style="display:none">
+      <div id="backupCollections" style="margin-bottom:18px"></div>
+      <div style="font-size:.7rem;color:var(--tm);margin-bottom:16px" id="backupGenAt"></div>
+    </div>
+ 
+    <!-- زر التنزيل -->
+    <button class="btn-gold" id="downloadBackupBtn" onclick="downloadBackup()" style="max-width:260px">
+      <i data-lucide="download"></i><span id="backupBtnTxt">تنزيل Backup كـ JSON</span>
+    </button>
+ 
+    <!-- رسالة الحالة -->
+    <div id="backupStatusMsg" style="display:none;margin-top:14px;padding:10px 14px;border-radius:var(--r-sm);font-size:.82rem;font-weight:600"></div>
+  </div>
+ 
+  <!-- Warning card -->
+  <div class="gc" style="max-width:560px;background:rgba(255,181,71,.03);border-color:rgba(255,181,71,.14)">
+    <div style="display:flex;gap:10px;align-items:flex-start">
+      <i data-lucide="shield-alert" style="width:16px;height:16px;color:var(--warn);flex-shrink:0;margin-top:2px"></i>
+      <div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--warn);margin-bottom:6px">تنبيه</div>
+        <div style="font-size:.78rem;color:var(--ts);line-height:1.8">
+          الملف يحتوي على كل بيانات قاعدة البيانات بما فيها كلمات المرور المشفرة.<br/>
+          احتفظ به في مكان آمن ولا تشاركه مع أحد.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 
 <!-- ══ SWIMMER DETAIL MODAL ══ -->
@@ -1930,6 +1985,110 @@ async function api(path, method='GET', body=null, useToken=true){
   if(!res.ok){ if(res.status===401) doLogout(); throw new Error(data.message || `HTTP ${res.status}`); }
   return data;
 }
+
+
+
+
+/* ════ BACKUP ════ */
+async function loadBackupInfo(){
+  const btn = $('refreshInfoBtn');
+  const loading = $('backupInfoLoading');
+  const result  = $('backupInfoResult');
+ 
+  btn.classList.add('loading');
+  loading.style.display = 'block';
+  loading.textContent = '⏳ جاري التحميل...';
+  result.style.display = 'none';
+  setBackupStatus('', '');
+ 
+  try{
+    const d = await api('/backup/info');
+ 
+    // عرض الـ collections
+    $('backupCollections').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bdr);margin-bottom:8px">
+        <span style="font-size:.75rem;font-weight:700;color:var(--ts)">اسم الـ Collection</span>
+        <span style="font-size:.75rem;font-weight:700;color:var(--ts)">عدد السجلات</span>
+      </div>
+      ${d.collections.map(c => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03)">
+          <div style="display:flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--tp)">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;flex-shrink:0"></span>
+            ${c.collection}
+          </div>
+          <span style="font-family:var(--f-disp);font-weight:900;font-size:.88rem;color:var(--gold)">${c.documents}</span>
+        </div>
+      `).join('')}
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 2px;margin-top:4px">
+        <span style="font-size:.75rem;font-weight:700;color:var(--tm)">الإجمالي</span>
+        <span style="font-family:var(--f-disp);font-weight:900;font-size:1rem;color:var(--gold)">${d.collections.reduce((s,c)=>s+c.documents,0)}</span>
+      </div>`;
+ 
+    $('backupGenAt').textContent = `📅 آخر تحديث: ${new Date(d.generatedAt).toLocaleString('ar-EG')} — قاعدة البيانات: ${d.dbName}`;
+ 
+    loading.style.display = 'none';
+    result.style.display  = 'block';
+  } catch(e){
+    loading.textContent = '❌ ' + (e.message || 'فشل التحميل');
+    setBackupStatus('error', e.message || 'فشل جلب معلومات الـ Backup');
+  }
+  finally{ btn.classList.remove('loading'); lucide.createIcons(); }
+}
+ 
+async function downloadBackup(){
+  const btn = $('downloadBackupBtn');
+  btn.classList.add('loading');
+  $('backupBtnTxt').textContent = '⏳ جاري الإنشاء...';
+  setBackupStatus('loading', '⏳ جاري تجهيز الملف... برجاء الانتظار');
+ 
+  try{
+    const res = await fetch(`${API}/backup/download`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+ 
+    if(!res.ok){
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || `HTTP ${res.status}`);
+    }
+ 
+    // اسم الملف من الـ header
+    const disposition = res.headers.get('Content-Disposition') || '';
+    const match = disposition.match(/filename="(.+)"/);
+    const filename = match ? match[1] : `backup_${Date.now()}.json`;
+ 
+    // تنزيل الملف
+    const blob = await res.blob();
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+ 
+    setBackupStatus('ok', `✅ تم تنزيل الملف: ${filename}`);
+    toast('✅ تم تنزيل الـ Backup بنجاح');
+  } catch(e){
+    setBackupStatus('error', '❌ ' + (e.message || 'فشل التنزيل'));
+    toast(e.message || 'فشل التنزيل', 'er');
+  }
+  finally{
+    btn.classList.remove('loading');
+    $('backupBtnTxt').textContent = 'تنزيل Backup كـ JSON';
+  }
+}
+ 
+function setBackupStatus(type, msg){
+  const el = $('backupStatusMsg');
+  if(!type || !msg){ el.style.display = 'none'; return; }
+  const styles = {
+    ok:      'background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.22);color:var(--ok)',
+    error:   'background:rgba(255,77,109,.07);border:1px solid rgba(255,77,109,.2);color:var(--err)',
+    loading: 'background:rgba(245,200,66,.05);border:1px solid rgba(245,200,66,.15);color:var(--gold)',
+  };
+  el.style.cssText += ';display:block;' + (styles[type] || '');
+  el.className = '';
+  el.textContent = msg;
+}
+ 
 
 /* ════ HELPERS ════ */
 function lds(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
