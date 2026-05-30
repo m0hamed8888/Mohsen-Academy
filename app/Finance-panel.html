@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // تحقق من الـ token
   const token = getToken();
   if (!token) {
-    window.location.href = './auth.html';
+window.location.href = '/app/auth.html'; // مسار كامل بدل relative
     return;
   }
 
