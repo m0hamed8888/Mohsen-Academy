@@ -1137,7 +1137,8 @@ function buildExpand(s) {
       <div class="dg-item"><div class="dg-lbl">الهدف</div><div class="dg-val">${GOALS[s.goal] || '—'}</div></div>
       <div class="dg-item"><div class="dg-lbl">أيام التدريب</div><div class="dg-val">${days}</div></div>
       <div class="dg-item"><div class="dg-lbl">الهاتف</div><div class="dg-val">${s.phone || '—'}</div></div>
-      <div class="dg-item"><div class="dg-lbl">الكابتن</div><div class="dg-val">${s.trainerName || '—'}</div></div>
+     <div class="dg-item"><div class="dg-lbl">الكابتن</div><div class="dg-val">${s.trainerName || '—'}</div></div>
+      <div class="dg-item"><div class="dg-lbl">ساعة التدريب</div><div class="dg-val">${fmtTime(s.trainingTime)}</div></div>
       ${expStarsHtml}
     </div>
 
@@ -1154,7 +1155,13 @@ function buildExpand(s) {
       </button>
     </div>`;
 }
-
+function fmtTime(t) {
+  if (!t) return '—';
+  const [h, m] = t.split(':').map(Number);
+  const period = h < 12 ? 'ص' : 'م';
+  const h12 = h % 12 || 12;
+  return `${h12}:${String(m).padStart(2,'0')} ${period}`;
+}
 function buildExpiryRow(s) {
   const att = s.sessionsAttended || 0, tot = s.sessionsCount || 1;
   if (att >= tot)
