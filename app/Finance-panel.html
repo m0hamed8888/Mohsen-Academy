@@ -611,26 +611,8 @@ let pendingDelId=null;
 let editingId=null;
 
 /* ══ STORAGE ══ */
-// بدل load() و save()
-async function load(year, month) {
-  const res = await fetch(`/api/finance/transactions?year=${year}&month=${month}`, {
-    headers: { 'Authorization': `Bearer ${getToken()}` }
-  });
-  finData = await res.json();
-  renderAll();
-}
-
-async function save(endpoint, method, body) {
-  const res = await fetch(`/api/finance/${endpoint}`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${getToken()}`
-    },
-    body: JSON.stringify(body)
-  });
-  return res.json();
-}function save(){localStorage.setItem(STORE_KEY,JSON.stringify(finData));}
+function load(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||'[]');}catch(e){return [];}}
+function save(){localStorage.setItem(STORE_KEY,JSON.stringify(finData));}
 function loadBal(){try{return JSON.parse(localStorage.getItem(BAL_KEY)||'{}');}catch(e){return {};}}
 function saveBal(){localStorage.setItem(BAL_KEY,JSON.stringify(manualBalances));}
 function getMonthKey(){return `${finYear}-${String(finMonth).padStart(2,'0')}`;}
