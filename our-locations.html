@@ -388,7 +388,7 @@
     <div class="container-main">
 
       <!-- ── العاشر من رمضان ── -->
-      <article class="loc-block reveal" data-city="العاشر من رمضان" id="ramadan">
+      <!-- <article class="loc-block reveal" data-city="العاشر من رمضان" id="ramadan">
         <div class="loc-block-header">
           <div class="loc-city-badge">
             <span class="loc-city-dot"></span>
@@ -422,7 +422,6 @@
           </div>
         </div>
 
-        <!-- Clubs grid -->
         <div class="clubs-cards-grid">
 
           <div class="club-detail-card">
@@ -517,7 +516,7 @@
             </svg>
           </a>
         </div>
-      </article>
+      </article> -->
 
       <!-- Divider -->
       <div class="loc-divider reveal"></div>
@@ -560,11 +559,10 @@
         <div class="clubs-cards-grid">
 
           <div class="club-detail-card club-detail-card--featured">
-            <div class="cdc-featured-label">المقر الرئيسي</div>
             <div class="cdc-top">
               <div class="cdc-icon cdc-icon--gold">🏆</div>
               <div>
-                <h3>نادي جرين هيلز</h3>
+                <h3> اكاديمية محسن داخل نادي جرين هيلز</h3>
                 <span class="cdc-badge cdc-badge--active">نحن هنا</span>
               </div>
             </div>
@@ -591,7 +589,7 @@
             </a>
           </div>
 
-          <div class="club-detail-card">
+          <!-- <div class="club-detail-card">
             <div class="cdc-top">
               <div class="cdc-icon">🏊</div>
               <div>
@@ -638,7 +636,7 @@
                 <span class="feat-tag feat-ok">✔ سباحة طوال العام</span>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
@@ -657,7 +655,7 @@
       <div class="loc-divider reveal"></div>
 
       <!-- ── مدينة بدر ── -->
-      <article class="loc-block reveal" data-city="بدر" id="badr">
+      <!-- <article class="loc-block reveal" data-city="بدر" id="badr">
         <div class="loc-block-header">
           <div class="loc-city-badge loc-city-badge--teal">
             <span class="loc-city-dot" style="background:#0a8a6a"></span>
@@ -723,13 +721,13 @@
             </svg>
           </a>
         </div>
-      </article>
+      </article> -->
 
       <!-- Divider -->
       <div class="loc-divider reveal"></div>
 
       <!-- ── مدينة المستقبل ── -->
-      <article class="loc-block reveal" data-city="المستقبل" id="mostakbal">
+      <!-- <article class="loc-block reveal" data-city="المستقبل" id="mostakbal">
         <div class="loc-block-header">
           <div class="loc-city-badge loc-city-badge--gold">
             <span class="loc-city-dot" style="background:var(--gold)"></span>
@@ -797,7 +795,7 @@
             </svg>
           </a>
         </div>
-      </article>
+      </article> -->
 
     </div>
   </main>
@@ -912,7 +910,7 @@
         const matchCity = city === "all" || name.includes(city);
         const matchQ = !q || name.includes(q) || txt.includes(q);
         b.style.display = (matchCity && matchQ) ? "" : "none";
-      });
+      });2
     }
 
     input.addEventListener("input", e => filterBlocks(e.target.value.trim().toLowerCase(), document.querySelector(".pill--active")?.dataset.filter || "all"));
