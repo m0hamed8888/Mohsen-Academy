@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تدريب سباحة في العاشر من رمضان | Mohsen Academy</title>
   <meta name="description" content="أكاديمية سباحة في العاشر من رمضان تقدم تعليم وتدريب السباحة للأطفال والكبار داخل حمامات سباحة مجهزة، مع مدربين محترفين وبرامج تدريب تناسب جميع المستويات والأعمار.">
-  <meta name="keywords" content="أكاديمية سباحة في العاشر من رمضان, تعليم السباحة للأطفال في العاشر من رمضان, تدريب سباحة احترافي في العاشر من رمضان, مدربين سباحة في العاشر من رمضان">
+  <meta name="keywords" content="أكاديمية سباحة في العاشر من رمضان, تعليم السباحة للأطفال في العاشر من رمضان, تدريب سباحة احترافي في العاشر من رمضان, مدربين سباحة في العاشر من رمضان, نادي الصفوة العاشر من رمضان سباحة">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="تدريب سباحة في العاشر من رمضان | Mohsen Academy">
-  <meta property="og:description" content="أكاديمية محسن للسباحة في العاشر من رمضان — برامج للأطفال والكبار والفرق.">
+  <meta property="og:description" content="أكاديمية محسن للسباحة في العاشر من رمضان — برامج للأطفال والكبار والفرق. قريباً داخل نادي الصفوة.">
   <meta property="og:url" content="https://mohsenacademy.com/our-locations/10th-of-ramadan-page">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" sizes="96x96" href="https://mohsenacademy.com/favicon-96x96.png">
@@ -16,13 +16,118 @@
   <link rel="manifest" href="../site.webmanifest">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/city-page.css">
   <link rel="stylesheet" href="/assets/fonts/css-f-family.css">
-<base target="_blank">
-<!-- SCHEMA.ORG — SEO Power Schema for 10th of Ramadan -->
+  <base target="_blank">
+
+<style>
+/* ── Notice Banner ── */
+.notice-banner {
+  background: linear-gradient(135deg, #0066CC 0%, #004fa3 100%);
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: .95rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 999;
+}
+.notice-banner strong { color: #E6A200; }
+.notice-banner a { color: #fff; text-decoration: underline; opacity: .85; }
+.notice-banner a:hover { opacity: 1; }
+
+/* ── Independence Card ── */
+.independence-section {
+  padding: 56px 0 40px;
+  background: #f9fafb;
+}
+.independence-card {
+  background: #fff;
+  border: 2px solid #E6A200;
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  max-width: 860px;
+  margin: 0 auto;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.indep-icon {
+  font-size: 2.6rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.indep-body h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0D1B2A;
+  margin: 0 0 10px;
+}
+.indep-body p {
+  color: #4a5568;
+  line-height: 1.75;
+  margin: 0 0 14px;
+  font-size: .97rem;
+}
+.indep-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.indep-tag {
+  background: #f0f7ff;
+  border: 1px solid #c3daf7;
+  color: #0066CC;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.indep-tag--gold {
+  background: #fffbeb;
+  border-color: #f6d860;
+  color: #92680a;
+}
+
+/* Club Coming Soon Badge */
+.club-badge-wrap {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #fffbeb, #fff8dc);
+  border-radius: 12px;
+  border: 1.5px dashed #E6A200;
+}
+.club-badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E6A200;
+  animation: pulse-gold 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-gold {
+  0%,100%{box-shadow:0 0 0 0 rgba(230,162,0,.4)}
+  50%{box-shadow:0 0 0 7px rgba(230,162,0,0)}
+}
+.club-badge-text {
+  font-size: .9rem;
+  color: #7a5200;
+  line-height: 1.5;
+}
+.club-badge-text strong { color: #0D1B2A; }
+
+@media(max-width:640px){
+  .independence-card { flex-direction:column; padding:24px 20px; }
+  .indep-icon { font-size:2rem; }
+}
+</style>
+
+<!-- SCHEMA.ORG -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,14 +154,12 @@
         "https://www.tiktok.com/@mohsen_academy_"
       ]
     },
-
     {
       "@type": "WebPage",
       "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page",
       "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page",
       "name": "تدريب سباحة في العاشر من رمضان | أكاديمية محسن للأطفال والكبار",
-      "headline": "سباحة العاشر من رمضان — تدريب احترافي للجميع",
-      "description": "أفضل أكاديمية سباحة في العاشر من رمضان. تدريب سباحة للأطفال والكبار في أماكن متعددة بالمدينة. مدربون معتمدون، مياه مسخّنة، أسعار تبدأ من 600 جنيه. احجز الآن!",
+      "description": "أكاديمية محسن للسباحة في العاشر من رمضان — أكاديمية مستقلة، قريباً داخل نادي الصفوة. تدريب للأطفال والكبار والفرق.",
       "inLanguage": "ar",
       "isPartOf": { "@id": "https://mohsenacademy.com/#organization" },
       "breadcrumb": {
@@ -66,56 +169,28 @@
           { "@type": "ListItem", "position": 2, "name": "أماكن السباحة", "item": "https://mohsenacademy.com/our-locations" },
           { "@type": "ListItem", "position": 3, "name": "العاشر من رمضان", "item": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page" }
         ]
-      },
-      "about": {
-        "@type": "Thing",
-        "name": "سباحة العاشر من رمضان",
-        "description": "تدريب وتعليم السباحة في مدينة العاشر من رمضان"
       }
     },
-
     {
       "@type": "SportsActivityLocation",
       "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan#main-location",
-      "name": "أكاديمية محسن للسباحة — العاشر من رمضان",
-      "alternateName": [
-        "سباحة العاشر من رمضان",
-        "تدريب سباحة العاشر من رمضان",
-        "أكاديمية سباحة العاشر من رمضان",
-        "نادي سباحة العاشر من رمضان",
-        "مدرسة سباحة العاشر من رمضان"
-      ],
-      "description": "أكاديمية محسن للسباحة في مدينة العاشر من رمضان — تدريب سباحة احترافي للأطفال والكبار في أماكن متعددة بالمدينة. مسبح أوليمبي مع مياه مسخّنة شتاءً ومدربين معتمدين من الاتحاد المصري.",
+      "name": "أكاديمية محسن للسباحة — العاشر من رمضان (نادي الصفوة قريباً)",
+      "description": "أكاديمية محسن للسباحة في العاشر من رمضان — أكاديمية مستقلة وغير تابعة لأي نادي. قريباً ستكون الأكاديمية داخل نادي الصفوة مع الاحتفاظ باستقلاليتها الكاملة.",
       "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page",
       "telephone": "+20-103-570-0789",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "أماكن متعددة في أنحاء مدينة العاشر من رمضان",
+        "streetAddress": "نادي الصفوة — العاشر من رمضان",
         "addressLocality": "العاشر من رمضان",
         "addressRegion": "الشرقية",
-        "addressCountry": "EG",
-        "postalCode": "44629"
+        "addressCountry": "EG"
       },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "30.2904",
         "longitude": "31.7556"
       },
-      "hasMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2875.575062004794!2d31.734949625357928!3d30.285326907119224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1457fdc56095d899%3A0xc392587aff5fb34a!2z2YbYp9iv2Yog2KfZhNi12YHZiNip!5e1!3m2!1sar!2seg!4v1769600988336!5m2!1sar!2seg",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "12:00",
-        "closes": "21:00"
-      },
       "sport": "Swimming",
-      "amenityFeature": [
-        { "@type": "LocationFeatureSpecification", "name": "مسبح أوليمبي في العاشر من رمضان", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "مياه مسخّنة شتاءً", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "سباحة طوال العام في العاشر من رمضان", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "مدربون معتمدون", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "أماكن متعددة في العاشر من رمضان", "value": true }
-      ],
       "parentOrganization": { "@id": "https://mohsenacademy.com/#organization" },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -124,105 +199,17 @@
         "bestRating": "5"
       }
     },
-
-    {
-      "@type": "Course",
-      "name": "تدريب السباحة للأطفال في العاشر من رمضان",
-      "alternateName": ["سباحة أطفال العاشر من رمضان", "تعليم سباحة للأطفال العاشر من رمضان"],
-      "description": "برنامج تعليم السباحة للأطفال من سن 4 سنين في العاشر من رمضان — مجموعات صغيرة 3 أفراد أو 5 أفراد أو تدريب فردي 1:1 مع مدربين معتمدين",
-      "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page#prog-kids",
-      "provider": { "@id": "https://mohsenacademy.com/#organization" },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "onsite",
-        "location": { "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan#main-location" },
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "مجموعة 5 أفراد — العاشر من رمضان",
-            "price": "600",
-            "priceCurrency": "EGP",
-            "description": "8 حصص شهرياً — مجموعة 5 أطفال في العاشر من رمضان"
-          },
-          {
-            "@type": "Offer",
-            "name": "مجموعة 3 أفراد — العاشر من رمضان",
-            "price": "1250",
-            "priceCurrency": "EGP",
-            "description": "8 حصص شهرياً — مجموعة 3 أطفال في العاشر من رمضان"
-          },
-          {
-            "@type": "Offer",
-            "name": "برايفيت فردي — العاشر من رمضان",
-            "price": "2000",
-            "priceCurrency": "EGP",
-            "description": "8 حصص شهرياً — تدريب فردي 1:1 في العاشر من رمضان"
-          }
-        ]
-      }
-    },
-
-    {
-      "@type": "Course",
-      "name": "تدريب السباحة للكبار في العاشر من رمضان",
-      "alternateName": ["سباحة كبار العاشر من رمضان", "تعليم سباحة للكبار العاشر من رمضان"],
-      "description": "برنامج تعليم السباحة للكبار في العاشر من رمضان — مبتدئين، متوسط، ومتقدمين. تدريب جماعي وفردي مع مواعيد مرنة",
-      "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page#prog-adults",
-      "provider": { "@id": "https://mohsenacademy.com/#organization" },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "onsite",
-        "location": { "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan#main-location" },
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "كبار — مجموعة 5 أفراد",
-            "price": "1250",
-            "priceCurrency": "EGP",
-            "description": "8 حصص شهرياً في العاشر من رمضان"
-          },
-          {
-            "@type": "Offer",
-            "name": "كبار — فردي",
-            "price": "2000",
-            "priceCurrency": "EGP",
-            "description": "8 حصص شهرياً في العاشر من رمضان"
-          }
-        ]
-      }
-    },
-
-    {
-      "@type": "Course",
-      "name": "تدريب السباحة التجهيزي في العاشر من رمضان",
-      "alternateName": ["سباحة تجهيزي العاشر من رمضان", "برنامج التجهيزي العاشر من رمضان"],
-      "description": "برنامج السباحة التجهيزي في العاشر من رمضان — تأسيس صحيح، تأهيل للاتحاد المصري، والتحضير للبطولات. فردي وجماعي",
-      "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page#prog-prep",
-      "provider": { "@id": "https://mohsenacademy.com/#organization" },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "onsite",
-        "location": { "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan#main-location" }
-      }
-    },
-
-    {
-      "@type": "Course",
-      "name": "تدريب فرق السباحة في العاشر من رمضان",
-      "alternateName": ["فرق سباحة العاشر من رمضان", "تدريب سباحة احترافي العاشر من رمضان"],
-      "description": "تدريب فرق السباحة التنافسية في العاشر من رمضان — كشف شهري، تحسين السرعة، وإعداد الفرق للبطولات الرسمية",
-      "url": "https://mohsenacademy.com/our-locations/10th-of-ramadan-page#prog-teams",
-      "provider": { "@id": "https://mohsenacademy.com/#organization" },
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "onsite",
-        "location": { "@id": "https://mohsenacademy.com/our-locations/10th-of-ramadan#main-location" }
-      }
-    },
-
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "هل أكاديمية محسن تابعة لنادي الصفوة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا، أكاديمية محسن للسباحة أكاديمية مستقلة تماماً وغير تابعة لأي نادي. نحن قريباً سنكون موجودين داخل مبنى نادي الصفوة في العاشر من رمضان، لكن ننشط بإدارتنا ومدربينا المعتمدين المستقلين."
+          }
+        },
         {
           "@type": "Question",
           "name": "هل يوجد تدريب سباحة للأطفال في العاشر من رمضان؟",
@@ -233,35 +220,10 @@
         },
         {
           "@type": "Question",
-          "name": "أين أجد تعليم سباحة للكبار في العاشر من رمضان؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "أكاديمية محسن تقدم تعليم سباحة للكبار في العاشر من رمضان لجميع المستويات (مبتدئين، متوسط، متقدمين) في أماكن متعددة بالمدينة. الأسعار تبدأ من 600 جنيه لمجموعة 5 أفراد."
-          }
-        },
-      
-        {
-          "@type": "Question",
-          "name": "هل يوجد نادي سباحة في العاشر من رمضان للتدريب؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، أكاديمية محسن للسباحة متاحة في العاشر من رمضان في أماكن متعددة ونوادي مختلفة بالمدينة. جميع المواقع مجهزة بمسابح أوليمبية ومياه مسخّنة شتاءً."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل التدريب مناسب للمبتدئين والخائفين من الماء في العاشر من رمضان؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، أكاديمية محسن متخصصة في التعامل مع المبتدئين والخائفين من الماء من الأطفال والكبار في العاشر من رمضان. المدربون لديهم خبرة 6+ سنوات في مساعدة السباحين على تخطّي الخوف والتعلم بأمان."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "ما هي مواعيد تدريب السباحة في العاشر من رمضان؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "مواعيد الأكاديمية في العاشر من رمضان من الساعة 12 ظهراً حتى 9 مساءً طوال أيام الأسبوع. نقدم مواعيد مرنة تناسب الكبار والأطفال مع إمكانية اختيار الموعد في البرايفيت."
+            "text": "مواعيد الأكاديمية في العاشر من رمضان من الساعة 12 ظهراً حتى 9 مساءً طوال أيام الأسبوع."
           }
         }
       ]
@@ -270,7 +232,12 @@
 }
 </script>
 </head>
-<body  dir="ltr">
+<body dir="ltr">
+
+  <!-- Notice Banner -->
+  <div class="notice-banner">
+    🏊 <strong>أكاديمية محسن — مستقلة تماماً</strong> &nbsp;|&nbsp; نحن أكاديمية خاصة وغير تابعين لأي نادي &nbsp;|&nbsp; قريباً داخل <strong>نادي الصفوة</strong> — العاشر من رمضان
+  </div>
 
   <!-- WhatsApp Float -->
   <a href="https://wa.me/message/X76VY37AZW2NK1" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
@@ -326,13 +293,13 @@
       </div>
       <div class="page-hero-badge in-view" style="--d:.05s">
         <span class="hero-badge-dot"></span>
-        أماكن متعددة في العاشر من رمضان
+        قريباً داخل نادي الصفوة — العاشر من رمضان
       </div>
       <h1 class="page-hero-title in-view" style="--d:.1s">تدريب سباحة في العاشر من رمضان</h1>
       <p class="page-hero-sub in-view" style="--d:.2s">
-        أكاديمية محسن للسباحة بتوفّر برامج تدريب سباحة تناسب جميع المستويات داخل مدينة العاشر من رمضان،
-        مع <strong>مدربين معتمدين</strong> وتجهيزات كاملة لضمان أفضل تجربة تعليم وتدريب سباحة
-        للأطفال والكبار والفرق.
+        أكاديمية محسن للسباحة — <strong>أكاديمية خاصة ومستقلة</strong> تقدم برامج تدريب سباحة
+        تناسب جميع المستويات. قريباً ستجدنا داخل <strong>نادي الصفوة</strong> في العاشر من رمضان،
+        مع مدربين معتمدين وتجهيزات كاملة للأطفال والكبار والفرق.
       </p>
       <div class="page-hero-actions in-view" style="--d:.3s">
         <a href="https://wa.me/message/X76VY37AZW2NK1" class="btn-primary">سجّل الآن</a>
@@ -351,22 +318,56 @@
     </div>
   </section>
 
+  <!-- Independence Notice Section -->
+  <section class="independence-section">
+    <div class="container-main">
+      <div class="independence-card reveal">
+        <div class="indep-icon">🏛️</div>
+        <div class="indep-body">
+          <h3>أكاديمية محسن — مستقلة وخاصة بنا</h3>
+          <p>
+            أكاديمية محسن للسباحة هي <strong>أكاديمية خاصة ومستقلة تماماً</strong>، ومش تابعة لأي نادي أو جهة.
+            إحنا بنشتغل بمدربينا وإدارتنا وبرامجنا الخاصة — وبنضمن لكل سباح متابعة احترافية بغض النظر عن المكان.
+          </p>
+          <p>
+            في حالات بنكون داخل ملاعب أو مرافق نوادي مختلفة، لكن ده <strong>لا يعني إننا جزء منهم</strong>.
+            أنتم دايماً بتتعاملوا مباشرة مع أكاديمية محسن وفريق مدربينا المعتمدين.
+          </p>
+          <div class="club-badge-wrap">
+            <div class="club-badge-dot"></div>
+            <div class="club-badge-text">
+              <strong>قريباً:</strong> هتلاقونا داخل <strong>نادي الصفوة</strong> في العاشر من رمضان —
+              نادي الصفوة هو المكان، وإحنا أكاديمية محسن مستقلة جوّاه.
+            </div>
+          </div>
+          <div class="indep-tags" style="margin-top:16px">
+            <span class="indep-tag">✅ أكاديمية مستقلة</span>
+            <span class="indep-tag">✅ إدارة خاصة بينا</span>
+            <span class="indep-tag indep-tag--gold">🏟️ قريباً — نادي الصفوة</span>
+            <span class="indep-tag">✅ مدربون معتمدون</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- City Intro -->
   <section class="city-intro-section">
     <div class="container-main">
       <div class="city-intro-layout reveal">
         <div class="city-intro-text">
-          <span class="section-label">لماذا العاشر من رمضان؟</span>
+          <span class="section-label">لماذا أكاديمية محسن؟</span>
           <h2 class="section-title">أكاديمية سباحة في العاشر من رمضان</h2>
           <p class="section-desc">
-            لو بتدور على <strong>تدريب سباحة في مدينة العاشر من رمضان</strong> وتعليم سباحة بمستوى احترافي للأطفال والكبار، فأنت في المكان الصح. نقدم تدريب في <strong>أماكن متعددة</strong> في قلب المدينة مع مواعيد مرنة وأسعار مميزة.
+            لو بتدور على <strong>تدريب سباحة في مدينة العاشر من رمضان</strong> مع أكاديمية محترمة ومعتمدة، فأنت في المكان الصح.
+            نقدم تدريب احترافي بأماكن مجهزة ومواعيد مرنة وأسعار مميزة — بإدارة وفريق تدريب مستقل 100%.
           </p>
           <div class="city-features">
+            <div class="city-feat"><span class="city-feat-icon">✔</span><span>أكاديمية خاصة ومستقلة — مش تابعين لحد</span></div>
             <div class="city-feat"><span class="city-feat-icon">✔</span><span>مدربون معتمدون بخبرة كبيرة</span></div>
             <div class="city-feat"><span class="city-feat-icon">✔</span><span>اختبارات شهرية لقياس تقدم السباح</span></div>
             <div class="city-feat"><span class="city-feat-icon">✔</span><span>مواعيد مرنة تناسب جميع الأعمار</span></div>
-            <div class="city-feat"><span class="city-feat-icon">✔</span><span>أماكن مختلفة — مش نادي واحد فقط!</span></div>
-            <div class="city-feat"><span class="city-feat-icon">✔</span><span>مستوى أمان عالٍ واهتمام خاص بالمبتدئين</span></div>
+            <div class="city-feat"><span class="city-feat-icon">✔</span><span>قريباً داخل نادي الصفوة بنفس الاستقلالية</span></div>
             <div class="city-feat"><span class="city-feat-icon">✔</span><span>كل معلومات السباح على <a href="https://mohsenacademy.com/#app-section">التطبيق</a></span></div>
           </div>
           <a href="https://wa.me/message/X76VY37AZW2NK1" class="btn-primary" style="margin-top:8px">سجّل الآن</a>
@@ -376,7 +377,7 @@
             alt="تدريب سباحة في العاشر من رمضان"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div class="city-intro-img-fallback">🏊 العاشر من رمضان</div>
-          <div class="city-intro-img-badge">أماكن متعددة</div>
+          <div class="city-intro-img-badge">قريباً — نادي الصفوة</div>
         </div>
       </div>
     </div>
@@ -400,7 +401,7 @@
       </div>
 
       <!-- Kids -->
-      <div class="prog-panel prog-panel--active reveal" id="prog-kids" role="tabpanel" aria-labelledby="tab-kids">
+      <div class="prog-panel prog-panel--active reveal" id="prog-kids" role="tabpanel">
         <div class="prog-layout">
           <div class="prog-img">
             <img src="https://mohsenacademy.com/assets/images/clubs/تدريب سباحه للأطفال في العاشر من رمضان.webp" loading="lazy"
@@ -410,25 +411,22 @@
           </div>
           <div class="prog-text">
             <h3>تدريب السباحة للأطفال في العاشر من رمضان</h3>
-            <p>تدريب الأطفال عندنا بيبدأ من سن 4 سنين. أساليبنا تعتمد على التعامل بإيجابية وتحفيز الطفل عشان يطلع أحسن ما عنده بحب وأمان. يمكن لولي الأمر متابعة كل تفاصيل طفله من خلال <a href="https://mohsenacademy.com/#app-section"> التطبيق</a>.</p>
+            <p>تدريب الأطفال عندنا بيبدأ من سن 4 سنين. أساليبنا تعتمد على التعامل بإيجابية وتحفيز الطفل عشان يطلع أحسن ما عنده بحب وأمان. يمكن لولي الأمر متابعة كل تفاصيل طفله من خلال <a href="https://mohsenacademy.com/#app-section">التطبيق</a>.</p>
             <div class="prog-packages">
               <div class="pkg-card pkg-card--gold">
                 <div class="pkg-icon">👤👤👤</div>
                 <h4>مجموعات صغيرة</h4>
                 <p>حتى 3 أطفال لكل مدرب، متابعة فردية كاملة</p>
-                <!-- <div class="pkg-price">1250 جنيه <span>/ 8 حصص</span></div> -->
               </div>
               <div class="pkg-card pkg-card--blue">
                 <div class="pkg-icon">👥</div>
                 <h4>مجموعة متوسطة</h4>
                 <p>5 أطفال لكل مدرب، تدريب ممتع وسعر مناسب</p>
-                <!-- <div class="pkg-price">950 جنيه <span>/ 8 حصص</span></div> -->
               </div>
               <div class="pkg-card pkg-card--dark">
                 <div class="pkg-icon">⭐</div>
                 <h4>فردي 1:1</h4>
                 <p>تدريب شخصي كامل — تجربة VIP</p>
-                <!-- <div class="pkg-price">2000 جنيه <span>/ 8 حصص</span></div> -->
               </div>
             </div>
             <div class="prog-accordion">
@@ -463,7 +461,7 @@
       </div>
 
       <!-- Prep -->
-      <div class="prog-panel reveal" id="prog-prep" role="tabpanel" aria-labelledby="tab-prep">
+      <div class="prog-panel reveal" id="prog-prep" role="tabpanel">
         <div class="prog-layout">
           <div class="prog-img">
             <img src="https://mohsenacademy.com/assets/images/clubs/تدريب سباحه للتجهيزي في العاشر من رمضان.webp" loading="lazy"
@@ -517,7 +515,7 @@
       </div>
 
       <!-- Teams -->
-      <div class="prog-panel reveal" id="prog-teams" role="tabpanel" aria-labelledby="tab-teams">
+      <div class="prog-panel reveal" id="prog-teams" role="tabpanel">
         <div class="prog-layout">
           <div class="prog-img">
             <img src="https://mohsenacademy.com/assets/images/clubs/تدريب سباحه للمنافسات في العاشر من رمضان.webp" loading="lazy"
@@ -571,7 +569,7 @@
       </div>
 
       <!-- Adults -->
-      <div class="prog-panel reveal" id="prog-adults" role="tabpanel" aria-labelledby="tab-adults">
+      <div class="prog-panel reveal" id="prog-adults" role="tabpanel">
         <div class="prog-layout">
           <div class="prog-img">
             <img src="https://mohsenacademy.com/assets/images/clubs/تدريب سباحه للكبار في العاشر من رمضان.webp" loading="lazy"
@@ -633,65 +631,6 @@
     </div>
   </section>
 
-  <!-- Pricing -->
-  <!-- <section class="pricing-section" id="pricing">
-    <div class="container-main">
-      <div class="section-header reveal">
-        <span class="section-label">Pricing</span>
-        <h2 class="section-title">أسعار تدريب السباحة في العاشر من رمضان</h2>
-        <p class="section-sub">أسعار مميزة مع خدمات إضافية مجانية — شفافية كاملة بدون أي رسوم خفية.</p>
-      </div>
-      <div class="pricing-table-wrap reveal">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th>الفئة</th>
-              <th>عدد الحصص</th>
-              <th>عدد الأفراد</th>
-              <th>السعر</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="row-label row-label--kids">👶 أطفال</span></td>
-              <td>8 حصص / شهر</td>
-              <td><span class="group-badge">3 أفراد</span></td>
-              <td class="price-col">1250 جنيه</td>
-            </tr>
-            <tr class="row-featured">
-              <td><span class="row-label row-label--kids">👶 أطفال</span></td>
-              <td>8 حصص / شهر</td>
-              <td><span class="group-badge">5 أفراد</span></td>
-              <td class="price-col">950 جنيه <span class="best-value">الأوفر</span></td>
-            </tr>
-            <tr>
-              <td><span class="row-label row-label--adults">🧑 كبار</span></td>
-              <td>8 حصص / شهر</td>
-              <td><span class="group-badge">5 أفراد</span></td>
-              <td class="price-col">1250 جنيه</td>
-            </tr>
-            <tr>
-              <td><span class="row-label row-label--adults">🧑 كبار</span></td>
-              <td>8 حصص / شهر</td>
-              <td><span class="group-badge">فردي</span></td>
-              <td class="price-col">2000 جنيه</td>
-            </tr>
-            <tr>
-              <td><span class="row-label row-label--private">⭐ برايفيت</span></td>
-              <td>حصة واحدة</td>
-              <td><span class="group-badge">فردي</span></td>
-              <td class="price-col">250 جنيه</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="pricing-cta reveal">
-        <a href="https://wa.me/message/X76VY37AZW2NK1" class="btn-primary">احجز مكانك الآن</a>
-        <a href="https://wa.me/201035700879" class="btn-outline">استفسر عن الأسعار</a>
-      </div>
-    </div>
-  </section> -->
-
   <!-- FAQ -->
   <section class="faq-section" id="faq">
     <div class="container-main">
@@ -701,27 +640,27 @@
       </div>
       <div class="faq-grid">
         <details class="accordion-item reveal">
+          <summary><span class="acc-icon">❓</span><span>هل أكاديمية محسن تابعة لنادي الصفوة؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="acc-body"><p>لأ، أكاديمية محسن أكاديمية مستقلة تماماً وغير تابعة لأي نادي. نادي الصفوة هو المكان اللي هنكون فيه قريباً، لكن إحنا بنشتغل بمدربينا وإدارتنا الخاصة باستقلالية كاملة.</p></div>
+        </details>
+        <details class="accordion-item reveal" style="--d:.08s">
+          <summary><span class="acc-icon">❓</span><span>امتى هتبدأوا في نادي الصفوة؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <div class="acc-body"><p>قريباً إن شاء الله! تابعونا على السوشيال ميديا أو تواصلوا معانا على واتساب عشان تعرفوا آخر الأخبار وموعد الانطلاق الرسمي داخل نادي الصفوة.</p></div>
+        </details>
+        <details class="accordion-item reveal" style="--d:.16s">
           <summary><span class="acc-icon">❓</span><span>هل التدريب مناسب للأطفال؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="acc-body"><p>أيوه طبعًا! عندنا خبرة كبيرة مع الأطفال — فيه اللي بيخاف من المية وفيه اللي بيحبها. بنتعامل مع كل طفل بالطريقة اللي تناسبه عشان يتعلّم السباحة بحب ومن غير أي توتر.</p></div>
         </details>
-        <details class="accordion-item reveal" style="--d:.08s">
+        <details class="accordion-item reveal" style="--d:.24s">
           <summary><span class="acc-icon">❓</span><span>هل ينفع أبدأ وأنا بخاف من المياه؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="acc-body"><p>معظم اللي بيبدأوا معانا بيكونوا فعلاً خايفين من المية، وده طبيعي جدًا. عندنا خبرة كبيرة في مساعدة الأطفال والكبار على تخطّي الخوف لحد ما بيعوموا بثقة وراحة.</p></div>
-        </details>
-        <details class="accordion-item reveal" style="--d:.16s">
-          <summary><span class="acc-icon">❓</span><span>هل لازم أكون بعرف أعوم؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
-          <div class="acc-body"><p>لا طبعًا! الكباتن عندنا بيتعاملوا مع كل المستويات. هدفنا نعلّمك خطوة بخطوة لحد ما توصل لمرحلة الاحتراف.</p></div>
-        </details>
-        <details class="accordion-item reveal" style="--d:.24s">
-          <summary><span class="acc-icon">❓</span><span>هل التدريب في العاشر من رمضان فقط؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
-          <div class="acc-body"><p>لأ، أكاديمية محسن ليها فروع في: مدينة الشروق، العاشر من رمضان، مدينة بدر، ومدينة المستقبل. <a href="https://mohsenacademy.com/our-locations">شوف كل المواقع من هنا</a>.</p></div>
         </details>
         <details class="accordion-item reveal" style="--d:.32s">
           <summary><span class="acc-icon">❓</span><span>ما هي مواعيد الأكاديمية؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="acc-body"><p>عادةً كل أيام الأسبوع من الساعة 12 ظهرًا حتى 9 بالليل. المواعيد قد تختلف حسب حجم المجموعة. في البرايفيت بتختار المعاد اللي يناسبك.</p></div>
         </details>
         <details class="accordion-item reveal" style="--d:.40s">
-          <summary><span class="acc-icon">❓</span><span>هل في تدريب سباحة للكبار في العاشر من رمضان؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+          <summary><span class="acc-icon">❓</span><span>هل في تدريب سباحة للكبار؟</span><span class="acc-arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
           <div class="acc-body"><p>أيوه طبعًا! متميزين في تدريب السباحة للكبار لكل الأعمار والأهداف — علاجي، رياضي، أو للمنافسات. بنوفر برامج ومواعيد تناسب الكبار بكل سهولة.</p></div>
         </details>
       </div>
@@ -734,7 +673,7 @@
       <div class="section-header">
         <span class="section-label">Location</span>
         <h2 class="section-title">موقع أكاديمية محسن — العاشر من رمضان</h2>
-        <p class="section-sub">مدينة العاشر من رمضان — أماكن متعددة في أنحاء المدينة.</p>
+        <p class="section-sub">قريباً داخل نادي الصفوة — العاشر من رمضان.</p>
       </div>
       <div class="map-wrap reveal">
         <iframe
@@ -783,7 +722,7 @@
       <div class="cta-ring cta-ring-2"></div>
       <span class="section-label" style="color:rgba(255,255,255,.65)">سجّل الآن</span>
       <h2>اضمن مكانك وابدأ رحلتك في السباحة</h2>
-      <p>أقوى برنامج تدريب سباحة في العاشر من رمضان مع مدربين محترفين وتجهيزات ممتازة.</p>
+      <p>أكاديمية محسن المستقلة — قريباً داخل نادي الصفوة بالعاشر من رمضان. مدربون محترفون وتجهيزات ممتازة.</p>
       <div class="cta-btns">
         <a href="https://wa.me/message/X76VY37AZW2NK1" class="btn-primary">سجّل الآن</a>
         <a href="https://wa.me/201035700879" class="btn-ghost-white">
@@ -804,7 +743,7 @@
                 <img src="https://mohsenacademy.com/assets/icons/Logo-Header.webp" loading="lazy" alt="Mohsen Academy" width="48" height="48" class="logo-img">
               </div>
             </a>
-            <p>Professional swimming academy for all ages — kids, adults, and athletes. Certified coaches from the Egyptian Federation for Diving & Lifesaving.</p>
+            <p>Professional swimming academy for all ages — kids, adults, and athletes. Certified coaches from the Egyptian Federation for Diving &amp; Lifesaving.</p>
             <div class="footer-socials">
               <a href="https://www.facebook.com/MohsenAcademyPage" class="social-link"><img src="https://mohsenacademy.com/assets/icons/facebook.webp" loading="lazy" alt="Facebook" width="20" height="20"></a>
               <a href="https://www.instagram.com/mohsen_academy_/" class="social-link"><img src="https://mohsenacademy.com/assets/icons/insta.webp" loading="lazy" alt="Instagram" width="20" height="20"></a>
@@ -826,14 +765,13 @@
             <a href="#prog-prep">برنامج التجهيزي</a>
             <a href="#prog-teams">تدريب الفرق</a>
             <a href="#prog-adults">تدريب الكبار</a>
-            <a href="#pricing">الأسعار</a>
           </div>
           <div class="footer-col">
             <h4>Contact Info</h4>
-            <a href="https://mohsenacademy.com/our-locations">📍 العاشر من رمضان — أماكن متعددة</a>
+            <a href="https://mohsenacademy.com/our-locations">📍 قريباً — نادي الصفوة، العاشر من رمضان</a>
             <a href="https://wa.me/201035700879">📞 +20 01035700879</a>
             <a href="mailto:mohsenswimmingacdemy@gmail.com">✉️ mohsenswimmingacdemy@gmail.com</a>
-            <a href="#">⏰ Sun–Thu | 12:00 AM – 9:00 PM</a>
+            <a href="#">⏰ Sun–Thu | 12:00 PM – 9:00 PM</a>
           </div>
         </div>
       </div>
@@ -841,14 +779,13 @@
     <div class="footer-bottom">
       <div class="container-main footer-bottom-inner">
         <p>&copy; 2026 Mohsen Academy — جميع الحقوق محفوظة &nbsp;|&nbsp; <a href="https://mohsenacademy.com/privacy">سياسة الخصوصية</a> &nbsp;|&nbsp; <a href="https://mohsenacademy.com/policies-rules">الشروط والأحكام</a></p>
-        <p>UI / UX & Frontend by <a href="#">MOHSEN</a></p>
+        <p>UI / UX &amp; Frontend by <a href="#">MOHSEN</a></p>
       </div>
     </div>
   </footer>
 
 </body>
 <script>
-  // Navbar
   function toggleNavbar(){
     const d=document.getElementById("navbarDrawer"),
           t=document.getElementById("navbarToggle"),
@@ -867,8 +804,6 @@
   window.addEventListener("scroll",()=>navbar.classList.toggle("scrolled",window.scrollY>20));
 
   document.addEventListener("DOMContentLoaded",()=>{
-
-    // Scroll reveal
     const revObs=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){e.target.classList.add("in-view");revObs.unobserve(e.target);}
@@ -876,34 +811,20 @@
     },{threshold:.08});
     document.querySelectorAll(".reveal").forEach(el=>revObs.observe(el));
 
-    // Program Tabs
     const tabs = document.querySelectorAll(".prog-tab");
     const panels = document.querySelectorAll(".prog-panel");
-
     tabs.forEach(tab => {
       tab.addEventListener("click", () => {
         const targetId = "prog-" + tab.dataset.prog;
-
-        tabs.forEach(t => {
-          t.classList.remove("prog-tab--active");
-          t.setAttribute("aria-selected", "false");
-        });
+        tabs.forEach(t => { t.classList.remove("prog-tab--active"); t.setAttribute("aria-selected","false"); });
         tab.classList.add("prog-tab--active");
-        tab.setAttribute("aria-selected", "true");
-
+        tab.setAttribute("aria-selected","true");
         panels.forEach(p => {
-          if (p.id === targetId) {
-            p.classList.add("prog-panel--active");
-            if (window.innerWidth < 768) {
-              setTimeout(() => p.scrollIntoView({behavior:"smooth", block:"start"}), 50);
-            }
-          } else {
-            p.classList.remove("prog-panel--active");
-          }
+          if(p.id===targetId){ p.classList.add("prog-panel--active"); if(window.innerWidth<768){ setTimeout(()=>p.scrollIntoView({behavior:"smooth",block:"start"}),50); } }
+          else { p.classList.remove("prog-panel--active"); }
         });
       });
     });
-
   });
 </script>
 </html>
