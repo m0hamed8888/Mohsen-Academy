@@ -1096,6 +1096,85 @@ function swimmerCard(s, idx) {
   </div>`;
 }
 
+
+function buildStrokes(strokes) {
+  if (!strokes || !strokes.length) return '';
+  const items = strokes.filter(st => st.title || st.note || st.url);
+  if (!items.length) return '';
+
+  const rows = items.map(st => {
+    const ytThumb = st.url ? getYtId(st.url) : null;
+    return `
+      <div style="
+        background:rgba(0,200,255,.04);
+        border:1px solid rgba(0,200,255,.1);
+        border-radius:var(--r-md);
+        padding:14px;
+        display:flex;flex-direction:column;gap:8px;
+      ">
+        ${st.title ? `<div style="font-family:var(--f-disp);font-size:.9rem;font-weight:700;color:var(--t1)">${st.title}</div>` : ''}
+        ${st.note  ? `<div style="font-size:.83rem;color:var(--t2);line-height:1.6;font-style:italic">"${st.note}"</div>` : ''}
+        ${ytThumb ? `
+          <a href="${st.url}" target="_blank" rel="noopener" style="
+            display:block;border-radius:10px;overflow:hidden;position:relative;
+            background:#000;aspect-ratio:16/9;max-width:260px;
+          ">
+            <img src="https://img.youtube.com/vi/${ytThumb}/mqdefault.jpg"
+                 alt="${st.title || 'فيديو'}"
+                 style="width:100%;height:100%;object-fit:cover;opacity:.9"/>
+            <div style="
+              position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+              background:rgba(0,0,0,.28);
+            ">
+              <div style="
+                width:42px;height:42px;border-radius:50%;
+                background:rgba(255,0,0,.9);
+                display:flex;align-items:center;justify-content:center;
+              ">
+                <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </a>` : st.url ? `
+          <a href="${st.url}" target="_blank" rel="noopener" style="
+            display:inline-flex;align-items:center;gap:6px;
+            font-size:.78rem;font-weight:700;color:var(--cyan);
+            background:rgba(0,200,255,.07);border:1px solid rgba(0,200,255,.2);
+            padding:7px 13px;border-radius:var(--r-full);width:fit-content;
+          ">
+            <i data-lucide="external-link"></i> شاهد الفيديو
+          </a>` : ''}
+      </div>`;
+  }).join('');
+
+  return `
+    <div style="
+      background:rgba(0,200,255,.03);
+      border:1px solid rgba(0,200,255,.1);
+      border-radius:var(--r-md);
+      padding:14px;
+      margin-bottom:12px;
+    ">
+      <div style="
+        display:flex;align-items:center;gap:7px;
+        font-size:.8rem;font-weight:700;color:var(--t3);
+        margin-bottom:12px;
+      ">
+        <i data-lucide="video" style="width:14px;height:14px;color:var(--cyan)"></i>
+        تعليقات السباحة (${items.length})
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${rows}
+      </div>
+    </div>`;
+}
+
+function getYtId(url) {
+  if (!url) return null;
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+
 function buildExpand(s) {
   const days = (s.trainingDays || []).map(d => DAYS[d]).join('، ') || '—';
   const start = s.subscriptionStart ? new Date(s.subscriptionStart) : null;
@@ -1111,7 +1190,7 @@ function buildExpand(s) {
     </div>` : '';
 
   const ratingHtml = buildRating(s);
-
+const strokesHtml = buildStrokes(s.strokes);
   const expStarsHtml = s.starsCount ? `
     <div class="dg-item" style="grid-column:1/-1">
       <div class="dg-lbl">خبرة سابقة</div>
@@ -1131,6 +1210,7 @@ function buildExpand(s) {
     ${expiryRow}
     ${levelHtml}
     ${ratingHtml}
+${strokesHtml}
 
     <div class="detail-grid">
       <div class="dg-item"><div class="dg-lbl">العمر</div><div class="dg-val">${s.age ?? '—'} سنة</div></div>
