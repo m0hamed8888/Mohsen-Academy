@@ -2048,20 +2048,26 @@ function renderStrokes(data){
 function addStrokeRow(st = {}){
   const list = $('strokesList');
   if(list.children.length >= 4) return;
-  const idx = list.children.length;
+  
   const div = document.createElement('div');
   div.className = 'stroke-row';
   div.innerHTML = `
-    <button type="button" class="stroke-del" onclick="this.parentElement.remove();updateAddStrokeBtn()">✕</button>
+    <button type="button" class="stroke-del">✕</button>
     <input class="stroke-inp" placeholder="اسم السباحة (مثال: الحرة)" value="${esc(st.title||'')}"/>
     <textarea class="stroke-inp" rows="2" placeholder="تعليق على السباحة..." style="height:60px;padding:8px 10px;resize:none">${st.note||''}</textarea>
     <div class="stroke-url-wrap">
       <svg class="stroke-yt-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.8 5 12 5 12 5s-4.8 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.8C6.6 19 12 19 12 19s4.8 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM9.7 14.5V9l5.4 2.8-5.4 2.7z"/></svg>
       <input class="stroke-inp" placeholder="رابط يوتيوب (اختياري)" value="${esc(st.url||'')}"/>
     </div>`;
+  
+  // ربط زر الحذف مباشرة بـ addEventListener
+  div.querySelector('.stroke-del').addEventListener('click', () => {
+    div.remove();
+    updateAddStrokeBtn();
+  });
+  
   list.appendChild(div);
   updateAddStrokeBtn();
-  lucide.createIcons();
 }
 
 function updateAddStrokeBtn(){
