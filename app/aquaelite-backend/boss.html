@@ -959,13 +959,13 @@ select.fc option{background:#0a0f20}
 
 <!-- ═══ NAVBAR ═══ -->
 <nav class="nav" id="mainNav" style="display:none">
-  <a class="nav-brand" href="#">
+  <div class="nav-brand">
     <div class="brand-logo"><i data-lucide="crown"></i></div>
     <div class="brand-text">
-      <span class="brand-name"><a href="../index.html">AquaElite</a></span>
+      <span class="brand-name">AquaElite</span>
       <span class="brand-sub">Boss Panel</span>
     </div>
-  </a>
+  </div>
   <div style="display:flex;align-items:center;gap:8px">
     <div class="boss-crown"><i data-lucide="crown" style="width:10px;height:10px"></i> BOSS</div>
     <div class="nav-right">
@@ -991,6 +991,11 @@ select.fc option{background:#0a0f20}
 
 <!-- ═══ MAIN APP ═══ -->
 <main class="wrap" id="mainApp" style="display:none">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+    <a href="../bookings.html" class="btn-sec"><i data-lucide="calendar-check"></i> الحجوزات</a>
+    <a href="../schedule-dayview.html" class="btn-sec"><i data-lucide="layout-grid"></i> الجدول</a>
+    <a href="../Finance-panel.html" class="btn-sec"><i data-lucide="wallet"></i> الماليات</a>
+  </div>
   <!-- Stats -->
   <div class="stats-row">
     <div class="stat-card"><div class="stat-v" id="gTotal">—</div><div class="stat-l">إجمالي المشتركين</div></div>
@@ -1000,15 +1005,16 @@ select.fc option{background:#0a0f20}
   </div>
 
   <!-- Desktop tabs -->
-  <div class="desktop-tabs">
+<div class="desktop-tabs">
     <button class="dtb active" data-tab="trainers"><i data-lucide="shield-check"></i> الكابتنات</button>
     <button class="dtb" data-tab="swimmers"><i data-lucide="users"></i> المشتركون</button>
     <button class="dtb" data-tab="report"><i data-lucide="bar-chart-2"></i> التقرير</button>
     <button class="dtb" data-tab="users"><i data-lucide="users-round"></i> المستخدمون</button>
     <button class="dtb" data-tab="add-trainer"><i data-lucide="user-plus"></i> كابتن جديد</button>
-    <button class="dtb" data-tab="backup">
-  <i data-lucide="database"></i> Backup
-</button>
+    <button class="dtb" data-tab="backup"><i data-lucide="database"></i> Backup</button>
+    <a class="dtb" href="../bookings.html" style="text-decoration:none"><i data-lucide="calendar-check"></i> الحجوزات</a>
+    <a class="dtb" href="../schedule-dayview.html" style="text-decoration:none"><i data-lucide="layout-grid"></i> الجدول</a>
+    <a class="dtb" href="../Finance-panel.html" style="text-decoration:none"><i data-lucide="wallet"></i> الماليات</a>
   </div>
 
   <!-- ══ TRAINERS PANEL ══ -->
