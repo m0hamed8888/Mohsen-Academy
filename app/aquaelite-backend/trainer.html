@@ -443,13 +443,13 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 
 <!-- NAVBAR -->
 <nav class="nav" id="mainNav" style="display:none">
-  <div class="nav-brand">
-    <div class="brand-ic"><a href="../Finance-panel.html"><i data-lucide="waves"></i></a></div>
+<a href="../home.html" class="nav-brand" style="text-decoration:none;color:inherit">
+    <div class="brand-ic"><i data-lucide="waves"></i></div>
     <div class="brand-txt">
-      <span class="brand-name"><a href="../Finance-panel.html">AquaElite</a></span>
+      <span class="brand-name">AquaElite</span>
       <span class="brand-role">Captain Panel</span>
     </div>
-  </div>
+  </a>
   <div class="nav-right">
     <button class="today-btn" id="todayBtn" title="متدربو اليوم">
       <div class="today-btn-pulse" id="todayPulse" style="display:none"></div>
@@ -491,24 +491,31 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     <button class="bot-item active" data-tab="swimmers"><i data-lucide="users"></i><span>السباحون</span></button>
     <button class="bot-item" data-tab="create"><i data-lucide="user-plus"></i><span>اشتراك جديد</span></button>
     <button class="bot-item" data-tab="attendance"><i data-lucide="calendar-check"></i><span>الحضور</span></button>
-    <a class="bot-item" href="../Schedule dayview.html"><i data-lucide="layout-grid"></i><span>الجدول</span></a>
+    <a class="bot-item" href="../schedule-dayview.html"><i data-lucide="layout-grid"></i><span>الجدول</span></a>
     <button class="bot-item" data-tab="levels"><i data-lucide="bar-chart-2"></i><span>Levels</span></button>
   </div>
 </nav>
 
 <!-- APP -->
 <main class="wrap" id="mainApp" style="display:none">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+    <a href="../bookings.html" class="btn-sec"><i data-lucide="calendar-check"></i> الحجوزات</a>
+    <a href="../schedule-dayview.html" class="btn-sec"><i data-lucide="layout-grid"></i> الجدول</a>
+    <a href="../Finance-panel.html" class="btn-sec"><i data-lucide="wallet"></i> الماليات</a>
+  </div>
   <div class="stats-row">
     <div class="stat-c"><div class="stat-v" id="stTotal">—</div><div class="stat-l">إجمالي</div></div>
     <div class="stat-c"><div class="stat-v" id="stActive" style="color:var(--ok)">—</div><div class="stat-l">نشطون</div></div>
     <div class="stat-c"><div class="stat-v" id="stToday">0</div><div class="stat-l">حضور اليوم</div></div>
   </div>
 
-  <div class="desk-tabs">
+ <div class="desk-tabs">
     <button class="dtb active" data-tab="swimmers"><i data-lucide="users"></i> السباحون</button>
     <button class="dtb" data-tab="create"><i data-lucide="user-plus"></i> اشتراك جديد</button>
     <button class="dtb" data-tab="attendance"><i data-lucide="calendar-check"></i> الحضور</button>
-    <a class="dtb" href="../Schedule dayview.html" style="text-decoration:none"><i data-lucide="layout-grid"></i> جدول المجموعات</a>
+    <a class="dtb" href="../bookings.html" style="text-decoration:none"><i data-lucide="calendar-check"></i> الحجوزات</a>
+    <a class="dtb" href="../schedule-dayview.html" style="text-decoration:none"><i data-lucide="layout-grid"></i> جدول المجموعات</a>
+    <a class="dtb" href="../Finance-panel.html" style="text-decoration:none"><i data-lucide="wallet"></i> الماليات</a>
     <button class="dtb" data-tab="levels"><i data-lucide="bar-chart-2"></i> Levels</button>
   </div>
 
