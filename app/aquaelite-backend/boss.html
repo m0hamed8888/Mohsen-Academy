@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <style>
-/* ═══ good2 ═══ */
+/* ═══ good3 ═══ */
 :root{
   --bg:#050810;
   --bg2:#080c16;
@@ -1824,9 +1824,7 @@ async function openEditSwimmer(subId){
   try{
     const d = await api('/swimmers/'+subId); const s = d.data; editSwimmerId = subId; editingLevel = s.level || null;
 $('es_name').value = s.fullName||''; $('es_phone').value = s.phone||'';
-const rawTime = s.trainingTime || '';
-const tmMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
-$('es_time').value = tmMatch ? `${String(tmMatch[1]).padStart(2,'0')}:${tmMatch[2]}` : '';    $('es_goal').value = s.goal||''; $('es_active').value = s.isActive?'true':'false';
+$('es_time').value = extractTime24(s.trainingTime);
 setTrainerSelectValue(s.trainerId || s.trainer?.id || '', s.trainerName || s.trainer?.name || '');
 const esSessVal = String(s.sessionsCount || '8');
 document.querySelectorAll('input[name="es_sess"]').forEach(r => r.checked = r.value === esSessVal);
@@ -2356,6 +2354,24 @@ function setTrainerSelectValue(trainerId, trainerName){
     return;
   }
   sel.value = '';
+}
+function extractTime24(raw){
+  if(!raw) return '';
+  const s = String(raw).trim();
+  // صيغة 24 ساعة جاهزة "HH:MM"
+  let m = s.match(/^(\d{1,2}):(\d{2})$/);
+  if(m) return `${String(m[1]).padStart(2,'0')}:${m[2]}`;
+  // صيغة 12 ساعة مع لاحقة ص/م أو AM/PM
+  m = s.match(/^(\d{1,2}):(\d{2})\s*(ص|م|am|pm|AM|PM)?/);
+  if(m){
+    let h = parseInt(m[1], 10);
+    const min = m[2];
+    const period = (m[3]||'').toLowerCase();
+    if(period === 'م' || period === 'pm'){ if(h < 12) h += 12; }
+    else if(period === 'ص' || period === 'am'){ if(h === 12) h = 0; }
+    return `${String(h).padStart(2,'0')}:${min}`;
+  }
+  return '';
 }
 /* ════ HELPERS ════ */
 function lds(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
