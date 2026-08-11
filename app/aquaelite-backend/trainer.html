@@ -701,58 +701,10 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <button class="mo-close" id="closeEdit"><i data-lucide="x"></i></button>
     </div>
 
-    <!-- Info banner for current swimmer -->
-    <div class="edit-days-info" id="editInfoBanner" style="display:none">
-      <i data-lucide="info"></i>
-      <span id="editInfoText">—</span>
+   <div class="fg fg2" style="gap:12px">
+      <div class="fld" style="grid-column:1/-1"><label>وقت التدريب</label><input type="time" class="fc" id="e_time"/></div>
     </div>
 
-    <div class="fg fg2" style="gap:12px">
-      <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
-      <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
-      <div class="fld"><label>وقت التدريب</label><input type="time" class="fc" id="e_time"/></div>
-      <div class="fld"><label>الهدف</label>
-        <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
-      <div class="fld"><label>الحالة</label><select class="fc" id="e_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
-      <div class="fld"><label>نهاية الاشتراك</label><input type="date" class="fc" id="e_expiry"/></div>
-      <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="e_trainer"/></div>
-    </div>
-
-    <div class="fld mt-16">
-      <label><i data-lucide="layers-3"></i> عدد الحصص</label>
-      <div class="sess-pills">
-        <label class="sess-pill"><input type="radio" name="e_sess" value="8" id="e_sess8"/><span class="sp-num">8</span><span class="sp-lbl">حصص</span></label>
-        <label class="sess-pill"><input type="radio" name="e_sess" value="12" id="e_sess12"/><span class="sp-num">12</span><span class="sp-lbl">حصة</span></label>
-        <label class="sess-pill"><input type="radio" name="e_sess" value="24" id="e_sess24"/><span class="sp-num">24</span><span class="sp-lbl">حصة</span></label>
-      </div>
-    </div>
-
-    <div class="fld mt-12" id="e_daysWrap">
-      <label style="display:flex;align-items:center;justify-content:space-between">
-        <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
-        <span class="days-ctr" id="eDaysCtr"></span>
-      </label>
-      <div class="days-grid" id="e_daysGrid">
-        <label class="day-cb"><input type="checkbox" name="e_days" value="0"/><span>أحد</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="1"/><span>اثنين</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="2"/><span>ثلاثاء</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="3"/><span>أربعاء</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="4"/><span>خميس</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="5"/><span>جمعة</span></label>
-        <label class="day-cb"><input type="checkbox" name="e_days" value="6"/><span>سبت</span></label>
-      </div>
-    </div>
-
-    <div class="fld rest-wrap mt-12" id="e_restWrap">
-      <label><i data-lucide="moon"></i> يوم الراحة الأسبوعي</label>
-      <select class="fc" id="e_restDay">
-        <option value="">اختر يوم الراحة</option>
-        <option value="0">الأحد</option><option value="1">الاثنين</option>
-        <option value="2">الثلاثاء</option><option value="3">الأربعاء</option>
-        <option value="4">الخميس</option><option value="5">الجمعة</option>
-        <option value="6">السبت</option>
-      </select>
-    </div>
 
     <div class="rating-sec">
       <div class="rating-title"><i data-lucide="star"></i> التقييم (1–5 نجوم)</div>
@@ -862,10 +814,7 @@ function bindUI(){
   document.querySelectorAll('input[name="c_sess"]').forEach(r => r.addEventListener('change', onSessChange));
   document.querySelectorAll('input[name="c_days"]').forEach(c => c.addEventListener('change', onDaysChange));
 
-  // ── Edit modal: bind once here, not in openEdit ──
-  document.querySelectorAll('input[name="e_sess"]').forEach(r => r.addEventListener('change', onEditSessChange));
-  document.querySelectorAll('input[name="e_days"]').forEach(c => c.addEventListener('change', onEditDaysChange));
-
+ 
   $('attendSearchBtn').onclick = loadAttendSwimmer;
   $('attendSearch').addEventListener('keydown', e => e.key==='Enter' && loadAttendSwimmer());
   $('prevMon').onclick = () => navMon(-1);
@@ -1212,57 +1161,16 @@ async function delMonRec(){
 function navMon(dir){ viewMonth+=dir; if(viewMonth<1){viewMonth=12;viewYear--;} if(viewMonth>12){viewMonth=1;viewYear++;} loadMonthData(); }
 function hideMakeup(){ $('makeupRow').classList.remove('show'); }
 
-/* ══ EDIT — fixed: no more addEventListener inside ══ */
 async function openEdit(subId){
   try{
-    // Always fetch fresh data from server
     const d = await api('/swimmers/' + subId);
     const s = d.data;
     editId = subId;
 
-    // Basic fields
-    $('e_name').value    = s.fullName  || '';
-    $('e_phone').value   = s.phone     || '';
-    $('e_goal').value    = s.goal      || '';
-    $('e_active').value  = s.isActive  ? 'true' : 'false';
-    $('e_trainer').value = s.trainerName || '';
-    $('e_expiry').value  = s.subscriptionExpiry
-      ? new Date(s.subscriptionExpiry).toISOString().split('T')[0] : '';
-
-    // Time — strip AM/PM if present, keep HH:MM
-    const rawTime  = s.trainingTime || '';
-    const tmMatch  = rawTime.match(/^(\d{1,2}):(\d{2})/);
-    $('e_time').value = tmMatch
-      ? `${String(tmMatch[1]).padStart(2,'0')}:${tmMatch[2]}` : '';
-
-    // Sessions
-    const sessVal = String(s.sessionsCount || '8');
-    document.querySelectorAll('input[name="e_sess"]').forEach(r => r.checked = r.value === sessVal);
-
-    // Days
-    const currentDays = Array.isArray(s.trainingDays) ? s.trainingDays : [];
-    document.querySelectorAll('input[name="e_days"]').forEach(c => {
-      c.checked = currentDays.includes(Number(c.value));
-      c.closest('.day-cb').classList.remove('locked');
-    });
-
-    // Show / hide day selector vs rest-day selector
-    if (sessVal === '24') {
-      const restDay = [0,1,2,3,4,5,6].find(d => !currentDays.includes(d));
-      $('e_restDay').value = restDay !== undefined ? String(restDay) : '';
-      $('e_daysWrap').style.display = 'none';
-      $('e_restWrap').classList.add('show');
-    } else {
-      $('e_daysWrap').style.display = 'block';
-      $('e_restWrap').classList.remove('show');
-      updateEditDaysUI(sessVal, currentDays.length);
-    }
-
-    // Info banner
-    const daysLabel = currentDays.map(d => DAYS[d]).join(' · ');
-    $('editInfoText').textContent =
-      `الحالي: ${sessVal} حصة — ${daysLabel || 'بدون أيام'}`;
-    $('editInfoBanner').style.display = 'flex';
+    // Time only — trainer can only edit this
+    const rawTime = s.trainingTime || '';
+    const tmMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
+    $('e_time').value = tmMatch ? `${String(tmMatch[1]).padStart(2,'0')}:${tmMatch[2]}` : '';
 
     // Rating
     document.querySelectorAll('input[name="estar"]').forEach(r => r.checked = false);
@@ -1278,7 +1186,6 @@ async function openEdit(subId){
     toast(e.message || 'خطأ في تحميل البيانات', 'error');
   }
 }
-
 function updateEditDaysUI(sessVal, cnt){
   const max = SESS_DAYS[sessVal] || 0;
   const ctr = $('eDaysCtr');
@@ -1296,64 +1203,24 @@ function updateEditDaysUI(sessVal, cnt){
 async function doSaveEdit(){
   if (!editId) return;
 
-  const sessVal = document.querySelector('input[name="e_sess"]:checked')?.value;
-  if (!sessVal) { toast('اختر عدد الحصص', 'error'); return; }
-
-  let trainingDays = [];
-
-  if (sessVal === '24') {
-    const restDay = $('e_restDay').value;
-    if (restDay === '') { toast('اختر يوم الراحة', 'error'); return; }
-    trainingDays = [0,1,2,3,4,5,6].filter(d => d !== Number(restDay));
-  } else {
-    const req = SESS_DAYS[sessVal] || 0;
-    const chk = [...document.querySelectorAll('input[name="e_days"]:checked')]
-                  .map(c => Number(c.value));
-    if (chk.length !== req) {
-      toast(`يجب اختيار ${req===2 ? 'يومين' : '٣ أيام'}`, 'error');
-      return;
-    }
-    trainingDays = chk;
-  }
-
-  // Build payload — only send what the API accepts
   const payload = {
-    fullName:            $('e_name').value.trim(),
-    phone:               $('e_phone').value.trim(),
-    trainingTime:        $('e_time').value || '',
-    goal:                $('e_goal').value || '',
-    isActive:            $('e_active').value === 'true',
-    subscriptionExpiry:  $('e_expiry').value || '',
-    trainerName:         $('e_trainer').value.trim(),
-    sessionsCount:       Number(sessVal),
-    trainingDays:        trainingDays,
+    trainingTime: $('e_time').value || '',
   };
-
-  // Add restDay only for 24-session plans
-  if (sessVal === '24') {
-    const restDay = $('e_restDay').value;
-    payload.restDay = Number(restDay);
-  }
-
-  console.log('[doSaveEdit] payload →', JSON.stringify(payload, null, 2));
 
   const btn = $('saveEditBtn');
   btn.classList.add('loading');
   try {
-    const res = await api('/swimmers/' + editId, 'PUT', payload);
-    console.log('[doSaveEdit] response →', res);
+    await api('/swimmers/' + editId, 'PUT', payload);
     closeModal('editModal');
-    toast('✅ تم التحديث بنجاح');
+    toast('✅ تم تحديث وقت التدريب بنجاح');
     loadSwimmers();
     loadStats();
   } catch(e) {
-    console.error('[doSaveEdit] error →', e);
     toast(e.message || 'خطأ في الحفظ', 'error');
   } finally {
     btn.classList.remove('loading');
   }
 }
-
 async function doSaveRating(){
   if(!editId) return;
   const starInput=document.querySelector('input[name="estar"]:checked');
