@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <style>
-/* ═══ TOKENS ═══ */
+/* ═══ good ═══ */
 :root{
   --bg:#050810;
   --bg2:#080c16;
@@ -1263,8 +1263,11 @@ select.fc option{background:#0a0f20}
       <div class="fld"><label>الحالة</label>
         <select class="fc" id="es_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
       <div class="fld"><label>انتهاء الاشتراك</label><input type="date" class="fc" id="es_expiry"/></div>
-      <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="es_trainer"/></div>
-    </div>
+<div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label>
+  <select class="fc" id="es_trainer">
+    <option value="">— اختر كابتن —</option>
+  </select>
+</div>    </div>
     <div class="level-section">
   <div class="level-title"><i data-lucide="bar-chart-2"></i> اللِيفِل (LV 1–10)</div>
   <div class="level-btns" id="editLevelBtns"></div>
@@ -1388,7 +1391,7 @@ let editSwimmerId = null, editingLevel = null, editUserId = null;
 let delUserType = null, delUserId = null, delUserName = '';
 let reportSessFilter = 'all', reportPage = 1, allSwimmersCache = [];
 let reportYear = new Date().getFullYear(), reportMonth = new Date().getMonth()+1;
-
+let trainersCache = [];
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   buildLevelBtns();
@@ -1512,10 +1515,21 @@ async function loadGlobalStats(){
   } catch(e){}
 }
 
+function buildTrainerSelect(){
+  const sel = $('es_trainer');
+  if(!sel) return;
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— اختر كابتن —</option>' +
+    trainersCache.map(t => `<option value="${t.id}" data-name="${esc(t.name)}">${t.name}</option>`).join('');
+  if(current) sel.value = current;
+}
+
 /* ════ TRAINERS ════ */
 async function loadTrainers(){
   try{
     const d = await api('/auth/trainers');
+    trainersCache = d.data;
+buildTrainerSelect();
     const grid = $('trainersGrid');
     $('gTrainers').textContent = d.data.length;
     const sel = $('trainerFilter');
@@ -1727,7 +1741,7 @@ async function openEditSwimmer(subId){
     const d = await api('/swimmers/'+subId); const s = d.data; editSwimmerId = subId; editingLevel = s.level || null;
     $('es_name').value = s.fullName||''; $('es_phone').value = s.phone||''; $('es_time').value = s.trainingTime||'';
     $('es_goal').value = s.goal||''; $('es_active').value = s.isActive?'true':'false';
-    $('es_trainer').value = s.trainerName||'';
+setTrainerSelectValue(s.trainerId || s.trainer?.id || '', s.trainerName || s.trainer?.name || '');
     $('es_expiry').value = s.subscriptionExpiry ? new Date(s.subscriptionExpiry).toISOString().split('T')[0] : '';
     document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', Number(b.dataset.lv) === s.level));
     $('editLevelNote').value = s.levelNote||'';
@@ -1743,16 +1757,23 @@ async function doSaveSwimmer(){
   if(!editSwimmerId) return;
   const btn = $('saveSwimmerBtn'); btn.classList.add('loading');
   try{
+    const trainerSel = $('es_trainer');
+    const selectedOpt = trainerSel.options[trainerSel.selectedIndex];
+    const trainerId = trainerSel.value.startsWith('legacy:') ? '' : trainerSel.value;
+    const trainerName = selectedOpt ? (selectedOpt.dataset.name || '') : '';
+
     await api('/swimmers/'+editSwimmerId,'PUT',{
       fullName:$('es_name').value.trim(), phone:$('es_phone').value.trim(),
       trainingTime:$('es_time').value||'', goal:$('es_goal').value||'',
       isActive:$('es_active').value==='true', subscriptionExpiry:$('es_expiry').value||'',
-      trainerName:$('es_trainer').value.trim(),
+      trainerId: trainerId,
+      trainerName: trainerName,
     });
-    closeModal('editSwimmerModal'); toast('✅ تم تحديث بيانات المشترك'); allPage=1; loadAllSwimmers(); loadGlobalStats();
+    closeModal('editSwimmerModal'); toast('✅ تم تحديث بيانات المشترك'); allPage=1; loadAllSwimmers(); loadGlobalStats(); loadTrainers();
   } catch(e){ toast(e.message||'خطأ','er'); }
   finally{ btn.classList.remove('loading'); }
 }
+
 async function doSaveLevel(){
   if(!editSwimmerId || !editingLevel){ toast('اختر اللِيفِل أولاً','er'); return; }
   try{ await api('/swimmer-auth/swimmers/'+editSwimmerId+'/level','PUT',{level:editingLevel, levelNote:$('editLevelNote').value.trim(), strokes:getStrokes()}); toast('✅ تم حفظ اللِيفِل'); loadAllSwimmers(); }
@@ -2189,8 +2210,31 @@ function setBackupStatus(type, msg){
   el.className = '';
   el.textContent = msg;
 }
- 
+function setTrainerSelectValue(trainerId, trainerName){
+  buildTrainerSelect();
+  const sel = $('es_trainer');
+  if(!sel) return;
 
+  // جرب أول حاجة بالـ ID
+  if(trainerId && [...sel.options].some(o => o.value === trainerId)){
+    sel.value = trainerId;
+    return;
+  }
+  // لو مفيش ID، دور بالاسم
+  if(trainerName){
+    const match = [...sel.options].find(o => o.dataset.name === trainerName);
+    if(match){ sel.value = match.value; return; }
+    // مش موجود خالص — ضيفه كخيار مؤقت
+    const opt = document.createElement('option');
+    opt.value = 'legacy:' + trainerName;
+    opt.dataset.name = trainerName;
+    opt.textContent = trainerName + ' (غير مرتبط حاليًا)';
+    sel.appendChild(opt);
+    sel.value = opt.value;
+    return;
+  }
+  sel.value = '';
+}
 /* ════ HELPERS ════ */
 function lds(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function fmtDate(d){ const dt = new Date(d); return `${dt.getDate()} ${MONTHS[dt.getMonth()]} ${dt.getFullYear()}`; }
@@ -2206,6 +2250,7 @@ function toast(msg, type='ok'){
   $('toastMsg').textContent = msg;
   clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 3200);
 }
+
 </script>
 </body>
 </html>
