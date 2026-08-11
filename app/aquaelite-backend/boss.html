@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <style>
-/* ═══ good ═══ */
+/* ═══ good1 ═══ */
 :root{
   --bg:#050810;
   --bg2:#080c16;
@@ -1753,6 +1753,7 @@ setTrainerSelectValue(s.trainerId || s.trainer?.id || '', s.trainerName || s.tra
     openModal('editSwimmerModal'); lucide.createIcons();
   } catch(e){ toast(e.message||'خطأ','er'); }
 }
+
 async function doSaveSwimmer(){
   if(!editSwimmerId) return;
   const btn = $('saveSwimmerBtn'); btn.classList.add('loading');
@@ -1766,7 +1767,7 @@ async function doSaveSwimmer(){
       fullName:$('es_name').value.trim(), phone:$('es_phone').value.trim(),
       trainingTime:$('es_time').value||'', goal:$('es_goal').value||'',
       isActive:$('es_active').value==='true', subscriptionExpiry:$('es_expiry').value||'',
-      trainerId: trainerId,
+      trainer: trainerId,
       trainerName: trainerName,
     });
     closeModal('editSwimmerModal'); toast('✅ تم تحديث بيانات المشترك'); allPage=1; loadAllSwimmers(); loadGlobalStats(); loadTrainers();
