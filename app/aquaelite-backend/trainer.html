@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- good 1 -->
 <style>
 :root{
   --bg:#040812;--bg2:#070c18;--surf:rgba(255,255,255,.032);--surf2:rgba(255,255,255,.056);--surf3:rgba(255,255,255,.09);--bdr:rgba(255,255,255,.065);--bdr2:rgba(255,255,255,.11);
@@ -723,18 +724,6 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
   </div>
 </div>
 
-<!-- CONFIRM DELETE -->
-<div class="conf-ov" id="confirmModal">
-  <div class="conf-card">
-    <div class="conf-ic"><i data-lucide="trash-2"></i></div>
-    <div class="conf-title">تأكيد الحذف</div>
-    <div class="conf-msg">هل تريد حذف السباح <span class="conf-name" id="confirmName">—</span>؟<br/>سيتم حذف جميع سجلات الحضور.</div>
-    <div class="conf-btns">
-      <button class="btn-cancel" id="cancelDel">إلغاء</button>
-      <button class="btn-do-del" id="doDel">حذف نهائي</button>
-    </div>
-  </div>
-</div>
 
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastMsg">تم</span></div>
 
@@ -829,8 +818,7 @@ function bindUI(){
   $('editModal').addEventListener('click', e => e.target===e.currentTarget && closeModal('editModal'));
   $('saveEditBtn').onclick = doSaveEdit;
   $('saveRatingBtn').onclick = doSaveRating;
-  $('cancelDel').onclick = () => closeModal('confirmModal');
-  $('doDel').onclick = doDelete;
+
 
   let sy=0;
   $('editModal').addEventListener('touchstart', e => { sy=e.touches[0].clientY; }, {passive:true});
@@ -969,10 +957,9 @@ async function loadSwimmers(){
         <td><span class="time-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${s.trainingTime?to12Hour(s.trainingTime):'—'}</span></td>
         <td>${lvHtml}</td>
         <td><span class="sess-bdg ${sessClass}">${tot} حصة</span></td>
-        <td><div class="act-btns">
+     <td><div class="act-btns">
           <button class="act-btn ab-att" onclick="quickAttend('${s.subscriptionId}')" title="الحضور"><i data-lucide="calendar-check"></i></button>
           <button class="act-btn ab-edit" onclick="openEdit('${s.subscriptionId}')" title="تعديل"><i data-lucide="pencil"></i></button>
-          <button class="act-btn ab-del" onclick="askDelete('${s.subscriptionId}','${esc(s.fullName)}')" title="حذف"><i data-lucide="trash-2"></i></button>
         </div></td>
       </tr>`;
     }).join('');
@@ -1230,12 +1217,11 @@ async function doSaveRating(){
 }
 
 /* ══ DELETE ══ */
-function askDelete(subId,name){ delId=subId; delName=name; $('confirmName').textContent=name; openModal('confirmModal'); lucide.createIcons(); }
+function askDelete(subId,name){
+  toast('حذف السباحين متاح فقط لـ Boss', 'error');
+}
 async function doDelete(){
-  if(!delId) return;
-  try{ await api('/swimmers/'+delId,'DELETE'); closeModal('confirmModal'); toast('✅ تم حذف '+delName); loadSwimmers(); loadStats(); }
-  catch(e){ toast(e.message||'خطأ','error'); }
-  finally{ delId=null; delName=''; }
+  toast('حذف السباحين متاح فقط لـ Boss', 'error');
 }
 
 /* ══ API ══ */
