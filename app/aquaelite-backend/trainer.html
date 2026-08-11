@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- Good 1 -->
 <style>
 :root{
   --bg:#040812;--bg2:#070c18;--surf:rgba(255,255,255,.032);--surf2:rgba(255,255,255,.056);--surf3:rgba(255,255,255,.09);--bdr:rgba(255,255,255,.065);--bdr2:rgba(255,255,255,.11);
@@ -708,26 +709,25 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
     </div>
 
     <div class="fg fg2" style="gap:12px">
-      <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
-      <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="e_phone"/></div>
+      <!-- <div class="fld"><label>الاسم</label><input type="text" class="fc" id="e_name"/></div>
       <div class="fld"><label>وقت التدريب</label><input type="time" class="fc" id="e_time"/></div>
-      <div class="fld"><label>الهدف</label>
-        <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div>
+      <div class="fld"><label>الهدف</label> -->
+        <!-- <select class="fc" id="e_goal"><option value="">بدون</option><option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option><option value="safety">الأمان في الماء</option><option value="fun">الترفيه والمتعة</option></select></div> -->
       <div class="fld"><label>الحالة</label><select class="fc" id="e_active"><option value="true">نشط ✓</option><option value="false">منتهي ✕</option></select></div>
-      <div class="fld"><label>نهاية الاشتراك</label><input type="date" class="fc" id="e_expiry"/></div>
-      <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="e_trainer"/></div>
+      <!-- <div class="fld"><label>نهاية الاشتراك</label><input type="date" class="fc" id="e_expiry"/></div>
+      <div class="fld" style="grid-column:1/-1"><label>المدرب المسؤول</label><input type="text" class="fc" id="e_trainer"/></div> -->
     </div>
 
-    <div class="fld mt-16">
+    <!-- <div class="fld mt-16">
       <label><i data-lucide="layers-3"></i> عدد الحصص</label>
       <div class="sess-pills">
         <label class="sess-pill"><input type="radio" name="e_sess" value="8" id="e_sess8"/><span class="sp-num">8</span><span class="sp-lbl">حصص</span></label>
         <label class="sess-pill"><input type="radio" name="e_sess" value="12" id="e_sess12"/><span class="sp-num">12</span><span class="sp-lbl">حصة</span></label>
         <label class="sess-pill"><input type="radio" name="e_sess" value="24" id="e_sess24"/><span class="sp-num">24</span><span class="sp-lbl">حصة</span></label>
       </div>
-    </div>
+    </div> -->
 
-    <div class="fld mt-12" id="e_daysWrap">
+    <!-- <div class="fld mt-12" id="e_daysWrap">
       <label style="display:flex;align-items:center;justify-content:space-between">
         <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
         <span class="days-ctr" id="eDaysCtr"></span>
@@ -741,9 +741,9 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
         <label class="day-cb"><input type="checkbox" name="e_days" value="5"/><span>جمعة</span></label>
         <label class="day-cb"><input type="checkbox" name="e_days" value="6"/><span>سبت</span></label>
       </div>
-    </div>
+    </div> -->
 
-    <div class="fld rest-wrap mt-12" id="e_restWrap">
+    <!-- <div class="fld rest-wrap mt-12" id="e_restWrap">
       <label><i data-lucide="moon"></i> يوم الراحة الأسبوعي</label>
       <select class="fc" id="e_restDay">
         <option value="">اختر يوم الراحة</option>
@@ -752,7 +752,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
         <option value="4">الخميس</option><option value="5">الجمعة</option>
         <option value="6">السبت</option>
       </select>
-    </div>
+    </div> -->
 
     <div class="rating-sec">
       <div class="rating-title"><i data-lucide="star"></i> التقييم (1–5 نجوم)</div>
@@ -772,7 +772,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
 </div>
 
 <!-- CONFIRM DELETE -->
-<div class="conf-ov" id="confirmModal">
+<!-- <div class="conf-ov" id="confirmModal">
   <div class="conf-card">
     <div class="conf-ic"><i data-lucide="trash-2"></i></div>
     <div class="conf-title">تأكيد الحذف</div>
@@ -782,7 +782,7 @@ input[type="time"].fc::-webkit-calendar-picker-indicator{filter:invert(1) opacit
       <button class="btn-do-del" id="doDel">حذف نهائي</button>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="toast" id="toast"><i data-lucide="check-circle-2"></i><span id="toastMsg">تم</span></div>
 
