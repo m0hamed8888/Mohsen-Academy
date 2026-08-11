@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="/assets/js/lucide.js"></script>
 <style>
-/* ═══ good1 ═══ */
+/* ═══ good2 ═══ */
 :root{
   --bg:#050810;
   --bg2:#080c16;
@@ -649,6 +649,25 @@ select.fc option{background:#0a0f20}
 }
 .btn-do-del:hover{background:#ff2248;box-shadow:0 0 20px rgba(255,77,109,.45)}
 
+
+.sess-pills{display:flex;gap:8px}
+.sess-pill{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:11px 6px;border-radius:var(--r-md);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;transition:all var(--fast);}
+.sess-pill input{display:none}
+.sp-num{font-family:var(--f-disp);font-size:1.35rem;font-weight:900;color:var(--ts)}
+.sp-lbl{font-size:.62rem;font-weight:700;color:var(--tm)}
+.sess-pill:has(input:checked){border-color:var(--gold);background:rgba(245,200,66,.09)}
+.sess-pill:has(input:checked) .sp-num{color:#fff}
+.sess-pill:has(input:checked) .sp-lbl{color:var(--gold)}
+.days-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
+.day-cb{display:flex;align-items:center;justify-content:center;padding:8px 4px;border-radius:var(--r-sm);background:rgba(255,255,255,.03);border:1.5px solid var(--bdr);cursor:pointer;font-size:.75rem;font-weight:700;color:var(--ts);transition:all var(--fast);}
+.day-cb input{display:none}
+.day-cb:has(input:checked){border-color:var(--gold);background:rgba(245,200,66,.1);color:#fff}
+.day-cb.locked{opacity:.25;pointer-events:none}
+.days-ctr{font-size:.7rem;font-weight:800;padding:2px 9px;border-radius:var(--r-full);background:rgba(245,200,66,.09);border:1px solid rgba(245,200,66,.22);color:var(--gold);}
+.days-ctr.done{background:rgba(0,229,160,.09);border-color:rgba(0,229,160,.3);color:var(--ok)}
+.rest-wrap{display:none}.rest-wrap.show{display:block}
+
+
 /* Level picker */
 .level-section{
   background:rgba(0,200,255,.03);
@@ -1251,11 +1270,7 @@ select.fc option{background:#0a0f20}
     <div class="fg fg2" style="gap:12px">
       <div class="fld"><label>الاسم</label><input type="text" class="fc" id="es_name"/></div>
       <div class="fld"><label>الهاتف</label><input type="text" class="fc" id="es_phone"/></div>
-      <div class="fld"><label>وقت التدريب</label>
-        <select class="fc" id="es_time"><option value="">بدون</option>
-          <option>06:00 ص</option><option>07:00 ص</option><option>08:00 ص</option>
-          <option>09:00 ص</option><option>10:00 ص</option><option>04:00 م</option>
-          <option>05:00 م</option><option>06:00 م</option><option>07:00 م</option></select></div>
+     <div class="fld"><label>وقت التدريب</label><input type="time" class="fc" id="es_time"/></div>
       <div class="fld"><label>الهدف</label>
         <select class="fc" id="es_goal"><option value="">—</option>
           <option value="fitness">اللياقة البدنية</option><option value="competition">المنافسات</option>
@@ -1267,7 +1282,44 @@ select.fc option{background:#0a0f20}
   <select class="fc" id="es_trainer">
     <option value="">— اختر كابتن —</option>
   </select>
-</div>    </div>
+</div>
+
+    <div class="fld mt-12" style="grid-column:1/-1">
+      <label><i data-lucide="layers-3"></i> عدد الحصص</label>
+      <div class="sess-pills">
+        <label class="sess-pill"><input type="radio" name="es_sess" value="8" id="es_sess8"/><span class="sp-num">8</span><span class="sp-lbl">حصص</span></label>
+        <label class="sess-pill"><input type="radio" name="es_sess" value="12" id="es_sess12"/><span class="sp-num">12</span><span class="sp-lbl">حصة</span></label>
+        <label class="sess-pill"><input type="radio" name="es_sess" value="24" id="es_sess24"/><span class="sp-num">24</span><span class="sp-lbl">حصة</span></label>
+      </div>
+    </div>
+
+    <div class="fld mt-12" id="es_daysWrap">
+      <label style="display:flex;align-items:center;justify-content:space-between">
+        <span><i data-lucide="calendar-check"></i> أيام التدريب</span>
+        <span class="days-ctr" id="esDaysCtr"></span>
+      </label>
+      <div class="days-grid" id="es_daysGrid">
+        <label class="day-cb"><input type="checkbox" name="es_days" value="0"/><span>أحد</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="1"/><span>اثنين</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="2"/><span>ثلاثاء</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="3"/><span>أربعاء</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="4"/><span>خميس</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="5"/><span>جمعة</span></label>
+        <label class="day-cb"><input type="checkbox" name="es_days" value="6"/><span>سبت</span></label>
+      </div>
+    </div>
+
+    <div class="fld rest-wrap mt-12" id="es_restWrap">
+      <label><i data-lucide="moon"></i> يوم الراحة الأسبوعي</label>
+      <select class="fc" id="es_restDay">
+        <option value="">اختر يوم الراحة</option>
+        <option value="0">الأحد</option><option value="1">الاثنين</option>
+        <option value="2">الثلاثاء</option><option value="3">الأربعاء</option>
+        <option value="4">الخميس</option><option value="5">الجمعة</option>
+        <option value="6">السبت</option>
+      </select>
+    </div>
+    </div>
     <div class="level-section">
   <div class="level-title"><i data-lucide="bar-chart-2"></i> اللِيفِل (LV 1–10)</div>
   <div class="level-btns" id="editLevelBtns"></div>
@@ -1392,6 +1444,7 @@ let delUserType = null, delUserId = null, delUserName = '';
 let reportSessFilter = 'all', reportPage = 1, allSwimmersCache = [];
 let reportYear = new Date().getFullYear(), reportMonth = new Date().getMonth()+1;
 let trainersCache = [];
+const SESS_DAYS = {'8':2,'12':3};
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
   buildLevelBtns();
@@ -1408,13 +1461,44 @@ function buildLevelBtns(){
     wrap.appendChild(b);
   }
 }
-
+function onEsSessChange(){
+  const val = document.querySelector('input[name="es_sess"]:checked')?.value;
+  document.querySelectorAll('input[name="es_days"]').forEach(c => {
+    c.checked = false;
+    c.closest('.day-cb').classList.remove('locked');
+  });
+  if(val === '24'){
+    $('es_daysWrap').style.display = 'none';
+    $('es_restWrap').classList.add('show');
+  } else if(val){
+    $('es_daysWrap').style.display = 'block';
+    $('es_restWrap').classList.remove('show');
+    updateEsDaysUI(val, 0);
+  }
+}
+function onEsDaysChange(e){
+  const val = document.querySelector('input[name="es_sess"]:checked')?.value;
+  const max = SESS_DAYS[val] || 0;
+  const cnt = document.querySelectorAll('input[name="es_days"]:checked').length;
+  if(e.target.checked && cnt > max){ e.target.checked = false; return; }
+  if(val && max) updateEsDaysUI(val, document.querySelectorAll('input[name="es_days"]:checked').length);
+}
+function updateEsDaysUI(sessVal, cnt){
+  const max = SESS_DAYS[sessVal] || 0;
+  const ctr = $('esDaysCtr'); if(!ctr) return;
+  const rem = max - cnt;
+  if(cnt === 0){ ctr.textContent = sessVal==='8' ? 'اختر يومين' : 'اختر ٣ أيام'; ctr.className = 'days-ctr'; }
+  else if(cnt < max){ ctr.textContent = `متبقي ${rem}`; ctr.className = 'days-ctr'; }
+  else{ ctr.textContent = '✓ اكتملت'; ctr.className = 'days-ctr done'; }
+  document.querySelectorAll('input[name="es_days"]').forEach(c => c.closest('.day-cb').classList.toggle('locked', !c.checked && cnt >= max));
+}
 function bindUI(){
   $('loginBtn').onclick = doLogin;
   $('loginPass').addEventListener('keydown', e => e.key === 'Enter' && doLogin());
   $('logoutBtn').onclick = doLogout;
 $('addStrokeBtn').onclick = () => addStrokeRow();
-
+document.querySelectorAll('input[name="es_sess"]').forEach(r => r.addEventListener('change', onEsSessChange));
+document.querySelectorAll('input[name="es_days"]').forEach(c => c.addEventListener('change', onEsDaysChange));
 
 const addStrokeBtn = $('addStrokeBtn');
 if(addStrokeBtn) addStrokeBtn.onclick = () => addStrokeRow();
@@ -1739,9 +1823,28 @@ async function doDeleteTrainer(){
 async function openEditSwimmer(subId){
   try{
     const d = await api('/swimmers/'+subId); const s = d.data; editSwimmerId = subId; editingLevel = s.level || null;
-    $('es_name').value = s.fullName||''; $('es_phone').value = s.phone||''; $('es_time').value = s.trainingTime||'';
-    $('es_goal').value = s.goal||''; $('es_active').value = s.isActive?'true':'false';
+$('es_name').value = s.fullName||''; $('es_phone').value = s.phone||'';
+const rawTime = s.trainingTime || '';
+const tmMatch = rawTime.match(/^(\d{1,2}):(\d{2})/);
+$('es_time').value = tmMatch ? `${String(tmMatch[1]).padStart(2,'0')}:${tmMatch[2]}` : '';    $('es_goal').value = s.goal||''; $('es_active').value = s.isActive?'true':'false';
 setTrainerSelectValue(s.trainerId || s.trainer?.id || '', s.trainerName || s.trainer?.name || '');
+const esSessVal = String(s.sessionsCount || '8');
+document.querySelectorAll('input[name="es_sess"]').forEach(r => r.checked = r.value === esSessVal);
+const esCurrentDays = Array.isArray(s.trainingDays) ? s.trainingDays : [];
+document.querySelectorAll('input[name="es_days"]').forEach(c => {
+  c.checked = esCurrentDays.includes(Number(c.value));
+  c.closest('.day-cb').classList.remove('locked');
+});
+if(esSessVal === '24'){
+  const restDay = [0,1,2,3,4,5,6].find(d => !esCurrentDays.includes(d));
+  $('es_restDay').value = restDay !== undefined ? String(restDay) : '';
+  $('es_daysWrap').style.display = 'none';
+  $('es_restWrap').classList.add('show');
+} else {
+  $('es_daysWrap').style.display = 'block';
+  $('es_restWrap').classList.remove('show');
+  updateEsDaysUI(esSessVal, esCurrentDays.length);
+}
     $('es_expiry').value = s.subscriptionExpiry ? new Date(s.subscriptionExpiry).toISOString().split('T')[0] : '';
     document.querySelectorAll('.lv-btn').forEach(b => b.classList.toggle('active', Number(b.dataset.lv) === s.level));
     $('editLevelNote').value = s.levelNote||'';
@@ -1753,9 +1856,24 @@ setTrainerSelectValue(s.trainerId || s.trainer?.id || '', s.trainerName || s.tra
     openModal('editSwimmerModal'); lucide.createIcons();
   } catch(e){ toast(e.message||'خطأ','er'); }
 }
-
 async function doSaveSwimmer(){
   if(!editSwimmerId) return;
+
+  const esSessVal = document.querySelector('input[name="es_sess"]:checked')?.value;
+  if(!esSessVal){ toast('اختر عدد الحصص','er'); return; }
+
+  let esTrainingDays = [];
+  if(esSessVal === '24'){
+    const restDay = $('es_restDay').value;
+    if(restDay === ''){ toast('اختر يوم الراحة','er'); return; }
+    esTrainingDays = [0,1,2,3,4,5,6].filter(d => d !== Number(restDay));
+  } else {
+    const req = SESS_DAYS[esSessVal] || 0;
+    const chk = [...document.querySelectorAll('input[name="es_days"]:checked')].map(c => Number(c.value));
+    if(chk.length !== req){ toast(`يجب اختيار ${req===2?'يومين':'٣ أيام'}`,'er'); return; }
+    esTrainingDays = chk;
+  }
+
   const btn = $('saveSwimmerBtn'); btn.classList.add('loading');
   try{
     const trainerSel = $('es_trainer');
@@ -1769,6 +1887,9 @@ async function doSaveSwimmer(){
       isActive:$('es_active').value==='true', subscriptionExpiry:$('es_expiry').value||'',
       trainer: trainerId,
       trainerName: trainerName,
+      sessionsCount: Number(esSessVal),
+      trainingDays: esTrainingDays,
+      restDay: esSessVal === '24' ? Number($('es_restDay').value) : null,
     });
     closeModal('editSwimmerModal'); toast('✅ تم تحديث بيانات المشترك'); allPage=1; loadAllSwimmers(); loadGlobalStats(); loadTrainers();
   } catch(e){ toast(e.message||'خطأ','er'); }
